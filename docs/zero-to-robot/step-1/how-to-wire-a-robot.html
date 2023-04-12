@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="How to Wire an FRC Robot" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-1/how-to-wire-a-robot.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Overview: REV CTR Detailed diagram of all of the components and how they are connected. Diagram courtesy of FRC ® Team 3161 and Stefen Acepcion., Detailed diagram of all of the components and how t..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-1/how-to-wire-a-robot.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-1/how-to-wire-a-robot.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/zero-to-robot/step-1/how-to-wire-a-robot.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/zero-to-robot/step-1/how-to-wire-a-robot.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/zero-to-robot/step-1/how-to-wire-a-robot.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/zero-to-robot/step-1/how-to-wire-a-robot.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/zero-to-robot/step-1/how-to-wire-a-robot.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/zero-to-robot/step-1/how-to-wire-a-robot.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Wire an FRC Robot &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-1/how-to-wire-a-robot.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Step 2: Installing Software" href="../step-2/index.html" />
+    <link rel="prev" title="Step 1: Building your Robot" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step 1: Building your Robot</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to Wire an FRC Robot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Step 1: Building your Robot</a></li>
+      <li class="breadcrumb-item active">How to Wire an FRC Robot</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/zero-to-robot/step-1/how-to-wire-a-robot.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-wire-an-frc-robot">
+<h1>How to Wire an FRC Robot<a class="headerlink" href="#how-to-wire-an-frc-robot" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This document details the wiring of a basic electronics board for bench-top testing.</p>
+<p>Some images shown in this section reflect the setup for a Robot Control System using SPARK or SPARK MAX Motor Controllers. Wiring diagram and layout should be similar for other motor controllers. Where appropriate, two sets of images are provided to show connections using controllers with and without integrated wires.</p>
+</div>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-0-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-0-UkVW" class="sphinx-tabs-panel group-tab" id="panel-0-UkVW" name="UkVW" role="tabpanel" tabindex="0"><figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../../../_images/frc-control-system-layout-rev.svg"><img alt="Detailed diagram of all of the components and how they are connected." src="../../../_images/frc-control-system-layout-rev.svg" width="600" /></a>
+<figcaption>
+<p><span class="caption-text">Diagram courtesy of FRC® Team 3161 and Stefen Acepcion.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div><div aria-labelledby="tab-0-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../../../_images/frc-control-system-layout.svg"><img alt="Detailed diagram of all of the components and how they are connected." src="../../../_images/frc-control-system-layout.svg" width="600" /></a>
+<figcaption>
+<p><span class="caption-text">Diagram courtesy of FRC® Team 3161 and Stefen Acepcion.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div></div>
+</section>
+<section id="gather-materials">
+<h2>Gather Materials<a class="headerlink" href="#gather-materials" title="Permalink to this heading"></a></h2>
+<p>Locate the following control system components and tools</p>
+<ul>
+<li><p>Kit Materials:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Power Distribution Hub (PH) / Power Distribution Panel (PDP)</p></li>
+<li><p>roboRIO</p></li>
+<li><p>Pneumatics Hub (PH) / Pneumatics Control Module (PCM)</p></li>
+<li><p>Radio Power Module (RPM) / Voltage Regulator Module (VRM)</p></li>
+<li><p>OpenMesh radio (with power cable and Ethernet cable)</p></li>
+<li><p>Robot Signal Light (RSL)</p></li>
+<li><p>4x SPARK MAX or other motor controllers</p></li>
+<li><p>2x PWM y-cables</p></li>
+<li><p>120A Circuit breaker</p></li>
+<li><p>4x 40A Circuit breaker</p></li>
+<li><p>6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) Red wire</p></li>
+<li><p>10 AWG (6 <span class="math notranslate nohighlight">\(mm^2\)</span>) Red/Black wire</p></li>
+<li><p>18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) Red/Black wire</p></li>
+<li><p>22 AWG (0.5 <span class="math notranslate nohighlight">\(mm^2\)</span>) Yellow/Green twisted CAN cable</p></li>
+<li><p>8x Pairs of 10-12 AWG (4 - 6 <span class="math notranslate nohighlight">\(mm^2\)</span>) (Yellow) quick disconnect terminals (16x ring terminals if using integrated wire controllers)</p></li>
+<li><p>2x Anderson SB50 battery connectors</p></li>
+<li><p>6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) Terminal lugs</p></li>
+<li><p>12V Battery</p></li>
+<li><p>Red/Black Electrical tape</p></li>
+<li><p>Dual Lock material or fasteners</p></li>
+<li><p>Zip ties</p></li>
+<li><p>1/4” or 1/2” (6-12 mm) plywood</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Tools Required:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Wago Tool or small flat-head screwdriver</p></li>
+<li><p>Very small flat head screwdriver (eyeglass repair size)</p></li>
+<li><p>Wire cutters, strippers, and crimpers</p></li>
+<li><p>7/16” (11 mm may work if imperial is unavailable) box end wrench or nut driver</p></li>
+<li><p>Additional 7/16” wrench/nut driver or Philips head screw driver</p></li>
+<li><p>For CTR PDP only: 5 mm Hex key (3/16” may work if metric is unavailable)</p></li>
+<li><p>For CTR PDP only: 1/16” Hex key</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="create-the-base-for-the-control-system">
+<h2>Create the Base for the Control System<a class="headerlink" href="#create-the-base-for-the-control-system" title="Permalink to this heading"></a></h2>
+<p>For a benchtop test board, cut piece of 1/4” or 1/2” (6-12 mm) material (wood or plastic) approximately 24” x 16” (60 x 40 cm). For a Robot Quick Build control board see the supporting documentation for the proper size board for the chosen chassis configuration.</p>
+</section>
+<section id="layout-the-core-control-system-components">
+<h2>Layout the Core Control System Components<a class="headerlink" href="#layout-the-core-control-system-components" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-1-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-1-UkVW" class="sphinx-tabs-panel group-tab" id="panel-1-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="A basic wiring layout with CTR components." src="../../../_images/layout-REV.jpg" />
+</div><div aria-labelledby="tab-1-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="A basic wiring layout with CTR components." src="../../../_images/layout.jpg" />
+</div></div>
+<p>Lay out the components on the board. An example layout is shown in the image above.</p>
+</section>
+<section id="fasten-components">
+<h2>Fasten Components<a class="headerlink" href="#fasten-components" title="Permalink to this heading"></a></h2>
+<img alt="Using zipties to secure components down." src="../../../_images/ziptie.png" />
+<p>Using the Dual Lock or hardware, fasten all components to the board. Note that in many FRC games robot-to-robot contact may be substantial and Dual Lock alone is unlikely to stand up as a fastener for many electronic components. Teams may wish to use nut and bolt fasteners or (as shown in the image above) cable ties, with or without Dual Lock to secure devices to the board.</p>
+</section>
+<section id="attach-robot-side-battery-connector">
+<h2>Attach Robot Side Battery Connector<a class="headerlink" href="#attach-robot-side-battery-connector" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-2-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-2-UkVW" class="sphinx-tabs-panel group-tab" id="panel-2-UkVW" name="UkVW" role="tabpanel" tabindex="0"><p>The next step will involve using the Wago connectors on the PDH. To use the Wago connectors, open the lever, insert the wire, then close the lever. Two sizes of Wago connector are found on the PDH:</p>
+<ul class="simple">
+<li><p>Main power connectors: Accept 4 - 18 AWG (.75 - 25 <span class="math notranslate nohighlight">\(mm^2\)</span>), strip 20 mm (~3/4”)</p></li>
+<li><p>High current channel connectors: Accept 8 - 24 AWG (.25 - 10 <span class="math notranslate nohighlight">\(mm^2\)</span>), strip 12 mm (~1/2”)</p></li>
+</ul>
+<p>To maximize pullout force and minimize connection resistance wires should not be tinned (and ideally not twisted) before inserting into the Wago connector.</p>
+<img alt="Highlights the location of the terminal lugs on the PDH and circuit breaker." src="../../../_images/terminal-lug-REV.jpg" />
+<p>Requires: Battery Connector, 6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) terminal lugs, 7/16” (11 mm) Box end</p>
+<p>Attach terminal lug to positive (red) wire of battery connector. Strip .75” off the black wire.</p>
+<p>Lift the lever above the black main power input terminal on the PDH until it clicks into place. Insert the wire. Pull the lever down to secure the wire.</p>
+<p>Using a 7/16” (11 mm) box end wrench, remove the nut on the “Batt” side of the main breaker and secure the positive terminal of the battery connector</p>
+</div><div aria-labelledby="tab-2-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="Highlights the location of the terminal lugs on the PDP and circuit breaker." src="../../../_images/terminal-lug.jpg" />
+<p>Requires: Battery Connector, 6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) terminal lugs, 1/16” Allen, 5 mm Allen,
+7/16” (11 mm) Box end</p>
+<p>Attach terminal lugs to battery connector.</p>
+<ol class="arabic simple">
+<li><p>Using a 1/16” Allen wrench, remove the two screws securing the PDP terminal cover.</p></li>
+<li><p>Using a 5 mm Allen wrench (3/16”), remove the negative (-) bolt and washer from the PDP and fasten the negative terminal of the battery connector.</p></li>
+<li><p>Using a 7/16” (11 mm) box end wrench, remove the nut on the “Batt” side of the main breaker and secure the positive terminal of the battery connector</p></li>
+</ol>
+</div></div>
+</section>
+<section id="wire-breaker-to-power-distribution">
+<h2>Wire Breaker to Power Distribution<a class="headerlink" href="#wire-breaker-to-power-distribution" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-3-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-3-UkVW" class="sphinx-tabs-panel group-tab" id="panel-3-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="Show the circuit breaker wired to the PDH." src="../../../_images/circuit-breaker-REV.jpg" />
+<p>Requires: 6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) red wire, 1x 6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) terminal lugs, 7/16” (11 mm) wrench</p>
+<p>Secure one terminal lug to the end of the 6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) red wire. Using the 7/16” (11 mm) wrench, remove the nut from the “AUX” side of the 120A main breaker and place the terminal over the stud. Loosely secure the nut (you may wish to remove it shortly to cut and strip the other end of the wire). Measure out the length of wire required to reach the positive terminal of the PDH.</p>
+<ol class="arabic simple">
+<li><p>Cut and strip the other end of the red wire.</p></li>
+<li><p>Using the 7/16” (11 mm) wrench, secure the wire to the “AUX” side of the 120A main breaker.</p></li>
+<li><p>Lift the lever on the positive (red) input terminal of the PDH, insert the wire, then close the terminal.</p></li>
+</ol>
+</div><div aria-labelledby="tab-3-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="Show the circuit breaker wired to the PDP." src="../../../_images/circuit-breaker.jpg" />
+<p>Requires: 6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) red wire, 2x 6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) terminal lugs, 5 mm Allen, 7/16” (11 mm) box end</p>
+<p>Secure one terminal lug to the end of the 6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) red wire. Using the 7/16” (11 mm) box end, remove the nut from the “AUX” side of the 120A main breaker and place the terminal over the stud. Loosely secure the nut (you may wish to remove it shortly to cut, strip, and crimp the other end of the wire). Measure out the length of wire required to reach the positive terminal of the PDP.</p>
+<ol class="arabic simple">
+<li><p>Cut, strip, and crimp the terminal to the 2nd end of the red 6 AWG (16 <span class="math notranslate nohighlight">\(mm^2\)</span>) wire.</p></li>
+<li><p>Using the 7/16” (11 mm) box end, secure the wire to the “AUX” side of the 120A main breaker.</p></li>
+<li><p>Using the 5 mm Allen wrench, secure the other end to the PDP positive terminal.</p></li>
+</ol>
+</div></div>
+</section>
+<section id="insulate-power-connections">
+<h2>Insulate power connections<a class="headerlink" href="#insulate-power-connections" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-4-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-4-UkVW" class="sphinx-tabs-panel group-tab" id="panel-4-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="Putting tape around the connectors to insulate them." src="../../../_images/insulate-REV.jpg" />
+<p>Requires: Electrical tape</p>
+<p>Using electrical tape, insulate the two connections to the 120A breaker.</p>
+</div><div aria-labelledby="tab-4-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="Putting tape around the connectors to insulate them." src="../../../_images/insulate.jpg" />
+<p>Requires: 1/16” Allen, Electrical tape</p>
+<ol class="arabic simple">
+<li><p>Using electrical tape, insulate the two connections to the 120A breaker. Also insulate any part of the PDP terminals which will be exposed when the cover is replaced.</p></li>
+<li><p>Using the 1/16” Allen wrench, replace the PDP terminal cover</p></li>
+</ol>
+</div></div>
+</section>
+<section id="motor-controller-power">
+<h2>Motor Controller Power<a class="headerlink" href="#motor-controller-power" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-5-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-5-UkVW" class="sphinx-tabs-panel group-tab" id="panel-5-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="Wiring power from the PDH to motor controllers." src="../../../_images/pdh-motor-power.jpg" />
+<img alt="Wiring power to a Spark Motor Controller with ring terminals." src="../../../_images/spark-power.jpg" />
+<p>Requires: Wire Stripper
+Terminal Controllers only: 10 or 12 AWG (4 - 6 <span class="math notranslate nohighlight">\(mm^2\)</span>) wire , 10 or 12 AWG (4 - 6 <span class="math notranslate nohighlight">\(mm^2\)</span>) fork/ring terminals, wire crimper</p>
+<p>For SPARK MAX or other wire integrated motor controllers (top image):</p>
+<ul class="simple">
+<li><p>Cut and strip the red and black power input wires, then insert into one of the Wago terminal pairs.</p></li>
+</ul>
+<p>For terminal motor controllers (bottom image):</p>
+<ol class="arabic simple">
+<li><p>Cut red and black wire to appropriate length to reach from one of the Wago terminal pairs to the input side of the motor controller (with a little extra for the length that will be inserted into the terminals on each end)</p></li>
+<li><p>Strip one end of each of the wires, then insert into the Wago terminals.</p></li>
+<li><p>Strip the other end of each wire, and crimp on a ring or fork terminal</p></li>
+<li><p>Attach the terminal to the motor controller input terminals (red to +, black to -)</p></li>
+</ol>
+</div><div aria-labelledby="tab-5-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+    <iframe src="https://www.youtube-nocookie.com/embed/t-zb7j4ikHM" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div><p>The next step will involve using the Wago connectors on the PDP. To use the Wago connectors, insert a small flat blade screwdriver into the rectangular hole at a shallow angle then angle the screwdriver upwards as you continue to press in to actuate the lever, opening the terminal. Two sizes of Wago connector are found on the PDP:</p>
+<ul class="simple">
+<li><p>Small Wago connector: Accepts 10 - 24 AWG (0.25 - 6 <span class="math notranslate nohighlight">\(mm^2\)</span>), strip 11-12 mm (~7/16”)</p></li>
+<li><p>Large Wago connector: Accepts 6 - 12 AWG (4 - 16 <span class="math notranslate nohighlight">\(mm^2\)</span>), strip 12-13 mm (~1/2”)</p></li>
+</ul>
+<p>To maximize pullout force and minimize connection resistance wires should not be tinned (and ideally not twisted) before inserting into the Wago connector.</p>
+<img alt="Wiring power from the PDP to motor controllers." src="../../../_images/pdp-power.jpg" />
+<img alt="Wiring power to a Spark Motor Controller with ring terminals." src="../../../_images/spark-power.jpg" />
+<p>Requires: Wire Stripper, Small Flat Screwdriver,
+Terminal Controllers only: 10 or 12 AWG (4 - 6 <span class="math notranslate nohighlight">\(mm^2\)</span>) wire, 10 or 12 AWG (4 - 6 <span class="math notranslate nohighlight">\(mm^2\)</span>) fork/ring terminals, wire crimper</p>
+<p>For SPARK MAX or other wire integrated motor controllers (top image):</p>
+<ul class="simple">
+<li><p>Cut and strip the red and black power input wires, then insert into one of the 40A (larger) Wago terminal pairs.</p></li>
+</ul>
+<p>For terminal motor controllers (bottom image):</p>
+<ol class="arabic simple">
+<li><p>Cut red and black wire to appropriate length to reach from one of the 40A (larger) Wago terminal pairs to the input side of the motor controller (with a little extra for the length that will be inserted into the terminals on each end)</p></li>
+<li><p>Strip one end of each of the wires, then insert into the Wago terminals.</p></li>
+<li><p>Strip the other end of each wire, and crimp on a ring or fork terminal</p></li>
+<li><p>Attach the terminal to the motor controller input terminals (red to +, black to -)</p></li>
+</ol>
+</div></div>
+</section>
+<section id="weidmuller-connectors">
+<h2>Weidmuller Connectors<a class="headerlink" href="#weidmuller-connectors" title="Permalink to this heading"></a></h2>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
+    <iframe src="https://www.youtube-nocookie.com/embed/Zsnro-9_ZfQ" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+</div><p>A number of the CAN and power connectors in the system use a Weidmuller LSF series wire-to-board connector. There are a few things to keep in mind when using this connector for best results:</p>
+<ul class="simple">
+<li><p>Wire should be 16 AWG (1.5 <span class="math notranslate nohighlight">\(mm^2\)</span>) to 24 AWG (0.25 <span class="math notranslate nohighlight">\(mm^2\)</span>) (consult rules to verify required gauge for power wiring)</p></li>
+<li><p>Wire ends should be stripped approximately 5/16 (~8 mm)”</p></li>
+<li><p>To insert or remove the wire, press down on the corresponding “button” to open the terminal</p></li>
+</ul>
+<p>After making the connection check to be sure that it is clean and secure:</p>
+<ul class="simple">
+<li><p>Verify that there are no “whiskers” outside the connector that may cause a short circuit</p></li>
+<li><p>Tug on the wire to verify that it is seated fully. If the wire comes out and is the correct gauge it needs to be inserted further and/or stripped back further. Occasionally the terminal may remain stuck open with the wire inserted and the button released even if the wire is stripped and inserted properly; in these cases wiggling the wire in and out a small amount will often allow the connector to latch shut and grip the wire.</p></li>
+</ul>
+</section>
+<section id="roborio-power">
+<h2>roboRIO Power<a class="headerlink" href="#roborio-power" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-6-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-6-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-6-UkVW" class="sphinx-tabs-panel group-tab" id="panel-6-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="Power coming from the PDH to the roboRIO." src="../../../_images/roborio-power-REV.jpg" />
+<img alt="Power going into the roboRIO." src="../../../_images/roborio-power-pdh.jpg" />
+<p>Requires: 10A mini fuse, Wire stripper, very small flat screwdriver, 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) Red and Black</p>
+<ol class="arabic simple">
+<li><p>Insert the 10A fuse into the PDH in one of the non-switchable fused channels (20-22).</p></li>
+<li><p>Strip ~5/16” (~8 mm) on both the red and black 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) wire and connect to the corresponding terminals on the PDH channel where the fuse was installed</p></li>
+<li><p>Measure the required length to reach the power input on the roboRIO. Take care to leave enough length to route the wires around any other components such as the battery and to allow for any strain relief or cable management.</p></li>
+<li><p>Cut and strip the wire.</p></li>
+<li><p>Using a very small flat screwdriver connect the wires to the power input connector of the roboRIO (red to V, black to C). Also make sure that the power connector is screwed down securely to the roboRIO.</p></li>
+</ol>
+</div><div aria-labelledby="tab-6-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-6-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="Power coming from the PDP to the roboRIO." src="../../../_images/roborio-power.jpg" />
+<p>Requires: 10A/20A mini fuses, Wire stripper, very small flat screwdriver, 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) Red and Black</p>
+<ol class="arabic simple">
+<li><p>Insert the 10A and 20A mini fuses in the PDP in the locations shown on the silk screen (and in the image above)</p></li>
+<li><p>Strip ~5/16” (~8 mm) on both the red and black 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) wire and connect to the “Vbat Controller PWR” terminals on the PDB</p></li>
+<li><p>Measure the required length to reach the power input on the roboRIO. Take care to leave enough length to route the wires around any other components such as the battery and to allow for any strain relief or cable management.</p></li>
+<li><p>Cut and strip the wire.</p></li>
+<li><p>Using a very small flat screwdriver connect the wires to the power input connector of the roboRIO (red to V, black to C). Also make sure that the power connector is screwed down securely to the roboRIO.</p></li>
+</ol>
+</div></div>
+</section>
+<section id="radio-power">
+<h2>Radio Power<a class="headerlink" href="#radio-power" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-7-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-7-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-7-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-7-UkVW" class="sphinx-tabs-panel group-tab" id="panel-7-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="Power going from the PDH to the RPM." src="../../../_images/rpm-pdh-power.jpg" />
+<img alt="Power going into the RPM." src="../../../_images/rpm.jpg" />
+<p>Requires: Wire stripper, small flat screwdriver (optional), 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) red and black wire:</p>
+<ol class="arabic simple">
+<li><p>Insert the 10A fuse into the PDH in one of the non-switchable fused channels (20-22).</p></li>
+<li><p>Strip ~5/16” (~8 mm) on the end of the red and black 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) wire and connect the wire to the corresponding terminals on the PDH.</p></li>
+<li><p>Measure the length required to reach the “12V Input” terminals on the Radio Power Module. Take care to leave enough length to route the wires around any other components such as the battery and to allow for any strain relief or cable management.</p></li>
+<li><p>Cut and strip ~5/16” (~8 mm) from the end of the wire.</p></li>
+<li><p>Connect the wire to the RPM 12V Input terminals.</p></li>
+</ol>
+</div><div aria-labelledby="tab-7-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-7-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="Power going from the PDP to the VRM." src="../../../_images/vrm-power.jpg" />
+<p>Requires: Wire stripper, small flat screwdriver (optional), 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) red and black wire:</p>
+<ol class="arabic simple">
+<li><p>Strip ~5/16” (~8 mm) on the end of the red and black 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) wire.</p></li>
+<li><p>Connect the wire to one of the two terminal pairs labeled “Vbat VRM PCM PWR” on the PDP.</p></li>
+<li><p>Measure the length required to reach the “12Vin” terminals on the VRM. Take care to leave enough length to route the wires around any other components such as the battery and to allow for any strain relief or cable management.</p></li>
+<li><p>Cut and strip ~5/16” (~8 mm) from the end of the wire.</p></li>
+<li><p>Connect the wire to the VRM 12Vin terminals.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>DO NOT connect the Rev passive POE injector cable directly to the roboRIO. The roboRIO MUST connect to the socket end of the cable using an additional Ethernet cable as shown in the next step.</p>
+</div>
+<img alt="Connection power to the robot radio via a PoE cable." src="../../../_images/radio-power.jpg" />
+<p>Requires: Small flat screwdriver (optional), Rev radio PoE cable</p>
+<ol class="arabic simple">
+<li><p>Insert the ferrules of the passive PoE injector cable into the corresponding colored terminals on the 12V/2A section of the VRM.</p></li>
+<li><p>Connect the RJ45 (Ethernet) plug end of the cable into the Ethernet port on the radio closest to the barrel connector (labeled 18-24v POE)</p></li>
+</ol>
+</div></div>
+</section>
+<section id="pneumatics-power-optional">
+<h2>Pneumatics Power (Optional)<a class="headerlink" href="#pneumatics-power-optional" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-8-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-8-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-8-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-8-UkVW" class="sphinx-tabs-panel group-tab" id="panel-8-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="Power going from the PDH to the PH." src="../../../_images/ph-pdh-power.jpg" />
+<img alt="Power going into the PH." src="../../../_images/ph.jpg" />
+<p>Requires: Wire stripper, small flat screwdriver (optional), 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) red and black wire</p>
+<p>The Pneumatics Hub can be wired to either a non-switchable fused port on the PDH with a 15A or smaller fuse or to a circuit breaker protected port with a breaker up to 20A.</p>
+<ol class="arabic simple">
+<li><p>Strip ~5/16” (~8 mm) on the end of the red and black 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) wire.</p></li>
+<li><p>Connect the wire to the PDH in one of the two ways described above</p></li>
+<li><p>Measure the length required to reach the red terminals on the short end of the PH labeled +/-. Take care to leave enough length to route the wires around any other components such as the battery and to allow for any strain relief or cable management.</p></li>
+<li><p>Cut and strip ~5/16” (~8 mm) from the other end of the wire.</p></li>
+<li><p>Connect the wire to the PH input terminals.</p></li>
+</ol>
+</div><div aria-labelledby="tab-8-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-8-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="Power going from the PDP to the PCM." src="../../../_images/pcm-power.jpg" />
+<p>Requires: Wire stripper, small flat screwdriver (optional), 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) red and black wire</p>
+<ol class="arabic simple">
+<li><p>Strip ~5/16” (~8 mm) on the end of the red and black 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) wire.</p></li>
+<li><p>Connect the wire to one of the two terminal pairs labeled “Vbat VRM PCM PWR” on the PDP.</p></li>
+<li><p>Measure the length required to reach the “Vin” terminals on the PCM. Take care to leave enough length to route the wires around any other components such as the battery and to allow for any strain relief or cable management.</p></li>
+<li><p>Cut and strip ~5/16” (~8 mm) from the end of the wire.</p></li>
+<li><p>Connect the wire to the PCM 12Vin terminals.</p></li>
+</ol>
+</div></div>
+</section>
+<section id="ethernet-cables">
+<h2>Ethernet Cables<a class="headerlink" href="#ethernet-cables" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-9-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-9-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-9-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-9-UkVW" class="sphinx-tabs-panel group-tab" id="panel-9-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="Picture of the RPM." src="../../../_images/rpm.jpg" />
+<img alt="Picture of the radio." src="../../../_images/radio.jpg" />
+<p>Requires: 2x Ethernet cables</p>
+<ol class="arabic simple">
+<li><p>Connect an Ethernet cable from the RJ45 (Ethernet) socket of the roboRIO to the port on the Radio Power Module labeled roboRIO.</p></li>
+<li><p>Connect an Ethernet cable from the RJ45 socket of the radio closest to the barrel connector socket (labeled 18-24v POE) to the socket labeled WiFi Radio on the RPM</p></li>
+</ol>
+</div><div aria-labelledby="tab-9-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-9-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="Connecting Ethernet from the roboRIO to the PoE cable." src="../../../_images/radio-ethernet.jpg" />
+<p>Requires: Ethernet cable</p>
+<p>Connect an Ethernet cable from the RJ45 (Ethernet) socket of the Rev Passive POE cable to the RJ45 (Ethernet) port on the roboRIO.</p>
+</div></div>
+</section>
+<section id="can-devices">
+<h2>CAN Devices<a class="headerlink" href="#can-devices" title="Permalink to this heading"></a></h2>
+<section id="roborio-to-pneumatics-can">
+<h3>roboRIO to Pneumatics CAN<a class="headerlink" href="#roborio-to-pneumatics-can" title="Permalink to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-10-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-10-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-10-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-10-UkVW" class="sphinx-tabs-panel group-tab" id="panel-10-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="roboRIO CAN connection." src="../../../_images/roborio-can.jpg" />
+<img alt="PH CAN connection." src="../../../_images/ph.jpg" />
+<p>Requires: Wire stripper, small flat screwdriver (optional), yellow/green twisted CAN cable</p>
+<ol class="arabic simple">
+<li><p>Strip ~5/16” (~8 mm) off of each of the CAN wires.</p></li>
+<li><p>Insert the wires into the appropriate CAN terminals on the roboRIO (Yellow-&gt;YEL, Green-&gt;GRN).</p></li>
+<li><p>Measure the length required to reach the CAN terminals of the PCM (either of the two available pairs). Cut and strip ~5/16” (~8 mm) off this end of the wires.</p></li>
+<li><p>Insert the wires into the appropriate color coded CAN terminals on the PH. You may use either of the Yellow/Green terminal pairs on the PH, there is no defined in or out.</p></li>
+</ol>
+</div><div aria-labelledby="tab-10-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-10-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="Connecting CAN wire from the roboRIO to the PCM." src="../../../_images/pcm-can.jpg" />
+<p>Requires: Wire stripper, small flat screwdriver (optional), yellow/green twisted CAN cable</p>
+<ol class="arabic simple">
+<li><p>Strip ~5/16” (~8 mm) off of each of the CAN wires.</p></li>
+<li><p>Insert the wires into the appropriate CAN terminals on the roboRIO (Yellow-&gt;YEL, Green-&gt;GRN).</p></li>
+<li><p>Measure the length required to reach the CAN terminals of the PCM (either of the two available pairs). Cut and strip ~5/16” (~8 mm) off this end of the wires.</p></li>
+<li><p>Insert the wires into the appropriate color coded CAN terminals on the PCM. You may use either of the Yellow/Green terminal pairs on the PCM, there is no defined in or out.</p></li>
+</ol>
+</div></div>
+</section>
+<section id="pneumatics-to-pd-can">
+<h3>Pneumatics to PD CAN<a class="headerlink" href="#pneumatics-to-pd-can" title="Permalink to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-11-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-11-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-11-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-11-UkVW" class="sphinx-tabs-panel group-tab" id="panel-11-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="PH CAN connection." src="../../../_images/ph-pdh-power.jpg" />
+<img alt="PH CAN connection." src="../../../_images/ph.jpg" />
+<p>Requires: Wire stripper, small flat screwdriver (optional), yellow/green twisted CAN cable</p>
+<ol class="arabic simple">
+<li><p>Strip ~5/16” (~8 mm) off of each of the CAN wires.</p></li>
+<li><p>Insert the wires into the appropriate CAN terminals on the PH.</p></li>
+<li><p>Measure the length required to reach the CAN terminals of the PDH (either of the two available pairs). Cut and strip ~5/16” (~8 mm) off this end of the wires.</p></li>
+<li><p>Insert the wires into the appropriate color coded CAN terminals on the PDH. You may use either of the Yellow/Green terminal pairs on the PDH, there is no defined in or out.</p></li>
+</ol>
+</div><div aria-labelledby="tab-11-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-11-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="Connecting the PCM CAN to the PDP." src="../../../_images/pdp-can.jpg" />
+<p>Requires: Wire stripper, small flat screwdriver (optional), yellow/green twisted CAN cable</p>
+<ol class="arabic simple">
+<li><p>Strip ~5/16” (~8 mm) off of each of the CAN wires.</p></li>
+<li><p>Insert the wires into the appropriate CAN terminals on the PCM.</p></li>
+<li><p>Measure the length required to reach the CAN terminals of the PDP (either of the two available pairs). Cut and strip ~5/16” (~8 mm) off this end of the wires.</p></li>
+<li><p>Insert the wires into the appropriate color coded CAN terminals on the PDP. You may use either of the Yellow/Green terminal pairs on the PDP, there is no defined in or out.</p></li>
+</ol>
+</div></div>
+</section>
+</section>
+<section id="motor-controller-signal-wires">
+<h2>Motor Controller Signal Wires<a class="headerlink" href="#motor-controller-signal-wires" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-12-UFdN" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-12-UFdN" name="UFdN" role="tab" tabindex="0">PWM</button><button aria-controls="panel-12-Q0FO" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-12-Q0FO" name="Q0FO" role="tab" tabindex="-1">CAN</button></div><div aria-labelledby="tab-12-UFdN" class="sphinx-tabs-panel group-tab" id="panel-12-UFdN" name="UFdN" role="tabpanel" tabindex="0"><img alt="PWM Cables going from the roboRIO to the Spark Motor Controller." src="../../../_images/pwm.jpg" />
+<p>This section details how to wire the SPARK MAX controllers using PWM signaling. This is a recommended starting point as it is less complex and easier to troubleshoot than CAN operation. The SPARK MAXs (and many other FRC motor controllers) can also be wired using <a class="reference internal" href="../../hardware/hardware-basics/can-wiring-basics.html#can-wiring-basics"><span class="std std-ref">CAN</span></a> which unlocks easier configuration, advanced functionality, better diagnostic data and reduces the amount of wire needed.</p>
+<p>Requires: 4x SPARK MAX PWM adapters (if using SPARK MAX), 4x PWM cables (if controllers without integrated wires or adapters, otherwise optional), 2x PWM Y-cable (Optional)</p>
+<p>Option 1 (Direct connect):</p>
+<ol class="arabic simple">
+<li><p>If using SPARK MAX, attach the PWM adapter to the SPARK MAX (small adapter with a 3 pin connector with black/white wires).</p></li>
+<li><p>If needed, attach PWM extension cables to the controller or adapter. On the controller side, match the colors or markings (some controllers may have green/yellow wiring, green should connect to black).</p></li>
+<li><p>Attach the other end of the cable to the roboRIO with the black wire towards the outside of the roboRIO. It is recommended to connect the left side to PWM 0 and 1 and the right side to PWM 2 and 3 for the most straightforward programming experience, but any channel will work as long as you note which side goes to which channel and adjust the code accordingly.</p></li>
+</ol>
+<p>Option 2 (Y-cable):</p>
+<ol class="arabic simple">
+<li><p>If using SPARK MAX, attach the PWM adapter to the SPARK MAX (small adapter with a 3 pin connector with black/white wires).</p></li>
+<li><p>If needed, attach PWM extension cables between the controller or adapter and the PWM Y-cable. On the controller side, match the colors or markings (some controllers may have green/yellow wiring, green should connect to black).</p></li>
+<li><p>Connect 1 PWM Y-cable to the 2 PWM cables for the controllers controlling each side of the robot. The brown wire on the Y-cable should match the black wire on the PWM cable.</p></li>
+<li><p>Connect the PWM Y-cables to the PWM ports on the roboRIO. The brown wire should be towards the outside of the roboRIO. It is recommended to connect the left side to PWM 0 and the right side to PWM 1 for the most straightforward programming experience, but any channel will work as long as you note which side goes to which channel and adjust the code accordingly.</p></li>
+</ol>
+</div><div aria-labelledby="tab-12-Q0FO" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-12-Q0FO" name="Q0FO" role="tabpanel" tabindex="0"><p>The Spark MAX controllers can also be wired using CAN. When wiring CAN the objective is to create a single complete bus running from the roboRIO on one end and running through all CAN devices on the robot. It is recommended to have either Power Distribution device at the other end of the bus because they have built-in termination. If you do not wish to locate one of these devices at the end of the bus see <a class="reference internal" href="../../hardware/hardware-basics/can-wiring-basics.html#can-wiring-basics"><span class="std std-ref">CAN Wiring Basics</span></a> for info about terminating yourself.</p>
+<p>The Spark MAX controllers come with CAN cables that are pre-terminated with connectors. You can chain these cables together directly, or buy or build extension cables to bridge larger gaps. To connect to other CAN devices such as pneumatics controllers, power distribution boards, or the roboRIO you will need to either cut off one of these pre-terminated connectors on the controller, cut off a connector on an extension, or build your own extension with just a single connector.</p>
+<p>When chaining controllers together using the provided connectors, make sure to use the provided retaining clip. If unavailable, secure the connection with a small ziptie, electrical tape, or other similar method.</p>
+</div></div>
+</section>
+<section id="robot-signal-light">
+<h2>Robot Signal Light<a class="headerlink" href="#robot-signal-light" title="Permalink to this heading"></a></h2>
+<img alt="Robot Signal Light (rsl) wiring from roboRIO to RSL" src="../../../_images/rsl.jpg" />
+<p>Requires: Wire stripper, 2 pin cable, Robot Signal Light, 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) red wire, very small flat screwdriver</p>
+<ol class="arabic simple">
+<li><p>Cut one end off of the 2 pin cable and strip both wires</p></li>
+<li><p>Insert the black wire into the center, “N” terminal and tighten the terminal.</p></li>
+<li><p>Strip the 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) red wire and insert into the “La” terminal and tighten the terminal.</p></li>
+<li><p>Cut and strip the other end of the 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) wire to insert into the “Lb” terminal</p></li>
+<li><p>Insert the red wire from the two pin cable into the “Lb” terminal with the 18 AWG (1 <span class="math notranslate nohighlight">\(mm^2\)</span>) red wire and tighten the terminal.</p></li>
+<li><p>Connect the two-pin connector to the RSL port on the roboRIO. The black wire should be closest to the outside of the roboRIO.</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You may wish to temporarily secure the RSL to the control board using cable ties or Dual Lock (it is recommended to move the RSL to a more visible location as the robot is being constructed)</p>
+</div>
+</section>
+<section id="circuit-breakers">
+<h2>Circuit Breakers<a class="headerlink" href="#circuit-breakers" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-13-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-13-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-13-Q1RS" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-13-Q1RS" name="Q1RS" role="tab" tabindex="-1">CTR</button></div><div aria-labelledby="tab-13-UkVW" class="sphinx-tabs-panel group-tab" id="panel-13-UkVW" name="UkVW" role="tabpanel" tabindex="0"><img alt="Installing 40A breakers in the PDP." src="../../../_images/40A-breaker-REV.jpg" />
+<p>Requires: 4x 40A circuit breakers</p>
+<p>Insert 40-amp Circuit Breakers into the positions on the PDH corresponding with the Wago connectors the motor controllers are connected to. Note that the white graphic indicates which breakers are associated with which terminal pairs.</p>
+<p>If working on a Robot Quick Build, stop here and insert the board into the robot chassis before continuing.</p>
+</div><div aria-labelledby="tab-13-Q1RS" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-13-Q1RS" name="Q1RS" role="tabpanel" tabindex="0"><img alt="Installing 40A breakers in the PDP." src="../../../_images/40A-breaker.jpg" />
+<p>Requires: 4x 40A circuit breakers</p>
+<p>Insert 40-amp Circuit Breakers into the positions on the PDP corresponding with the Wago connectors the motor controllers are connected to. Note that, for all breakers, the breaker corresponds with the nearest positive (red) terminal (see graphic above). All negative terminals on the board are directly connected internally.</p>
+<p>If working on a Robot Quick Build, stop here and insert the board into the robot chassis before continuing.</p>
+</div></div>
+</section>
+<section id="motor-power">
+<h2>Motor Power<a class="headerlink" href="#motor-power" title="Permalink to this heading"></a></h2>
+<img alt="Connecting power from the motor to the motor controller." src="../../../_images/motor-power.jpg" />
+<p>Requires: Wire stripper, wire crimper, phillips head screwdriver, wire connecting hardware</p>
+<p>For each CIM motor:</p>
+<ul class="simple">
+<li><p>Strip the ends of the red and black wires from the CIM</p></li>
+</ul>
+<p>For integrated wire controllers including SPARK MAX (top image):</p>
+<ol class="arabic simple">
+<li><p>Strip the red and black wires (or white and green wires) from the controller (the SPARK MAX white wire is unused for brushed motors such as the CIM, it should be secured and the end should be insulated such with electrical tape or other insulation method).</p></li>
+<li><p>Connect the motor wires to the matching controller output wires (for controllers with white/green, connect red to white and green to black). The images above show an example using quick disconnect terminals which are provided in the Rookie KOP.</p></li>
+</ol>
+<p>For the SPARK or other non-integrated-wire controllers (bottom image):</p>
+<ol class="arabic simple">
+<li><p>Crimp a ring/fork terminal on each of the motor wires.</p></li>
+<li><p>Attach the wires to the output side of the motor controller (red to +, black to -)</p></li>
+</ol>
+</section>
+<section id="stop">
+<h2>STOP<a class="headerlink" href="#stop" title="Permalink to this heading"></a></h2>
+<img alt="Giant red stop sign." src="../../../_images/stop.png" />
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Before plugging in the battery, make sure all connections have been made with the proper polarity. Ideally have someone that did not wire the robot check to make sure all connections are correct.</p>
+</div>
+<ul class="simple">
+<li><p>Start with the battery and verify that the red wire is connected to the positive terminal</p></li>
+<li><p>Check that the red wire passes through the main breaker and to the + terminal of the PDP and that the black wire travels directly to the - terminal.</p></li>
+<li><p>For each motor controller, verify that the red wire goes from the red PDP terminal to the V+ terminal on the motor controller (not M+!!!!)</p></li>
+<li><p>For each non-motor controller device, verify that the red wire runs from a red terminal on the PD connects to a red terminal on the component.</p></li>
+<li><p>Make sure that the PoE cable is plugged directly into the radio NOT THE roboRIO!</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is also recommended to put the robot on blocks so the wheels are off the ground before proceeding. This will prevent any unexpected movement from becoming dangerous.</p>
+</div>
+</section>
+<section id="manage-wires">
+<h2>Manage Wires<a class="headerlink" href="#manage-wires" title="Permalink to this heading"></a></h2>
+<p>Requires: Zip ties</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Now may be a good time to add a few zip ties to manage some of the wires before proceeding. This will help keep the robot wiring neat.</p>
+</div>
+</section>
+<section id="connect-battery">
+<h2>Connect Battery<a class="headerlink" href="#connect-battery" title="Permalink to this heading"></a></h2>
+<p>Connect the battery to the robot side of the Anderson connector. Power on the robot by moving the lever on the top of the 120A main breaker into the ridge on the top of the housing.</p>
+<p>If stuff blinks, you probably did it right. If you hear any clicking, or see any smoke, power the system off immediately, clicking is likely the sound of circuit breakers tripping.</p>
+<p>Before moving on, if using SPARK MAX controllers, there is one more configuration step to complete. The SPARK MAX motor controllers are configured to control a brushless motor by default. You can verify this by checking that the light on the controller is blinking either cyan or magenta (indicating brushless brake or brushless coast respectively). To change to brushed mode, press and hold the mode button for 3-4 seconds until the status LED changes color. The LED should change to either blue or yellow, indicating that the controller is in brushed mode (brake or coast respectively). To change the brake or coast mode, which controls how quickly the motor slows down when a neutral signal is applied, press the mode button briefly.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For more information on the SPARK MAX motor controllers, including how to test your motors/controllers without writing any code by using the REV Hardware Client, see the <a class="reference external" href="https://docs.revrobotics.com/sparkmax/gs-sm">SPARK MAX Quickstart guide</a>.</p>
+</div>
+<p>From here, you should connect to the roboRIO and try uploading your code!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Step 1: Building your Robot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../step-2/index.html" class="btn btn-neutral float-right" title="Step 2: Installing Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Basic Vision Example" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/vision-processing/wpilibpi/basic-vision-example.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="This is an example of a basic vision setup that posts the target’s location in the aiming coordinate system described here to NetworkTables, and uses CameraServer to display a bounding rectangle of..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/wpilibpi/basic-vision-example.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/wpilibpi/basic-vision-example.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/vision-processing/wpilibpi/basic-vision-example.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/vision-processing/wpilibpi/basic-vision-example.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/vision-processing/wpilibpi/basic-vision-example.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/vision-processing/wpilibpi/basic-vision-example.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/vision-processing/wpilibpi/basic-vision-example.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/vision-processing/wpilibpi/basic-vision-example.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vision Example &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/wpilibpi/basic-vision-example.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="AprilTag Introduction" href="../apriltag/index.html" />
+    <link rel="prev" title="Working with Contours" href="working-with-contours.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Vision Processing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">Vision Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Vision with WPILibPi</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="walkthrough-video.html">A Video Walkthrough of using WPILibPi with the Raspberry Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using-a-coprocessor-for-vision-processing.html">Using a Coprocessor for vision processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using-the-raspberry-pi-for-frc.html">Using the Raspberry Pi for FRC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="what-you-need-to-get-the-pi-image-running.html">What you need to get the Pi image running</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installing-the-image-to-your-microsd-card.html">Installing the image to your MicroSD card</a></li>
+<li class="toctree-l3"><a class="reference internal" href="the-raspberry-pi-frc-console.html">The Raspberry PI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using-cameraserver.html">Using CameraServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="image-thresholding.html">Thresholding an Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="morphological-operations.html">Morphological Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="working-with-contours.html">Working with Contours</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Basic Vision Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apriltag/index.html">AprilTag Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grip/index.html">Vision with GRIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roborio/index.html">Vision on the RoboRIO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Vision Processing</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Vision with WPILibPi</a></li>
+      <li class="breadcrumb-item active">Basic Vision Example</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/vision-processing/wpilibpi/basic-vision-example.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basic-vision-example">
+<h1>Basic Vision Example<a class="headerlink" href="#basic-vision-example" title="Permalink to this heading"></a></h1>
+<p>This is an example of a basic vision setup that posts the target’s location in the aiming coordinate system described <a class="reference internal" href="../introduction/identifying-and-processing-the-targets.html#measurements"><span class="std std-ref">here</span></a> to NetworkTables, and uses CameraServer to display a bounding rectangle of the contour detected. This example will display the framerate of the processing code on the images sent to CameraServer.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UHl0aG9u" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="0">Python</button></div><div aria-labelledby="tab-0-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cscore</span> <span class="kn">import</span> <span class="n">CameraServer</span>
+<span class="kn">from</span> <span class="nn">networktables</span> <span class="kn">import</span> <span class="n">NetworkTables</span>
+
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+   <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/boot/frc.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="n">config</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+   <span class="n">camera</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;cameras&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+   <span class="n">width</span> <span class="o">=</span> <span class="n">camera</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">]</span>
+   <span class="n">height</span> <span class="o">=</span> <span class="n">camera</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span>
+
+   <span class="n">CameraServer</span><span class="o">.</span><span class="n">startAutomaticCapture</span><span class="p">()</span>
+
+   <span class="n">input_stream</span> <span class="o">=</span> <span class="n">CameraServer</span><span class="o">.</span><span class="n">getVideo</span><span class="p">()</span>
+   <span class="n">output_stream</span> <span class="o">=</span> <span class="n">CameraServer</span><span class="o">.</span><span class="n">putVideo</span><span class="p">(</span><span class="s1">&#39;Processed&#39;</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+
+   <span class="c1"># Table for vision output information</span>
+   <span class="n">vision_nt</span> <span class="o">=</span> <span class="n">NetworkTables</span><span class="o">.</span><span class="n">getTable</span><span class="p">(</span><span class="s1">&#39;Vision&#39;</span><span class="p">)</span>
+
+   <span class="c1"># Allocating new images is very expensive, always try to preallocate</span>
+   <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+   <span class="c1"># Wait for NetworkTables to start</span>
+   <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+   <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+      <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+      <span class="n">frame_time</span><span class="p">,</span> <span class="n">input_img</span> <span class="o">=</span> <span class="n">input_stream</span><span class="o">.</span><span class="n">grabFrame</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+      <span class="n">output_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">input_img</span><span class="p">)</span>
+
+      <span class="c1"># Notify output of error and skip iteration</span>
+      <span class="k">if</span> <span class="n">frame_time</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+         <span class="n">output_stream</span><span class="o">.</span><span class="n">notifyError</span><span class="p">(</span><span class="n">input_stream</span><span class="o">.</span><span class="n">getError</span><span class="p">())</span>
+         <span class="k">continue</span>
+
+      <span class="c1"># Convert to HSV and threshold image</span>
+      <span class="n">hsv_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+      <span class="n">binary_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv_img</span><span class="p">,</span> <span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+
+      <span class="n">_</span><span class="p">,</span> <span class="n">contour_list</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">binary_img</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">RETR_EXTERNAL</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">CHAIN_APPROX_SIMPLE</span><span class="p">)</span>
+
+      <span class="n">x_list</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+      <span class="k">for</span> <span class="n">contour</span> <span class="ow">in</span> <span class="n">contour_list</span><span class="p">:</span>
+
+         <span class="c1"># Ignore small contours that could be because of noise/bad thresholding</span>
+         <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">contourArea</span><span class="p">(</span><span class="n">contour</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+         <span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">output_img</span><span class="p">,</span> <span class="n">contour</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="n">thickness</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+         <span class="n">rect</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">minAreaRect</span><span class="p">(</span><span class="n">contour</span><span class="p">)</span>
+         <span class="n">center</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">angle</span> <span class="o">=</span> <span class="n">rect</span>
+         <span class="n">center</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">center</span><span class="p">])</span> <span class="c1"># Convert to int so we can draw</span>
+
+         <span class="c1"># Draw rectangle and circle</span>
+         <span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">output_img</span><span class="p">,</span> <span class="p">[</span><span class="n">cv2</span><span class="o">.</span><span class="n">boxPoints</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="n">thickness</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+         <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">output_img</span><span class="p">,</span> <span class="n">center</span> <span class="o">=</span> <span class="n">center</span><span class="p">,</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="n">thickness</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+         <span class="n">x_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+         <span class="n">x_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+
+      <span class="n">vision_nt</span><span class="o">.</span><span class="n">putNumberArray</span><span class="p">(</span><span class="s1">&#39;target_x&#39;</span><span class="p">,</span> <span class="n">x_list</span><span class="p">)</span>
+      <span class="n">vision_nt</span><span class="o">.</span><span class="n">putNumberArray</span><span class="p">(</span><span class="s1">&#39;target_y&#39;</span><span class="p">,</span> <span class="n">y_list</span><span class="p">)</span>
+
+      <span class="n">processing_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+      <span class="n">fps</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">processing_time</span>
+      <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">output_img</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">fps</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+      <span class="n">output_stream</span><span class="o">.</span><span class="n">putFrame</span><span class="p">(</span><span class="n">output_img</span><span class="p">)</span>
+
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="working-with-contours.html" class="btn btn-neutral float-left" title="Working with Contours" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../apriltag/index.html" class="btn btn-neutral float-right" title="AprilTag Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

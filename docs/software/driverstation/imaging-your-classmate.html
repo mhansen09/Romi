@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Imaging your Classmate (Veteran Image Download)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/driverstation/imaging-your-classmate.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="This document describes the procedure for creating a bootable USB drive to restore the FRC ® image on a Classmate computer. If you do not wish to re-image your Classmate then you can start with the..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/driverstation/imaging-your-classmate.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/driverstation/imaging-your-classmate.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/driverstation/imaging-your-classmate.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/driverstation/imaging-your-classmate.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/driverstation/imaging-your-classmate.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/driverstation/imaging-your-classmate.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/driverstation/imaging-your-classmate.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/driverstation/imaging-your-classmate.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imaging your Classmate (Veteran Image Download) &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/driverstation/imaging-your-classmate.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Manually Setting the Driver Station to Start Custom Dashboard" href="manually-setting-the-driver-station-to-start-custom-dashboard.html" />
+    <link rel="prev" title="Programming Radios for FMS Offseason" href="programming-radios-for-fms-offseason.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Driver Station</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="driver-station.html">FRC Driver Station Powered by NI LabVIEW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver-station-best-practices.html">Driver Station Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver-station-log-viewer.html">Driver Station Log File Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver-station-errors-warnings.html">Driver Station Errors/Warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming-radios-for-fms-offseason.html">Programming Radios for FMS Offseason</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Imaging your Classmate (Veteran Image Download)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manually-setting-the-driver-station-to-start-custom-dashboard.html">Manually Setting the Driver Station to Start Custom Dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Driver Station</a></li>
+      <li class="breadcrumb-item active">Imaging your Classmate (Veteran Image Download)</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/driverstation/imaging-your-classmate.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="imaging-your-classmate-veteran-image-download">
+<h1>Imaging your Classmate (Veteran Image Download)<a class="headerlink" href="#imaging-your-classmate-veteran-image-download" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Veteran teams are not required to re-image their classmate</p>
+</div>
+<p>This document describes the procedure for creating a bootable USB drive to restore the FRC® image on a Classmate computer. If you do not wish to re-image your Classmate then you can start with the appropriate document for C++/Java, LabVIEW, or DS only.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>E09, E11, E12, or E14 Classmate computer or Acer ES1 computer</p></li>
+<li><p>16GB or larger USB drive</p></li>
+<li><p>7-Zip software installed (download <a class="reference external" href="https://www.7-zip.org">here</a>). As of the writing of this document, the current released version is 19.00 (2019-02-21).</p></li>
+<li><p>RMprepUSB software installed (download <a class="reference external" href="https://rmprepusb.com/">here</a>). Scroll down the page and select the stable (Full) version download link. As of the writing of this document, the current stable version is 2.1.745.</p></li>
+</ol>
+</section>
+<section id="download-the-computer-image">
+<h2>Download the Computer Image<a class="headerlink" href="#download-the-computer-image" title="Permalink to this heading"></a></h2>
+<img alt="Image of portal website showing each of the different classmate computers and their image." src="../../../_images/download-the-computer-image.png" />
+<p>Download the image from the <a class="reference external" href="https://frc-events.firstinspires.org/services/DSImages/">FIRST FRC Driver Station System Image Portal</a>. There are several computer images available, one for each model. On the download site, select the option that matches your computer by clicking the button below the image. Due to the limited size of the hard drive in the E09, it is supported with a DS/Utilities image only and does not have the IDEs for LabVIEW or C++/Java installed. All other images have the LabVIEW base installation already present.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These images only install the prerequisite core FRC software, it is still necessary to install the FRC specific updates. See the Update Software step for more information.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to computer availability, the E14 image provided is the 2018 image. If using this image, teams may need to remove the old IDE (LabVIEW or Eclipse) and install the new IDE.</p>
+</div>
+</section>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Place the image file downloaded from the site to a folder on your root drive (e.g. <code class="docutils literal notranslate"><span class="pre">C:\2016_Image</span></code>).</p></li>
+<li><p>Connect 16GB or larger USB Flash drive to the PC to use as the new restoration drive.</p></li>
+</ol>
+</section>
+<section id="rmprep">
+<h2>RMPrep<a class="headerlink" href="#rmprep" title="Permalink to this heading"></a></h2>
+<img alt="Using RMPrep with a USB drive." src="../../../_images/rmprep.png" />
+<p>Start/Run RMprepUSB</p>
+<p>Select USB Drive</p>
+<section id="set-partition-size">
+<h3>Set Partition Size<a class="headerlink" href="#set-partition-size" title="Permalink to this heading"></a></h3>
+<img alt="Highlights the &quot;Partition Size&quot; box." src="../../../_images/set-partition-size.png" />
+<p>Set Partition Size to MAX</p>
+</section>
+<section id="set-volume-label">
+<h3>Set Volume Label<a class="headerlink" href="#set-volume-label" title="Permalink to this heading"></a></h3>
+<img alt="Hightlights the &quot;Volume Label&quot; box to the right of the partition size." src="../../../_images/set-volume-label.png" />
+<p>Set Volume Label to Generic</p>
+</section>
+<section id="set-bootloader-option">
+<h3>Set Bootloader Option<a class="headerlink" href="#set-bootloader-option" title="Permalink to this heading"></a></h3>
+<img alt="Highlights the “WinPE v2/WinPE v3/Vista/Win7 bootable” radio button." src="../../../_images/set-bootloader-option.png" />
+<p>Select Bootloader Option “WinPE v2/WinPE v3/Vista/Win7 bootable”</p>
+</section>
+<section id="select-filesystem">
+<h3>Select Filesystem<a class="headerlink" href="#select-filesystem" title="Permalink to this heading"></a></h3>
+<img alt="Highlights the &quot;NTFS&quot; radio button." src="../../../_images/select-filesystem.png" />
+<p>Select NTFS Filesystem</p>
+</section>
+<section id="copy-os-files-option">
+<h3>Copy OS Files Option<a class="headerlink" href="#copy-os-files-option" title="Permalink to this heading"></a></h3>
+<img alt="Highlights the “Copy OS files after Format” checkbox." src="../../../_images/copy-os-files-option.png" />
+<p>Ensure the “Copy OS files after Format” box is checked</p>
+</section>
+<section id="locate-image">
+<h3>Locate Image<a class="headerlink" href="#locate-image" title="Permalink to this heading"></a></h3>
+<img alt="Highlights the “Choose Folder/File” button." src="../../../_images/locate-image.png" />
+<p>Select the “Choose Folder/File” button</p>
+</section>
+<section id="copy-files-dialog">
+<h3>Copy Files Dialog<a class="headerlink" href="#copy-files-dialog" title="Permalink to this heading"></a></h3>
+<img alt="Choose &quot;No&quot; from the options of &quot;Yes&quot;, &quot;No&quot;, and &quot;Cancel&quot; of the dialog box." src="../../../_images/copy-files-dialog.png" />
+<p>Choose “No” and select your <code class="docutils literal notranslate"><span class="pre">.7z</span></code> image</p>
+</section>
+<section id="prepare-drive">
+<h3>Prepare Drive<a class="headerlink" href="#prepare-drive" title="Permalink to this heading"></a></h3>
+<img alt="Click the “Prepare Drive” button." src="../../../_images/prepare-drive.png" />
+<p>All configuration settings are now complete. Select “Prepare Drive” to begin the process</p>
+</section>
+<section id="confirmation-dialog-1">
+<h3>Confirmation Dialog 1<a class="headerlink" href="#confirmation-dialog-1" title="Permalink to this heading"></a></h3>
+<img alt="Click the &quot;OK&quot; button on the dialog." src="../../../_images/confirmation-dialog-1.png" />
+<p>Click “OK” to execute the command on the selected USB Flash drive. A Command Prompt will open showing the progress</p>
+</section>
+<section id="confirmation-dialog-2">
+<h3>Confirmation Dialog 2<a class="headerlink" href="#confirmation-dialog-2" title="Permalink to this heading"></a></h3>
+<img alt="Click &quot;OK&quot; again that it is okay to erase all data on the drive." src="../../../_images/confirmation-dialog-2.png" />
+<p>Click “OK” to format the USB drive</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p><strong>ALL DATA ON THE DRIVE WILL BE ERASED!</strong></p>
+</div>
+</section>
+<section id="decryption">
+<h3>Decryption<a class="headerlink" href="#decryption" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using an encrypted version of the image downloaded before kickoff you will
+be prompted to enter the decryption key found at the end of the Kickoff video.</p>
+</div>
+</section>
+<section id="copy-complete">
+<h3>Copy Complete<a class="headerlink" href="#copy-complete" title="Permalink to this heading"></a></h3>
+<img alt="Click &quot;OK&quot; to acknowledge that the copy completed." src="../../../_images/copy-complete.png" />
+<p>Once formatting is complete, the restoration files will be extracted and copied to the USB drive. This process should take ~15 minutes when connected to a USB 2.0 port.  When all files have been copied, this message will appear, press OK to continue.</p>
+</section>
+<section id="eject-drive">
+<h3>Eject Drive<a class="headerlink" href="#eject-drive" title="Permalink to this heading"></a></h3>
+<img alt="Click the “Eject Drive” button on the right hand side in the center." src="../../../_images/eject-drive.png" />
+<p>Press the “Eject Drive” button to safely remove the USB drive. The USB drive is now ready to be used to restore the image onto the PC.</p>
+</section>
+</section>
+<section id="hardware-setup">
+<h2>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Make sure the computer is turned off, but plugged in.</p></li>
+<li><p>Insert the USB Thumb Drive into a USB port on the Driver Station computer.</p></li>
+</ol>
+<section id="boot-to-usb">
+<h3>Boot to USB<a class="headerlink" href="#boot-to-usb" title="Permalink to this heading"></a></h3>
+<img alt="Three images that show the 2GO PC then the boot menu in BIOS." src="../../../_images/boot-to-usb.jpg" />
+<p><strong>Classmate:</strong></p>
+<ol class="arabic simple">
+<li><p>Power on the Classmate and tap the F11 key on the keyboard. Tapping the F11 key during boot will bring up the boot menu.</p></li>
+<li><p>Use the up/down keys to select the <strong>USB HDD:</strong> entry on the menu, then press the right arrow to expand the listing</p></li>
+<li><p>Use the up/down arrow keys on the keyboard to select the USB device (it will be called “Generic Flash Disk”). Press the ENTER key when the USB device is highlighted.</p></li>
+</ol>
+<p><strong>Acer ES1:</strong></p>
+<ol class="arabic simple">
+<li><p>Power on the computer and tap the F12 key on the keyboard. Tapping the F12 key during boot will bring up the boot menu.</p></li>
+<li><p>Use the up/down keys to select the <strong>USB HDD: Generic</strong> entry on the menu, then press the ENTER key when the USB device is highlighted.</p></li>
+</ol>
+<p><strong>Acer ES1: If pressing F12 does not pull up the boot menu or if the USB device is not listed in the boot menu, see “Checking BIOS Settings” at the bottom of this article.</strong></p>
+</section>
+<section id="image-the-classmate">
+<h3>Image the Classmate<a class="headerlink" href="#image-the-classmate" title="Permalink to this heading"></a></h3>
+<img alt="Two images of a command prompt where you type &quot;1&quot; then &quot;Y&quot;." src="../../../_images/image-the-classmate.png" />
+<ol class="arabic simple">
+<li><p>To confirm that you want to reimage the Classmate, type “1” and press ENTER.</p></li>
+<li><p>Then, type “Y” and press ENTER. The Classmate will begin re-imaging. The installation will take 15-30 minutes.</p></li>
+<li><p>When the installation is complete, remove the USB drive.</p></li>
+<li><p>Restart the Classmate. The Classmate will boot into Windows.</p></li>
+</ol>
+</section>
+</section>
+<section id="initial-driver-station-boot">
+<h2>Initial Driver Station Boot<a class="headerlink" href="#initial-driver-station-boot" title="Permalink to this heading"></a></h2>
+<p>The first time the Classmate is turned on, there are some unique steps, listed below, that you’ll need to take. The initial boot may take several minutes; make sure you do not cycle power during the process.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These steps are only required during original startup.</p>
+</div>
+<section id="enter-setup">
+<h3>Enter Setup<a class="headerlink" href="#enter-setup" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Log into the Developer account.</p></li>
+<li><p>Click “Ask me later”.</p></li>
+<li><p>Click “OK”. The computer now enters a Set Up that may take a few minutes.</p></li>
+</ol>
+</section>
+<section id="activate-windows">
+<h3>Activate Windows<a class="headerlink" href="#activate-windows" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Establish an Internet connection.</p></li>
+<li><p>Once you have an Internet connection, click the Start menu, right click “Computer” and click “Properties”.</p></li>
+<li><p>Scroll to the bottom section, “Windows activation”, and Click “Activate Windows now”</p></li>
+<li><p>Click “Activate Windows online now”. The activation may take a few minutes.</p></li>
+<li><p>When the activation is complete, close all of the windows.</p></li>
+</ol>
+</section>
+<section id="microsoft-security-essentials">
+<h3>Microsoft Security Essentials<a class="headerlink" href="#microsoft-security-essentials" title="Permalink to this heading"></a></h3>
+<p>Navigate through the Microsoft Security Essentials Setup Wizard. Once it is complete, close all of the windows.</p>
+<section id="acer-es1-fix-wireless-driver">
+<h4>Acer ES1: Fix Wireless Driver<a class="headerlink" href="#acer-es1-fix-wireless-driver" title="Permalink to this heading"></a></h4>
+<img alt="Highlights the &quot;Device Manager&quot; option in the start menu." src="../../../_images/fix-wireless-driver.png" />
+<p><strong>Acer ES1 PC only!</strong></p>
+<p>The default wireless driver in the image may have issues with intermittent communication with the robot radio. The correct driver is in the image, but could not be set to load by default. To load the correct driver, open the Device Manager by clicking start, typing “Device Manager” in the box and clicking Device Manager.</p>
+</section>
+</section>
+<section id="open-wireless-device-properties">
+<h3>Open Wireless Device Properties<a class="headerlink" href="#open-wireless-device-properties" title="Permalink to this heading"></a></h3>
+<img alt="Opening the properties of the wireless adapter." src="../../../_images/open-wireless-device-properties.png" />
+<p>Click on the arrow next to Network Adapters to expand it and locate the Wireless Network Adapter. Right click the adapter and select Properties.</p>
+</section>
+<section id="uninstall-driver">
+<h3>Uninstall-Driver<a class="headerlink" href="#uninstall-driver" title="Permalink to this heading"></a></h3>
+<img alt="Clicking on the Driver tab in top center and then on the &quot;Uninstall&quot; button." src="../../../_images/uninstall-driver.png" />
+<p>Click on the Driver tab, then click the Uninstall button. Click Yes at any prompts.</p>
+</section>
+<section id="scan-for-new-hardware">
+<h3>Scan for New Hardware<a class="headerlink" href="#scan-for-new-hardware" title="Permalink to this heading"></a></h3>
+<img alt="Within Device Manager right click on the PC and choose &quot;Scan for hardware changes&quot;." src="../../../_images/scan-for-new-hardware.png" />
+<p>Right click on the top entry of the tree and click “Scan for hardware changes”. The wireless adapter should automatically be re-detected and the correct driver should be installed.</p>
+</section>
+</section>
+<section id="update-software">
+<h2>Update Software<a class="headerlink" href="#update-software" title="Permalink to this heading"></a></h2>
+<p>In order for the Classmate images to be prepared on time, they are created before the final versions of the software were ready. To use the software for FRC some additional components will need to be installed. LabVIEW teams should continue with Installing the FRC Game Tools (All Languages). C++ or Java teams should continue Installing C++ and Java Development Tools for FRC.</p>
+</section>
+<section id="errors-during-imaging-process">
+<h2>Errors during Imaging Process<a class="headerlink" href="#errors-during-imaging-process" title="Permalink to this heading"></a></h2>
+<img alt="Command prompt error window on image failure." src="../../../_images/errors-during-imaging-process.png" />
+<p>If an error is detected during the imaging process, the following screen will appear. Note that the screenshot below shows the error screen for the Driver Station-only image for the E09. The specific image filename shown will vary depending on the image being applied.</p>
+<p>The typical reason for the appearance of this message is due to an error with the USB device on which the image is stored. Each option is listed below with further details as to the actions you can take in pursuing a solution. Pressing any key once this error message is shown will return the user to the menu screen shown in Image the Classmate.</p>
+<section id="option-1">
+<h3>Option 1<a class="headerlink" href="#option-1" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>Using same image on the existing USB Flash drive</dt><dd><p>To try this option, press any key to return to the main menu and select #1. This will run the imaging process again.</p>
+</dd>
+</dl>
+</section>
+<section id="option-2">
+<h3>Option 2<a class="headerlink" href="#option-2" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>Reload the same image onto the USB Flash drive using RMPrepUSB</dt><dd><p>It’s possible the error message was displayed due to an error caused during the creation of the USB Flash drive (e.g. file copy error, data corruption, etc.) Press any key to return to the main menu and select #4 to safely shutdown the Classmate then follow the steps starting with RMPrep to create a new USB Restoration Key using the same USB Flash drive.</p>
+</dd>
+</dl>
+</section>
+<section id="option-3">
+<h3>Option 3<a class="headerlink" href="#option-3" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>Reload the same image onto a new USB Flash drive using RMPrepUSB</dt><dd><p>The error message displayed may also be caused by an error with the USB Flash drive itself. Press any key to return to the main menu and select #4 to safely shutdown the Classmate. Select a new USB Flash drive and follow the steps starting with RMPrep.</p>
+</dd>
+</dl>
+</section>
+<section id="option-4">
+<h3>Option 4<a class="headerlink" href="#option-4" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>Download a new image</dt><dd><p>An issue with the downloaded image may also cause an error when imaging. Press any key to return to the main menu and select #4 to safely shutdown the Classmate. Staring with Download the Classmate Image create a new copy of the imaging stick.</p>
+</dd>
+</dl>
+</section>
+<section id="checking-bios-settings">
+<h3>Checking BIOS Settings<a class="headerlink" href="#checking-bios-settings" title="Permalink to this heading"></a></h3>
+<img alt="Two images of the BIOS making sure the boot menu is enabled and the mode is &quot;Legacy&quot;." src="../../../_images/checking-bios-settings.jpg" />
+<p>If you are having difficulty booting to USB, check the BIOS settings to insure they are correct. To do this:</p>
+<ul class="simple">
+<li><p>Repeatedly tap the <strong>F2</strong> key while the computer is booting to enter the BIOS settings</p></li>
+<li><p>Once the BIOS settings screen has loaded, use the right and left arrow keys to select the “Main” tab, then check if the line for “F12 Boot Menu” is set to “Enabled”. If it is not, use the Up/Down keys to highlight it, press Enter, use Up/Down to select “Enabled” and press Enter again.</p></li>
+<li><p>Next, use the Left/Right keys to select the “Boot” tab. Make sure that the “Boot Mode” is set to “Legacy”. If it is not, highlight it using UpDown, press Enter, highlight “Legacy” and press Enter again. Press Enter to move through any pop-up dialogs you may see.</p></li>
+<li><p>Press F10 to save any changes and exit.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="programming-radios-for-fms-offseason.html" class="btn btn-neutral float-left" title="Programming Radios for FMS Offseason" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="manually-setting-the-driver-station-to-start-custom-dashboard.html" class="btn btn-neutral float-right" title="Manually Setting the Driver Station to Start Custom Dashboard" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

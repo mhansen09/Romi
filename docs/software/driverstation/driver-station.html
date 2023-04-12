@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="FRC Driver Station Powered by NI LabVIEW" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/driverstation/driver-station.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="This article describes the use and features of the FRC ® Driver Station Powered by NI LabVIEW. For information on installing the Driver Station software see this document. Starting the FRC Driver S..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/driverstation/driver-station.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/driverstation/driver-station.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/driverstation/driver-station.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/driverstation/driver-station.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/driverstation/driver-station.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/driverstation/driver-station.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/driverstation/driver-station.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/driverstation/driver-station.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRC Driver Station Powered by NI LabVIEW &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/driverstation/driver-station.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Driver Station Best Practices" href="driver-station-best-practices.html" />
+    <link rel="prev" title="Driver Station" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Driver Station</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FRC Driver Station Powered by NI LabVIEW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver-station-best-practices.html">Driver Station Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver-station-log-viewer.html">Driver Station Log File Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver-station-errors-warnings.html">Driver Station Errors/Warnings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming-radios-for-fms-offseason.html">Programming Radios for FMS Offseason</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imaging-your-classmate.html">Imaging your Classmate (Veteran Image Download)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manually-setting-the-driver-station-to-start-custom-dashboard.html">Manually Setting the Driver Station to Start Custom Dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Driver Station</a></li>
+      <li class="breadcrumb-item active">FRC Driver Station Powered by NI LabVIEW</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/driverstation/driver-station.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="frc-driver-station-powered-by-ni-labview">
+<h1>FRC Driver Station Powered by NI LabVIEW<a class="headerlink" href="#frc-driver-station-powered-by-ni-labview" title="Permalink to this heading"></a></h1>
+<p>This article describes the use and features of the FRC® Driver Station Powered by NI LabVIEW.</p>
+<p>For information on installing the Driver Station software see <a class="reference internal" href="../../zero-to-robot/step-2/frc-game-tools.html#installing-the-frc-game-tools"><span class="std std-ref">this document</span></a>.</p>
+<section id="starting-the-frc-driver-station">
+<h2>Starting the FRC Driver Station<a class="headerlink" href="#starting-the-frc-driver-station" title="Permalink to this heading"></a></h2>
+<img alt="This is the FRC Driver Station icon." src="../../../_images/ds-icon.png" />
+<p>The FRC Driver Station can be launched by double-clicking the icon on the Desktop or by selecting Start-&gt;All Programs-&gt;FRC Driver Station.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default the FRC Driver Station launches the <a class="reference internal" href="../dashboards/labview-dashboard/driver-station-labview-dashboard.html#frc-labview-dashboard"><span class="std std-ref">LabVIEW Dashboard</span></a>.  It can also be configured on <a class="reference internal" href="#setup-tab"><span class="std std-ref">Setup Tab</span></a> to launch the other Dashboards: <a class="reference internal" href="../dashboards/smartdashboard/smartdashboard-intro.html#smartdashboard-introduction"><span class="std std-ref">SmartDashboard</span></a> and <a class="reference internal" href="../dashboards/shuffleboard/getting-started/shuffleboard-tour.html#tour-of-shuffleboard"><span class="std std-ref">Shuffleboard</span></a>. WPILib must be <a class="reference internal" href="../../zero-to-robot/step-2/wpilib-setup.html#wpilib-installation-guide"><span class="std std-ref">installed</span></a> to use SmartDashboard and Shuffleboard.</p>
+</div>
+</section>
+<section id="driver-station-key-shortcuts">
+<h2>Driver Station Key Shortcuts<a class="headerlink" href="#driver-station-key-shortcuts" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>F1</cite> - Force a Joystick refresh.</p></li>
+<li><p><cite>[</cite> + <cite>]</cite> + <cite>\</cite> - Enable the robot (the 3 keys above Enter on most keyboards)</p></li>
+<li><p><cite>Enter</cite> - Disable the Robot</p></li>
+<li><p><cite>Space</cite> - Emergency Stop the robot. After an emergency stop is triggered the roboRIO will need to be rebooted before the robot can be enabled again.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Space bar will E-Stop the robot regardless of if the Driver Station window has focus or not</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When connected to FMS in a match, teams must press the Team Station E-Stop button to emergency stop their robot as the DS enable/disable and E-Stop key shortcuts are ignored.</p>
+</div>
+</section>
+<section id="setting-up-the-driver-station">
+<h2>Setting Up the Driver Station<a class="headerlink" href="#setting-up-the-driver-station" title="Permalink to this heading"></a></h2>
+<img alt="The team number box on the setup (gear) tab." src="../../../_images/ds-setup.png" />
+<p>The DS should be set to your team number in order to connect to your robot. In order to do this click the Setup tab then enter your team number in the team number box. Press return or click outside the box for the setting to take effect.</p>
+<p>PCs will typically have the correct network settings for the DS to connect to the robot already, but if not, make sure your Network adapter is set to DHCP.</p>
+</section>
+<section id="status-pane">
+<h2>Status Pane<a class="headerlink" href="#status-pane" title="Permalink to this heading"></a></h2>
+<img alt="This is the pane in the center of the Driver station that is always visible." src="../../../_images/ds-status-pane.png" />
+<p>The Status Pane of the Driver Station is located in the center of the display and is always visible regardless of the tab selected. It displays a selection of critical information about the state of the DS and robot:</p>
+<ol class="arabic simple">
+<li><p>Team # - The Team number the DS is currently configured for. This should match your FRC team number. To change the team number see the Setup Tab.</p></li>
+<li><p>Battery Voltage - If the DS is connected and communicating with the roboRIO this displays current battery voltage as a number and with a small chart of voltage over time in the battery icon. The background of the numeric indicator will turn red when the roboRIO brownout is triggered. See <a class="reference internal" href="../roborio-info/roborio-brownouts.html"><span class="doc">roboRIO Brownout and Understanding Current Draw</span></a> for more information.</p></li>
+<li><p>Major Status Indicators - These three indicators display major status items for the DS. The “Communications” indicates whether the DS is currently communicating with the FRC Network Communications Task on the roboRIO (it is split in half for the TCP and UDP communication). The “Robot Code” indicator shows whether the team Robot Code is currently running (determined by whether or not the Driver Station Task in the robot code is updating the battery voltage), The “Joysticks” indicator shows if at least one joystick is plugged in and recognized by the DS.</p></li>
+<li><p>Status String - The Status String provides an overall status message indicating the state of the robot. Some examples are “No Robot Communication”, “No Robot Code”, “Emergency Stopped”, and “Teleoperated Enabled”. When the roboRIO brownout is triggered this will display “Voltage Brownout”.</p></li>
+</ol>
+</section>
+<section id="operation-tab">
+<h2>Operation Tab<a class="headerlink" href="#operation-tab" title="Permalink to this heading"></a></h2>
+<img alt="This is the first tab from the top on the left hand side." src="../../../_images/ds-operation-tab.png" />
+<p>The Operations Tab is used to control the mode of the robot and provide additional key status indicators while the robot is running.</p>
+<ol class="arabic simple">
+<li><p>Robot Mode - This section controls the Robot Mode.</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Teleoperated Mode causes the robot to run the code in the Teleoperated portion of the match.</p></li>
+<li><p>Autonomous Mode causes the robot to run the code in the Autonomous portion of the match.</p></li>
+<li><p>Practice Mode causes the robot to cycle through the same transitions as an FRC match after the Enable button is pressed (timing for practice mode can be found on the setup tab).</p></li>
+<li><p><a class="reference internal" href="../basic-programming/using-test-mode.html"><span class="doc">Test Mode</span></a> is an additional mode where test code that doesn’t run in a regular match can be tested.</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Enable/Disable - These controls enable and disable the robot. See also <a class="reference internal" href="#driver-station-key-shortcuts">Driver Station Key Shortcuts</a>.</p></li>
+<li><p>Elapsed Time - Indicates the amount of time the robot has been enabled.</p></li>
+<li><p>PC Battery - Indicates current state of DS PC battery and whether the PC is plugged in.</p></li>
+<li><p>PC CPU% - Indicates the CPU Utilization of the DS PC.</p></li>
+<li><p>Window Mode - When not on the Driver account on the Classmate allows the user to toggle between floating (arrow) and docked (rectangle).</p></li>
+<li><p>Team Station - When not connected to FMS, sets the team station to transmit to the robot.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When connected to the Field Management System the controls in sections 1 and 2 will be replaced by the words FMS Connected and the control in Section 7 will be greyed out.</p>
+</div>
+</section>
+<section id="diagnostics-tab">
+<h2>Diagnostics Tab<a class="headerlink" href="#diagnostics-tab" title="Permalink to this heading"></a></h2>
+<img alt="This is the second tab from the top on the left hand side." src="../../../_images/ds-diagnostics-tab.png" />
+<p>The Diagnostics Tab contains additional status indicators that teams can use to diagnose issues with their robot:</p>
+<ol class="arabic">
+<li><p>DS Version - Indicates the Driver Station Version number.</p></li>
+<li><p>roboRIO Image Version - String indicating the version of the roboRIO Image.</p></li>
+<li><p>WPILib Version - String indicating the version of WPILib in use.</p></li>
+<li><p>CAN Device Versions - String indicating the firmware version of devices connected to the CAN bus. These items may not be present if the CTRE Phoenix Framework has not been loaded.</p></li>
+<li><p>Memory Stats - This section shows stats about the roboRIO memory.</p></li>
+<li><p>Connection Indicators - The top half of these indicators show connection status to various components.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“Enet Link” indicates the computer has something connected to the ethernet port.</p></li>
+<li><p>“Robot Radio” indicates the ping status to the robot wireless bridge at 10.XX.YY.1.</p></li>
+<li><p>“Robot” indicates the ping status to the roboRIO using mDNS (with a fallback of a static 10.TE.AM.2 address).</p></li>
+<li><p>“FMS” indicates if the DS is receiving packets from FMS (this is NOT a ping indicator).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Network Indicators - The second section of indicators indicates status of network adapters and firewalls. These are provided for informational purposes; communication may be established even with one or more unlit indicators in this section.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“Enet” indicates the IP address of the detected Ethernet adapter</p></li>
+<li><p>“WiFi” indicates if a wireless adapter has been detected as enabled</p></li>
+<li><p>“USB” indicates if a roboRIO USB connection has been detected</p></li>
+<li><p>“Firewall” indicates if any firewalls are detected as enabled. Enabled firewalls will show in orange (Dom = Domain, Pub = Public, Prv = Private)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Reboot roboRIO - This button attempts to perform a remote reboot of the roboRIO (after clicking through a confirmation dialog).</p></li>
+<li><p>Restart Robot Code - This button attempts to restart the code running on the robot (but not restart the OS).</p></li>
+</ol>
+</section>
+<section id="setup-tab">
+<h2>Setup Tab<a class="headerlink" href="#setup-tab" title="Permalink to this heading"></a></h2>
+<img alt="This is the third tab from the top on the left hand side." src="../../../_images/ds-setup-tab.png" />
+<p>The Setup Tab contains a number of buttons teams can use to control the operation of the Driver Station:</p>
+<ol class="arabic simple">
+<li><p>Team Number - Should contain your FRC Team Number. This controls the mDNS name that the DS expects the robot to be at. Shift clicking on the dropdown arrow will show all roboRIO names detected on the network for troubleshooting purposes.</p></li>
+<li><p>Dashboard Type - Controls what Dashboard is launched by the Driver Station. <span class="guilabel">Default</span> launches the file pointed to by the “FRC DS Data Storage.ini” (for more information about setting a <a class="reference internal" href="manually-setting-the-driver-station-to-start-custom-dashboard.html#manually-setting-the-driver-station-to-start-custom-dashboard"><span class="std std-ref">custom dashboard</span></a>). By default this is Dashboard.exe in the Program Files (x86)\FRC Dashboard folder. <span class="guilabel">LabVIEW</span> attempts to launch a dashboard at the default location for a custom built LabVIEW dashboard, but will fall back to the default if no dashboard is found. <span class="guilabel">SmartDashboard</span> and <span class="guilabel">Shuffleboard</span> launch the respective dashboards included with the C++ and Java WPILib installation.  <span class="guilabel">Remote</span> forwards LabVIEW dashboard data to the IP specified in <span class="guilabel">Dashboard IP</span> field.</p></li>
+<li><p>Game Data - This box can be used for at home testing of the Game Data API. Text entered into this box will appear in the Game Data API on the Robot Side. When connected to FMS, this data will be populated by the field automatically.</p></li>
+<li><p>Practice Mode Timing - These boxes control the timing of each portion of the practice mode sequence. When the robot is enabled in practice mode the DS automatically proceeds through the modes indicated from top to bottom.</p></li>
+<li><p>Audio Control - This button controls whether audio tones are sounded when the Practice Mode is used.</p></li>
+</ol>
+</section>
+<section id="usb-devices-tab">
+<h2>USB Devices Tab<a class="headerlink" href="#usb-devices-tab" title="Permalink to this heading"></a></h2>
+<img alt="This is the fourth tab from the top on the left hand side." src="../../../_images/ds-usb-tab.png" />
+<p>The USB Devices tab includes the information about the USB Devices connected to the DS</p>
+<ol class="arabic simple">
+<li><p>USB Setup List - This contains a list of all compatible USB devices connected to the DS. Pressing a button on a device will highlight the name in green and put 2 *s before the device name</p></li>
+<li><p>Rescan - This button will force a Rescan of the USB devices. While the robot is disabled, the DS will automatically scan for new devices and add them to the list. To force a complete re-scan or to re-scan while the robot is Enabled (such as when connected to FMS during a match) press F1 or use this button.</p></li>
+<li><p>Device indicators - These indicators show the current status of the Axes, buttons and POV of the joystick.</p></li>
+<li><p>Rumble - For XInput devices (such as X-Box controllers) the Rumble control will appear. This can be used to test the rumble functionality of the device. The top bar is “Right Rumble” and the bottom bar is “Left Rumble”. Clicking and holding anywhere along the bar will activate the rumble proportionally (left is no rumble = 0, right is full rumble = 1). This is a control only and will not indicate the Rumble value set in robot code.</p></li>
+</ol>
+<section id="re-arranging-and-locking-devices">
+<h3>Re-Arranging and Locking Devices<a class="headerlink" href="#re-arranging-and-locking-devices" title="Permalink to this heading"></a></h3>
+<img alt="USB Order box where you can click and drag to rearrange the joysticks." src="../../../_images/ds-usb-rearrange.png" />
+<p>The Driver Station has the capability of “locking” a USB device into a specific slot. This is done automatically if the device is dragged to a new position and can also be triggered by double clicking on the device. “Locked” devices will show up with an underline under the device. A locked device will reserve its slot even when the device is not connected to the computer (shown as grayed out and underlined). Devices can be unlocked (and unconnected devices removed) by double clicking on the entry.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have two or more of the same device, they should maintain their position as long as all devices remain plugged into the computer in the same ports they were locked in. If you switch the ports of two identical devices the lock should follow the port, not the device. If you re-arrange the ports (take one device and plug it into a new port instead of swapping) the behavior is not determinate (the devices may swap slots). If you unplug one or more of the set of devices, the positions of the others may move; they should return to the proper locked slots when all devices are reconnected.</p>
+</div>
+<p>Example: The image above shows 4 devices:</p>
+<ul class="simple">
+<li><p>A Locked “Logitech Attack 3” joystick. This device will stay in this position unless dragged somewhere else or unlocked</p></li>
+<li><p>An unlocked “Logitech Extreme 3D” joystick</p></li>
+<li><p>An unlocked “Gamepad F310 (Controller)” which is a Logitech F310 gamepad</p></li>
+<li><p>A Locked, but disconnected “MadCatz GamePad (Controller)” which is a MadCatz Xbox 360 Controller</p></li>
+</ul>
+<p>In this example, unplugging the Logitech Extreme 3D joystick will result in the F310 Gamepad moving up to slot 1. Plugging in the MadCatz Gamepad (even if the devices in Slots 1 and 2 are removed and those slots are empty) will result in it occupying Slot 3.</p>
+</section>
+</section>
+<section id="can-power-tab">
+<h2>CAN/Power Tab<a class="headerlink" href="#can-power-tab" title="Permalink to this heading"></a></h2>
+<img alt="This is the fifth tab from the top on the left hand side." src="../../../_images/ds-can-power-tab.png" />
+<p>The last tab on the left side of the DS is the CAN/Robot Power Tab. This tab contains information about the power status of the roboRIO and the status of the CAN bus:</p>
+<ol class="arabic simple">
+<li><p>Comms Faults - Indicates the number of Comms faults that have occurred since the DS has been connected</p></li>
+<li><p>12V Faults - Indicates the number of input power faults (Brownouts) that have occurred since the DS has been connected</p></li>
+<li><p>6V/5V/3.3V Faults - Indicates the number of faults (typically caused by short circuits) that have occurred on the User Voltage Rails since the DS has been connected</p></li>
+<li><p>CAN Bus Utilization - Indicates the percentage utilization of the CAN bus</p></li>
+<li><p>CAN faults - Indicates the counts of each of the 4 types of CAN faults since the DS has been connected</p></li>
+</ol>
+<p>If a fault is detected, the indicator for this tab (shown in blue in the image above) will turn red.</p>
+</section>
+<section id="messages-tab">
+<h2>Messages Tab<a class="headerlink" href="#messages-tab" title="Permalink to this heading"></a></h2>
+<img alt="This is the first tab from the top on the right hand side." src="../../../_images/ds-messages-tab.png" />
+<p>The Messages tab displays diagnostic messages from the DS, WPILib, User Code, and/or the roboRIO. The messages are filtered by severity. By default, only Errors are displayed.</p>
+<p>To access settings for the Messages tab, click the Gear icon. This will display a menu that will allow you to select the detail level (Errors, Errors+Warnings or Errors+Warnings+Prints), clear the box, launch a larger Console window for viewing messages, or launch the DS Log Viewer.</p>
+</section>
+<section id="charts-tab">
+<h2>Charts Tab<a class="headerlink" href="#charts-tab" title="Permalink to this heading"></a></h2>
+<img alt="This is the second tab from the top on the right hand side." src="../../../_images/ds-charts-tab.png" />
+<p>The Charts tab plots and displays advanced indicators of robot status to help teams diagnose robot issues:</p>
+<ol class="arabic simple">
+<li><p>The top graph charts trip time in milliseconds in green (against the axis on the right) and lost packets per second in orange (against the axis on the left).</p></li>
+<li><p>The bottom graph plots battery voltage in yellow (against the axis on the left), roboRIO CPU in red (against the axis on the right), DS Requested mode as a continuous line on the bottom of the chart and robot mode as a discontinuous line above it.</p></li>
+<li><p>This key shows the colors used for the DS Requested and Robot Reported modes in the bottom chart.</p></li>
+<li><p>Chart scale - These controls change the time scale of the DS Charts.</p></li>
+<li><p>This button launches the <a class="reference internal" href="driver-station-log-viewer.html"><span class="doc">DS Log File Viewer</span></a>.</p></li>
+</ol>
+<p>The DS Requested mode is the mode that the Driver Station is commanding the robot to be in. The Robot Reported mode is what code is actually running based on reporting methods contained in the coding frameworks for each language.</p>
+</section>
+<section id="both-tab">
+<h2>Both Tab<a class="headerlink" href="#both-tab" title="Permalink to this heading"></a></h2>
+<p>The last tab on the right side is the Both tab which displays Messages and Charts side by side.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Driver Station" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="driver-station-best-practices.html" class="btn btn-neutral float-right" title="Driver Station Best Practices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

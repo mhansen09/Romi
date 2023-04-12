@@ -1,0 +1,17 @@
+{
+    "meta": {
+        "api_url": "https://readthedocs.org/api/v2/"
+    },
+    "banner": {
+        "html": "\n    <div id=\"version-warning-banner\" class=\"admonition warning\">\n        <p class=\"first admonition-title\">Warning!</p>\n            <p class=\"last\">\n                \n        The documentation you are currently viewing is for upcoming changes to WPILib.\n        Please see the <a href=\"https://docs.wpilib.org\" id=\"versionwarning_href\">stable</a> version for the current release of WPILib.\n        <script>\n            document.getElementById(\"versionwarning_href\").setAttribute(\"href\", location.href.replace(\"/latest/\", \"/stable/\"))\n        </script>\n        \n            </p>\n    </div>",
+        "id_div": "version-warning-banner",
+        "body_selector": "div[class=\"document\"]",
+        "custom": true
+    },
+    "project": {
+        "slug": "frc-docs"
+    },
+    "version": {
+        "slug": "latest"
+    }
+}

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Troubleshooting" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/trajectories/troubleshooting.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Troubleshooting Complete Failures: There are a number of things that can cause your robot to do completely the wrong thing. The below checklist covers some common mistakes. My robot doesn’t move.- ..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/trajectories/troubleshooting.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/trajectories/troubleshooting.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/advanced-controls/trajectories/troubleshooting.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/advanced-controls/trajectories/troubleshooting.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/advanced-controls/trajectories/troubleshooting.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/advanced-controls/trajectories/troubleshooting.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/advanced-controls/trajectories/troubleshooting.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/advanced-controls/trajectories/troubleshooting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troubleshooting &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/trajectories/troubleshooting.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="State-Space and Model Based Control with WPILib" href="../state-space/index.html" />
+    <link rel="prev" title="Holonomic Drive Controller" href="holonomic.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Advanced Controls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../video-walkthrough.html">A Video Walkthrough of Model Based Validation of Autonomous in FRC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">Advanced Controls Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/index.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/index.html">Geometry Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers/index.html">Controllers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Trajectory Generation and Following with WPILib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="trajectory-generation.html">Trajectory Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="constraints.html">Trajectory Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manipulating-trajectories.html">Manipulating Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="transforming-trajectories.html">Transforming Trajectories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ramsete.html">Ramsete Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="holonomic.html">Holonomic Drive Controller</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../state-space/index.html">State-Space and Model Based Control with WPILib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controls-glossary.html">Controls Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Advanced Controls</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Trajectory Generation and Following with WPILib</a></li>
+      <li class="breadcrumb-item active">Troubleshooting</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/advanced-controls/trajectories/troubleshooting.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h1>
+<section id="troubleshooting-complete-failures">
+<h2>Troubleshooting Complete Failures<a class="headerlink" href="#troubleshooting-complete-failures" title="Permalink to this heading"></a></h2>
+<p>There are a number of things that can cause your robot to do completely the wrong thing. The below checklist covers some common mistakes.</p>
+<ul class="simple">
+<li><p>My robot doesn’t move.</p>
+<ul>
+<li><p>Are you actually outputting to your motors?</p></li>
+<li><p>Is a <code class="docutils literal notranslate"><span class="pre">MalformedSplineException</span></code> getting printed to the driver station? If yes, go to the <code class="docutils literal notranslate"><span class="pre">MalformedSplineException</span></code> section below.</p></li>
+<li><p>Is your trajectory very short or in the wrong units?</p></li>
+</ul>
+</li>
+<li><p>My robot swings around to drive the trajectory facing the other direction.</p>
+<ul>
+<li><p>Are the start and end headings of your trajectory wrong?</p></li>
+<li><p>Is your robot’s gyro getting reset to the wrong heading?</p></li>
+<li><p><a class="reference internal" href="trajectory-generation.html#creating-the-trajectory-config"><span class="std std-ref">Do you have the reverse flag set incorrectly?</span></a></p></li>
+<li><p>Are your gyro angles clockwise positive? If so, you should negate them.</p></li>
+</ul>
+</li>
+<li><p>My robot just drives in a straight line even though it should turn.</p>
+<ul>
+<li><p>Is your gyro set up correctly and returning good data?</p></li>
+<li><p>Are you passing your gyro heading to your odometry object with the correct units?</p></li>
+<li><p>Is your track width correct? Is it in the correct units?</p></li>
+</ul>
+</li>
+<li><p>I get a <code class="docutils literal notranslate"><span class="pre">MalformedSplineException</span></code> printout on the driver station and the robot doesn’t move.</p>
+<ul>
+<li><p><a class="reference internal" href="trajectory-generation.html#creating-the-trajectory-config"><span class="std std-ref">Do you have the reverse flag set incorrectly?</span></a></p></li>
+<li><p>Do you have two waypoints very close together with approximately opposite headings?</p></li>
+<li><p>Do you have two waypoints with the same (or nearly the same) coordinates?</p></li>
+</ul>
+</li>
+<li><p>My robot drives way too far.</p>
+<ul>
+<li><p>Are your encoder unit conversions set up correctly?</p></li>
+<li><p>Are your encoders connected?</p></li>
+</ul>
+</li>
+<li><p>My robot mostly does the right thing, but it’s a little inaccurate.</p>
+<ul>
+<li><p>Go to the next section.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="troubleshooting-poor-performance">
+<h2>Troubleshooting Poor Performance<a class="headerlink" href="#troubleshooting-poor-performance" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is mostly concerned with troubleshooting poor trajectory tracking performance like a meter of error, not catastrophic failures like compilation errors, robots turning around and going in the wrong direction, or <code class="docutils literal notranslate"><span class="pre">MalformedSplineException</span></code>s.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is designed for differential drive robots, but most of the ideas can be adapted to swerve drive or mecanum.</p>
+</div>
+<p>Poor trajectory tracking performance can be difficult to troubleshoot. Although the trajectory generator and follower are intended to be easy-to-use and performant out of the box, there are situations where your robot doesn’t quite end up where it should. The trajectory generator and followers have many knobs to tune and many moving parts, so it can be difficult to know where to start, especially because it is difficult to locate the source of trajectory problems from the robot’s general behavior.</p>
+<p>Because it can be so hard to locate the layer of the trajectory generator and followers that is misbehaving, a systematic, layer-by-layer approach is recommended for general poor tracking performance (e.g. the robot is off by few feet or more than twenty degrees). The below steps are listed in the order that you should do them in; it is important to follow this order so that you can isolate the effects of different steps from each other.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The below examples put diagnostic values onto <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../frc-glossary.html#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a>. The easiest way to graph these values is to <a class="reference internal" href="../../dashboards/shuffleboard/getting-started/shuffleboard-graphs.html#working-with-graphs"><span class="std std-ref">use Shuffleboard’s graphing capabilities</span></a>.</p>
+</div>
+<section id="verify-odometry">
+<h3>Verify Odometry<a class="headerlink" href="#verify-odometry" title="Permalink to this heading"></a></h3>
+<p>If your odometry is bad, then your Ramsete controller may misbehave, because it modifies your robot’s target velocities based on where your odometry thinks the robot is.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="../../dashboards/glass/field2d-widget.html"><span class="doc">Sending your robot pose and trajectory to field2d</span></a> can help verify that your robot is driving correctly relative to the robot trajectory.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Set up your code to record your robot’s position after each odometry update:</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">NetworkTableEntry</span><span class="w"> </span><span class="n">m_xEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkTableInstance</span><span class="p">.</span><span class="na">getDefault</span><span class="p">().</span><span class="na">getTable</span><span class="p">(</span><span class="s">&quot;troubleshooting&quot;</span><span class="p">).</span><span class="na">getEntry</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">NetworkTableEntry</span><span class="w"> </span><span class="n">m_yEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkTableInstance</span><span class="p">.</span><span class="na">getDefault</span><span class="p">().</span><span class="na">getTable</span><span class="p">(</span><span class="s">&quot;troubleshooting&quot;</span><span class="p">).</span><span class="na">getEntry</span><span class="p">(</span><span class="s">&quot;Y&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">periodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Update the odometry in the periodic block</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_odometry</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="n">Rotation2d</span><span class="p">.</span><span class="na">fromDegrees</span><span class="p">(</span><span class="n">getHeading</span><span class="p">()),</span><span class="w"> </span><span class="n">m_leftEncoder</span><span class="p">.</span><span class="na">getDistance</span><span class="p">(),</span><span class="w"></span>
+<span class="w">        </span><span class="n">m_rightEncoder</span><span class="p">.</span><span class="na">getDistance</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">translation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_odometry</span><span class="p">.</span><span class="na">getPoseMeters</span><span class="p">().</span><span class="na">getTranslation</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_xEntry</span><span class="p">.</span><span class="na">setNumber</span><span class="p">(</span><span class="n">translation</span><span class="p">.</span><span class="na">getX</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_yEntry</span><span class="p">.</span><span class="na">setNumber</span><span class="p">(</span><span class="n">translation</span><span class="p">.</span><span class="na">getY</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">NetworkTableEntry</span><span class="w"> </span><span class="n">m_xEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nt</span><span class="o">::</span><span class="n">NetworkTableInstance</span><span class="o">::</span><span class="n">GetDefault</span><span class="p">().</span><span class="n">GetTable</span><span class="p">(</span><span class="s">&quot;troubleshooting&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="s">&quot;X&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">NetworkTableEntry</span><span class="w"> </span><span class="n">m_yEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nt</span><span class="o">::</span><span class="n">NetworkTableInstance</span><span class="o">::</span><span class="n">GetDefault</span><span class="p">().</span><span class="n">GetTable</span><span class="p">(</span><span class="s">&quot;troubleshooting&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="s">&quot;Y&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">DriveSubsystem::Periodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Implementation of subsystem periodic method goes here.</span>
+<span class="w">    </span><span class="n">m_odometry</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="n">frc</span><span class="o">::</span><span class="n">Rotation2d</span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">degree_t</span><span class="p">(</span><span class="n">GetHeading</span><span class="p">())),</span><span class="w"></span>
+<span class="w">                        </span><span class="n">units</span><span class="o">::</span><span class="n">meter_t</span><span class="p">(</span><span class="n">m_leftEncoder</span><span class="p">.</span><span class="n">GetDistance</span><span class="p">()),</span><span class="w"></span>
+<span class="w">                        </span><span class="n">units</span><span class="o">::</span><span class="n">meter_t</span><span class="p">(</span><span class="n">m_rightEncoder</span><span class="p">.</span><span class="n">GetDistance</span><span class="p">()));</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">translation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_odometry</span><span class="p">.</span><span class="n">GetPose</span><span class="p">().</span><span class="n">Translation</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_xEntry</span><span class="p">.</span><span class="n">SetDouble</span><span class="p">(</span><span class="n">translation</span><span class="p">.</span><span class="n">X</span><span class="p">().</span><span class="n">value</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_yEntry</span><span class="p">.</span><span class="n">SetDouble</span><span class="p">(</span><span class="n">translation</span><span class="p">.</span><span class="n">Y</span><span class="p">().</span><span class="n">value</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<ol class="arabic simple" start="2">
+<li><p>Lay out a tape measure parallel to your robot and push your robot out about one meter along the tape measure. Lay out a tape measure along the Y axis and start over, pushing your robot one meter along the X axis and one meter along the Y axis in a rough arc.</p></li>
+<li><p>Compare X and Y reported by the robot to actual X and Y. If X is off by more than 5 centimeters in the first test then you should check that you measured your wheel diameter correctly, and that your wheels are not worn down. If the second test is off by more than 5 centimeters in either X or Y then your track width (distance from the center of the left wheel to the center of the right wheel) may be incorrect; if you’re sure that you measured the track width correctly with a tape measure then your robot’s wheels may be slipping in a way that is not accounted for by track width–if this is the case then you should <a class="reference internal" href="../../pathplanning/system-identification/identification-routine.html#track-width"><span class="std std-ref">run the track width identification</span></a> using the “Drivetrain (Angular)” test in SysID and use that track width instead of the one from your tape measure.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../../../_images/sysid-trackwidth.png"><img alt="Highlights the trackwidth section of identification." src="../../../../_images/sysid-trackwidth.png" style="width: 350px;" /></a>
+</section>
+<section id="verify-feedforward">
+<h3>Verify Feedforward<a class="headerlink" href="#verify-feedforward" title="Permalink to this heading"></a></h3>
+<p>If your feedforwards are bad then the P controllers for each side of the robot will not track as well, and your <code class="docutils literal notranslate"><span class="pre">DifferentialDriveVoltageConstraint</span></code> will not limit your robot’s acceleration accurately. We mostly want to turn off the wheel P controllers so that we can isolate and test the feedforwards.</p>
+<ol class="arabic simple">
+<li><p>First, we must set disable the P controller for each wheel. Set the <code class="docutils literal notranslate"><span class="pre">P</span></code> gain to 0 for every controller. In the <code class="docutils literal notranslate"><span class="pre">RamseteCommand</span></code> example, you would set <code class="docutils literal notranslate"><span class="pre">kPDriveVel</span></code> to 0:</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">123</span><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span><span class="n">DriveConstants</span><span class="p">.</span><span class="na">kPDriveVel</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"></span>
+<span class="linenos">124</span><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span><span class="n">DriveConstants</span><span class="p">.</span><span class="na">kPDriveVel</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">81</span><span class="w">      </span><span class="n">frc2</span><span class="o">::</span><span class="n">PIDController</span><span class="p">{</span><span class="n">DriveConstants</span><span class="o">::</span><span class="n">kPDriveVel</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span><span class="w"></span>
+<span class="linenos">82</span><span class="w">      </span><span class="n">frc2</span><span class="o">::</span><span class="n">PIDController</span><span class="p">{</span><span class="n">DriveConstants</span><span class="o">::</span><span class="n">kPDriveVel</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">},</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<ol class="arabic simple" start="2">
+<li><p>Next, we want to disable the Ramsete controller to make it easier to isolate our problematic behavior. To do so, simply call <code class="docutils literal notranslate"><span class="pre">setEnabled(false)</span></code> on the <code class="docutils literal notranslate"><span class="pre">RamseteController</span></code> passed into your <code class="docutils literal notranslate"><span class="pre">RamseteCommand</span></code>:</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">RamseteController</span><span class="w"> </span><span class="n">m_disabledRamsete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RamseteController</span><span class="p">();</span><span class="w"></span>
+<span class="n">m_disabledRamsete</span><span class="p">.</span><span class="na">setEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Be sure to pass your new disabledRamsete variable</span><span class="w"></span>
+<span class="n">RamseteCommand</span><span class="w"> </span><span class="n">ramseteCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RamseteCommand</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">exampleTrajectory</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_robotDrive</span><span class="p">::</span><span class="n">getPose</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_disabledRamsete</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc</span><span class="o">::</span><span class="n">RamseteController</span><span class="w"> </span><span class="n">m_disabledRamsete</span><span class="p">;</span><span class="w"></span>
+<span class="n">m_disabledRamsete</span><span class="p">.</span><span class="n">SetEnabled</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Be sure to pass your new disabledRamsete variable</span>
+<span class="n">frc2</span><span class="o">::</span><span class="n">RamseteCommand</span><span class="w"> </span><span class="nf">ramseteCommand</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">exampleTrajectory</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_drive</span><span class="p">.</span><span class="n">GetPose</span><span class="p">();</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="n">m_disabledRamsete</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<ol class="arabic simple" start="3">
+<li><p>Finally, we need to log desired wheel velocity and actual wheel velocity (you should put actual and desired velocities on the same graph if you’re using Shuffleboard, or if your graphing software has that capability):</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkTableInstance</span><span class="p">.</span><span class="na">getDefault</span><span class="p">().</span><span class="na">getTable</span><span class="p">(</span><span class="s">&quot;troubleshooting&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">leftReference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">.</span><span class="na">getEntry</span><span class="p">(</span><span class="s">&quot;left_reference&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">leftMeasurement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">.</span><span class="na">getEntry</span><span class="p">(</span><span class="s">&quot;left_measurement&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">rightReference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">.</span><span class="na">getEntry</span><span class="p">(</span><span class="s">&quot;right_reference&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">rightMeasurement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">.</span><span class="na">getEntry</span><span class="p">(</span><span class="s">&quot;right_measurement&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">var</span><span class="w"> </span><span class="n">leftController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span><span class="n">kPDriveVel</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">rightController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span><span class="n">kPDriveVel</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">RamseteCommand</span><span class="w"> </span><span class="n">ramseteCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RamseteCommand</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">exampleTrajectory</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_robotDrive</span><span class="p">::</span><span class="n">getPose</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">disabledRamsete</span><span class="p">,</span><span class="w"> </span><span class="c1">// Pass in disabledRamsete here</span><span class="w"></span>
+<span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleMotorFeedforward</span><span class="p">(</span><span class="n">ksVolts</span><span class="p">,</span><span class="w"> </span><span class="n">kvVoltSecondsPerMeter</span><span class="p">,</span><span class="w"> </span><span class="n">kaVoltSecondsSquaredPerMeter</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">kDriveKinematics</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_robotDrive</span><span class="p">::</span><span class="n">getWheelSpeeds</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">leftController</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">rightController</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// RamseteCommand passes volts to the callback</span><span class="w"></span>
+<span class="w">    </span><span class="p">(</span><span class="n">leftVolts</span><span class="p">,</span><span class="w"> </span><span class="n">rightVolts</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="na">tankDriveVolts</span><span class="p">(</span><span class="n">leftVolts</span><span class="p">,</span><span class="w"> </span><span class="n">rightVolts</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">leftMeasurement</span><span class="p">.</span><span class="na">setNumber</span><span class="p">(</span><span class="n">m_robotDrive</span><span class="p">.</span><span class="na">getWheelSpeeds</span><span class="p">().</span><span class="na">leftMetersPerSecond</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">leftReference</span><span class="p">.</span><span class="na">setNumber</span><span class="p">(</span><span class="n">leftController</span><span class="p">.</span><span class="na">getSetpoint</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">rightMeasurement</span><span class="p">.</span><span class="na">setNumber</span><span class="p">(</span><span class="n">m_robotDrive</span><span class="p">.</span><span class="na">getWheelSpeeds</span><span class="p">().</span><span class="na">rightMetersPerSecond</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">rightReference</span><span class="p">.</span><span class="na">setNumber</span><span class="p">(</span><span class="n">rightController</span><span class="p">.</span><span class="na">getSetpoint</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_robotDrive</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">nt</span><span class="o">::</span><span class="n">NetworkTableInstance</span><span class="o">::</span><span class="n">GetDefault</span><span class="p">().</span><span class="n">GetTable</span><span class="p">(</span><span class="s">&quot;troubleshooting&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">leftRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="s">&quot;left_reference&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">leftMeas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="s">&quot;left_measurement&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">rightRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="s">&quot;right_reference&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="k">auto</span><span class="w"> </span><span class="n">rightMeas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="o">-&gt;</span><span class="n">GetEntry</span><span class="p">(</span><span class="s">&quot;right_measurement&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">frc2</span><span class="o">::</span><span class="n">PIDController</span><span class="w"> </span><span class="nf">leftController</span><span class="p">(</span><span class="n">DriveConstants</span><span class="o">::</span><span class="n">kPDriveVel</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">frc2</span><span class="o">::</span><span class="n">PIDController</span><span class="w"> </span><span class="nf">rightController</span><span class="p">(</span><span class="n">DriveConstants</span><span class="o">::</span><span class="n">kPDriveVel</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">frc2</span><span class="o">::</span><span class="n">RamseteCommand</span><span class="w"> </span><span class="nf">ramseteCommand</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">exampleTrajectory</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_drive</span><span class="p">.</span><span class="n">GetPose</span><span class="p">();</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="n">frc</span><span class="o">::</span><span class="n">RamseteController</span><span class="p">(</span><span class="n">AutoConstants</span><span class="o">::</span><span class="n">kRamseteB</span><span class="p">,</span><span class="w"></span>
+<span class="w">                            </span><span class="n">AutoConstants</span><span class="o">::</span><span class="n">kRamseteZeta</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">frc</span><span class="o">::</span><span class="n">SimpleMotorFeedforward</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">meters</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">DriveConstants</span><span class="o">::</span><span class="n">ks</span><span class="p">,</span><span class="w"> </span><span class="n">DriveConstants</span><span class="o">::</span><span class="n">kv</span><span class="p">,</span><span class="w"> </span><span class="n">DriveConstants</span><span class="o">::</span><span class="n">ka</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">DriveConstants</span><span class="o">::</span><span class="n">kDriveKinematics</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="k">this</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">m_drive</span><span class="p">.</span><span class="n">GetWheelSpeeds</span><span class="p">();</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">leftController</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">rightController</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="k">auto</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">leftReference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">leftRef</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">leftMeasurement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">leftMeas</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">rightReference</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rightRef</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">rightMeasurement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rightMeas</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">m_drive</span><span class="p">.</span><span class="n">TankDriveVolts</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">leftMeasurement</span><span class="p">.</span><span class="n">SetDouble</span><span class="p">(</span><span class="n">m_drive</span><span class="p">.</span><span class="n">GetWheelSpeeds</span><span class="p">().</span><span class="n">left</span><span class="p">.</span><span class="n">value</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">leftReference</span><span class="p">.</span><span class="n">SetDouble</span><span class="p">(</span><span class="n">leftController</span><span class="p">.</span><span class="n">GetSetpoint</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">rightMeasurement</span><span class="p">.</span><span class="n">SetDouble</span><span class="p">(</span><span class="n">m_drive</span><span class="p">.</span><span class="n">GetWheelSpeeds</span><span class="p">().</span><span class="n">right</span><span class="p">.</span><span class="n">value</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">rightReference</span><span class="p">.</span><span class="n">SetDouble</span><span class="p">(</span><span class="n">rightController</span><span class="p">.</span><span class="n">GetSetpoint</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="o">&amp;</span><span class="n">m_drive</span><span class="p">});</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<ol class="arabic simple" start="4">
+<li><p>Run the robot on a variety of trajectories (curved and straight line), and check to see if the actual velocity tracks the desired velocity by looking at graphs from NetworkTables.</p></li>
+<li><p>If the desired and actual are off by <em>a lot</em> then you should check if the wheel diameter and <code class="docutils literal notranslate"><span class="pre">encoderEPR</span></code> you used for system identification were correct. If you’ve verified that your units and conversions are correct, then you should try recharacterizing on the same floor that you’re testing on to see if you can get better data.</p></li>
+</ol>
+</section>
+<section id="verify-p-gain">
+<h3>Verify P Gain<a class="headerlink" href="#verify-p-gain" title="Permalink to this heading"></a></h3>
+<p>If you completed the previous step and the problem went away then your problem can probably be found in one of the next steps. In this step we’re going to verify that your wheel P controllers are well-tuned. If you’re using Java then we want to turn off Ramsete so that we can just view our PF controllers on their own.</p>
+<ol class="arabic simple">
+<li><p>You must re-use all the code from the previous step that logs actual vs. desired velocity (and the code that disables Ramsete, if you’re using Java), except that <strong>the P gain must be set back to its previous nonzero value.</strong></p></li>
+<li><p>Run the robot again on a variety of trajectories, and check that your actual vs. desired graphs look good.</p></li>
+<li><p>If the graphs do not look good (i.e. the actual velocity is very different from the desired) then you should try tuning your P gain and rerunning your test trajectories.</p></li>
+</ol>
+</section>
+<section id="check-constraints">
+<h3>Check Constraints<a class="headerlink" href="#check-constraints" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure that your P gain is nonzero for this step and that you still have the logging code added in the previous steps. If you’re using Java then you should remove the code to disable Ramsete.</p>
+</div>
+<p>If your accuracy issue persisted through all of the previous steps then you might have an issue with your constraints. Below are a list of symptoms that the different available constraints will exhibit when poorly tuned.</p>
+<p>Test one constraint at a time! Remove the other constraints, tune your one remaining constraint, and repeat that process for each constraint you want to use. The below checklist assumes that you only use one constraint at a time.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DifferentialDriveVoltageConstraint</span></code>:</p>
+<ul>
+<li><p>If your robot accelerates very slowly then it’s possible that the max voltage for this constraint is too low.</p></li>
+<li><p>If your robot doesn’t reach the end of the path then your system identification data may problematic.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DifferentialDriveKinematicsConstraint</span></code>:</p>
+<ul>
+<li><p>If your robot ends up at the wrong heading then it’s possible that the max drivetrain side speed is too low, or that it’s too high. The only way to tell is to tune the max speed and to see what happens.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CentripetalAccelerationConstraint</span></code>:</p>
+<ul>
+<li><p>If your robot ends up at the wrong heading then this could be the culprit. If your robot doesn’t seem to turn enough then you should increase the max centripetal acceleration, but if it seems to go around tight turns to quickly then you should decrease the maximum centripetal acceleration.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="check-trajectory-waypoints">
+<h3>Check Trajectory Waypoints<a class="headerlink" href="#check-trajectory-waypoints" title="Permalink to this heading"></a></h3>
+<p>It is possible that your trajectory itself is not very driveable. Try moving waypoints (and headings at the waypoints, if applicable) to reduce sharp turns.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="holonomic.html" class="btn btn-neutral float-left" title="Holonomic Drive Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../state-space/index.html" class="btn btn-neutral float-right" title="State-Space and Model Based Control with WPILib" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

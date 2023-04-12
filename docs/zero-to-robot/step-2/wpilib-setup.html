@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="WPILib Installation Guide" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="This guide is intended for Java and C++ teams. LabVIEW teams can skip to Installing LabVIEW for FRC (LabVIEW only). Additionally, the below tutorial shows Windows 10, but the steps are identical fo..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/zero-to-robot/step-2/wpilib-setup.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/zero-to-robot/step-2/wpilib-setup.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/zero-to-robot/step-2/wpilib-setup.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/zero-to-robot/step-2/wpilib-setup.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/zero-to-robot/step-2/wpilib-setup.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/zero-to-robot/step-2/wpilib-setup.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WPILib Installation Guide &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Next Steps" href="step-2-next-steps.html" />
+    <link rel="prev" title="Installing the FRC Game Tools" href="frc-game-tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step 2: Installing Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="offline-installation-preparations.html">Offline Installation Preparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="labview-setup.html">Installing LabVIEW for FRC (LabVIEW only)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frc-game-tools.html">Installing the FRC Game Tools</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">WPILib Installation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="step-2-next-steps.html">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Step 2: Installing Software</a></li>
+      <li class="breadcrumb-item active">WPILib Installation Guide</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/zero-to-robot/step-2/wpilib-setup.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wpilib-installation-guide">
+<h1>WPILib Installation Guide<a class="headerlink" href="#wpilib-installation-guide" title="Permalink to this heading"></a></h1>
+<p>This guide is intended for Java and C++ teams. LabVIEW teams can skip to <a class="reference internal" href="labview-setup.html"><span class="doc">Installing LabVIEW for FRC (LabVIEW only)</span></a>. Additionally, the below tutorial shows Windows 10, but the steps are identical for all operating systems. Notes differentiating operating systems will be shown.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>Supported Operating Systems and Architectures:</dt><dd><ul class="simple">
+<li><p>Windows 10 &amp; 11, 64 bit only. 32 bit and Arm are not supported</p></li>
+<li><p>Ubuntu 22.04, 64 bit. Other Linux distributions with glibc &gt;= 2.34 may work, but are unsupported</p></li>
+<li><p>macOS 11 or higher, both Intel and Arm.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The following OSes are no longer supported: macOS 10.15, Ubuntu 18.04 &amp; 20.04, Windows 7, Windows 8.1, and any 32-bit Windows.</p>
+</div>
+<p>WPILib is designed to install to different folders for different years, so that it is not necessary to uninstall a previous version before installing this year’s WPILib.</p>
+</section>
+<section id="downloading">
+<h2>Downloading<a class="headerlink" href="#downloading" title="Permalink to this heading"></a></h2>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text">WPILib Installer</p>
+</div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+WPILib 2023.3.2 Release - February 06, 2023</div>
+<p class="sd-card-text"><span class="sd-d-grid"><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-shadow-sm wpilibrelease-dl-button reference external" href="https://github.com/wpilibsuite/allwpilib/releases/tag/v2023.3.2"><span>Downloads</span></a></span></p>
+<p class="sd-card-text"><a class="reference external" href="https://github.com/wpilibsuite/allwpilib/releases/tag/v2023.3.2">Downloads for other platforms</a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Release Notes<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+         <p>This is an update release of WPILib for the 2023 season.  Notable fixes in this release:
+- Several major NetworkTables bugs
+- ADXRS450 Gyros in C++</p>
+
+<p>Significant new features in this release:
+- SysId CTRE CANivore and Phoenix Pro support</p>
+
+<p>Upgrading from earlier 2023 releases is easy: simply download and run the new installer and it will update your current installation.  If you already have the 2023 WPILib vscode installed, it will detect it and you can simply click "next" for that installation step.  After installation, vscode will prompt you when opening your robot project whether you want to upgrade it to this version.  Note that using the installer is required to get the new version of desktop tools such as Shuffleboard.</p>
+
+<p>The documentation for WPILib is located at https://docs.wpilib.org/ (if you have trouble accessing this location, https://frcdocs.wpi.edu/en/stable/ is an alternate location with the same content).</p>
+
+<p>If you're new to FRC, start with <a href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/introduction.html">Getting Started</a>.</p>
+
+<p>Minimum system requirements have changed for 2023.  WPILib requires 64-bit Windows 10 or 11, Ubuntu 22.04, or macOS 11 or higher.  Newly supported this year is Apple Silicon (arm64)!  C++ teams should note that Visual Studio 2022 is now required for desktop builds.  For this release, Mac users will need to have the Xcode Command Line Tools installed before running the installer; we are working on removing this requirement in a future release. This can be done by running <code>xcode-select --install</code> in the Terminal.</p>
+
+<p>If you're returning from a previous season, check out <a href="https://docs.wpilib.org/en/stable/docs/yearly-overview/yearly-changelog.html">what's new for 2023</a>; be sure to read through this, as a lot has changed from 2022! You will need a new RoboRIO image for 2023; this is available via the <a href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/frc-game-tools.html">FRC 2023 Game Tools</a>. Follow the <a href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/wpilib-setup.html">WPILib installation guide</a> to install WPILib.</p>
+
+<p>If you're starting from a 2022 robot project, you will need to <a href="https://docs.wpilib.org/en/stable/docs/software/vscode-overview/importing-gradle-project.html">import your project</a> to create a 2023 project.  The import process is important, as it will make a number of automated corrections for some breaking changes that happened in 2023.  It is also necessary to import vendor libraries again, since last year’s vendor libraries must be updated to be compatible with this year’s projects.</p>
+
+<p>A complete list of known issues with this release can be found <a href="https://docs.wpilib.org/en/stable/docs/yearly-overview/known-issues.html">here</a>.</p>
+
+<p>WPILib is <a href="https://wpilib.org/blog/2023-kickoff-release-of-wpilib">developed by a small team of volunteers and the FIRST community</a>.</p>
+
+<h2>What's Changed since 2023.3.1</h2>
+
+<ul>
+<li>[wpilib] Revert throw on nonexistent SimDevice name in SimDeviceSim by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5053</li>
+<li>[cameraserver] Add GetInstance() to all functions by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5054</li>
+<li>[ntcore] Handle excludeSelf on SetDefault by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5058</li>
+<li>[ntcore] Output warning on property set on unpublished topic by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5059</li>
+<li>[wpilib] ElevatorSim: Fix WouldHitLimit methods by @hadley31 in https://github.com/wpilibsuite/allwpilib/pull/5057</li>
+<li>[wpimath] Fix DCMotor.getSpeed() by @calcmogul in https://github.com/wpilibsuite/allwpilib/pull/5061</li>
+<li>[sysid] Make Spark Max built-in encoder sampling and measurement period configurable by @calcmogul in https://github.com/wpilibsuite/sysid/pull/478</li>
+<li>[sysid] Use "encoder port" instead of "built-in" for spark max built-in encoder by @calcmogul in https://github.com/wpilibsuite/sysid/pull/480</li>
+</ul>
+
+<h2>What's Changed since 2022.2.1</h2>
+
+<h3>WPILib</h3>
+
+<ul>
+<li>Load joystick values upon code initialization by @ThadHouse in https://github.com/wpilibsuite/allwpilib/pull/4950</li>
+<li>AprilTagFieldLayout: Improve API shape for loading builtin JSONs by @brennenputh in https://github.com/wpilibsuite/allwpilib/pull/4949</li>
+<li>Fix C++ ADXRS450 and Java SPI gyro defs by @ThadHouse in https://github.com/wpilibsuite/allwpilib/pull/4988</li>
+<li>Properly use control word that is in sync with DS data by @ThadHouse in https://github.com/wpilibsuite/allwpilib/pull/4989</li>
+<li>Add Timer::Restart() by @srimanachanta in https://github.com/wpilibsuite/allwpilib/pull/4963</li>
+</ul>
+
+<h3>NetworkTables</h3>
+
+<ul>
+<li>Write empty persistent file if none found by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/4996</li>
+<li>Handle topicsonly followed by value subscribe by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/4991</li>
+<li>Special-case default timestamps by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5003</li>
+<li>Use full handle when subscribing by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5013</li>
+<li>Add client disconnect function by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5022</li>
+<li>Don't leak buffers in rare WS shutdown case by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5046</li>
+<li>Change wire timeout to fixed 1 second by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5048</li>
+<li>Report better connection close messages by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5047</li>
+</ul>
+
+<h3>Simulation</h3>
+
+<ul>
+<li>Fix MOI calculation error in SingleJointedArmSim by @mcm001 in https://github.com/wpilibsuite/allwpilib/pull/4968</li>
+<li>Enable docking in the GUI by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/4960</li>
+<li>GUI: Fix buffer overflow in joystick axes copy by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5036</li>
+<li>Check for null in getSimDeviceName JNI by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5038</li>
+</ul>
+
+<h3>Math</h3>
+
+<ul>
+<li>HolonomicDriveController: Add getters for the controllers by @OliverW10 in https://github.com/wpilibsuite/allwpilib/pull/4948</li>
+<li>Fix Pose3d exponential and clean up Pose3d logarithm by @jlmcmchl in https://github.com/wpilibsuite/allwpilib/pull/4970</li>
+<li>Workaround intellisense Eigen issue by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/4992</li>
+<li>Remove extraneous assignments from DiscretizeAB() by @calcmogul in https://github.com/wpilibsuite/allwpilib/pull/4967</li>
+<li>Make PIDController::Calculate(double, double) update setpoint flag by @calcmogul in https://github.com/wpilibsuite/allwpilib/pull/5021</li>
+<li>Add nearest to Pose2d and Translation2d by @rzblue in https://github.com/wpilibsuite/allwpilib/pull/4882</li>
+<li>Discard stale pose estimates by @jlmcmchl in https://github.com/wpilibsuite/allwpilib/pull/5045</li>
+</ul>
+
+<h3>Examples</h3>
+
+<ul>
+<li>Add Computer Vision Pose Estimation and Latency Compensation Example by @CarloWoolsey in https://github.com/wpilibsuite/allwpilib/pull/4901</li>
+<li>Add comment to drivedistanceoffboard example by @BerkeSinanYetkin in https://github.com/wpilibsuite/allwpilib/pull/4877</li>
+<li>Fix swapped arguments in MecanumControllerCommand example by @sciencewhiz in https://github.com/wpilibsuite/allwpilib/pull/4976</li>
+<li>Update for AprilTag field load API usage by @calcmogul in https://github.com/wpilibsuite/allwpilib/pull/4975</li>
+<li>C++ RamseteCommand: Fix units by @Starlight220 in https://github.com/wpilibsuite/allwpilib/pull/4954</li>
+<li>Hatchbots: Add telemetry by @Starlight220 in https://github.com/wpilibsuite/allwpilib/pull/5011</li>
+<li>Improvements to Elevator Simulation Example by @michaelleong25 in https://github.com/wpilibsuite/allwpilib/pull/4937</li>
+</ul>
+
+<h3>Command-Based Framework</h3>
+
+<ul>
+<li>Fix C++ Select() factory by @Starlight220 in https://github.com/wpilibsuite/allwpilib/pull/5024</li>
+</ul>
+
+<h3>DataLogTool</h3>
+
+<ul>
+<li>Fix crash due to MemoryBuffer by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5017</li>
+<li>Add msgpack to datalog example by @truher in https://github.com/wpilibsuite/allwpilib/pull/5032</li>
+</ul>
+
+<h3>Glass</h3>
+
+<ul>
+<li>Add option for debug-level NT logging by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5007</li>
+<li>Limit frame rate to 120 fps by default by @PeterJohnson in https://github.com/wpilibsuite/allwpilib/pull/5030</li>
+</ul>
+
+<h3>Shuffleboard</h3>
+
+<ul>
+<li>Format integer arrays correctly by @fovea1959 in https://github.com/wpilibsuite/shuffleboard/pull/750</li>
+<li>Support numbers in gyro widgets by @SamCarlberg in https://github.com/wpilibsuite/shuffleboard/pull/754</li>
+<li>Add all known topics on networktables client connect by @lost1227 in https://github.com/wpilibsuite/shuffleboard/pull/753</li>
+<li>Use NetworkTable disconnect instead of stop by @PeterJohnson in https://github.com/wpilibsuite/shuffleboard/pull/755</li>
+</ul>
+
+<h3>SysId</h3>
+
+<ul>
+<li>Upgrade vendordeps by @calcmogul in https://github.com/wpilibsuite/sysid/pull/472</li>
+<li>Add CTRE CANivore and Phoenix Pro support by @TytanRock in https://github.com/wpilibsuite/sysid/pull/455</li>
+</ul>
+
+<h3>GradleRIO</h3>
+
+<ul>
+<li>Rename Sim DriverStation to be clearer about its purpose by @PeterJohnson in https://github.com/wpilibsuite/GradleRIO/pull/644</li>
+</ul>
+
+<h3>VSCode</h3>
+
+<ul>
+<li>Add replacements for wpi/numbers and wpi/span by @sciencewhiz in https://github.com/wpilibsuite/vscode-wpilib/pull/581</li>
+<li>Change WPILib on status bar to open project information by @ThadHouse in https://github.com/wpilibsuite/vscode-wpilib/pull/577</li>
+<li>Re-enable standalone utility notarization by @sciencewhiz in https://github.com/wpilibsuite/vscode-wpilib/pull/572</li>
+<li>Update vscode-java to 1.14.0 by @PeterJohnson in https://github.com/wpilibsuite/WPILibInstaller-Avalonia/pull/329</li>
+</ul>
+
+<h3>Docs</h3>
+
+<ul>
+<li>[wpimath] Fix typo in Pose3d::Exp() docs by @calcmogul in https://github.com/wpilibsuite/allwpilib/pull/4966</li>
+<li>[wpimath] Update Wikipedia links for quaternion to Euler angle conversion by @calcmogul in https://github.com/wpilibsuite/allwpilib/pull/4995</li>
+<li>[wpilibj] Fix typo in MecanumDrive docs by @calcmogul in https://github.com/wpilibsuite/allwpilib/pull/4969</li>
+<li>[commands] Fix docs inconsistency for toggleOnFalse(Command) by @Nyxiad in https://github.com/wpilibsuite/allwpilib/pull/4978</li>
+<li>[wpilib] XboxController: Fix docs discrepancy by @BruceMcRooster in https://github.com/wpilibsuite/allwpilib/pull/4993</li>
+<li>Clarify DS functions provided by FMS by @sciencewhiz in https://github.com/wpilibsuite/allwpilib/pull/5043</li>
+</ul>
+
+<h2>New Contributors</h2>
+
+<ul>
+<li>@BerkeSinanYetkin made their first contribution in https://github.com/wpilibsuite/allwpilib/pull/4877</li>
+<li>@Nyxiad made their first contribution in https://github.com/wpilibsuite/allwpilib/pull/4978</li>
+<li>@BruceMcRooster made their first contribution in https://github.com/wpilibsuite/allwpilib/pull/4993</li>
+<li>@fovea1959 made their first contribution in https://github.com/wpilibsuite/shuffleboard/pull/750</li>
+<li>@lost1227 made their first contribution in https://github.com/wpilibsuite/shuffleboard/pull/753</li>
+<li>@hadley31 made their first contribution in https://github.com/wpilibsuite/allwpilib/pull/5057</li>
+</ul>
+
+<h3>MD5 Hashes</h3>
+
+<p><code>3fadb13303671dcef56f9452e53ffe7a  WPILib_Linux-2023.3.2.tar.gz<br>9bdb25c067769643e78751b3711cc228  WPILib_Windows-2023.3.2.iso<br>5c8af2f07b06a5d076b0233f4a771b67  WPILib_macOS-Intel-2023.3.2.dmg<br>d86778ed8497e91010f2b5a206eacda4  WPILib_macOS-Arm64-2023.3.2.dmg</code></p>
+
+<h3>SHA256 Hashes</h3>
+
+<p><code>39fe2164cc115f77fd1b53ea782d8b07f40290eafc17952efb42651a601081ea  WPILib_Linux-2023.3.2.tar.gz<br>0cde682be121b3f6e5d6166012627d50b939d47aeabfffd2979c6e3699656787  WPILib_Windows-2023.3.2.iso<br>13de6ce3ef92ee3d9b5395bccbf864804778d09158a7ff0cdc4e610c64470c50  WPILib_macOS-Intel-2023.3.2.dmg<br>a8cb5de4f10ba4b19c5a423469039ff9ecccad6535484fe0bbcbd8097068e08a  WPILib_macOS-Arm64-2023.3.2.dmg</code></p></div>
+</details><script>
+  addEventListener('DOMContentLoaded', async (event) => {
+      let dlbutton = document.getElementsByClassName("wpilibrelease-dl-button")[0];
+      let ua = await navigator.userAgentData.getHighEntropyValues(['architecture', 'bitness', 'mobile', 'platform', 'platformVersion']);
+      if (ua['platform'] == 'Windows') {
+          dlbutton.href = 'https://github.com/wpilibsuite/allwpilib/releases/download/v2023.3.2/WPILib_Windows-2023.3.2.iso';
+          dlbutton.text = 'Download for Windows -  1.81 GB';
+      } else if (ua['platform'] == 'macOS') {
+          if (ua['architecture'] == 'x86') {
+              dlbutton.href = 'https://github.com/wpilibsuite/allwpilib/releases/download/v2023.3.2/WPILib_macOS-Intel-2023.3.2.dmg';
+              dlbutton.text = 'Download for macOS Intel -  1.71 GB';
+          } else if (ua['architecture'].includes('arm')) {
+              dlbutton.href = 'https://github.com/wpilibsuite/allwpilib/releases/download/v2023.3.2/WPILib_macOS-Arm64-2023.3.2.dmg';
+              dlbutton.text = 'Download for macOS Arm | Apple Silicon -  1.63 GB';
+          }
+      }
+  });
+</script></div>
+</div>
+<p><a class="reference external" href="https://github.com/wpilibsuite/allwpilib/releases/latest/">You can download the latest release of the installer from GitHub</a>.</p>
+<p>Once on the GitHub releases page, scroll to the assets section at the bottom of the page.</p>
+<img alt="Latest WPILib release page on GitHub" src="../../../_images/github-release.jpg" />
+<p>Then click on the correct binary for your OS and architecture to begin the download.</p>
+<img alt="Assets at bottom of latest WPILib release page on GitHub" src="../../../_images/github-assets.jpg" />
+</section>
+<section id="extracting-the-installer">
+<h2>Extracting the Installer<a class="headerlink" href="#extracting-the-installer" title="Permalink to this heading"></a></h2>
+<p>When you download the WPILib installer, it is distributed as a disk image file <code class="docutils literal notranslate"><span class="pre">.iso</span></code> for Windows, <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> for Linux, and distributed as a <code class="docutils literal notranslate"><span class="pre">DMG</span></code> for MacOS.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-V2luZG93cyAxMCs=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-V2luZG93cyAxMCs=" name="V2luZG93cyAxMCs=" role="tab" tabindex="0">Windows 10+</button><button aria-controls="panel-0-bWFjT1M=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-0-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button></div><div aria-labelledby="tab-0-V2luZG93cyAxMCs=" class="sphinx-tabs-panel group-tab" id="panel-0-V2luZG93cyAxMCs=" name="V2luZG93cyAxMCs=" role="tabpanel" tabindex="0"><p>Windows 10+ users can right click on the downloaded disk image and select <span class="guilabel">Mount</span> to open it. Then launch <code class="docutils literal notranslate"><span class="pre">WPILibInstaller.exe</span></code>.</p>
+<img alt="The menu after right clicking on an .iso file to choose &quot;Mount&quot;." src="../../../_images/extract-windows-10.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Other installed programs may associate with iso files and the <span class="guilabel">mount</span> option may not appear. If that software does not give the option to mount or extract the iso file, then follow the directions below.</p>
+</div>
+<p>You can use <a class="reference external" href="https://www.7-zip.org/">7-zip</a> to extract the disk image by right-clicking, selecting <span class="guilabel">7-Zip</span> and selecting <span class="guilabel">Extract to…</span>. Then launch <code class="docutils literal notranslate"><span class="pre">WPILibInstaller.exe</span></code>. Windows 11 users may need to select <span class="guilabel">Show more options</span> at the bottom of the context menu.</p>
+<img alt="After right clicking on the .iso file go to &quot;7-Zip&quot; then &quot;Extract to....&quot;." src="../../../_images/extract-windows-7.png" />
+</div><div aria-labelledby="tab-0-bWFjT1M=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>For this release, macOS users will need to have the Xcode Command Line Tools installed before running the installer; we are working on removing this requirement in a future release. This can be done by running <code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code> in the Terminal.</p>
+<p>macOS users can double click on the downloaded <code class="docutils literal notranslate"><span class="pre">DMG</span></code> and then select <code class="docutils literal notranslate"><span class="pre">WPILibInstaller</span></code> to launch the application.</p>
+<img alt="Show the macOS screen after double clicking the DMG file." src="../../../_images/macos-launch.png" />
+</div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>Linux users should extract the downloaded <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> and then launch <code class="docutils literal notranslate"><span class="pre">WPILibInstaller</span></code>. Ubuntu treats executables in the file explorer as shared libraries, so double-clicking won’t run them. Run the following commands in a terminal instead with <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> replaced with the version you’re installing.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tar -xf WPILib_Linux-&lt;version&gt;.tar.gz
+<span class="gp">$ </span><span class="nb">cd</span> WPILib_Linux-&lt;version&gt;/
+<span class="gp">$ </span>./WPILibInstaller
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="running-the-installer">
+<h2>Running the Installer<a class="headerlink" href="#running-the-installer" title="Permalink to this heading"></a></h2>
+<p>Upon opening the installer, you’ll be presented with the below screen. Go ahead and press <span class="guilabel">Start</span>.</p>
+<img alt="Start of Installer" src="../../../_images/installer-start.png" />
+<img alt="An overview of the installer options" src="../../../_images/installer-options.png" />
+<p>This showcases a list of options included with the WPILib installation.</p>
+<ul class="simple">
+<li><p><span class="guilabel">Tools Only</span> installs just the WPILib tools (Pathweaver, Shuffleboard, RobotBuilder, SysID, Glass, and OutlineViewer) and JDK.</p></li>
+<li><p><span class="guilabel">Everything</span> installs the full development environment (VS Code, extensions, all dependencies), WPILib tools, and JDK.</p></li>
+</ul>
+<p>You will notice two buttons, <span class="guilabel">Install for this User</span> and <span class="guilabel">Install for all Users</span>. <span class="guilabel">Install for this User</span> only installs it on the current user account, and does not require administrator privileges. However, <span class="guilabel">Install for all Users</span> installs the tools for all system accounts and <em>will</em> require administrator access. <span class="guilabel">Install for all Users</span> is not an option for macOS and Linux.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you select Install for all Users, Windows will prompt for administrator access through UAC during installation.</p>
+</div>
+<p>Select the option that is appropriate for you, and you’ll presented with the following installation screen.</p>
+<p>This next screen involves downloading VS Code. Unfortunately, due to licensing reasons, VS Code can not be bundled with the installer.</p>
+<img alt="Overview of VS Code download options" src="../../../_images/installer-vscode-download.png" />
+<ul class="simple">
+<li><p>Download for this computer only</p>
+<ul>
+<li><p>This downloads VS Code only for the current platform, which is also the smallest download.</p></li>
+</ul>
+</li>
+<li><p>Skip and don’t use VS Code</p>
+<ul>
+<li><p>Skips installing VS Code. Useful for advanced installations or configurations. Generally not recommended.</p></li>
+</ul>
+</li>
+<li><p>Select existing VS Code zip for offline install on this computer</p>
+<ul>
+<li><p>Selecting this option will bring up a prompt allowing you to select a pre-existing zip file of VS Code that has been downloaded by the installer previously. This option does <strong>not</strong> let you select an already installed copy of VS Code on your machine.</p></li>
+</ul>
+</li>
+<li><p>Create VS Code zip to share with other computers/OSes for offline install</p>
+<ul>
+<li><p>This option downloads and saves a copy of VS Code for all platforms, which is useful for sharing the copy of the installer.</p></li>
+</ul>
+</li>
+</ul>
+<p>Go ahead and select <span class="guilabel">Download for this computer only</span>. This will begin the download process and can take a bit depending on internet connectivity (it’s ~100MB). Once the download is done, select <span class="guilabel">Next</span>. You should be presented with a screen that looks similar to the one below.</p>
+<img alt="Installer progress bar" src="../../../_images/installer-installing.png" />
+<p>After installation is complete, you will be presented with the finished screen.</p>
+<img alt="Installer finished screen." src="../../../_images/installer-finish.png" />
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>WPILib installs a separate version of VS Code. It does not use an already existing installation. Each year has it’s own copy of the tools appended with the year. IE: <code class="docutils literal notranslate"><span class="pre">WPILib</span> <span class="pre">VS</span> <span class="pre">Code</span> <span class="pre">2022</span></code>. Please launch the WPILib VS Code and not a system installed copy!</p>
+</div>
+<p>Congratulations, the WPILib development environment and tooling is now installed on your computer! Press Finish to exit the installer.</p>
+</section>
+<section id="post-installation">
+<h2>Post-Installation<a class="headerlink" href="#post-installation" title="Permalink to this heading"></a></h2>
+<p>Some operating systems require some final action to complete installation.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-bWFjT1M=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-bWFjT1M=" name="bWFjT1M=" role="tab" tabindex="0">macOS</button><button aria-controls="panel-1-TGludXg=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button></div><div aria-labelledby="tab-1-bWFjT1M=" class="sphinx-tabs-panel group-tab" id="panel-1-bWFjT1M=" name="bWFjT1M=" role="tabpanel" tabindex="0"><p>After installation, the installer opens the WPILib VS Code folder. Drag the VS Code application to the dock.
+Eject WPILibInstaller image from the desktop.</p>
+</div><div aria-labelledby="tab-1-TGludXg=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><p>Some versions of Linux (e.g. Ubuntu 20.04) require you to give the desktop shortcut the ability to launch. Right click on the desktop icon and select Allow Launching.</p>
+<img alt="Menu that pops up after right click the desktop icon in Linux." src="../../../_images/linux-enable-launching.png" />
+</div></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Installing desktop tools and rebooting will create a folder on the desktop called <code class="docutils literal notranslate"><span class="pre">YYYY</span> <span class="pre">WPILib</span> <span class="pre">Tools</span></code>, where <code class="docutils literal notranslate"><span class="pre">YYYY</span></code> is the current year. Desktop tool shortcuts are not available on Linux and macOS.</p>
+</div>
+</section>
+<section id="additional-c-installation-for-simulation">
+<h2>Additional C++ Installation for Simulation<a class="headerlink" href="#additional-c-installation-for-simulation" title="Permalink to this heading"></a></h2>
+<p>C++ robot simulation requires that a native compiler to be installed. For Windows, this would be <a class="reference external" href="https://visualstudio.microsoft.com/vs/">Visual Studio 2022</a> (<strong>not</strong> VS Code), macOS requires <a class="reference external" href="https://apps.apple.com/us/app/xcode/id497799835">Xcode 13 or later</a>, and Linux (Ubuntu) requires the <code class="docutils literal notranslate"><span class="pre">build-essential</span></code> package.</p>
+<p>Ensure the <span class="guilabel">Desktop Development with C++</span> option is checked in the Visual Studio installer for simulation support.</p>
+<img alt="Screenshot of the Visual Studio build tools option" src="../../../_images/vs-build-tools.png" />
+</section>
+<section id="what-is-installed">
+<h2>What is Installed?<a class="headerlink" href="#what-is-installed" title="Permalink to this heading"></a></h2>
+<p>The Offline Installer installs the following components:</p>
+<ul class="simple">
+<li><p><strong>Visual Studio Code</strong> - The supported IDE for 2019 and later robot code development. The offline installer sets up a separate copy of VS Code for WPILib development, even if you already have VS Code on your machine. This is done because some of the settings that make the WPILib setup work may break existing workflows if you use VS Code for other projects.</p></li>
+<li><p><strong>C++ Compiler</strong> - The toolchains for building C++ code for the roboRIO</p></li>
+<li><p><strong>Gradle</strong> - The specific version of Gradle used for building/deploying C++ or Java robot code</p></li>
+<li><p><strong>Java JDK/JRE</strong> - A specific version of the Java JDK/JRE that is used to build Java robot code and to run any of the Java based Tools (Dashboards, etc.). This exists side by side with any existing JDK installs and does not overwrite the JAVA_HOME variable</p></li>
+<li><p><strong>WPILib Tools</strong> - SmartDashboard, Shuffleboard, RobotBuilder, Outline Viewer, Pathweaver, Glass, SysID</p></li>
+<li><p><strong>WPILib Dependencies</strong> - OpenCV, etc.</p></li>
+<li><p><strong>VS Code Extensions</strong> - WPILib extensions for robot code development in VS Code</p></li>
+</ul>
+</section>
+<section id="uninstalling">
+<h2>Uninstalling<a class="headerlink" href="#uninstalling" title="Permalink to this heading"></a></h2>
+<p>WPILib is designed to install to different folders for different years, so that it is not necessary to uninstall a previous version before installing this year’s WPILib. However, the following instructions can be used to uninstall WPILib if desired.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Windows</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">macOS</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Linux</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><ol class="arabic simple">
+<li><p>Delete the appropriate wpilib folder (<code class="docutils literal notranslate"><span class="pre">c:\Users\Public\wpilib\YYYY</span></code> where <code class="docutils literal notranslate"><span class="pre">YYYY</span></code> is the year to uninstall)</p></li>
+<li><p>Delete the desktop icons at <code class="docutils literal notranslate"><span class="pre">C:\Users\Public\Public</span> <span class="pre">Desktop</span></code></p></li>
+<li><p>Delete the path environment variables.</p>
+<ol class="arabic simple">
+<li><p>In the start menu, type environment and select “edit the system environment variables”</p></li>
+<li><p>Click on the environment variables button (1).</p></li>
+<li><p>In the user variables, select path (2) and then click on edit (3).</p></li>
+<li><p>Select the path with <code class="docutils literal notranslate"><span class="pre">roborio\bin</span></code> (4) and click on delete (5).</p></li>
+<li><p>Select the path with <code class="docutils literal notranslate"><span class="pre">frccode</span></code> and click on delete (5).</p></li>
+<li><p>Repeat steps 3-6 in the Systems Variable pane.</p></li>
+</ol>
+</li>
+</ol>
+<img alt="The &quot;System Properties&quot;, &quot;Environment Variables&quot;, and &quot;Edit Environment Variables&quot; screens." src="../../../_images/EnvironmentVariables.png" />
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><ol class="arabic simple">
+<li><p>Delete the appropriate wpilib folder (<code class="docutils literal notranslate"><span class="pre">~/wpilib/YYYY</span></code> where <code class="docutils literal notranslate"><span class="pre">YYYY</span></code> is the year to uninstall)</p></li>
+</ol>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><ol class="arabic simple">
+<li><p>Delete the appropriate wpilib folder (<code class="docutils literal notranslate"><span class="pre">~/wpilib/YYYY</span></code> where <code class="docutils literal notranslate"><span class="pre">YYYY</span></code> is the year to uninstall). eg <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">~/wpilib/YYYY</span></code></p></li>
+</ol>
+</div></div>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h2>
+<p>In case the installer fails, please open an issue on the installer repository. A link is available <a class="reference external" href="https://github.com/wpilibsuite/wpilibinstaller-avalonia">here</a>. The installer should give a message on the cause of the error, please include this in the description of your issue.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="frc-game-tools.html" class="btn btn-neutral float-left" title="Installing the FRC Game Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="step-2-next-steps.html" class="btn btn-neutral float-right" title="Next Steps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

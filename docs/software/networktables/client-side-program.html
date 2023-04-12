@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Creating a Client-side Program" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/networktables/client-side-program.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="If all you need to do is have your robot program communicate with a COTS coprocessor or a dashboard running on the Driver Station laptop, then the previous examples of writing robot programs are su..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/networktables/client-side-program.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/networktables/client-side-program.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/networktables/client-side-program.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/networktables/client-side-program.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/networktables/client-side-program.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/networktables/client-side-program.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/networktables/client-side-program.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/networktables/client-side-program.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creating a Client-side Program &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/networktables/client-side-program.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Migrating from NetworkTables 3.0 to NetworkTables 4.0" href="nt4-migration-guide.html" />
+    <link rel="prev" title="Writing a Simple NetworkTables Robot Program" href="robot-program.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">NetworkTables</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="networktables-intro.html">What is NetworkTables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tables-and-topics.html">NetworkTables Tables and Topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publish-and-subscribe.html">Publishing and Subscribing to a Topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiple-instances.html">NetworkTables Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networktables-networking.html">NetworkTables Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="listening-for-change.html">Listening for Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robot-program.html">Writing a Simple NetworkTables Robot Program</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating a Client-side Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nt4-migration-guide.html">Migrating from NetworkTables 3.0 to NetworkTables 4.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reading-array-values-published-by-networktables.html">Reading Array Values Published by NetworkTables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">NetworkTables</a></li>
+      <li class="breadcrumb-item active">Creating a Client-side Program</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/networktables/client-side-program.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="creating-a-client-side-program">
+<h1>Creating a Client-side Program<a class="headerlink" href="#creating-a-client-side-program" title="Permalink to this heading"></a></h1>
+<p>If all you need to do is have your robot program communicate with a <a class="hxr-hoverxref hxr-tooltip reference internal" href="../frc-glossary.html#term-COTS"><span class="xref std std-term">COTS</span></a> coprocessor or a dashboard running on the Driver Station laptop, then the previous examples of writing robot programs are sufficient. But if you would like to write some custom client code that would run on the drivers station or on a coprocessor then you need to know how to build <a class="hxr-hoverxref hxr-tooltip reference internal" href="../frc-glossary.html#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a> programs for those (non-roboRIO) platforms.</p>
+<p>A basic client program looks like the following example.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-0-QysrIChoYW5kbGUtYmFzZWQp" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-QysrIChoYW5kbGUtYmFzZWQp" name="QysrIChoYW5kbGUtYmFzZWQp" role="tab" tabindex="-1">C++ (handle-based)</button><button aria-controls="panel-0-Qw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Qw==" name="Qw==" role="tab" tabindex="-1">C</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.networktables.DoubleSubscriber</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.networktables.NetworkTable</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.networktables.NetworkTableInstance</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.networktables.NetworkTablesJNI</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.util.CombinedRuntimeLoader</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.cscore.CameraServerJNI</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.math.WPIMathJNI</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.util.WPIUtilJNI</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Program</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">NetworkTablesJNI</span><span class="p">.</span><span class="na">Helper</span><span class="p">.</span><span class="na">setExtractOnStaticLoad</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">WPIUtilJNI</span><span class="p">.</span><span class="na">Helper</span><span class="p">.</span><span class="na">setExtractOnStaticLoad</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">WPIMathJNI</span><span class="p">.</span><span class="na">Helper</span><span class="p">.</span><span class="na">setExtractOnStaticLoad</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">CameraServerJNI</span><span class="p">.</span><span class="na">Helper</span><span class="p">.</span><span class="na">setExtractOnStaticLoad</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">CombinedRuntimeLoader</span><span class="p">.</span><span class="na">loadLibraries</span><span class="p">(</span><span class="n">Program</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;wpiutiljni&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;wpimathjni&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntcorejni&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s">&quot;cscorejnicvstatic&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">Program</span><span class="p">().</span><span class="na">run</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">NetworkTableInstance</span><span class="w"> </span><span class="n">inst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NetworkTableInstance</span><span class="p">.</span><span class="na">getDefault</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">NetworkTable</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inst</span><span class="p">.</span><span class="na">getTable</span><span class="p">(</span><span class="s">&quot;datatable&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">DoubleSubscriber</span><span class="w"> </span><span class="n">xSub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">.</span><span class="na">getDoubleTopic</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">).</span><span class="na">subscribe</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">DoubleSubscriber</span><span class="w"> </span><span class="n">ySub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="p">.</span><span class="na">getDoubleTopic</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">).</span><span class="na">subscribe</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">inst</span><span class="p">.</span><span class="na">startClient4</span><span class="p">(</span><span class="s">&quot;example client&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">inst</span><span class="p">.</span><span class="na">setServer</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// where TEAM=190, 294, etc, or use inst.setServer(&quot;hostname&quot;) or similar</span><span class="w"></span>
+<span class="w">        </span><span class="n">inst</span><span class="p">.</span><span class="na">startDSClient</span><span class="p">();</span><span class="w"> </span><span class="c1">// recommended if running on DS computer; this gets the robot IP from the DS</span><span class="w"></span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;interrupted&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xSub</span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ySub</span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;X: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; Y: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fmt/format.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;networktables/NetworkTableInstance.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;networktables/NetworkTable.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;networktables/DoubleTopic.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">inst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nt</span><span class="o">::</span><span class="n">NetworkTableInstance</span><span class="o">::</span><span class="n">GetDefault</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">table</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inst</span><span class="p">.</span><span class="n">GetTable</span><span class="p">(</span><span class="s">&quot;datatable&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">xSub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="o">-&gt;</span><span class="n">GetDoubleTopic</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">).</span><span class="n">Subscribe</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">ySub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table</span><span class="o">-&gt;</span><span class="n">GetDoubleTopic</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">).</span><span class="n">Subscribe</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">inst</span><span class="p">.</span><span class="n">StartClient4</span><span class="p">(</span><span class="s">&quot;example client&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">inst</span><span class="p">.</span><span class="n">SetServerTeam</span><span class="p">(</span><span class="n">TEAM</span><span class="p">);</span><span class="w">  </span><span class="c1">// where TEAM=190, 294, etc, or use inst.setServer(&quot;hostname&quot;) or similar</span>
+<span class="w">  </span><span class="n">inst</span><span class="p">.</span><span class="n">StartDSClient</span><span class="p">();</span><span class="w">  </span><span class="c1">// recommended if running on DS computer; this gets the robot IP from the DS</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="mi">1</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xSub</span><span class="p">.</span><span class="n">Get</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ySub</span><span class="p">.</span><span class="n">Get</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;X: {} Y: {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-QysrIChoYW5kbGUtYmFzZWQp" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-QysrIChoYW5kbGUtYmFzZWQp" name="QysrIChoYW5kbGUtYmFzZWQp" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fmt/format.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ntcore_cpp.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">NT_Inst</span><span class="w"> </span><span class="n">inst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nt</span><span class="o">::</span><span class="n">GetDefaultInstance</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">NT_Subscriber</span><span class="w"> </span><span class="n">xSub</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">      </span><span class="n">nt</span><span class="o">::</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">nt</span><span class="o">::</span><span class="n">GetTopic</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/datatable/x&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">NT_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;double&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">NT_Subscriber</span><span class="w"> </span><span class="n">ySub</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">      </span><span class="n">nt</span><span class="o">::</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">nt</span><span class="o">::</span><span class="n">GetTopic</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/datatable/y&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">NT_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;double&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">nt</span><span class="o">::</span><span class="n">StartClient4</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;example client&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">nt</span><span class="o">::</span><span class="n">SetServerTeam</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="n">TEAM</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// where TEAM=190, 294, etc, or use inst.setServer(&quot;hostname&quot;) or similar</span>
+<span class="w">  </span><span class="n">nt</span><span class="o">::</span><span class="n">StartDSClient</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">  </span><span class="c1">// recommended if running on DS computer; this gets the robot IP from the DS</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="mi">1</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nt</span><span class="o">::</span><span class="n">GetDouble</span><span class="p">(</span><span class="n">xSub</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nt</span><span class="o">::</span><span class="n">GetDouble</span><span class="p">(</span><span class="n">ySub</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;X: {} Y: {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Qw==" name="Qw==" role="tabpanel" tabindex="0"><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;threads.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;networktables/ntcore.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">NT_Instance</span><span class="w"> </span><span class="n">inst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NT_GetDefaultInstance</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">NT_Subscriber</span><span class="w"> </span><span class="n">xSub</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">      </span><span class="n">NT_Subscribe</span><span class="p">(</span><span class="n">NT_GetTopic</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/datatable/x&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">NT_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">NT_Subscriber</span><span class="w"> </span><span class="n">ySub</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">      </span><span class="n">NT_Subscribe</span><span class="p">(</span><span class="n">NT_GetTopic</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/datatable/y&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">NT_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">NT_StartClient4</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;example client&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">NT_SetServerTeam</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="n">TEAM</span><span class="p">);</span><span class="w">  </span><span class="c1">// where TEAM=190, 294, etc, or use inst.setServer(&quot;hostname&quot;) or similar</span>
+<span class="w">  </span><span class="n">NT_StartDSClient</span><span class="p">(</span><span class="n">inst</span><span class="p">);</span><span class="w">  </span><span class="c1">// recommended if running on DS computer; this gets the robot IP from the DS</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">thrd_sleep</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">timespec</span><span class="p">){.</span><span class="n">tv_sec</span><span class="o">=</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NT_GetDouble</span><span class="p">(</span><span class="n">xSub</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NT_GetDouble</span><span class="p">(</span><span class="n">ySub</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;X: %f Y: %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-UHl0aG9u" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="kn">import</span> <span class="nn">ntcore</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">inst</span> <span class="o">=</span> <span class="n">ntcore</span><span class="o">.</span><span class="n">NetworkTableInstance</span><span class="o">.</span><span class="n">getDefault</span><span class="p">()</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">getTable</span><span class="p">(</span><span class="s2">&quot;datatable&quot;</span><span class="p">)</span>
+    <span class="n">xSub</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">getDoubleTopic</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ySub</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">getDoubleTopic</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">inst</span><span class="o">.</span><span class="n">startClient4</span><span class="p">(</span><span class="s2">&quot;example client&quot;</span><span class="p">)</span>
+    <span class="n">inst</span><span class="o">.</span><span class="n">setServerTeam</span><span class="p">(</span><span class="n">TEAM</span><span class="p">)</span> <span class="c1"># where TEAM=190, 294, etc, or use inst.setServer(&quot;hostname&quot;) or similar</span>
+    <span class="n">inst</span><span class="o">.</span><span class="n">startDSClient</span><span class="p">()</span> <span class="c1"># recommended if running on DS computer; this gets the robot IP from the DS</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">xSub</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">ySub</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> Y: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>In this example an instance of NetworkTables is created and subscribers are created to reference the values of “x” and “y” from a table called “datatable”.</p>
+<p>Then this instance is started as a NetworkTables client with the team number (the roboRIO is always the server). Additionally, if the program is running on the Driver Station computer, by using the startDSClient() method, NetworkTables will get the robot IP address from the Driver Station.</p>
+<p>Then this sample program simply loops once a second and gets the values for x and y and prints them on the console. In a more realistic program, the client might be processing or generating values for the robot to consume.</p>
+<section id="building-using-gradle">
+<h2>Building using Gradle<a class="headerlink" href="#building-using-gradle" title="Permalink to this heading"></a></h2>
+<p>Example build.gradle files are provided in the <a class="reference external" href="https://github.com/wpilibsuite/StandaloneAppSamples">StandaloneAppSamples Repository</a> Update the GradleRIO version to correspond to the desired WPILib version.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">plugins</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s2">&quot;java&quot;</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;application&#39;</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;com.github.johnrengelman.shadow&#39;</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s1">&#39;7.1.2&#39;</span><span class="w"></span>
+<span class="hll"><span class="linenos"> 5</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s2">&quot;edu.wpi.first.GradleRIO&quot;</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s2">&quot;2023.2.1&quot;</span><span class="w"></span>
+</span><span class="linenos"> 6</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s1">&#39;edu.wpi.first.WpilibTools&#39;</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s1">&#39;1.1.0&#39;</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="o">}</span><span class="w"></span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">mainClassName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Program&#39;</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilibVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wpi</span><span class="o">.</span><span class="na">versions</span><span class="o">.</span><span class="na">wpilibVersion</span><span class="o">.</span><span class="na">get</span><span class="o">()</span><span class="w"></span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="kt">def</span><span class="w"> </span><span class="n">nativeConfigName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;wpilibNatives&#39;</span><span class="w"></span>
+<span class="linenos">14</span><span class="kt">def</span><span class="w"> </span><span class="n">nativeConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">configurations</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">nativeConfigName</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="kt">def</span><span class="w"> </span><span class="n">nativeTasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">createExtractionTasks</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">    </span><span class="n">configurationName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nativeConfigName</span><span class="w"></span>
+<span class="linenos">18</span><span class="o">}</span><span class="w"></span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="n">nativeTasks</span><span class="o">.</span><span class="na">addToSourceSetResources</span><span class="o">(</span><span class="n">sourceSets</span><span class="o">.</span><span class="na">main</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">21</span><span class="n">nativeConfig</span><span class="o">.</span><span class="na">dependencies</span><span class="o">.</span><span class="na">add</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilib</span><span class="o">(</span><span class="s2">&quot;wpimath&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">22</span><span class="n">nativeConfig</span><span class="o">.</span><span class="na">dependencies</span><span class="o">.</span><span class="na">add</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilib</span><span class="o">(</span><span class="s2">&quot;wpinet&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">23</span><span class="n">nativeConfig</span><span class="o">.</span><span class="na">dependencies</span><span class="o">.</span><span class="na">add</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilib</span><span class="o">(</span><span class="s2">&quot;wpiutil&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">24</span><span class="n">nativeConfig</span><span class="o">.</span><span class="na">dependencies</span><span class="o">.</span><span class="na">add</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilib</span><span class="o">(</span><span class="s2">&quot;ntcore&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">25</span><span class="n">nativeConfig</span><span class="o">.</span><span class="na">dependencies</span><span class="o">.</span><span class="na">add</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">cscore</span><span class="o">()</span><span class="w"></span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="n">dependencies</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilibJava</span><span class="o">(</span><span class="s2">&quot;wpiutil&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilibJava</span><span class="o">(</span><span class="s2">&quot;wpimath&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilibJava</span><span class="o">(</span><span class="s2">&quot;wpinet&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilibJava</span><span class="o">(</span><span class="s2">&quot;ntcore&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilibJava</span><span class="o">(</span><span class="s2">&quot;cscore&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nl">group:</span><span class="w"> </span><span class="s2">&quot;com.fasterxml.jackson.core&quot;</span><span class="o">,</span><span class="w"> </span><span class="nl">name:</span><span class="w"> </span><span class="s2">&quot;jackson-annotations&quot;</span><span class="o">,</span><span class="w"> </span><span class="nl">version:</span><span class="w"> </span><span class="n">wpi</span><span class="o">.</span><span class="na">versions</span><span class="o">.</span><span class="na">jacksonVersion</span><span class="o">.</span><span class="na">get</span><span class="o">()</span><span class="w"></span>
+<span class="linenos">35</span><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nl">group:</span><span class="w"> </span><span class="s2">&quot;com.fasterxml.jackson.core&quot;</span><span class="o">,</span><span class="w"> </span><span class="nl">name:</span><span class="w"> </span><span class="s2">&quot;jackson-core&quot;</span><span class="o">,</span><span class="w"> </span><span class="nl">version:</span><span class="w"> </span><span class="n">wpi</span><span class="o">.</span><span class="na">versions</span><span class="o">.</span><span class="na">jacksonVersion</span><span class="o">.</span><span class="na">get</span><span class="o">()</span><span class="w"></span>
+<span class="linenos">36</span><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nl">group:</span><span class="w"> </span><span class="s2">&quot;com.fasterxml.jackson.core&quot;</span><span class="o">,</span><span class="w"> </span><span class="nl">name:</span><span class="w"> </span><span class="s2">&quot;jackson-databind&quot;</span><span class="o">,</span><span class="w"> </span><span class="nl">version:</span><span class="w"> </span><span class="n">wpi</span><span class="o">.</span><span class="na">versions</span><span class="o">.</span><span class="na">jacksonVersion</span><span class="o">.</span><span class="na">get</span><span class="o">()</span><span class="w"></span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="nl">group:</span><span class="w"> </span><span class="s2">&quot;org.ejml&quot;</span><span class="o">,</span><span class="w"> </span><span class="nl">name:</span><span class="w"> </span><span class="s2">&quot;ejml-simple&quot;</span><span class="o">,</span><span class="w"> </span><span class="nl">version:</span><span class="w"> </span><span class="n">wpi</span><span class="o">.</span><span class="na">versions</span><span class="o">.</span><span class="na">ejmlVersion</span><span class="o">.</span><span class="na">get</span><span class="o">()</span><span class="w"></span>
+<span class="linenos">39</span><span class="o">}</span><span class="w"></span>
+<span class="linenos">40</span>
+<span class="linenos">41</span><span class="n">shadowJar</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">    </span><span class="n">archiveBaseName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;TestApplication&quot;</span><span class="w"></span>
+<span class="linenos">43</span><span class="w">    </span><span class="n">archiveVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"></span>
+<span class="linenos">44</span><span class="w">    </span><span class="n">exclude</span><span class="o">(</span><span class="s2">&quot;module-info.class&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">    </span><span class="n">archiveClassifier</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">wpilibTools</span><span class="o">.</span><span class="na">currentPlatform</span><span class="o">.</span><span class="na">platformName</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">46</span><span class="o">}</span><span class="w"></span>
+<span class="linenos">47</span>
+<span class="linenos">48</span><span class="n">wrapper</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos">49</span><span class="w">    </span><span class="n">gradleVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;7.5.1&#39;</span><span class="w"></span>
+<span class="linenos">50</span><span class="o">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><p>Uncomment the appropriate platform as highlighted.</p>
+<div class="highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">plugins</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s2">&quot;cpp&quot;</span><span class="w"></span>
+<span class="hll"><span class="linenos"> 3</span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="s2">&quot;edu.wpi.first.GradleRIO&quot;</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="s2">&quot;2023.2.1&quot;</span><span class="w"></span>
+</span><span class="linenos"> 4</span><span class="o">}</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1">// Disable local cache, as it won&#39;t have the cross artifact necessary</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="n">wpi</span><span class="o">.</span><span class="na">maven</span><span class="o">.</span><span class="na">useLocal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1">// Set to true to run simulation in debug mode</span><span class="w"></span>
+<span class="linenos">10</span><span class="n">wpi</span><span class="o">.</span><span class="na">cpp</span><span class="o">.</span><span class="na">debugSimulation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="kt">def</span><span class="w"> </span><span class="n">appName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;TestApplication&quot;</span><span class="w"></span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">nativeUtils</span><span class="o">.</span><span class="na">withCrossLinuxArm64</span><span class="o">()</span><span class="w"></span>
+<span class="linenos">15</span><span class="c1">//nativeUtils.withCrossLinuxArm32() // Uncomment to build for arm32. targetPlatform below also needs to be fixed</span><span class="w"></span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">model</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">    </span><span class="n">components</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">        </span><span class="s2">&quot;${appName}&quot;</span><span class="o">(</span><span class="n">NativeExecutableSpec</span><span class="o">)</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">20</span><span class="w">            </span><span class="c1">//targetPlatform wpi.platforms.desktop // Uncomment to build on whatever the native platform currently is</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">21</span><span class="w">            </span><span class="n">targetPlatform</span><span class="w"> </span><span class="n">wpi</span><span class="o">.</span><span class="na">platforms</span><span class="o">.</span><span class="na">linuxarm64</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">22</span><span class="w">            </span><span class="c1">//targetPlatform wpi.platforms.linuxarm32 // Uncomment to build for arm32</span><span class="w"></span>
+</span><span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">            </span><span class="n">sources</span><span class="o">.</span><span class="na">cpp</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">                </span><span class="n">source</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">                    </span><span class="n">srcDir</span><span class="w"> </span><span class="s1">&#39;src/main/cpp&#39;</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">                    </span><span class="n">include</span><span class="w"> </span><span class="s1">&#39;**/*.cpp&#39;</span><span class="o">,</span><span class="w"> </span><span class="s1">&#39;**/*.cc&#39;</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">                </span><span class="o">}</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">                </span><span class="n">exportedHeaders</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">                    </span><span class="n">srcDir</span><span class="w"> </span><span class="s1">&#39;src/main/include&#39;</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">                </span><span class="o">}</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">            </span><span class="o">}</span><span class="w"></span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="w">            </span><span class="c1">// Enable run tasks for this component</span><span class="w"></span>
+<span class="linenos">35</span><span class="w">            </span><span class="n">wpi</span><span class="o">.</span><span class="na">cpp</span><span class="o">.</span><span class="na">enableExternalTasks</span><span class="o">(</span><span class="n">it</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="w">            </span><span class="n">wpi</span><span class="o">.</span><span class="na">cpp</span><span class="o">.</span><span class="na">deps</span><span class="o">.</span><span class="na">wpilibStatic</span><span class="o">(</span><span class="n">it</span><span class="o">)</span><span class="w"></span>
+<span class="linenos">38</span><span class="w">        </span><span class="o">}</span><span class="w"></span>
+<span class="linenos">39</span><span class="w">    </span><span class="o">}</span><span class="w"></span>
+<span class="linenos">40</span><span class="o">}</span><span class="w"></span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="n">wrapper</span><span class="w"> </span><span class="o">{</span><span class="w"></span>
+<span class="linenos">43</span><span class="w">    </span><span class="n">gradleVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;7.5.1&#39;</span><span class="w"></span>
+<span class="linenos">44</span><span class="o">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="building-python">
+<h2>Building Python<a class="headerlink" href="#building-python" title="Permalink to this heading"></a></h2>
+<p>For Python, refer to the <a class="reference external" href="https://robotpy.readthedocs.io/en/stable/install/pynetworktables.html">RobotPy pyntcore install documentation</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="robot-program.html" class="btn btn-neutral float-left" title="Writing a Simple NetworkTables Robot Program" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nt4-migration-guide.html" class="btn btn-neutral float-right" title="Migrating from NetworkTables 3.0 to NetworkTables 4.0" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Picking a Control Strategy" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/picking-control-strategy.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="When designing a control algorithm for a robot mechanism, there are a number of different approaches to take. These range from very simple approaches, to advanced and complex ones. Each has tradeof..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/picking-control-strategy.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/picking-control-strategy.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/advanced-controls/introduction/picking-control-strategy.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/advanced-controls/introduction/picking-control-strategy.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/advanced-controls/introduction/picking-control-strategy.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/advanced-controls/introduction/picking-control-strategy.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/advanced-controls/introduction/picking-control-strategy.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/advanced-controls/introduction/picking-control-strategy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Picking a Control Strategy &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/picking-control-strategy.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Introduction to DC Motor Feedforward" href="introduction-to-feedforward.html" />
+    <link rel="prev" title="Control System Basics" href="control-system-basics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Advanced Controls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../video-walkthrough.html">A Video Walkthrough of Model Based Validation of Autonomous in FRC</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Advanced Controls Introduction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="control-system-basics.html">Control System Basics</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Picking a Control Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-to-feedforward.html">Introduction to DC Motor Feedforward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-to-pid.html">Introduction to PID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-video.html">PID Introduction Video by WPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-intro.html">Introduction To Controls Tuning Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tuning-flywheel.html">Tuning a Flywheel Velocity Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tuning-turret.html">Tuning a Turret Position Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tuning-vertical-arm.html">Tuning a Vertical Arm Position Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common-control-issues.html">Common Control Loop Tuning Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/index.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/index.html">Geometry Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers/index.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trajectories/index.html">Trajectory Generation and Following with WPILib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../state-space/index.html">State-Space and Model Based Control with WPILib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controls-glossary.html">Controls Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Advanced Controls</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Advanced Controls Introduction</a></li>
+      <li class="breadcrumb-item active">Picking a Control Strategy</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/advanced-controls/introduction/picking-control-strategy.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="picking-a-control-strategy">
+<h1>Picking a Control Strategy<a class="headerlink" href="#picking-a-control-strategy" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This article includes sections of <a class="reference external" href="https://file.tavsys.net/control/controls-engineering-in-frc.pdf">Controls Engineering in FRC</a> by Tyler Veness with permission.</p>
+</div>
+<p>When designing a control algorithm for a robot mechanism, there are a number of different approaches to take. These range from very simple approaches, to advanced and complex ones. Each has <em>tradeoffs</em>. Some will work better than others in different situations, some require more mathematical analysis than others.</p>
+<p>Teams should prioritize picking the easiest strategy which enables success on the field. However, as you do experiments, keep in mind there is almost always a “next-step” to take to improve your field performance.</p>
+<p>There are two fundamental types of mechanism controller that we will cover here:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These are not strict definitions - some control strategies are not easily classifiable and incorporate elements of both feedforward and feedback controllers.  However, it is still a useful distinction in most FRC applications.</p>
+</div>
+<p><strong>Feedforward control</strong> (or “open-loop control”) refers to the class of algorithms which incorporate knowledge of how the mechanism under control is <em>expected</em> to operate. Using this “model” of operation, the control input is chosen to make the mechanism get close to where it should be.</p>
+<p><strong>Feedback control</strong> (or “closed-loop control”) refers to the class of algorithms which use sensors to <em>measure</em> what a mechanism is doing, and issue corrective commands to move a mechanism from where it actually is, to where you want it to be.</p>
+<p>These are not mutually exclusive, and in fact it is usually best to use both.  The tutorial pages that follow will cover three types of mechanism (turret, flywheel, and vertical arm), and allow you to experiment with how each type of system responds to each type of control strategy, both individually and combined.</p>
+<section id="feedforward-control-making-a-best-guess">
+<h2>Feedforward Control: Making a Best Guess<a class="headerlink" href="#feedforward-control-making-a-best-guess" title="Permalink to this heading"></a></h2>
+<p>“Feedforward control” means providing the mechanism with the control signal you think it needs to make the mechanism do what you want, without any knowledge of where the mechanism currently is.  A feedforward controller feeds information we already know about the system <em>forward</em> into an estimate of the required <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-effort"><span class="xref std std-term">control effort</span></a>.  The feedforward controller does <em>not</em> adjust this in response to the measured behavior of the system to try to correct for errors from the guess.</p>
+<p>Feedforward control is also sometimes referred to as “open-loop control”, because if you draw out a block diagram of the controlled system it consists of only a line from the controller to the plant, with no connection from the measured plant output back into the controller (hence an “open” loop, which really isn’t a loop at all).</p>
+<p>This is the type of control you are implicitly using whenever you use a joystick to “directly” control the speed of a motor through the applied voltage.  It is the simplest and most straightforward type of control, and is probably the one you encountered first when programming a FRC motor, though it may not have been referred to by name.</p>
+<section id="when-do-we-need-feedforward-control">
+<h3>When Do We Need Feedforward Control?<a class="headerlink" href="#when-do-we-need-feedforward-control" title="Permalink to this heading"></a></h3>
+<p>In general, feedforward control is <em>required</em> whenever the system requires some constant control signal to remain at the desired setpoint (such as position control of a vertical arm where gravity will cause the arm to fall, or velocity control where internal motor dynamics and friction will cause the motor to slow down over time).  Feedback controllers naturally fall to zero output when they achieve their setpoint, and so a feedforward controller is needed to provide the signal to <em>keep</em> the mechanism where we want it.</p>
+<p>Some control strategies instead account for this in the feedback controller with integral gain - however, this is slow and prone to oscillation.  It is almost always better to use a feedforward controller to account for the output needed to maintain the setpoint.</p>
+</section>
+<section id="feedforward-and-position-control">
+<h3>Feedforward and Position Control<a class="headerlink" href="#feedforward-and-position-control" title="Permalink to this heading"></a></h3>
+<p>The WPILib feedforward classes require velocity and acceleration setpoints to generate an estimated control voltage.  This is because the equations-of-motion of a permanent-magnet DC motor relate the applied voltage to velocity and acceleration; it is a fact of physics that we cannot change.</p>
+<p>But what if we want to control position?  When controlling a DC motor, there’s no immediate relation between position and control signal.  In order to use feedforward effectively for position control, we need to come up with a sequence of velocities that will take the robot mechanism to the desired position.  This is called a <a class="reference internal" href="../controllers/trapezoidal-profiles.html#trapezoidal-motion-profiles-in-wpilib"><span class="std std-ref">motion profile</span></a>.</p>
+<p>Many teams do not wish to incur the extra technical cost of using a motion profile when doing position control, and instead omit the feedforward controller entirely and opt to use only feedback control.  As we will discuss later, this may work in <em>some</em> situations, but has some important caveats.</p>
+<p>Most FRC mechanisms are well-described by WPILib’s feedforward classes, though pure feedforward control typically only yields acceptable results for velocity control of mechanisms with little external load.  In other cases, errors from the system model will be unavoidable and a feedback controller will be necessary to correct for them.</p>
+</section>
+</section>
+<section id="feedback-control-correcting-for-errors-and-disturbances">
+<h2>Feedback Control: Correcting for Errors and Disturbances<a class="headerlink" href="#feedback-control-correcting-for-errors-and-disturbances" title="Permalink to this heading"></a></h2>
+<p>Even with unlimited study, it is impossible to know every force that will be exerted on a robot’s mechanism in perfect detail. For example, in a flywheel shooter, the timing and exact forces associated with a ball being put through the mechanism are extremely difficult to measure accurately. For another example, consider the fact that gearboxes gradually throw off grease as they operate, increasing their internal friction over time. This is a <em>very</em> complex process to model well.</p>
+<p>In practice, this means that the “guess” made by our feedforward controller will never be perfect.  There will always be some error - that is, some lingering difference between the state we want our mechanism to be in, and the state the feedforward controller leaves it in.  In many situations, this error is large enough that we need to adjust our output to correct it; this is the job of the feedback controller.  Feedback controllers are also called “closed-loop” controllers, because the flow of information about the current state <em>back</em> through the system “closes” the loop in the system’s block diagram.</p>
+<p>The simplest feedback controller possible is a “proportional controller”, which responds proportionally to the current error (i.e. difference between the desired state and measured state).  More advanced controllers (such as the PID controller) add response to the rate-of-change of the error and to the total accumulated error.  All of these operate on the principle that the system response is roughly linear, in order to “nudge” the system towards the setpoint based on local measurements of the error.</p>
+<section id="when-do-we-need-feedback-control">
+<h3>When Do We Need Feedback Control?<a class="headerlink" href="#when-do-we-need-feedback-control" title="Permalink to this heading"></a></h3>
+<p>In general, there are two scenarios in which we <em>need</em> feedback control:</p>
+<ol class="arabic simple">
+<li><p>We are controlling the position of the system, so errors accumulate over time</p></li>
+<li><p>There are a lot of difficult-to-dynamic external forces interacting with the mechanism that the feedforward loop cannot account for (e.g. a flywheel that is launching game pieces).</p></li>
+</ol>
+<p>In each of these situations, the <em>best</em> solution is to combine a feedforward controller and a feedback controller by adding their outputs together.  However, in the case of a simple position controller with no external loading, a pure feedback controller can work acceptably.</p>
+</section>
+<section id="feedback-only-control">
+<h3>Feedback-Only Control<a class="headerlink" href="#feedback-only-control" title="Permalink to this heading"></a></h3>
+<p>Feedforward controllers are extremely helpful and quite simple, but they require <em>explicit</em> knowledge of the system behavior in order to generate a guess at the required control signal.  In many controls textbooks, you may see a set of techniques which rely on feedback control only. These are very common in industry, and works well in many cases, especially when the underlying system behavior is not easy to explicitly model, or when you want to quickly reach a “good enough” solution without spending the time to thoroughly investigate your system behavior.</p>
+<p>Feedback-only control typically only works well in situations where:</p>
+<ol class="arabic simple">
+<li><p>The motors are fairly overpowered relative to loading.</p></li>
+<li><p>The mechanism’s position (not velocity) is being controlled.</p></li>
+<li><p>There are no substantial or varying external forces on the mechanism.</p></li>
+</ol>
+<p>When these criteria are met (such as in the turret tuning tutorial), feedback-only control can yield acceptable results.  In other situations, it is necessary to use a feedforward model to reduce the amount of work done by the feedback controller.  In FRC, our systems are almost all modeled by well-understood equations with working code support, so it is almost always a good idea to include a feedforward controller.</p>
+</section>
+</section>
+<section id="modeling-how-do-you-expect-your-system-to-behave">
+<h2>Modeling: How do you expect your system to behave?<a class="headerlink" href="#modeling-how-do-you-expect-your-system-to-behave" title="Permalink to this heading"></a></h2>
+<p>It’s easiest to control a system if we have some prior knowledge of how the system responds to inputs.  Even the “pure feedback” strategy described above implicitly assumes things about the system response (e.g. that it is approximately linear), and consequently won’t work in cases where the system does not respond in the expected way.  To control our system <em>optimally</em>, we need some way to reliably predict how it will respond to inputs.</p>
+<p>This can be done by combining several concepts you may be familiar with from physics: drawing free body diagrams of the forces that act on the mechanism, taking measurements of mass and moment of inertia from your CAD models, applying standard equations of how DC motors or pneumatic cylinders convert energy into mechanical force and motion, etc.</p>
+<p>The act of creating a consistent mathematical description of your system is called <em>modeling</em> your system’s behavior. The resulting set of equations are called a <em>model</em> of how you expect the system to behave.  Not every system requires an explicit model to be controlled (we will see in the turret tutorial that a pure, manually-tuned feedback controller is satisfactory <em>in some cases</em>), but an explicit model is <em>always</em> helpful.</p>
+<p>Note that models do not have to be perfectly accurate to be useful. As we will see in later tuning exercises, even using a simple model of a mechanism can make the tuning effort much simpler.</p>
+<section id="obtaining-models-for-your-mechanisms">
+<h3>Obtaining Models for Your Mechanisms<a class="headerlink" href="#obtaining-models-for-your-mechanisms" title="Permalink to this heading"></a></h3>
+<p>If modeling your mechanism seems daunting, don’t worry!  Most mechanisms in FRC are modeled by well-studied equations and code for interacting with those models is included in WPILib.  Usually, all that is needed is to determine a set of physical parameters (sometimes called “tuning constants” or “gains”) that depend on the specific details of your mechanism/robot.  These can be estimated theoretically from other known parameters of your system (such as mass, length, and choice of motor/gearbox), or measured from your mechanism’s actual behavior through a system identification routine.</p>
+<p>When in doubt, ask a mentor or <a class="reference internal" href="../../support/support-resources.html#support-resources"><span class="std std-ref">support resource</span></a>!</p>
+<section id="theoretical-modeling">
+<h4>Theoretical Modeling<a class="headerlink" href="#theoretical-modeling" title="Permalink to this heading"></a></h4>
+<p><a class="reference external" href="https://www.reca.lc/">ReCalc is an online calculator</a> which estimates physical parameters for a number of common FRC mechanisms.  Importantly, it can generate estimate the <code class="docutils literal notranslate"><span class="pre">kV</span></code>, <code class="docutils literal notranslate"><span class="pre">kA</span></code>, and <code class="docutils literal notranslate"><span class="pre">kG</span></code> gains for the WPILib feedforward classes.</p>
+<p>The <a class="reference internal" href="../../pathplanning/system-identification/introduction.html"><span class="doc">WPILib system identification tool</span></a> supports a “theoretical mode” that can be used to determine PID gains for feedback control from the <code class="docutils literal notranslate"><span class="pre">kV</span></code> and <code class="docutils literal notranslate"><span class="pre">kA</span></code> gains from ReCalc, enabling (in theory) full tuning of a control loop without running any test routines.</p>
+<p>Remember, however, that theory is not reality and purely theoretical gains are not guaranteed to work well.  There is <em>never</em> a substitute for testing.</p>
+</section>
+<section id="system-identification">
+<h4>System Identification<a class="headerlink" href="#system-identification" title="Permalink to this heading"></a></h4>
+<p>A good way to improve the accuracy of a simple physics model is to perform experiments on the real mechanism, record data, and use the data to <em>derive</em> the constants associated with different parts of the model. This is very useful for physical quantities which are difficult or impossible to predict, but easy to measure (ex: friction in a gearbox).</p>
+<p><a class="reference internal" href="../../pathplanning/system-identification/introduction.html"><span class="doc">WPILib’s system identification tool</span></a> supports some common FRC mechanisms, including drivetrain. It deploys its own code to the robot to exercise the mechanism, record data, and derive gains for both feedforward and feedback control schemes.</p>
+</section>
+<section id="manual-tuning-what-to-do-with-no-explicit-model">
+<h4>Manual Tuning: What to Do with No Explicit Model<a class="headerlink" href="#manual-tuning-what-to-do-with-no-explicit-model" title="Permalink to this heading"></a></h4>
+<p>Sometimes, you have to tune a system without at an explicit model.  Maybe the system is uniquely complicated, or maybe you’re under time constraints and need something that works quickly, even if it doesn’t work optimally.  Model-based control requires a correct mathematical model of the system, and for better or for worse, we do not always have one.</p>
+<p>In such cases, the physical parameters of the control algorithm can be tuned <em>manually</em>.  This is generally done by systematically “sweeping” the controller gains by hand until the mechanism behaves as expected.  Manual tuning can work quickly in cases where only one or two parameters (such as <cite>kV</cite> and <cite>kP</cite>) need to be adjusted - however, in more-complicated scenarios it can become a very involved and difficult process.</p>
+<p>One common problem with manual tuning is that it can be hard to distinguish a well-founded controller architecture that is not yet tuned properly, from an inappropriate controller architecture that cannot work (for example, it is generally not possible to tune a velocity controller or vertical arm position controller that functions well without a feedforward).  In such a case, we can waste a lot of time searching for correct gains, when no such correct gains exist.  There is no substitute for understanding the mechanics of the systems being controlled well enough to determine a correct controller architecture for the mechanism, <em>even if</em> we do not explicitly use any model-based control methodologies.</p>
+<p>The tutorials that follow include simulations that will allow you to perform the manual tuning process on several typical FRC mechanisms.  The fundamental concepts that govern which control strategies are valid for each mechanism are covered on the individual mechanism pages; pay close attention to this as you work through the tutorials!</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="control-system-basics.html" class="btn btn-neutral float-left" title="Control System Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="introduction-to-feedforward.html" class="btn btn-neutral float-right" title="Introduction to DC Motor Feedforward" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

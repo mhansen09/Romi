@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Driving the Robot with Tank Drive and Joysticks" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="A common use case is to have a joystick that should drive some actuators that are part of a subsystem. The problem is that the joystick is created in the RobotContainer class and the motors to be c..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driving the Robot with Tank Drive and Joysticks &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../../_static/js/present.js"></script>
+        <script src="../../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../../_static/pid-tune.js"></script>
+        <script src="../../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../../_static/tabs.js"></script>
+        <script src="../../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="RobotBuilder - Advanced" href="../advanced/index.html" />
+    <link rel="prev" title="Writing the Code for a Command" href="robotbuilder-writing-command-code.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">RobotBuilder</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">RobotBuilder - Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">RobotBuilder - Writing the Code</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-generating-code.html">Generating Code for a Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-writing-subsystem-code.html">Writing the Code for a Subsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-writing-command-code.html">Writing the Code for a Command</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Driving the Robot with Tank Drive and Joysticks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/index.html">RobotBuilder - Advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">RobotBuilder</a></li>
+          <li class="breadcrumb-item"><a href="index.html">RobotBuilder - Writing the Code</a></li>
+      <li class="breadcrumb-item active">Driving the Robot with Tank Drive and Joysticks</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-drive-tank.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="driving-the-robot-with-tank-drive-and-joysticks">
+<h1>Driving the Robot with Tank Drive and Joysticks<a class="headerlink" href="#driving-the-robot-with-tank-drive-and-joysticks" title="Permalink to this heading"></a></h1>
+<p>A common use case is to have a joystick that should drive some actuators that are part of a subsystem. The problem is that the joystick is created in the RobotContainer class and the motors to be controlled are in the subsystem. The idea is to create a command that, when scheduled, reads input from the joystick and calls a method that is created on the subsystem that drives the motors.</p>
+<p>In this example a drive base subsystem is shown that is operated in tank drive using a pair of joysticks.</p>
+<section id="create-a-drive-train-subsystem">
+<h2>Create a Drive Train Subsystem<a class="headerlink" href="#create-a-drive-train-subsystem" title="Permalink to this heading"></a></h2>
+<img alt="Dragging subsystem from palette to tree" src="../../../../../_images/driving-with-joysticks-subsystem.png" />
+<p>Create a subsystem called Drive Train. Its responsibility will be to handle the driving for the robot base.</p>
+<img alt="Dragging differential drive from palette to tree" src="../../../../../_images/driving-with-joysticks-differential-drive.png" />
+<p>Inside the Drive Train create a Differential Drive object for a two motor drive. There is a left motor and right motor as part of the Differential Drive class.</p>
+<img alt="Dragging motor controller group from palette to tree" src="../../../../../_images/driving-with-joysticks-speed-controller-group.png" />
+<p>Since we want to use more then two motors to drive the robot, inside the Differential Drive, create two Motor Controller Groups. These will group multiple motor controllers so they can be used with Differential Drive.</p>
+<img alt="Dragging motor controller from pallet to tree" src="../../../../../_images/driving-with-joysticks-speed-controller.png" />
+<p>Finally, create two Motor Controllers in each Motor Controller Group.</p>
+</section>
+<section id="add-the-joysticks-to-the-operator-interface">
+<h2>Add the Joysticks to the Operator Interface<a class="headerlink" href="#add-the-joysticks-to-the-operator-interface" title="Permalink to this heading"></a></h2>
+<img alt="dragging joystick from palette to tree" src="../../../../../_images/driving-with-joysticks-joysticks.png" />
+<p>Add two joysticks to the Operator Interface, one is the left stick and the other is the right stick. The y-axis on the two joysticks are used to drive the robots left and right sides.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be sure to export your program to C++ or Java before continuing to the next step.</p>
+</div>
+</section>
+<section id="create-a-method-to-write-the-motors-on-the-subsystem">
+<h2>Create a Method to Write the Motors on the Subsystem<a class="headerlink" href="#create-a-method-to-write-the-motors-on-the-subsystem" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-amF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-amF2YQ==" name="amF2YQ==" role="tab" tabindex="0">java</button><button aria-controls="panel-0-QysrIChIZWFkZXIp" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-QysrIChIZWFkZXIp" name="QysrIChIZWFkZXIp" role="tab" tabindex="-1">C++ (Header)</button><button aria-controls="panel-0-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-0-amF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-amF2YQ==" name="amF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 11</span><span class="c1">// ROBOTBUILDER TYPE: Subsystem.</span><span class="w"></span>
+<span class="linenos"> 12</span>
+<span class="linenos"> 13</span><span class="kn">package</span><span class="w"> </span><span class="nn">frc.robot.subsystems</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 14</span>
+<span class="linenos"> 15</span>
+<span class="linenos"> 16</span><span class="kn">import</span><span class="w"> </span><span class="nn">frc.robot.commands.*</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 17</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.livewindow.LiveWindow</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 18</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj2.command.SubsystemBase</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=IMPORTS</span><span class="w"></span>
+<span class="linenos"> 21</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.AnalogGyro</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 22</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.AnalogInput</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 23</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.CounterBase.EncodingType</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 24</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.Encoder</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 25</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.drive.DifferentialDrive</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 26</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.motorcontrol.MotorController</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 27</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 28</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 29</span>
+<span class="linenos"> 30</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=IMPORTS</span><span class="w"></span>
+<span class="linenos"> 31</span>
+<span class="linenos"> 32</span>
+<span class="linenos"> 33</span><span class="cm">/**</span>
+<span class="linenos"> 34</span><span class="cm"> *</span>
+<span class="linenos"> 35</span><span class="cm"> */</span><span class="w"></span>
+<span class="linenos"> 36</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Drivetrain</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SubsystemBase</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 37</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTANTS</span><span class="w"></span>
+<span class="linenos"> 38</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PlaceDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 39</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">BackAwayDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.6</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 40</span>
+<span class="linenos"> 41</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTANTS</span><span class="w"></span>
+<span class="linenos"> 42</span>
+<span class="linenos"> 43</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DECLARATIONS</span><span class="w"></span>
+<span class="linenos"> 44</span><span class="kd">private</span><span class="w"> </span><span class="n">PWMVictorSPX</span><span class="w"> </span><span class="n">left1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 45</span><span class="kd">private</span><span class="w"> </span><span class="n">PWMVictorSPX</span><span class="w"> </span><span class="n">left2</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 46</span><span class="kd">private</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">leftMotor</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 47</span><span class="kd">private</span><span class="w"> </span><span class="n">PWMVictorSPX</span><span class="w"> </span><span class="n">right1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 48</span><span class="kd">private</span><span class="w"> </span><span class="n">PWMVictorSPX</span><span class="w"> </span><span class="n">right2</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 49</span><span class="kd">private</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">rightMotor</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 50</span><span class="kd">private</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">drive</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 51</span><span class="kd">private</span><span class="w"> </span><span class="n">Encoder</span><span class="w"> </span><span class="n">leftencoder</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 52</span><span class="kd">private</span><span class="w"> </span><span class="n">Encoder</span><span class="w"> </span><span class="n">rightencoder</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 53</span><span class="kd">private</span><span class="w"> </span><span class="n">AnalogGyro</span><span class="w"> </span><span class="n">gyro</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 54</span><span class="kd">private</span><span class="w"> </span><span class="n">AnalogInput</span><span class="w"> </span><span class="n">rangefinder</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 55</span>
+<span class="linenos"> 56</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DECLARATIONS</span><span class="w"></span>
+<span class="linenos"> 57</span>
+<span class="linenos"> 58</span><span class="w">    </span><span class="cm">/**</span>
+<span class="linenos"> 59</span><span class="cm">    *</span>
+<span class="linenos"> 60</span><span class="cm">    */</span><span class="w"></span>
+<span class="linenos"> 61</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Drivetrain</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 62</span><span class="w">        </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS</span><span class="w"></span>
+<span class="linenos"> 63</span><span class="n">left1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMVictorSPX</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 64</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;left1&quot;</span><span class="p">,</span><span class="n">left1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 65</span><span class="w"> </span><span class="n">left1</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 66</span>
+<span class="linenos"> 67</span><span class="n">left2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMVictorSPX</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 68</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;left2&quot;</span><span class="p">,</span><span class="n">left2</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 69</span><span class="w"> </span><span class="n">left2</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 70</span>
+<span class="linenos"> 71</span><span class="n">leftMotor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">left1</span><span class="p">,</span><span class="w"> </span><span class="n">left2</span><span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 72</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;Left Motor&quot;</span><span class="p">,</span><span class="n">leftMotor</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 73</span>
+<span class="linenos"> 74</span>
+<span class="linenos"> 75</span><span class="n">right1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMVictorSPX</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 76</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;right1&quot;</span><span class="p">,</span><span class="n">right1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 77</span><span class="w"> </span><span class="n">right1</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span><span class="n">right2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMVictorSPX</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 80</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;right2&quot;</span><span class="p">,</span><span class="n">right2</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 81</span><span class="w"> </span><span class="n">right2</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 82</span>
+<span class="linenos"> 83</span><span class="n">rightMotor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">right1</span><span class="p">,</span><span class="w"> </span><span class="n">right2</span><span class="w">  </span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 84</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;Right Motor&quot;</span><span class="p">,</span><span class="n">rightMotor</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 85</span>
+<span class="linenos"> 86</span>
+<span class="linenos"> 87</span><span class="n">drive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">leftMotor</span><span class="p">,</span><span class="w"> </span><span class="n">rightMotor</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 88</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;Drive&quot;</span><span class="p">,</span><span class="n">drive</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 89</span><span class="w"> </span><span class="n">drive</span><span class="p">.</span><span class="na">setSafetyEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 90</span><span class="n">drive</span><span class="p">.</span><span class="na">setExpiration</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 91</span><span class="n">drive</span><span class="p">.</span><span class="na">setMaxOutput</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 92</span>
+<span class="linenos"> 93</span>
+<span class="linenos"> 94</span><span class="n">leftencoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Encoder</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="n">EncodingType</span><span class="p">.</span><span class="na">k4X</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 95</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;left encoder&quot;</span><span class="p">,</span><span class="n">leftencoder</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 96</span><span class="w"> </span><span class="n">leftencoder</span><span class="p">.</span><span class="na">setDistancePerPulse</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 97</span>
+<span class="linenos"> 98</span><span class="n">rightencoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Encoder</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="n">EncodingType</span><span class="p">.</span><span class="na">k4X</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 99</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;right encoder&quot;</span><span class="p">,</span><span class="n">rightencoder</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">100</span><span class="w"> </span><span class="n">rightencoder</span><span class="p">.</span><span class="na">setDistancePerPulse</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">101</span>
+<span class="linenos">102</span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AnalogGyro</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">103</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;gyro&quot;</span><span class="p">,</span><span class="n">gyro</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">104</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="na">setSensitivity</span><span class="p">(</span><span class="mf">0.007</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">105</span>
+<span class="linenos">106</span><span class="n">rangefinder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AnalogInput</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">107</span><span class="w"> </span><span class="n">addChild</span><span class="p">(</span><span class="s">&quot;range finder&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rangefinder</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">108</span>
+<span class="linenos">109</span>
+<span class="linenos">110</span>
+<span class="linenos">111</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS</span><span class="w"></span>
+<span class="linenos">112</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">113</span>
+<span class="linenos">114</span><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">115</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">periodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">116</span><span class="w">        </span><span class="c1">// This method will be called once per scheduler run</span><span class="w"></span>
+<span class="linenos">117</span>
+<span class="linenos">118</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">119</span>
+<span class="linenos">120</span><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">121</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">simulationPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">122</span><span class="w">        </span><span class="c1">// This method will be called once per scheduler run when in simulation</span><span class="w"></span>
+<span class="linenos">123</span>
+<span class="linenos">124</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">125</span>
+<span class="linenos">126</span><span class="w">    </span><span class="c1">// Put methods for controlling this subsystem</span><span class="w"></span>
+<span class="linenos">127</span><span class="w">    </span><span class="c1">// here. Call these from Commands.</span><span class="w"></span>
+<span class="linenos">128</span>
+<span class="hll"><span class="linenos">129</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">drive</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">130</span><span class="w">        </span><span class="n">drive</span><span class="p">.</span><span class="na">tankDrive</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">);</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">131</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</span><span class="linenos">132</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-QysrIChIZWFkZXIp" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-QysrIChIZWFkZXIp" name="QysrIChIZWFkZXIp" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="c1">// ROBOTBUILDER TYPE: Subsystem.</span>
+<span class="linenos">12</span><span class="cp">#pragma once</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=INCLUDES</span>
+<span class="linenos">15</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc2/command/SubsystemBase.h&gt;</span><span class="cp"></span>
+<span class="linenos">16</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/AnalogGyro.h&gt;</span><span class="cp"></span>
+<span class="linenos">17</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/AnalogInput.h&gt;</span><span class="cp"></span>
+<span class="linenos">18</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/Encoder.h&gt;</span><span class="cp"></span>
+<span class="linenos">19</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/drive/DifferentialDrive.h&gt;</span><span class="cp"></span>
+<span class="linenos">20</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/motorcontrol/MotorControllerGroup.h&gt;</span><span class="cp"></span>
+<span class="linenos">21</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/motorcontrol/PWMVictorSPX.h&gt;</span><span class="cp"></span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=INCLUDES</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="cm">/**</span>
+<span class="linenos">26</span><span class="cm"> *</span>
+<span class="linenos">27</span><span class="cm"> *</span>
+<span class="linenos">28</span><span class="cm"> * @author ExampleAuthor</span>
+<span class="linenos">29</span><span class="cm"> */</span><span class="w"></span>
+<span class="linenos">30</span><span class="k">class</span><span class="w"> </span><span class="nc">Drivetrain</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">frc2</span><span class="o">::</span><span class="n">SubsystemBase</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">31</span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">    </span><span class="c1">// It&#39;s desirable that everything possible is private except</span>
+<span class="linenos">33</span><span class="w">    </span><span class="c1">// for methods that implement subsystem capabilities</span>
+<span class="linenos">34</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DECLARATIONS</span>
+<span class="linenos">35</span><span class="n">frc</span><span class="o">::</span><span class="n">AnalogInput</span><span class="w"> </span><span class="n">m_rangefinder</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">36</span><span class="n">frc</span><span class="o">::</span><span class="n">AnalogGyro</span><span class="w"> </span><span class="n">m_gyro</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">37</span><span class="n">frc</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">m_rightencoder</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">Encoder</span><span class="o">::</span><span class="n">k4X</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">38</span><span class="n">frc</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">m_leftencoder</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">Encoder</span><span class="o">::</span><span class="n">k4X</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">39</span><span class="n">frc</span><span class="o">::</span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_drive</span><span class="p">{</span><span class="n">m_leftMotor</span><span class="p">,</span><span class="w"> </span><span class="n">m_rightMotor</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">40</span><span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">m_rightMotor</span><span class="p">{</span><span class="n">m_right1</span><span class="p">,</span><span class="w"> </span><span class="n">m_right2</span><span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="linenos">41</span><span class="n">frc</span><span class="o">::</span><span class="n">PWMVictorSPX</span><span class="w"> </span><span class="n">m_right2</span><span class="p">{</span><span class="mi">6</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">42</span><span class="n">frc</span><span class="o">::</span><span class="n">PWMVictorSPX</span><span class="w"> </span><span class="n">m_right1</span><span class="p">{</span><span class="mi">5</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">43</span><span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">m_leftMotor</span><span class="p">{</span><span class="n">m_left1</span><span class="p">,</span><span class="w"> </span><span class="n">m_left2</span><span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="linenos">44</span><span class="n">frc</span><span class="o">::</span><span class="n">PWMVictorSPX</span><span class="w"> </span><span class="n">m_left2</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">45</span><span class="n">frc</span><span class="o">::</span><span class="n">PWMVictorSPX</span><span class="w"> </span><span class="n">m_left1</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">46</span>
+<span class="linenos">47</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DECLARATIONS</span>
+<span class="linenos">48</span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">49</span><span class="n">Drivetrain</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">50</span>
+<span class="linenos">51</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Periodic</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">52</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">SimulationPeriodic</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="hll"><span class="linenos">53</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">Drive</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">right</span><span class="p">);</span><span class="w"></span>
+</span><span class="linenos">54</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CMDPIDGETTERS</span>
+<span class="linenos">55</span>
+<span class="linenos">56</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CMDPIDGETTERS</span>
+<span class="linenos">57</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTANTS</span>
+<span class="linenos">58</span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PlaceDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">59</span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">BackAwayDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.6</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">60</span>
+<span class="linenos">61</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTANTS</span>
+<span class="linenos">62</span>
+<span class="linenos">63</span>
+<span class="linenos">64</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="c1">// ROBOTBUILDER TYPE: Subsystem.</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=INCLUDES</span>
+<span class="linenos">14</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;subsystems/Drivetrain.h&quot;</span><span class="cp"></span>
+<span class="linenos">15</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/smartdashboard/SmartDashboard.h&gt;</span><span class="cp"></span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=INCLUDES</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="n">Drivetrain</span><span class="o">::</span><span class="n">Drivetrain</span><span class="p">(){</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">    </span><span class="n">SetName</span><span class="p">(</span><span class="s">&quot;Drivetrain&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DECLARATIONS</span>
+<span class="linenos">22</span><span class="w">    </span><span class="n">SetSubsystem</span><span class="p">(</span><span class="s">&quot;Drivetrain&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;range finder&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_rangefinder</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">25</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;gyro&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_gyro</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">28</span><span class="w"> </span><span class="n">m_gyro</span><span class="p">.</span><span class="n">SetSensitivity</span><span class="p">(</span><span class="mf">0.007</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;right encoder&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_rightencoder</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">31</span><span class="w"> </span><span class="n">m_rightencoder</span><span class="p">.</span><span class="n">SetDistancePerPulse</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;left encoder&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_leftencoder</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">34</span><span class="w"> </span><span class="n">m_leftencoder</span><span class="p">.</span><span class="n">SetDistancePerPulse</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;Drive&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_drive</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">37</span><span class="w"> </span><span class="n">m_drive</span><span class="p">.</span><span class="n">SetSafetyEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">38</span><span class="n">m_drive</span><span class="p">.</span><span class="n">SetExpiration</span><span class="p">(</span><span class="mf">0.1</span><span class="n">_s</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">39</span><span class="n">m_drive</span><span class="p">.</span><span class="n">SetMaxOutput</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">40</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;Right Motor&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_rightMotor</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">43</span>
+<span class="linenos">44</span>
+<span class="linenos">45</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;right2&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_right2</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">46</span><span class="w"> </span><span class="n">m_right2</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">47</span>
+<span class="linenos">48</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;right1&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_right1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">49</span><span class="w"> </span><span class="n">m_right1</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">50</span>
+<span class="linenos">51</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;Left Motor&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_leftMotor</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">52</span>
+<span class="linenos">53</span>
+<span class="linenos">54</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;left2&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_left2</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">55</span><span class="w"> </span><span class="n">m_left2</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">56</span>
+<span class="linenos">57</span><span class="w"> </span><span class="n">AddChild</span><span class="p">(</span><span class="s">&quot;left1&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">m_left1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">58</span><span class="w"> </span><span class="n">m_left1</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">59</span>
+<span class="linenos">60</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DECLARATIONS</span>
+<span class="linenos">61</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">62</span>
+<span class="linenos">63</span><span class="kt">void</span><span class="w"> </span><span class="n">Drivetrain</span><span class="o">::</span><span class="n">Periodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">64</span><span class="w">    </span><span class="c1">// Put code here to be run every loop</span>
+<span class="linenos">65</span>
+<span class="linenos">66</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">67</span>
+<span class="linenos">68</span><span class="kt">void</span><span class="w"> </span><span class="n">Drivetrain</span><span class="o">::</span><span class="n">SimulationPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">69</span><span class="w">    </span><span class="c1">// This method will be called once per scheduler run when in simulation</span>
+<span class="linenos">70</span>
+<span class="linenos">71</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">72</span>
+<span class="linenos">73</span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CMDPIDGETTERS</span>
+<span class="linenos">74</span>
+<span class="linenos">75</span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CMDPIDGETTERS</span>
+<span class="linenos">76</span>
+<span class="linenos">77</span>
+<span class="linenos">78</span><span class="c1">// Put methods for controlling this subsystem</span>
+<span class="linenos">79</span><span class="c1">// here. Call these from Commands.</span>
+<span class="linenos">80</span>
+<span class="hll"><span class="linenos">81</span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">Drivetrain</span><span class="o">::</span><span class="n">Drive</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">82</span><span class="w">        </span><span class="n">m_drive</span><span class="p">.</span><span class="n">TankDrive</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">);</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">83</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</span></pre></div>
+</div>
+</div></div>
+<p>Create a method that takes the joystick inputs, in this case the left and right driver joystick. The values are passed to the DifferentialDrive object that in turn does tank steering using the joystick values. Also create a method called stop() that stops the robot from driving, this might come in handy later.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some RobotBuilder output has been removed for this example for clarity</p>
+</div>
+</section>
+<section id="read-joystick-values-and-call-the-subsystem-methods">
+<h2>Read Joystick Values and Call the Subsystem Methods<a class="headerlink" href="#read-joystick-values-and-call-the-subsystem-methods" title="Permalink to this heading"></a></h2>
+<img alt="dragging a command from palette to the tree" src="../../../../../_images/driving-with-joysticks-command.png" />
+<p>Create a command, in this case called Tank Drive. Its purpose will be to read the joystick values and send them to the Drive Base subsystem. Notice that this command Requires the Drive Train subsystem. This will cause it to stop running whenever anything else tries to use the Drive Train.</p>
+<img alt="parameter dialog box with DoubleSupplier parameters added" src="../../../../../_images/driving-with-joysticks-command-parameters.png" />
+<p>Create two parameters (<code class="docutils literal notranslate"><span class="pre">DoubleSupplier</span></code> for Java or <code class="docutils literal notranslate"><span class="pre">std::function&lt;double()&gt;</span></code> for C++) for the left and right speeds.</p>
+<img alt="paramet preset dialog box with parameters entered" src="../../../../../_images/driving-with-joysticks-command-parameters-presets.png" />
+<p>Create a parameter preset to retrive joystick values. Java: For the left parameter enter <code class="docutils literal notranslate"><span class="pre">()</span> <span class="pre">-&gt;</span> <span class="pre">getJoystick1().getY()</span></code> and for right enter <code class="docutils literal notranslate"><span class="pre">()</span> <span class="pre">-&gt;</span> <span class="pre">getJoystick2().getY()</span></code>. C++: For the left parameter enter <code class="docutils literal notranslate"><span class="pre">[this]</span> <span class="pre">{return</span> <span class="pre">getJoystick1()-&gt;GetY();}</span></code> and for the right enter <code class="docutils literal notranslate"><span class="pre">[this]</span> <span class="pre">{return</span> <span class="pre">getJoystick2()-&gt;GetY();}</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be sure to export your program to C++ or Java before continuing to the next step.</p>
+</div>
+</section>
+<section id="add-the-code-to-do-the-driving">
+<h2>Add the Code to do the Driving<a class="headerlink" href="#add-the-code-to-do-the-driving" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-amF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-amF2YQ==" name="amF2YQ==" role="tab" tabindex="0">java</button><button aria-controls="panel-1-QysrIChIZWFkZXIp" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-QysrIChIZWFkZXIp" name="QysrIChIZWFkZXIp" role="tab" tabindex="-1">C++ (Header)</button><button aria-controls="panel-1-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-1-amF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-1-amF2YQ==" name="amF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="c1">// ROBOTBUILDER TYPE: Command.</span><span class="w"></span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="kn">package</span><span class="w"> </span><span class="nn">frc.robot.commands</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">14</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.Joystick</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">15</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj2.command.CommandBase</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">16</span><span class="kn">import</span><span class="w"> </span><span class="nn">frc.robot.RobotContainer</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">17</span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=IMPORTS</span><span class="w"></span>
+<span class="linenos">18</span><span class="kn">import</span><span class="w"> </span><span class="nn">frc.robot.subsystems.Drivetrain</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=IMPORTS</span><span class="w"></span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="cm">/**</span>
+<span class="linenos">23</span><span class="cm"> *</span>
+<span class="linenos">24</span><span class="cm"> */</span><span class="w"></span>
+<span class="linenos">25</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TankDrive</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">CommandBase</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=VARIABLE_DECLARATIONS</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Drivetrain</span><span class="w"> </span><span class="n">m_drivetrain</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=VARIABLE_DECLARATIONS</span><span class="w"></span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS</span><span class="w"></span>
+<span class="linenos">33</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">TankDrive</span><span class="p">(</span><span class="n">Drivetrain</span><span class="w"> </span><span class="n">subsystem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">36</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS</span><span class="w"></span>
+<span class="linenos">39</span><span class="w">        </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=VARIABLE_SETTING</span><span class="w"></span>
+<span class="linenos">40</span>
+<span class="linenos">41</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=VARIABLE_SETTING</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">        </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=REQUIRES</span><span class="w"></span>
+<span class="linenos">43</span>
+<span class="linenos">44</span><span class="w">        </span><span class="n">m_drivetrain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsystem</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">        </span><span class="n">addRequirements</span><span class="p">(</span><span class="n">m_drivetrain</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">46</span>
+<span class="linenos">47</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=REQUIRES</span><span class="w"></span>
+<span class="linenos">48</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">49</span>
+<span class="linenos">50</span><span class="w">    </span><span class="c1">// Called when the command is initially scheduled.</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">52</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">54</span>
+<span class="linenos">55</span><span class="w">    </span><span class="c1">// Called every time the scheduler runs while the command is scheduled.</span><span class="w"></span>
+<span class="linenos">56</span><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">58</span><span class="w">        </span><span class="n">m_drivetrain</span><span class="p">.</span><span class="na">drive</span><span class="p">(</span><span class="n">m_left</span><span class="p">.</span><span class="na">getAsDouble</span><span class="p">(),</span><span class="w"> </span><span class="n">m_right</span><span class="p">.</span><span class="na">getAsDouble</span><span class="p">());</span><span class="w"></span>
+</span><span class="linenos">59</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">60</span>
+<span class="linenos">61</span><span class="w">    </span><span class="c1">// Called once the command ends or is interrupted.</span><span class="w"></span>
+<span class="linenos">62</span><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">63</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">end</span><span class="p">(</span><span class="kt">boolean</span><span class="w"> </span><span class="n">interrupted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">64</span><span class="w">        </span><span class="n">m_drivetrain</span><span class="p">.</span><span class="na">drive</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+</span><span class="linenos">65</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">66</span>
+<span class="linenos">67</span><span class="w">    </span><span class="c1">// Returns true when the command should end.</span><span class="w"></span>
+<span class="linenos">68</span><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">69</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isFinished</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">70</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">71</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">72</span>
+<span class="linenos">73</span><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">74</span><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">runsWhenDisabled</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">75</span><span class="w">        </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DISABLED</span><span class="w"></span>
+<span class="linenos">76</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">77</span>
+<span class="linenos">78</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DISABLED</span><span class="w"></span>
+<span class="linenos">79</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">80</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-QysrIChIZWFkZXIp" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-QysrIChIZWFkZXIp" name="QysrIChIZWFkZXIp" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="c1">// ROBOTBUILDER TYPE: Command.</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="cp">#pragma once</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=INCLUDES</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc2/command/CommandHelper.h&gt;</span><span class="cp"></span>
+<span class="linenos">18</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc2/command/CommandBase.h&gt;</span><span class="cp"></span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;subsystems/Drivetrain.h&quot;</span><span class="cp"></span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=INCLUDES</span>
+<span class="linenos">23</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;RobotContainer.h&quot;</span><span class="cp"></span>
+<span class="linenos">24</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/Joystick.h&gt;</span><span class="cp"></span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="cm">/**</span>
+<span class="linenos">27</span><span class="cm"> *</span>
+<span class="linenos">28</span><span class="cm"> *</span>
+<span class="linenos">29</span><span class="cm"> * @author ExampleAuthor</span>
+<span class="linenos">30</span><span class="cm"> */</span><span class="w"></span>
+<span class="linenos">31</span><span class="k">class</span><span class="w"> </span><span class="nc">TankDrive</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandHelper</span><span class="o">&lt;</span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandBase</span><span class="p">,</span><span class="w"> </span><span class="n">TankDrive</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">32</span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTOR</span>
+<span class="linenos">34</span><span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">TankDrive</span><span class="p">(</span><span class="n">Drivetrain</span><span class="o">*</span><span class="w"> </span><span class="n">m_drivetrain</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTOR</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="kt">void</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">39</span><span class="kt">void</span><span class="w"> </span><span class="nf">Execute</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">40</span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsFinished</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">41</span><span class="kt">void</span><span class="w"> </span><span class="nf">End</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">interrupted</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">42</span><span class="kt">bool</span><span class="w"> </span><span class="nf">RunsWhenDisabled</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">43</span>
+<span class="linenos">44</span>
+<span class="linenos">45</span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=VARIABLES</span>
+<span class="linenos">47</span>
+<span class="linenos">48</span>
+<span class="linenos">49</span><span class="n">Drivetrain</span><span class="o">*</span><span class="w"> </span><span class="n">m_drivetrain</span><span class="p">;</span><span class="w"></span>
+<span class="hll"><span class="linenos">50</span><span class="n">frc</span><span class="o">::</span><span class="n">Joystick</span><span class="o">*</span><span class="w"> </span><span class="n">m_leftJoystick</span><span class="p">;</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">51</span><span class="n">frc</span><span class="o">::</span><span class="n">Joystick</span><span class="o">*</span><span class="w"> </span><span class="n">m_rightJoystick</span><span class="p">;</span><span class="w"></span>
+</span><span class="linenos">52</span>
+<span class="linenos">53</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=VARIABLES</span>
+<span class="linenos">54</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="c1">// ROBOTBUILDER TYPE: Command.</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTOR</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;commands/TankDrive.h&quot;</span><span class="cp"></span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">TankDrive</span><span class="o">::</span><span class="n">TankDrive</span><span class="p">(</span><span class="n">Drivetrain</span><span class="o">*</span><span class="w"> </span><span class="n">m_drivetrain</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">18</span><span class="o">:</span><span class="n">m_drivetrain</span><span class="p">(</span><span class="n">m_drivetrain</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">    </span><span class="c1">// Use AddRequirements() here to declare subsystem dependencies</span>
+<span class="linenos">21</span><span class="w">    </span><span class="c1">// eg. AddRequirements(m_Subsystem);</span>
+<span class="linenos">22</span><span class="w">    </span><span class="n">SetName</span><span class="p">(</span><span class="s">&quot;TankDrive&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">    </span><span class="n">AddRequirements</span><span class="p">({</span><span class="n">m_drivetrain</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTOR</span>
+<span class="linenos">26</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="c1">// Called just before this Command runs the first time</span>
+<span class="linenos">29</span><span class="kt">void</span><span class="w"> </span><span class="n">TankDrive</span><span class="o">::</span><span class="n">Initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="c1">// Called repeatedly when this Command is scheduled to run</span>
+<span class="linenos">34</span><span class="kt">void</span><span class="w"> </span><span class="n">TankDrive</span><span class="o">::</span><span class="n">Execute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">35</span><span class="w">    </span><span class="n">m_drivetrain</span><span class="o">-&gt;</span><span class="n">Drive</span><span class="p">(</span><span class="n">m_left</span><span class="p">(),</span><span class="n">m_right</span><span class="p">());</span><span class="w"></span>
+</span><span class="linenos">36</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="c1">// Make this return true when this Command no longer needs to run execute()</span>
+<span class="linenos">39</span><span class="kt">bool</span><span class="w"> </span><span class="n">TankDrive</span><span class="o">::</span><span class="n">IsFinished</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">41</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">42</span>
+<span class="linenos">43</span><span class="c1">// Called once after isFinished returns true</span>
+<span class="linenos">44</span><span class="kt">void</span><span class="w"> </span><span class="n">TankDrive</span><span class="o">::</span><span class="n">End</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">interrupted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">45</span><span class="w">    </span><span class="n">m_drivetrain</span><span class="o">-&gt;</span><span class="n">Drive</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</span><span class="linenos">46</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">47</span>
+<span class="linenos">48</span><span class="kt">bool</span><span class="w"> </span><span class="n">TankDrive</span><span class="o">::</span><span class="n">RunsWhenDisabled</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">49</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DISABLED</span>
+<span class="linenos">50</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">51</span>
+<span class="linenos">52</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DISABLED</span>
+<span class="linenos">53</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Add code to the execute method to do the actual driving. All that is needed is pass the for the left and right parameters to the Drive Train subsystem. The subsystem just uses them for the tank steering method on its DifferentialDrive object. And we get tank steering.</p>
+<p>We also filled in the <code class="docutils literal notranslate"><span class="pre">end()</span></code> method so that when this command is interrupted or stopped, the motors will be stopped as a safety precaution.</p>
+</section>
+<section id="make-default-command">
+<h2>Make Default Command<a class="headerlink" href="#make-default-command" title="Permalink to this heading"></a></h2>
+<img alt="setting default command for subsystem" src="../../../../../_images/driving-with-joysticks-default-command.png" />
+<p>The last step is to make the Tank Drive command be the “Default Command” for the Drive Train subsystem. This means that whenever no other command is using the Drive Train, the Joysticks will be in control. This is probably the desirable behavior. When the autonomous code is running, it will also require the drive train and interrupt the Tank Drive command. When the autonomous code is finished, the DriveWithJoysticks command will restart automatically (because it is the default command), and the operators will be back in control. If you write any code that does teleop automatic driving, those commands should also “require” the DriveTrain so that they too will interrupt the Tank Drive command and have full control.</p>
+<img alt="applying parameter preset to command" src="../../../../../_images/driving-with-joysticks-default-command-parameters.png" />
+<p>The final step is to choose the joystick parameter preset previously set up.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be sure to export your program to C++ or Java before continuing.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="robotbuilder-writing-command-code.html" class="btn btn-neutral float-left" title="Writing the Code for a Command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../advanced/index.html" class="btn btn-neutral float-right" title="RobotBuilder - Advanced" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Structuring a Command-Based Robot Project" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/commandbased/structuring-command-based-project.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="While users are free to use the command-based libraries however they like (and advanced users are encouraged to do so), new users may want some guidance on how to structure a basic command-based ro..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/structuring-command-based-project.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/structuring-command-based-project.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/commandbased/structuring-command-based-project.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/commandbased/structuring-command-based-project.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/commandbased/structuring-command-based-project.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/commandbased/structuring-command-based-project.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/commandbased/structuring-command-based-project.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/commandbased/structuring-command-based-project.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Structuring a Command-Based Robot Project &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/structuring-command-based-project.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Organizing Command-Based Robot Projects" href="organizing-command-based.html" />
+    <link rel="prev" title="Binding Commands to Triggers" href="binding-commands-to-triggers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Command-Based Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="what-is-command-based.html">What Is “Command-Based” Programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-compositions.html">Command Compositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subsystems.html">Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binding-commands-to-triggers.html">Binding Commands to Triggers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Structuring a Command-Based Robot Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing-command-based.html">Organizing Command-Based Robot Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-scheduler.html">The Command Scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp-command-discussion.html">A Technical Discussion on C++ Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-subsystems-commands.html">PID Control through PIDSubsystems and PIDCommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile-subsystems-commands.html">Motion Profiling through TrapezoidProfileSubsystems and TrapezoidProfileCommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profilepid-subsystems-commands.html">Combining Motion Profiling and PID in Command-Based</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-based-changes.html">2020 Command-Based Rewrite: What Changed?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Command-Based Programming</a></li>
+      <li class="breadcrumb-item active">Structuring a Command-Based Robot Project</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/commandbased/structuring-command-based-project.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="structuring-a-command-based-robot-project">
+<h1>Structuring a Command-Based Robot Project<a class="headerlink" href="#structuring-a-command-based-robot-project" title="Permalink to this heading"></a></h1>
+<p>While users are free to use the command-based libraries however they like (and advanced users are encouraged to do so), new users may want some guidance on how to structure a basic command-based robot project.</p>
+<p>A standard template for a command-based robot project is included in the WPILib examples repository (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/templates/commandbased">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/templates/commandbased">C++</a>). This section will walk users through the structure of this template.</p>
+<p>The root package/directory generally will contain four classes:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Main</span></code>, which is the main robot application (Java only). New users <em>should not</em> touch this class. <code class="docutils literal notranslate"><span class="pre">Robot</span></code>, which is responsible for the main control flow of the robot code. <code class="docutils literal notranslate"><span class="pre">RobotContainer</span></code>, which holds robot subsystems and commands, and is where most of the declarative robot setup (e.g. button bindings) is performed. <code class="docutils literal notranslate"><span class="pre">Constants</span></code>, which holds globally-accessible constants to be used throughout the robot.</p>
+<p>The root directory will also contain two sub-packages/sub-directories: <code class="docutils literal notranslate"><span class="pre">Subsystems</span></code> contains all user-defined subsystem classes. <code class="docutils literal notranslate"><span class="pre">Commands</span></code> contains all user-defined command classes.</p>
+<section id="robot">
+<h2>Robot<a class="headerlink" href="#robot" title="Permalink to this heading"></a></h2>
+<p>As <code class="docutils literal notranslate"><span class="pre">Robot</span></code> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/templates/commandbased/Robot.java">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibcExamples/src/main/cpp/templates/commandbased/include/Robot.h">C++ (Header)</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibcExamples/src/main/cpp/templates/commandbased/cpp/Robot.cpp">C++ (Source)</a>) is responsible for the program’s control flow, and command-based is an declarative paradigm designed to minimize the amount of attention the user has to pay to explicit program control flow, the <code class="docutils literal notranslate"><span class="pre">Robot</span></code> class of a command-based project should be mostly empty. However, there are a few important things that must be included</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">22</span><span class="w">  </span><span class="cm">/**</span>
+<span class="linenos">23</span><span class="cm">   * This function is run when the robot is first started up and should be used for any</span>
+<span class="linenos">24</span><span class="cm">   * initialization code.</span>
+<span class="linenos">25</span><span class="cm">   */</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">    </span><span class="c1">// Instantiate our RobotContainer.  This will perform all our button bindings, and put our</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">    </span><span class="c1">// autonomous chooser on the dashboard.</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">    </span><span class="n">m_robotContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RobotContainer</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>In Java, an instance of <code class="docutils literal notranslate"><span class="pre">RobotContainer</span></code> should be constructed during the <code class="docutils literal notranslate"><span class="pre">robotInit()</span></code> method - this is important, as most of the declarative robot setup will be called from the <code class="docutils literal notranslate"><span class="pre">RobotContainer</span></code> constructor.</p>
+<p>In C++, this is not needed as RobotContainer is a value member and will be constructed during the construction of <code class="docutils literal notranslate"><span class="pre">Robot</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">33</span><span class="w">  </span><span class="cm">/**</span>
+<span class="linenos">34</span><span class="cm">   * This function is called every 20 ms, no matter the mode. Use this for items like diagnostics</span>
+<span class="linenos">35</span><span class="cm">   * that you want ran during disabled, autonomous, teleoperated and test.</span>
+<span class="linenos">36</span><span class="cm">   *</span>
+<span class="linenos">37</span><span class="cm">   * &lt;p&gt;This runs after the mode specific periodic functions, but before LiveWindow and</span>
+<span class="linenos">38</span><span class="cm">   * SmartDashboard integrated updating.</span>
+<span class="linenos">39</span><span class="cm">   */</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">    </span><span class="c1">// Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled</span><span class="w"></span>
+<span class="linenos">43</span><span class="w">    </span><span class="c1">// commands, running already-scheduled commands, removing finished or interrupted commands,</span><span class="w"></span>
+<span class="linenos">44</span><span class="w">    </span><span class="c1">// and running subsystem periodic() methods.  This must be called from the robot&#39;s periodic</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">    </span><span class="c1">// block in order for anything in the Command-based framework to work.</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">    </span><span class="n">CommandScheduler</span><span class="p">.</span><span class="na">getInstance</span><span class="p">().</span><span class="na">run</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="cm">/**</span>
+<span class="linenos">12</span><span class="cm"> * This function is called every 20 ms, no matter the mode. Use</span>
+<span class="linenos">13</span><span class="cm"> * this for items like diagnostics that you want to run during disabled,</span>
+<span class="linenos">14</span><span class="cm"> * autonomous, teleoperated and test.</span>
+<span class="linenos">15</span><span class="cm"> *</span>
+<span class="linenos">16</span><span class="cm"> * &lt;p&gt; This runs after the mode specific periodic functions, but before</span>
+<span class="linenos">17</span><span class="cm"> * LiveWindow and SmartDashboard integrated updating.</span>
+<span class="linenos">18</span><span class="cm"> */</span><span class="w"></span>
+<span class="linenos">19</span><span class="kt">void</span><span class="w"> </span><span class="nf">Robot::RobotPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandScheduler</span><span class="o">::</span><span class="n">GetInstance</span><span class="p">().</span><span class="n">Run</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">21</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>The inclusion of the <code class="docutils literal notranslate"><span class="pre">CommandScheduler.getInstance().run()</span></code> call in the <code class="docutils literal notranslate"><span class="pre">robotPeriodic()</span></code> method is essential; without this call, the scheduler will not execute any scheduled commands. Since <code class="docutils literal notranslate"><span class="pre">TimedRobot</span></code> runs with a default main loop frequency of 50Hz, this is the frequency with which periodic command and subsystem methods will be called. It is not recommended for new users to call this method from anywhere else in their code.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">56</span><span class="w">  </span><span class="cm">/** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">58</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">autonomousInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">59</span><span class="w">    </span><span class="n">m_autonomousCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_robotContainer</span><span class="p">.</span><span class="na">getAutonomousCommand</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">60</span>
+<span class="linenos">61</span><span class="w">    </span><span class="c1">// schedule the autonomous command (example)</span><span class="w"></span>
+<span class="linenos">62</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_autonomousCommand</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">63</span><span class="w">      </span><span class="n">m_autonomousCommand</span><span class="p">.</span><span class="na">schedule</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">64</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">65</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">33</span><span class="cm">/**</span>
+<span class="linenos">34</span><span class="cm"> * This autonomous runs the autonomous command selected by your {@link</span>
+<span class="linenos">35</span><span class="cm"> * RobotContainer} class.</span>
+<span class="linenos">36</span><span class="cm"> */</span><span class="w"></span>
+<span class="linenos">37</span><span class="kt">void</span><span class="w"> </span><span class="nf">Robot::AutonomousInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">38</span><span class="w">  </span><span class="n">m_autonomousCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_container</span><span class="p">.</span><span class="n">GetAutonomousCommand</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_autonomousCommand</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">    </span><span class="n">m_autonomousCommand</span><span class="o">-&gt;</span><span class="n">Schedule</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">43</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">autonomousInit()</span></code> method schedules an autonomous command returned by the <code class="docutils literal notranslate"><span class="pre">RobotContainer</span></code> instance. The logic for selecting which autonomous command to run can be handled inside of <code class="docutils literal notranslate"><span class="pre">RobotContainer</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">71</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">72</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">teleopInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">73</span><span class="w">    </span><span class="c1">// This makes sure that the autonomous stops running when</span><span class="w"></span>
+<span class="linenos">74</span><span class="w">    </span><span class="c1">// teleop starts running. If you want the autonomous to</span><span class="w"></span>
+<span class="linenos">75</span><span class="w">    </span><span class="c1">// continue until interrupted by another command, remove</span><span class="w"></span>
+<span class="linenos">76</span><span class="w">    </span><span class="c1">// this line or comment it out.</span><span class="w"></span>
+<span class="linenos">77</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_autonomousCommand</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">78</span><span class="w">      </span><span class="n">m_autonomousCommand</span><span class="p">.</span><span class="na">cancel</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">79</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">80</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">46</span><span class="kt">void</span><span class="w"> </span><span class="nf">Robot::TeleopInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">  </span><span class="c1">// This makes sure that the autonomous stops running when</span>
+<span class="linenos">48</span><span class="w">  </span><span class="c1">// teleop starts running. If you want the autonomous to</span>
+<span class="linenos">49</span><span class="w">  </span><span class="c1">// continue until interrupted by another command, remove</span>
+<span class="linenos">50</span><span class="w">  </span><span class="c1">// this line or comment it out.</span>
+<span class="linenos">51</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_autonomousCommand</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">52</span><span class="w">    </span><span class="n">m_autonomousCommand</span><span class="o">-&gt;</span><span class="n">Cancel</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">54</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">teleopInit()</span></code> method cancels any still-running autonomous commands. This is generally good practice.</p>
+<p>Advanced users are free to add additional code to the various init and periodic methods as they see fit; however, it should be noted that including large amounts of imperative robot code in <code class="docutils literal notranslate"><span class="pre">Robot.java</span></code> is contrary to the declarative design philosophy of the command-based paradigm, and can result in confusingly-structured/disorganized code.</p>
+</section>
+<section id="robotcontainer">
+<h2>RobotContainer<a class="headerlink" href="#robotcontainer" title="Permalink to this heading"></a></h2>
+<p>This class (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/templates/commandbased/RobotContainer.java">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibcExamples/src/main/cpp/templates/commandbased/include/RobotContainer.h">C++ (Header)</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibcExamples/src/main/cpp/templates/commandbased/cpp/RobotContainer.cpp">C++ (Source)</a>) is where most of the setup for your command-based robot will take place. In this class, you will define your robot’s subsystems and commands, bind those commands to triggering events (such as buttons), and specify which command you will run in your autonomous routine. There are a few aspects of this class new users may want explanations for:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-QysrIChIZWFkZXIp" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-QysrIChIZWFkZXIp" name="QysrIChIZWFkZXIp" role="tab" tabindex="-1">C++ (Header)</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">23</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ExampleSubsystem</span><span class="w"> </span><span class="n">m_exampleSubsystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ExampleSubsystem</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-QysrIChIZWFkZXIp" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-QysrIChIZWFkZXIp" name="QysrIChIZWFkZXIp" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">32</span><span class="w">  </span><span class="n">ExampleSubsystem</span><span class="w"> </span><span class="n">m_subsystem</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Notice that subsystems are declared as private fields in <code class="docutils literal notranslate"><span class="pre">RobotContainer</span></code>. This is in stark contrast to the previous incarnation of the command-based framework, but is much more-aligned with agreed-upon object-oriented best-practices. If subsystems are declared as global variables, it allows the user to access them from anywhere in the code. While this can make certain things easier (for example, there would be no need to pass subsystems to commands in order for those commands to access them), it makes the control flow of the program much harder to keep track of as it is not immediately obvious which parts of the code can change or be changed by which other parts of the code. This also circumvents the ability of the resource-management system to do its job, as ease-of-access makes it easy for users to accidentally make conflicting calls to subsystem methods outside of the resource-managed commands.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-5-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-5-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">61</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Autos</span><span class="p">.</span><span class="na">exampleAuto</span><span class="p">(</span><span class="n">m_exampleSubsystem</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">34</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">autos</span><span class="o">::</span><span class="n">ExampleAuto</span><span class="p">(</span><span class="o">&amp;</span><span class="n">m_subsystem</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Since subsystems are declared as private members, they must be explicitly passed to commands (a pattern called “dependency injection”) in order for those commands to call methods on them.  This is done here with <code class="docutils literal notranslate"><span class="pre">ExampleCommand</span></code>, which is passed a pointer to an <code class="docutils literal notranslate"><span class="pre">ExampleSubsystem</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-6-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-6-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-6-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-6-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">35</span><span class="w">  </span><span class="cm">/**</span>
+<span class="linenos">36</span><span class="cm">   * Use this method to define your trigger-&gt;command mappings. Triggers can be created via the</span>
+<span class="linenos">37</span><span class="cm">   * {@link Trigger#Trigger(java.util.function.BooleanSupplier)} constructor with an arbitrary</span>
+<span class="linenos">38</span><span class="cm">   * predicate, or via the named factories in {@link</span>
+<span class="linenos">39</span><span class="cm">   * edu.wpi.first.wpilibj2.command.button.CommandGenericHID}&#39;s subclasses for {@link</span>
+<span class="linenos">40</span><span class="cm">   * CommandXboxController Xbox}/{@link edu.wpi.first.wpilibj2.command.button.CommandPS4Controller</span>
+<span class="linenos">41</span><span class="cm">   * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight</span>
+<span class="linenos">42</span><span class="cm">   * joysticks}.</span>
+<span class="linenos">43</span><span class="cm">   */</span><span class="w"></span>
+<span class="linenos">44</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">configureBindings</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">    </span><span class="c1">// Schedule `ExampleCommand` when `exampleCondition` changes to `true`</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">Trigger</span><span class="p">(</span><span class="n">m_exampleSubsystem</span><span class="p">::</span><span class="n">exampleCondition</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">        </span><span class="p">.</span><span class="na">onTrue</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ExampleCommand</span><span class="p">(</span><span class="n">m_exampleSubsystem</span><span class="p">));</span><span class="w"></span>
+<span class="linenos">48</span>
+<span class="linenos">49</span><span class="w">    </span><span class="c1">// Schedule `exampleMethodCommand` when the Xbox controller&#39;s B button is pressed,</span><span class="w"></span>
+<span class="linenos">50</span><span class="w">    </span><span class="c1">// cancelling on release.</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">    </span><span class="n">m_driverController</span><span class="p">.</span><span class="na">b</span><span class="p">().</span><span class="na">whileTrue</span><span class="p">(</span><span class="n">m_exampleSubsystem</span><span class="p">.</span><span class="na">exampleMethodCommand</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">52</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-6-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">19</span><span class="kt">void</span><span class="w"> </span><span class="nf">RobotContainer::ConfigureBindings</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">  </span><span class="c1">// Configure your trigger bindings here</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="w">  </span><span class="c1">// Schedule `ExampleCommand` when `exampleCondition` changes to `true`</span>
+<span class="linenos">23</span><span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">Trigger</span><span class="p">([</span><span class="k">this</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">m_subsystem</span><span class="p">.</span><span class="n">ExampleCondition</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">  </span><span class="p">}).</span><span class="n">OnTrue</span><span class="p">(</span><span class="n">ExampleCommand</span><span class="p">(</span><span class="o">&amp;</span><span class="n">m_subsystem</span><span class="p">).</span><span class="n">ToPtr</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w">  </span><span class="c1">// Schedule `ExampleMethodCommand` when the Xbox controller&#39;s B button is</span>
+<span class="linenos">28</span><span class="w">  </span><span class="c1">// pressed, cancelling on release.</span>
+<span class="linenos">29</span><span class="w">  </span><span class="n">m_driverController</span><span class="p">.</span><span class="n">B</span><span class="p">().</span><span class="n">WhileTrue</span><span class="p">(</span><span class="n">m_subsystem</span><span class="p">.</span><span class="n">ExampleMethodCommand</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">30</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>As mentioned before, the <code class="docutils literal notranslate"><span class="pre">RobotContainer()</span></code> constructor is where most of the declarative setup for the robot should take place, including button bindings, configuring autonomous selectors, etc. If the constructor gets too “busy,” users are encouraged to migrate code into separate subroutines (such as the <code class="docutils literal notranslate"><span class="pre">configureBindings()</span></code> method included by default) which are called from the constructor.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-7-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-7-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-7-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-7-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-7-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">54</span><span class="w">  </span><span class="cm">/**</span>
+<span class="linenos">55</span><span class="cm">   * Use this to pass the autonomous command to the main {@link Robot} class.</span>
+<span class="linenos">56</span><span class="cm">   *</span>
+<span class="linenos">57</span><span class="cm">   * @return the command to run in autonomous</span>
+<span class="linenos">58</span><span class="cm">   */</span><span class="w"></span>
+<span class="linenos">59</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">getAutonomousCommand</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">60</span><span class="w">    </span><span class="c1">// An example command will be run in autonomous</span><span class="w"></span>
+<span class="linenos">61</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Autos</span><span class="p">.</span><span class="na">exampleAuto</span><span class="p">(</span><span class="n">m_exampleSubsystem</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">62</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">63</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-7-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">32</span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandPtr</span><span class="w"> </span><span class="nf">RobotContainer::GetAutonomousCommand</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">  </span><span class="c1">// An example command will be run in autonomous</span>
+<span class="linenos">34</span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">autos</span><span class="o">::</span><span class="n">ExampleAuto</span><span class="p">(</span><span class="o">&amp;</span><span class="n">m_subsystem</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">35</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Finally, the <code class="docutils literal notranslate"><span class="pre">getAutonomousCommand()</span></code> method provides a convenient way for users to send their selected autonomous command to the main <code class="docutils literal notranslate"><span class="pre">Robot</span></code> class (which needs access to it to schedule it when autonomous starts).</p>
+</section>
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Constants</span></code> class (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/templates/commandbased/Constants.java">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibcExamples/src/main/cpp/templates/commandbased/include/Constants.h">C++ (Header)</a>) (in C++ this is not a class, but simply a header file in which several namespaces are defined) is where globally-accessible robot constants (such as speeds, unit conversion factors, PID gains, and sensor/motor ports) can be stored. It is recommended that users separate these constants into individual inner classes corresponding to subsystems or robot modes, to keep variable names shorter.</p>
+<p>In Java, all constants should be declared <code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">static</span> <span class="pre">final</span></code> so that they are globally accessible and cannot be changed.  In C++, all constants should be <code class="docutils literal notranslate"><span class="pre">constexpr</span></code>.</p>
+<p>For more illustrative examples of what a <code class="docutils literal notranslate"><span class="pre">constants</span></code> class should look like in practice, see those of the various command-based example projects:</p>
+<ul class="simple">
+<li><p>FrisbeeBot (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/frisbeebot/Constants.java">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibcExamples/src/main/cpp/examples/Frisbeebot/include/Constants.h">C++</a>)</p></li>
+<li><p>GyroDriveCommands (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/gyrodrivecommands/Constants.java">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibcExamples/src/main/cpp/examples/GyroDriveCommands/include/Constants.h">C++</a>)</p></li>
+<li><p>Hatchbot (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/hatchbottraditional/Constants.java">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibcExamples/src/main/cpp/examples/HatchbotTraditional/include/Constants.h">C++</a>)</p></li>
+<li><p>RapidReactCommandBot (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/rapidreactcommandbot/Constants.java">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibcExamples/src/main/cpp/examples/RapidReactCommandBot/include/Constants.h">C++</a>)</p></li>
+</ul>
+<p>In Java, it is recommended that the constants be used from other classes by statically importing the necessary inner class. An <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">static</span></code> statement imports the static namespace of a class into the class in which you are working, so that any <code class="docutils literal notranslate"><span class="pre">static</span></code> constants can be referenced directly as if they had been defined in that class.  In C++, the same effect can be attained with <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">namespace</span></code>:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-8-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-8-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-8-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import static</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.templates.commandbased.Constants.OIConstants.*</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-8-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">OIConstants</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="subsystems">
+<h2>Subsystems<a class="headerlink" href="#subsystems" title="Permalink to this heading"></a></h2>
+<p>User-defined subsystems should go in this package/directory.</p>
+</section>
+<section id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading"></a></h2>
+<p>User-defined commands should go in this package/directory.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="binding-commands-to-triggers.html" class="btn btn-neutral float-left" title="Binding Commands to Triggers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="organizing-command-based.html" class="btn btn-neutral float-right" title="Organizing Command-Based Robot Projects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

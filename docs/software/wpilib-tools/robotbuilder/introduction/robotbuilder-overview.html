@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="RobotBuilder Overview" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="RobotBuilder is an application designed to aid the robot development process. RobotBuilder can help you: Generating boilerplate code., Organize your robot and figure out what its key subsystems are..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RobotBuilder Overview &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../../_static/js/present.js"></script>
+        <script src="../../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../../_static/pid-tune.js"></script>
+        <script src="../../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../../_static/tabs.js"></script>
+        <script src="../../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Starting RobotBuilder" href="starting-robotbuilder.html" />
+    <link rel="prev" title="RobotBuilder - Introduction" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">RobotBuilder</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">RobotBuilder - Introduction</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">RobotBuilder Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="starting-robotbuilder.html">Starting RobotBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-interface.html">RobotBuilder User Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-setup.html">Setting up the Robot Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-creating-subsystem.html">Creating a Subsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-creating-command.html">Creating a Command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-autonomous-command.html">Setting the Autonomous Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-testing-with-shuffleboard.html">Using Shuffleboard to Test a Command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-operator-interface-to-command.html">Connecting the Operator Interface to a Command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-created-code.html">RobotBuilder Created Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../writing-code/index.html">RobotBuilder - Writing the Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/index.html">RobotBuilder - Advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">RobotBuilder</a></li>
+          <li class="breadcrumb-item"><a href="index.html">RobotBuilder - Introduction</a></li>
+      <li class="breadcrumb-item active">RobotBuilder Overview</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/wpilib-tools/robotbuilder/introduction/robotbuilder-overview.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="robotbuilder-overview">
+<h1>RobotBuilder Overview<a class="headerlink" href="#robotbuilder-overview" title="Permalink to this heading"></a></h1>
+<p>RobotBuilder is an application designed to aid the robot development process. RobotBuilder can help you:</p>
+<ul class="simple">
+<li><p>Generating boilerplate code.</p></li>
+<li><p>Organize your robot and figure out what its key subsystems are.</p></li>
+<li><p>Check that you have enough channels for all of your sensors and actuators.</p></li>
+<li><p>Generate wiring diagrams.</p></li>
+<li><p>Easily modify your operator interface.</p></li>
+<li><p>More…</p></li>
+</ul>
+<p>Creating a program with RobotBuilder is a very straight forward procedure by following a few steps that are the same for any robot. This lesson describes the steps that you can follow. You can find more details about each of these steps in subsequent sections of the document.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>RobotBuilder generates code using the new Command Framework. For more details on the new framework see <a class="reference internal" href="../../../commandbased/index.html#command-based-programming"><span class="std std-ref">Command Based Programming</span></a>.</p>
+</div>
+<section id="divide-the-robot-into-subsystems">
+<h2>Divide the Robot into Subsystems<a class="headerlink" href="#divide-the-robot-into-subsystems" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/robotbuilder-overview-1.png" src="../../../../../_images/robotbuilder-overview-1.png" />
+<p>Your robot is naturally made up of a number of smaller systems like the drive trains, arms, shooters, collectors, manipulators, wrist joints, etc. You should look at the design of your robot and break it up into smaller, separately operated subsystems. In this particular example there is an elevator, a minibot alignment device, a gripper, and a camera system. In addition one might include the drive base. Each of these parts of the robot are separately controlled and make good candidates for subsystems.</p>
+<p>For more information see <a class="reference internal" href="robotbuilder-creating-subsystem.html"><span class="doc">Creating a Subsystem</span></a>.</p>
+</section>
+<section id="adding-each-subsystem-to-the-project">
+<h2>Adding each Subsystem to the Project<a class="headerlink" href="#adding-each-subsystem-to-the-project" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/robotbuilder-overview-2.png" src="../../../../../_images/robotbuilder-overview-2.png" />
+<p>Each subsystem will be added to the “Subsystems” folder in the RobotBuilder and given a meaningful name. For each of the subsystems there are several attributes that get filled in to specify more information about the subsystems. In addition there are two types of subsystems that you might want to create:</p>
+<ol class="arabic simple">
+<li><p>PIDSubsystems - often it is desirable to control a subsystems operation with a PID controller. This is code in your program that makes the subsystem element, for example arm angle, more quickly to a desired position then stop when reaching it. PIDSubsystems have the PID Controller code built-in and are often more convenient then adding it yourself. PIDSubsystems have a sensor that determines when the device has reached the target position and an actuator (motor controller) that is driven to the setpoint.</p></li>
+<li><p>Regular subsystem - these subsystems don’t have an integrated PID controller and are used for subsystems without PID control for feedback or for subsystems requiring more complex control than can be handled with the default embedded PID controller.</p></li>
+</ol>
+<p>As you look through more of this documentation the differences between the subsystem types will become more apparent.</p>
+<p>For more information see <a class="reference internal" href="robotbuilder-creating-subsystem.html"><span class="doc">Creating a Subsystem</span></a> and <a class="reference internal" href="../writing-code/robotbuilder-writing-subsystem-code.html#writing-the-code-for-a-subsystem"><span class="std std-ref">Writing Code for a Subsystem</span></a>.</p>
+</section>
+<section id="adding-components-to-each-of-the-subsystems">
+<h2>Adding Components to each of the Subsystems<a class="headerlink" href="#adding-components-to-each-of-the-subsystems" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/robotbuilder-overview-3.png" src="../../../../../_images/robotbuilder-overview-3.png" />
+<p>Each subsystem consists of a number of actuators, sensors and controllers that it uses to perform its operations. These sensors and actuators are added to the subsystem with which they are associated.  Each of the sensors and actuators comes from the RobotBuilder palette and is dragged to the appropriate subsystem. For each, there are usually other properties that must be set such as port numbers and other parameters specific to the component.</p>
+<p>In this example there is an Elevator subsystem that uses a motor and a potentiometer (motor and pot) that have been dragged to the Elevator subsystem.</p>
+</section>
+<section id="adding-commands-that-describe-subsystem-goals">
+<h2>Adding Commands That Describe Subsystem Goals<a class="headerlink" href="#adding-commands-that-describe-subsystem-goals" title="Permalink to this heading"></a></h2>
+<p>Commands are distinct goals that the robot will perform. These commands are added by dragging the command under the “Commands” folder. When creating a command, there are 7 choices (shown on the palette on the left of the picture):</p>
+<ul class="simple">
+<li><p>Normal commands - these are the most flexible command, you have to write all of the code to perform the desired actions necessary to accomplish the goal.</p></li>
+<li><p>Timed commands - these commands are a simplified version of a command that ends after a timeout</p></li>
+<li><p>Instant commands - these commands are a simplified version of a command that runs for one iteration and then ends</p></li>
+<li><p>Command groups - these commands are a combination of other commands running both in a sequential order and in parallel. Use these to build up more complicated actions after you have a number of basic commands implemented.</p></li>
+<li><p>Setpoint commands - setpoint commands move a PID Subsystem to a fixed setpoint, or the desired location.</p></li>
+<li><p>PID commands - these commands have a built-in PID controller to be used with a regular subsystem.</p></li>
+<li><p>Conditional commands - these commands select one of two commands to run at the time of initialization.</p></li>
+</ul>
+<p>For more information see <a class="reference internal" href="robotbuilder-creating-command.html"><span class="doc">Creating a Command</span></a> and <a class="reference internal" href="../writing-code/robotbuilder-writing-command-code.html#writing-the-code-for-a-command"><span class="std std-ref">Writing Command Code</span></a>.</p>
+</section>
+<section id="testing-each-command">
+<h2>Testing each Command<a class="headerlink" href="#testing-each-command" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/robotbuilder-overview-4.png" src="../../../../../_images/robotbuilder-overview-4.png" />
+<p>Each command can be run from Shuffleboard or SmartDashboard. This is useful for testing commands before you add them to the operator interface or to a command group. As long as you leave the “Button on SmartDashboard” property checked, a button will be created on the SmartDashboard. When you press the button, the command will run and you can check that it performs the desired action.</p>
+<p>By creating buttons, each command can be tested individually. If all the commands work individually, you can be pretty sure that the robot will work as a whole.</p>
+<p>For more information see <a class="reference internal" href="robotbuilder-testing-with-shuffleboard.html"><span class="doc">Testing with Smartdashboard</span></a>.</p>
+</section>
+<section id="adding-operator-interface-components">
+<h2>Adding Operator Interface Components<a class="headerlink" href="#adding-operator-interface-components" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/robotbuilder-overview-5.png" src="../../../../../_images/robotbuilder-overview-5.png" />
+<p>The operator interface consists of joysticks, gamepads and other HID input devices. You can add operator interface components (joysticks, joystick buttons) to your program in RobotBuilder. It will automatically generate code that will initialize all of the components and allow them to be connected to commands.</p>
+<p>The operator interface components are dragged from the palette to the “Operator Interface” folder in the RobotBuilder program. First (1) add Joysticks to the program then put buttons under the associated joysticks (2) and give them meaningful names, like ShootButton.</p>
+</section>
+<section id="connecting-the-commands-to-the-operator-interface">
+<h2>Connecting the Commands to the Operator Interface<a class="headerlink" href="#connecting-the-commands-to-the-operator-interface" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/robotbuilder-overview-6.png" src="../../../../../_images/robotbuilder-overview-6.png" />
+<p>Commands can be associated with buttons so that when a button is pressed the command is scheduled. This should, for the most part, handle most of the tele-operated part of your robot program.</p>
+<p>This is simply done by (1) adding the command to the JoystickButton object in the RobotBuilder program, then (2) setting the condition in which the command is scheduled.</p>
+<p>For more information see <a class="reference internal" href="robotbuilder-operator-interface-to-command.html"><span class="doc">Connecting the Operator Interface to a Command</span></a>.</p>
+</section>
+<section id="developing-autonomous-commands">
+<h2>Developing Autonomous Commands<a class="headerlink" href="#developing-autonomous-commands" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/robotbuilder-overview-7.png" src="../../../../../_images/robotbuilder-overview-7.png" />
+<p>Commands make it simple to develop autonomous programs. You simply specify which command should run when the robot enters the autonomous period and it will automatically be scheduled. If you have tested commands as discussed above, this should simply be a matter of choosing which command should run.</p>
+<p>Select the robot at the root of the RobotBuilder project (1), then edit the Autonomous Command property (2) to choose the command to run. It’s that simple!</p>
+<p>For more information see <a class="reference internal" href="robotbuilder-autonomous-command.html"><span class="doc">Setting the Autonomous Commands</span></a>.</p>
+</section>
+<section id="generating-code">
+<h2>Generating Code<a class="headerlink" href="#generating-code" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/robotbuilder-overview-8.png" src="../../../../../_images/robotbuilder-overview-8.png" />
+<p>At any point in the process outlined above you can have RobotBuilder generate a C++ or Java program that will represent the project you have created. This is done by specifying the location of the project in the project properties (1), then clicking the appropriate toolbar button to generate the code (2).</p>
+<p>For more information see <a class="reference internal" href="../writing-code/robotbuilder-generating-code.html#generating-code-for-a-project"><span class="std std-ref">Generating RobotBuilder Code</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="RobotBuilder - Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="starting-robotbuilder.html" class="btn btn-neutral float-right" title="Starting RobotBuilder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

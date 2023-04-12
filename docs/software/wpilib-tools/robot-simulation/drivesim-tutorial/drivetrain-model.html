@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Step 2: Creating a Drivetrain Model" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="In order to accurately determine how your physical drivetrain will respond to given motor voltage inputs, an accurate model of your drivetrain must be created. This model is usually created by meas..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Step 2: Creating a Drivetrain Model &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../../_static/js/present.js"></script>
+        <script src="../../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../../_static/pid-tune.js"></script>
+        <script src="../../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../../_static/tabs.js"></script>
+        <script src="../../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Step 3: Updating the Drivetrain Model" href="updating-drivetrain-model.html" />
+    <link rel="prev" title="Step 1: Creating Simulated Instances of Hardware" href="simulation-instance.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Robot Simulation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction to Robot Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-gui.html">Simulation Specific User Interface Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dashboards/glass/widgets.html">Glass Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dashboards/glass/command-based-widgets.html">Widgets for the Command-Based Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dashboards/glass/field2d-widget.html">The Field2d Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../dashboards/glass/plots.html">Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../physics-sim.html">Physics Simulation with WPILib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device-sim.html">Device Simulation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Drivetrain Simulation Tutorial</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="diffdrive-sim-overview.html">Drivetrain Simulation Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulation-instance.html">Step 1: Creating Simulated Instances of Hardware</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Step 2: Creating a Drivetrain Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="updating-drivetrain-model.html">Step 3: Updating the Drivetrain Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="odometry-simgui.html">Step 4: Updating Odometry and Visualizing Robot Position</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../unit-testing.html">Unit Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Robot Simulation</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Drivetrain Simulation Tutorial</a></li>
+      <li class="breadcrumb-item active">Step 2: Creating a Drivetrain Model</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/wpilib-tools/robot-simulation/drivesim-tutorial/drivetrain-model.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="step-2-creating-a-drivetrain-model">
+<h1>Step 2: Creating a Drivetrain Model<a class="headerlink" href="#step-2-creating-a-drivetrain-model" title="Permalink to this heading"></a></h1>
+<p>In order to accurately determine how your physical drivetrain will respond to given motor voltage inputs, an accurate model of your drivetrain must be created. This model is usually created by measuring various physical parameters of your real robot. In WPILib, this drivetrain simulation model is represented by the <code class="docutils literal notranslate"><span class="pre">DifferentialDrivetrainSim</span></code> class.</p>
+<section id="creating-a-differentialdrivetrainsim-from-physical-measurements">
+<h2>Creating a <code class="docutils literal notranslate"><span class="pre">DifferentialDrivetrainSim</span></code> from Physical Measurements<a class="headerlink" href="#creating-a-differentialdrivetrainsim-from-physical-measurements" title="Permalink to this heading"></a></h2>
+<p>One way to creating a <code class="docutils literal notranslate"><span class="pre">DifferentialDrivetrainSim</span></code> instance is by using physical measurements of the drivetrain and robot – either obtained through CAD software or real-world measurements (the latter will usually yield better results as it will more closely match reality). This constructor takes the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The type and number of motors on one side of the drivetrain.</p></li>
+<li><p>The gear ratio between the motors and the wheels as output  <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../../frc-glossary.html#term-torque"><span class="xref std std-term">torque</span></a> over input  <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../../frc-glossary.html#term-torque"><span class="xref std std-term">torque</span></a> (this number is usually greater than 1 for drivetrains).</p></li>
+<li><p>The moment of inertia of the drivetrain (this can be obtained from a CAD model of your drivetrain. Usually, this is between 3 and 8 <span class="math notranslate nohighlight">\(kg m^2\)</span>).</p></li>
+<li><p>The mass of the drivetrain (it is recommended to use the mass of the entire robot itself, as it will more accurately model the acceleration characteristics of your robot for trajectory tracking).</p></li>
+<li><p>The radius of the drive wheels.</p></li>
+<li><p>The track width (distance between left and right wheels).</p></li>
+<li><p>Standard deviations of measurement noise: this represents how much measurement noise you expect from your real sensors. The measurement noise is an array with 7 elements, with each element representing the standard deviation of measurement noise in x, y, heading, left velocity, right velocity, left position, and right position respectively. This option can be omitted in C++ or set to <code class="docutils literal notranslate"><span class="pre">null</span></code> in Java if measurement noise is not desirable.</p></li>
+</ul>
+</div></blockquote>
+<p>You can calculate the measurement noise of your sensors by taking multiple data points of the state you are trying to measure and calculating the standard deviation using a tool like Python. For example, to calculate the standard deviation in your encoders’ velocity estimate, you can move your robot at a constant velocity, take multiple measurements, and calculate their standard deviation from the known mean. If this process is too tedious, the values used in the example below should be a good representation of average noise from encoders.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The standard deviation of the noise for a measurement has the same units as that measurement. For example, the standard deviation of the velocity noise has units of m/s.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is very important to use SI units (i.e. meters and radians) when passing parameters in Java. In C++, the <a class="reference internal" href="../../../basic-programming/cpp-units.html#the-c-units-library"><span class="std std-ref">units library</span></a> can be used to specify any unit type.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create the simulation model of our drivetrain.</span><span class="w"></span>
+<span class="n">DifferentialDrivetrainSim</span><span class="w"> </span><span class="n">m_driveSim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrivetrainSim</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">DCMotor</span><span class="p">.</span><span class="na">getNEO</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">       </span><span class="c1">// 2 NEO motors on each side of the drivetrain.</span><span class="w"></span>
+<span class="w">  </span><span class="mf">7.29</span><span class="p">,</span><span class="w">                    </span><span class="c1">// 7.29:1 gearing reduction.</span><span class="w"></span>
+<span class="w">  </span><span class="mf">7.5</span><span class="p">,</span><span class="w">                     </span><span class="c1">// MOI of 7.5 kg m^2 (from CAD model).</span><span class="w"></span>
+<span class="w">  </span><span class="mf">60.0</span><span class="p">,</span><span class="w">                    </span><span class="c1">// The mass of the robot is 60 kg.</span><span class="w"></span>
+<span class="w">  </span><span class="n">Units</span><span class="p">.</span><span class="na">inchesToMeters</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="c1">// The robot uses 3&quot; radius wheels.</span><span class="w"></span>
+<span class="w">  </span><span class="mf">0.7112</span><span class="p">,</span><span class="w">                  </span><span class="c1">// The track width is 0.7112 meters.</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// The standard deviations for measurement noise:</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// x and y:          0.001 m</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// heading:          0.001 rad</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// l and r velocity: 0.1   m/s</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// l and r position: 0.005 m</span><span class="w"></span>
+<span class="w">  </span><span class="n">VecBuilder</span><span class="p">.</span><span class="na">fill</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/simulation/DifferentialDrivetrainSim.h&gt;</span><span class="cp"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="c1">// Create the simulation model of our drivetrain.</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">DifferentialDrivetrainSim</span><span class="w"> </span><span class="n">m_driveSim</span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">DCMotor</span><span class="o">::</span><span class="n">GetNEO</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="c1">// 2 NEO motors on each side of the drivetrain.</span>
+<span class="w">  </span><span class="mf">7.29</span><span class="p">,</span><span class="w">               </span><span class="c1">// 7.29:1 gearing reduction.</span>
+<span class="w">  </span><span class="mf">7.5</span><span class="n">_kg_sq_m</span><span class="p">,</span><span class="w">        </span><span class="c1">// MOI of 7.5 kg m^2 (from CAD model).</span>
+<span class="w">  </span><span class="mi">60</span><span class="n">_kg</span><span class="p">,</span><span class="w">              </span><span class="c1">// The mass of the robot is 60 kg.</span>
+<span class="w">  </span><span class="mi">3</span><span class="n">_in</span><span class="p">,</span><span class="w">               </span><span class="c1">// The robot uses 3&quot; radius wheels.</span>
+<span class="w">  </span><span class="mf">0.7112</span><span class="n">_m</span><span class="p">,</span><span class="w">           </span><span class="c1">// The track width is 0.7112 meters.</span>
+
+<span class="w">  </span><span class="c1">// The standard deviations for measurement noise:</span>
+<span class="w">  </span><span class="c1">// x and y:          0.001 m</span>
+<span class="w">  </span><span class="c1">// heading:          0.001 rad</span>
+<span class="w">  </span><span class="c1">// l and r velocity: 0.1   m/s</span>
+<span class="w">  </span><span class="c1">// l and r position: 0.005 m</span>
+<span class="w">  </span><span class="p">{</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">}};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="creating-a-differentialdrivetrainsim-from-sysid-gains">
+<h2>Creating a <code class="docutils literal notranslate"><span class="pre">DifferentialDrivetrainSim</span></code> from SysId Gains<a class="headerlink" href="#creating-a-differentialdrivetrainsim-from-sysid-gains" title="Permalink to this heading"></a></h2>
+<p>You can also use the gains produced by <a class="reference internal" href="../../../pathplanning/system-identification/introduction.html#introduction-to-system-identification"><span class="std std-ref">System Identification</span></a>, which you may have performed as part of setting up the trajectory tracking workflow outlined <a class="reference internal" href="../../../pathplanning/trajectory-tutorial/index.html#trajectory-tutorial"><span class="std std-ref">here</span></a> to create a simulation model of your drivetrain and often yield results closer to real-world behavior than the method above.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You must need two sets of <code class="docutils literal notranslate"><span class="pre">Kv</span></code> and <code class="docutils literal notranslate"><span class="pre">Ka</span></code> gains from the identification tool – one from straight-line motion and the other from rotating in place. We will refer to these two sets of gains as linear and angular gains respectively.</p>
+</div>
+<p>This constructor takes the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A linear system representing the drivetrain – this can be created using the identification gains.</p></li>
+<li><p>The track width (distance between the left and right wheels).</p></li>
+<li><p>The type and number of motors on one side of the drivetrain.</p></li>
+<li><p>The gear ratio between the motors and the wheels as output  <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../../frc-glossary.html#term-torque"><span class="xref std std-term">torque</span></a> over input  <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../../frc-glossary.html#term-torque"><span class="xref std std-term">torque</span></a> (this number is usually greater than 1 for drivetrains).</p></li>
+<li><p>The radius of the drive wheels.</p></li>
+<li><p>Standard deviations of measurement noise: this represents how much measurement noise you expect from your real sensors. The measurement noise is an array with 7 elements, with each element representing the standard deviation of measurement noise in x, y, heading, left velocity, right velocity, left position, and right position respectively. This option can be omitted in C++ or set to <code class="docutils literal notranslate"><span class="pre">null</span></code> in Java if measurement noise is not desirable.</p></li>
+</ul>
+</div></blockquote>
+<p>You can calculate the measurement noise of your sensors by taking multiple data points of the state you are trying to measure and calculating the standard deviation using a tool like Python. For example, to calculate the standard deviation in your encoders’ velocity estimate, you can move your robot at a constant velocity, take multiple measurements, and calculate their standard deviation from the known mean. If this process is too tedious, the values used in the example below should be a good representation of average noise from encoders.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The standard deviation of the noise for a measurement has the same units as that measurement. For example, the standard deviation of the velocity noise has units of m/s.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is very important to use SI units (i.e. meters and radians) when passing parameters in Java. In C++, the <a class="reference internal" href="../../../basic-programming/cpp-units.html#the-c-units-library"><span class="std std-ref">units library</span></a> can be used to specify any unit type.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create our feedforward gain constants (from the identification</span><span class="w"></span>
+<span class="c1">// tool)</span><span class="w"></span>
+<span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">KvLinear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.98</span><span class="p">;</span><span class="w"></span>
+<span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">KaLinear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="p">;</span><span class="w"></span>
+<span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">KvAngular</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">;</span><span class="w"></span>
+<span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">KaAngular</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Create the simulation model of our drivetrain.</span><span class="w"></span>
+<span class="kd">private</span><span class="w"> </span><span class="n">DifferentialDrivetrainSim</span><span class="w"> </span><span class="n">m_driveSim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrivetrainSim</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Create a linear system from our identification gains.</span><span class="w"></span>
+<span class="w">  </span><span class="n">LinearSystemId</span><span class="p">.</span><span class="na">identifyDrivetrainSystem</span><span class="p">(</span><span class="n">KvLinear</span><span class="p">,</span><span class="w"> </span><span class="n">KaLinear</span><span class="p">,</span><span class="w"> </span><span class="n">KvAngular</span><span class="p">,</span><span class="w"> </span><span class="n">KaAngular</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="n">DCMotor</span><span class="p">.</span><span class="na">getNEO</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">       </span><span class="c1">// 2 NEO motors on each side of the drivetrain.</span><span class="w"></span>
+<span class="w">  </span><span class="mf">7.29</span><span class="p">,</span><span class="w">                    </span><span class="c1">// 7.29:1 gearing reduction.</span><span class="w"></span>
+<span class="w">  </span><span class="mf">0.7112</span><span class="p">,</span><span class="w">                  </span><span class="c1">// The track width is 0.7112 meters.</span><span class="w"></span>
+<span class="w">  </span><span class="n">Units</span><span class="p">.</span><span class="na">inchesToMeters</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="c1">// The robot uses 3&quot; radius wheels.</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// The standard deviations for measurement noise:</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// x and y:          0.001 m</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// heading:          0.001 rad</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// l and r velocity: 0.1   m/s</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// l and r position: 0.005 m</span><span class="w"></span>
+<span class="w">  </span><span class="n">VecBuilder</span><span class="p">.</span><span class="na">fill</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/simulation/DifferentialDrivetrainSim.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/system/plant/LinearSystemId.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/acceleration.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/angular_acceleration.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/angular_velocity.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/voltage.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/velocity.h&gt;</span><span class="cp"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="c1">// Create our feedforward gain constants (from the identification</span>
+<span class="c1">// tool). Note that these need to have correct units.</span>
+<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">KvLinear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.98</span><span class="n">_V</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">_mps</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">KaLinear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="n">_V</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">_mps_sq</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">KvAngular</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="n">_V</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">_rad_per_s</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">KaAngular</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span><span class="n">_V</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">_rad_per_s_sq</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// The track width is 0.7112 meters.</span>
+<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">kTrackwidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.7112</span><span class="n">_m</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Create the simulation model of our drivetrain.</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">DifferentialDrivetrainSim</span><span class="w"> </span><span class="n">m_driveSim</span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Create a linear system from our identification gains.</span>
+<span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">LinearSystemId</span><span class="o">::</span><span class="n">IdentifyDrivetrainSystem</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">KvLinear</span><span class="p">,</span><span class="w"> </span><span class="n">KaLinear</span><span class="p">,</span><span class="w"> </span><span class="n">KvAngular</span><span class="p">,</span><span class="w"> </span><span class="n">KaAngular</span><span class="p">,</span><span class="w"> </span><span class="n">kTrackWidth</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="n">kTrackWidth</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">DCMotor</span><span class="o">::</span><span class="n">GetNEO</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="c1">// 2 NEO motors on each side of the drivetrain.</span>
+<span class="w">  </span><span class="mf">7.29</span><span class="p">,</span><span class="w">               </span><span class="c1">// 7.29:1 gearing reduction.</span>
+<span class="w">  </span><span class="mi">3</span><span class="n">_in</span><span class="p">,</span><span class="w">               </span><span class="c1">// The robot uses 3&quot; radius wheels.</span>
+
+<span class="w">  </span><span class="c1">// The standard deviations for measurement noise:</span>
+<span class="w">  </span><span class="c1">// x and y:          0.001 m</span>
+<span class="w">  </span><span class="c1">// heading:          0.001 rad</span>
+<span class="w">  </span><span class="c1">// l and r velocity: 0.1   m/s</span>
+<span class="w">  </span><span class="c1">// l and r position: 0.005 m</span>
+<span class="w">  </span><span class="p">{</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">,</span><span class="w"> </span><span class="mf">0.005</span><span class="p">}};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="creating-a-differentialdrivetrainsim-of-the-kop-chassis">
+<h2>Creating a <code class="docutils literal notranslate"><span class="pre">DifferentialDrivetrainSim</span></code> of the KoP Chassis<a class="headerlink" href="#creating-a-differentialdrivetrainsim-of-the-kop-chassis" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">DifferentialDrivetrainSim</span></code> class also has a static <code class="docutils literal notranslate"><span class="pre">createKitbotSim()</span></code> (Java) / <code class="docutils literal notranslate"><span class="pre">CreateKitbotSim()</span></code> (C++) method that can create an instance of the <code class="docutils literal notranslate"><span class="pre">DifferentialDrivetrainSim</span></code> using the standard Kit of Parts Chassis parameters. This method takes 5 arguments, two of which are optional:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The type and number of motors on one side of the drivetrain.</p></li>
+<li><p>The gear ratio between the motors and the wheels as output  <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../../frc-glossary.html#term-torque"><span class="xref std std-term">torque</span></a> over input <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../../frc-glossary.html#term-torque"><span class="xref std std-term">torque</span></a> (this number is usually greater than 1 for drivetrains).</p></li>
+<li><p>The diameter of the wheels installed on the drivetrain.</p></li>
+<li><p>The moment of inertia of the drive base (optional).</p></li>
+<li><p>Standard deviations of measurement noise: this represents how much measurement noise you expect from your real sensors. The measurement noise is an array with 7 elements, with each element representing the standard deviation of measurement noise in x, y, heading, left velocity, right velocity, left position, and right position respectively. This option can be omitted in C++ or set to <code class="docutils literal notranslate"><span class="pre">null</span></code> in Java if measurement noise is not desirable.</p></li>
+</ul>
+</div></blockquote>
+<p>You can calculate the measurement noise of your sensors by taking multiple data points of the state you are trying to measure and calculating the standard deviation using a tool like Python. For example, to calculate the standard deviation in your encoders’ velocity estimate, you can move your robot at a constant velocity, take multiple measurements, and calculate their standard deviation from the known mean. If this process is too tedious, the values used in the example below should be a good representation of average noise from encoders.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The standard deviation of the noise for a measurement has the same units as that measurement. For example, the standard deviation of the velocity noise has units of m/s.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is very important to use SI units (i.e. meters and radians) when passing parameters in Java. In C++, the <a class="reference internal" href="../../../basic-programming/cpp-units.html#the-c-units-library"><span class="std std-ref">units library</span></a> can be used to specify any unit type.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">private</span><span class="w"> </span><span class="n">DifferentialDrivetrainSim</span><span class="w"> </span><span class="n">m_driveSim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DifferentialDrivetrainSim</span><span class="p">.</span><span class="na">createKitbotSim</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">KitbotMotor</span><span class="p">.</span><span class="na">kDualCIMPerSide</span><span class="p">,</span><span class="w"> </span><span class="c1">// 2 CIMs per side.</span><span class="w"></span>
+<span class="w">  </span><span class="n">KitbotGearing</span><span class="p">.</span><span class="na">k10p71</span><span class="p">,</span><span class="w">        </span><span class="c1">// 10.71:1</span><span class="w"></span>
+<span class="w">  </span><span class="n">KitbotWheelSize</span><span class="p">.</span><span class="na">kSixInch</span><span class="p">,</span><span class="w">    </span><span class="c1">// 6&quot; diameter wheels.</span><span class="w"></span>
+<span class="w">  </span><span class="kc">null</span><span class="w">                         </span><span class="c1">// No measurement noise.</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/simulation/DifferentialDrivetrainSim.h&gt;</span><span class="cp"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">DifferentialDrivetrainSim</span><span class="w"> </span><span class="n">m_driveSim</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">DifferentialDrivetrainSim</span><span class="o">::</span><span class="n">CreateKitbotSim</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">DifferentialDrivetrainSim</span><span class="o">::</span><span class="n">KitbotMotor</span><span class="o">::</span><span class="n">DualCIMPerSide</span><span class="p">,</span><span class="w"> </span><span class="c1">// 2 CIMs per side.</span>
+<span class="w">    </span><span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">DifferentialDrivetrainSim</span><span class="o">::</span><span class="n">KitbotGearing</span><span class="o">::</span><span class="n">k10p71</span><span class="p">,</span><span class="w">       </span><span class="c1">// 10.71:1</span>
+<span class="w">    </span><span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">DifferentialDrivetrainSim</span><span class="o">::</span><span class="n">KitbotWheelSize</span><span class="o">::</span><span class="n">kSixInch</span><span class="w">    </span><span class="c1">// 6&quot; diameter wheels.</span>
+<span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">KitbotMotor</span></code>, <code class="docutils literal notranslate"><span class="pre">KitbotGearing</span></code>, and <code class="docutils literal notranslate"><span class="pre">KitbotWheelSize</span></code> enum (Java) / struct (C++) to get commonly used configurations of the Kit of Parts Chassis.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Constructing your <code class="docutils literal notranslate"><span class="pre">DifferentialDrivetrainSim</span></code> instance in this way is just an approximation and is intended to get teams quickly up and running with simulation. Using empirical values measured from your physical robot will always yield more accurate results.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simulation-instance.html" class="btn btn-neutral float-left" title="Step 1: Creating Simulated Instances of Hardware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="updating-drivetrain-model.html" class="btn btn-neutral float-right" title="Step 3: Updating the Drivetrain Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="What Are AprilTags?" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="A demonstration of AprilTag fiducial targets attached to generic robots. AprilTags are a system of visual tags developed by researchers at the University of Michigan to provide low overhead, high a..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Are AprilTags? &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/apriltag/apriltag-intro.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Vision with GRIP" href="../grip/index.html" />
+    <link rel="prev" title="AprilTag Introduction" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Vision Processing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">Vision Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wpilibpi/index.html">Vision with WPILibPi</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">AprilTag Introduction</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">What Are AprilTags?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../grip/index.html">Vision with GRIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roborio/index.html">Vision on the RoboRIO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Vision Processing</a></li>
+          <li class="breadcrumb-item"><a href="index.html">AprilTag Introduction</a></li>
+      <li class="breadcrumb-item active">What Are AprilTags?</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/vision-processing/apriltag/apriltag-intro.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="what-are-apriltags">
+<h1>What Are AprilTags?<a class="headerlink" href="#what-are-apriltags" title="Permalink to this heading"></a></h1>
+<img alt="A demonstration of AprilTag fiducial targets attached to generic robots." src="../../../../_images/apriltagrobots_overlay.png" />
+<p>AprilTags are a system of visual tags developed by researchers at the University of Michigan to provide low overhead, high accuracy localization for many different applications.</p>
+<p>Additional information about the tag system and its creators <a class="reference external" href="https://april.eecs.umich.edu/software/apriltag">can be found on their website</a> This document attempts to summarize the content for FIRST robotics related purposes.</p>
+<section id="application-to-frc">
+<h2>Application to FRC<a class="headerlink" href="#application-to-frc" title="Permalink to this heading"></a></h2>
+<p>In the context of FRC, AprilTags are useful for helping your robot know where it is at on the field, so it can align itself to some goal position.</p>
+<p>AprilTags have been in development since 2011, and have been refined over the years to increase the robustness and speed of detection.</p>
+<p><a class="reference external" href="https://www.firstinspires.org/robotics/frc/blog/2022-2023-approved-devices-rules-preview-and-vision-target-update">Starting in 2023, FIRST is providing a number of tags,</a> scattered throughout the field, each at a known <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../frc-glossary.html#term-pose"><span class="xref std std-term">pose</span></a>.</p>
+<p>All of the tags are from the 16h5 family.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many of the pictures in this documentation are from the 36h11 family, which are similar (but not identical) to the 16h5 actually in use for FRC. All the underlying concepts are the same.</p>
+</div>
+<details class="summary-what-is-the-16h5-family">
+<summary>What is the 16h5 family?</summary><p>The AprilTag library implementation defines standards on how sets of tags should be designed. Some of the possible tag families <a class="reference external" href="https://www.ssontech.com/docs/SynthEyesUM_files/Choosing_an_AprilTag.html">are described here</a>.</p>
+<p>FIRST has chosen the 16h5 family for 2023. This family of tags is made of a 4x4 grid of pixels, each representing one bit of information. An additional black and white border must be present around the outside of the bits.</p>
+<p>While there are <span class="math notranslate nohighlight">\(2^{16} = 65536\)</span> theoretical possible tags, only 30 are actually used. These are chosen to:</p>
+<ol class="arabic simple">
+<li><p>Be robust against some bit flips (IE, issues where a bit has its color incorrectly identified).</p></li>
+<li><p>Not involve “simple” geometric patterns likely to be found on things which are not tags. (IE, squares, stripes, etc.)</p></li>
+<li><p>Ensure the geometric pattern is asymmetric enough that you can always figure out which way is up.</p></li>
+</ol>
+</details><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>All tags will be printed such that the tag’s main “body” is 6 inches in length.</p>
+<img alt="Diagram showing the dimensions of an FRC AprilTag fiducial target." src="../../../../_images/tag_size.png" />
+<p>For home usage, tag files may be printed off and placed around your practice area. Mount them to a rigid backing material to ensure the tag stays flat, as the processing algorithm assumes the tags are flat.</p>
+</section>
+<section id="software-support">
+<h2>Software Support<a class="headerlink" href="#software-support" title="Permalink to this heading"></a></h2>
+<p>The main repository for the source code that detects and decodes AprilTags <a class="reference external" href="https://github.com/AprilRobotics/apriltag">is located here</a>.</p>
+<p>WPILib has forked the repository to add new features for FRC. These include:</p>
+<ol class="arabic simple">
+<li><p>Building the source code for common FRC targets, including the roboRIO and Raspberry Pi.</p></li>
+<li><p>Adding Java Native Interface (JNI) support to allow invoking its functionality from Java</p></li>
+<li><p>Gradle &amp; Maven publishing support</p></li>
+</ol>
+</section>
+<section id="processing-technique">
+<h2>Processing Technique<a class="headerlink" href="#processing-technique" title="Permalink to this heading"></a></h2>
+<p>While most FRC teams should not have to implement their own code to identify AprilTags in a camera image, it is useful to know the basics of how the underlying libraries function.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Original Image</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Remove Colors</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Decimate</button><button aria-controls="panel-0-0-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-3" name="0-3" role="tab" tabindex="-1">Adaptive Threshold</button><button aria-controls="panel-0-0-4" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-4" name="0-4" role="tab" tabindex="-1">Segmentation</button><button aria-controls="panel-0-0-5" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-5" name="0-5" role="tab" tabindex="-1">Quad Detection</button><button aria-controls="panel-0-0-6" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-6" name="0-6" role="tab" tabindex="-1">Decode ID</button><button aria-controls="panel-0-0-7" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-7" name="0-7" role="tab" tabindex="-1">Fit External Quad</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><img alt="Original, unprocessed image" src="../../../../_images/orig_img.png" />
+<p>An image from a camera is simply an array of values, corresponding to the color and brightness of each pixel.</p>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><img alt="Image converted to be grey-scale" src="../../../../_images/bw_img.png" />
+<p>The first step is to convert the image to a grey-scale (brightness-only) image. Color information is not needed to detect the black-and-white tags.</p>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><img alt="Image converted to a lower resolution" src="../../../../_images/decimate.png" />
+<p>The next step is to convert the image to a lower resolution. Working with fewer pixels helps the algorithm work faster. The full-resolution image will be used later to refine early estimates.</p>
+</div><div aria-labelledby="tab-0-0-3" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-3" name="0-3" role="tabpanel" tabindex="0"><img alt="Image with adaptive threshold algorithm applied" src="../../../../_images/adaptive_threshold.png" />
+<p>An adaptive threshold algorithm is run to classify each pixel as “definitely light”, “definitely dark”, or “not sure”.</p>
+<p>The threshold is calculated by looking at the pixel’s brightness, compared to a small neighborhood of pixels around it.</p>
+</div><div aria-labelledby="tab-0-0-4" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-4" name="0-4" role="tabpanel" tabindex="0"><img alt="Adaptive thresholded image, but with clusters of similar pixels grouped together" src="../../../../_images/segmentation.png" />
+<p>Next, the known pixels are clumped together. Any clumps which are too small to reasonably be a meaningful part of a tag are discarded.</p>
+</div><div aria-labelledby="tab-0-0-5" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-5" name="0-5" role="tabpanel" tabindex="0"><img alt="Image with quadrilateral areas identified and marked" src="../../../../_images/detected_quads.png" />
+<p>An algorithm for fitting a quadrilateral to each clump is now run:</p>
+<ul class="simple">
+<li><p>Identify likely “corner” candidates by pixels which are outliers in both dimensions.</p></li>
+<li><p>Iterate through all possible combinations of corners, evaluating the fit each time</p></li>
+<li><p>Pick the best-fit quadrilateral</p></li>
+</ul>
+<p>Given the set of all quadralaterals, Identify a subset of quadrilaterals which is likely a tag.</p>
+<p>A single large exterior quadrilateral with many interior quadrilateral is likely a good candidate.</p>
+<p>If all has gone well so far, we are left with a four-sided region of pixels that is likely a valid tag.</p>
+</div><div aria-labelledby="tab-0-0-6" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-6" name="0-6" role="tabpanel" tabindex="0"><img alt="Image with AprilTag data decoded into a target identification number." src="../../../../_images/decode_id.png" />
+<p>Now that we have one or more regions of pixels which we believe to be a valid AprilTag, we need to identify which tag we are looking at. This is done by “decoding” the pattern of light and dark squares on the inside.</p>
+<ul class="simple">
+<li><p>Calculate the expected interior pixel coordinates where the center of each bit should be</p></li>
+<li><p>Mark each location as “1” or “0” by comparing the pixel intensity to a threshold</p></li>
+<li><p>Find the tag ID which most closely matches what was seen in the image, allowing for one or two bit errors.</p></li>
+</ul>
+<p>It is possible there is no valid tag ID which matches the suspect tag. In this case, the decoding process stops.</p>
+</div><div aria-labelledby="tab-0-0-7" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-7" name="0-7" role="tabpanel" tabindex="0"><img alt="External quadrilateral fitting process applied to each target" src="../../../../_images/fit_ext_quad.png" />
+<p>Now that we have a tag ID for the region of pixels, we need to do something useful with it.</p>
+<p>For most FRC applications, we care about knowing the precise location of the corners of the tag, or its center. In both cases, we expect the resolution-lowering operation we did at the beginning to have distorted the image, and we want to undo those effects.</p>
+<p>The algorithm to do this is:</p>
+<ul class="simple">
+<li><p>Use the detected tag location to define a region of interest in the original-resolution image</p></li>
+<li><p>Calculate the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../advanced-controls/controls-glossary.html#term-gradient"><span class="xref std std-term">gradient</span></a> at pre-defined points in the region of interest to detect where the image most sharply transitions between black to white</p></li>
+<li><p>Use these gradient measurements to rapidly re-fit an exterior quadrilateral at full resolution</p></li>
+<li><p>Use geometry to calculate the exact center of the re-fit quadrilateral</p></li>
+</ul>
+<p>Note that this step is optional, and can be skipped for faster image processing. However, skipping it can induce significant errors into your robot’s behavior, depending on how you are using the tag outputs.</p>
+</div></div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
+<section id="d-alignment">
+<h3>2D Alignment<a class="headerlink" href="#d-alignment" title="Permalink to this heading"></a></h3>
+<p>A simple strategy for using targets is to move the robot until the target is centered in the image. Assuming the field and robot are constructed such that the gamepiece, scoring location, vision target, and camera are all aligned, this method should proved a straightforward method to automatically align the robot to the scoring position.</p>
+<p>Using a camera, identify the <em>centroid</em> of the AprilTags in view. If the tag’s ID is correct, apply drivetrain commands to rotate the robot left or right until the tag is centered in the camera image.</p>
+<p>This method does not require calibrating the camera or performing the homography step.</p>
+</section>
+<section id="id2">
+<h3>3D Alignment<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<img alt="../../../../_images/homography.png" src="../../../../_images/homography.png" />
+<p>A more advanced usage of AprilTags is to use their corner locations to help perform on-field localization.</p>
+<p>Each image is searched for AprilTags using the algorithm described on this page. Using assumptions about how the camera’s lense distorts the 3d world onto the 2d array of pixels in the camera, an estimate of the camera’s position relative to the tag is calculated. A good camera calibration is required for the assumptions about its lens behavior to be accurate.</p>
+<p>The tag’s ID is also decoded. from the image. Given each tag’s ID, the position of the tag on the field can be looked up.</p>
+<p>Knowing the position of the tag on the field, and the position of the camera relative to the tag, the 3D geometry classes can be used to estimate the position of the camera on the field.</p>
+<p>If the camera’s position on the robot is known, the robot’s position on the field can also be estimated.</p>
+<p>These estimates can be incorporated into the WPILib pose estimation classes.</p>
+</section>
+</section>
+<section id="d-to-3d-ambiguity">
+<h2>2D to 3D Ambiguity<a class="headerlink" href="#d-to-3d-ambiguity" title="Permalink to this heading"></a></h2>
+<p>The process of translating the four known corners of the target in the image (two-dimensional) into a real-world position relative to the camera (three-dimensional) is inherently ambiguous. That is to say, there are multiple real-world positions that result in the target corners ending up in the same spot in the camera image.</p>
+<p>Humans can often use lighting or background clues to understand how objects are oriented in space. However, computers do not have this benefit. They can be tricked by similar-looking targets:</p>
+<a class="reference internal image-reference" href="../../../../_images/planar_ambiguity1_base.png"><img alt="First optical illusion example of planar ambiguity" src="../../../../_images/planar_ambiguity1_base.png" style="width: 45%;" /></a>
+<a class="reference internal image-reference" href="../../../../_images/planar_ambiguity1.png"><img alt="First optical illusion example of planar ambiguity" src="../../../../_images/planar_ambiguity1.png" style="width: 45%;" /></a>
+<a class="reference internal image-reference" href="../../../../_images/planar_ambiguity2.png"><img alt="Second optical illusion example of planar ambiguity" src="../../../../_images/planar_ambiguity2.png" style="width: 45%;" /></a>
+<a class="reference internal image-reference" href="../../../../_images/planar_ambiguity3.png"><img alt="Third optical illusion example of planar ambiguity" src="../../../../_images/planar_ambiguity3.png" style="width: 45%;" /></a>
+<p>Resolving which position is “correct” can be done in a few different ways:</p>
+<ol class="arabic simple">
+<li><p>Use your odometry history from all sensors to pick the pose closest to where you expect the robot to be.</p></li>
+<li><p>Reject poses which are very unlikely (ex: outside the field perimeter, or up in the air)</p></li>
+<li><p>Ignore pose estimates which are very close together (and hard to differentiate)</p></li>
+<li><p>Use multiple cameras to look at the same target, such that at least one camera can generate a good pose estimate</p></li>
+<li><p>Look at many targets at once, using each to generate multiple pose estimates. Discard the outlying estimates, use the ones which are tightly clustered together.</p></li>
+</ol>
+</section>
+<section id="adjustable-parameters">
+<h2>Adjustable Parameters<a class="headerlink" href="#adjustable-parameters" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Decimation</span> <span class="pre">factor</span></code> impacts how much the image is down-sampled before processing. Increasing it will increase detection speed, at the cost of not being able to see tags which are far away.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Blur</span></code> applies smoothing to the input image to decrease noise, which increases speed when fitting quads to pixels, at the cost of precision. For most good cameras, this may be left at zero.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Threads</span></code> changes the number of parallel threads which the algorithm uses to process the image. Certain steps may be sped up by allowing multithreading. In general, you want this to be approximately equal to the number of physical cores in your CPU, minus the number of cores which will be used for other processing tasks.</p>
+<p>Detailed information about the tunable parameters <a class="reference external" href="https://github.com/AprilRobotics/apriltag/wiki/AprilTag-User-Guide#tuning-the-detector-parameters">can be found here</a>.</p>
+</section>
+<section id="further-learning">
+<h2>Further Learning<a class="headerlink" href="#further-learning" title="Permalink to this heading"></a></h2>
+<p>The three major versions of AprilTags are described in three academic papers. It’s recommended to read them in order, as each builds upon the previous:</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/50ad8f5c37aa2b4f174a3fde0fd71137/olson2011tags.pdf"><code class="xref download docutils literal notranslate"><span class="pre">AprilTags</span> <span class="pre">v1</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/cba1039fecb1731ad4e233f7638b9fd0/wang2016iros.pdf"><code class="xref download docutils literal notranslate"><span class="pre">AprilTags</span> <span class="pre">v2</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/e72e01c5464f1a0838751a5cb158087e/krogius2019iros.pdf"><code class="xref download docutils literal notranslate"><span class="pre">AprilTags</span> <span class="pre">v3</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../../_downloads/3e68486d3b2afa7aaebd66ec49d0fb03/mmsp2014_spe.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Pose</span> <span class="pre">Ambiguity</span></code></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="AprilTag Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../grip/index.html" class="btn btn-neutral float-right" title="Vision with GRIP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

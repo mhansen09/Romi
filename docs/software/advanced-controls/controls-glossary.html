@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Controls Glossary" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controls-glossary.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="bang-bang control, A very simple, no-tuning-required closed-loop control technique. It simply “turns on” the control effort when the process variable is too small, and “turns off” the control effor..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controls-glossary.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controls-glossary.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/advanced-controls/controls-glossary.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/advanced-controls/controls-glossary.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/advanced-controls/controls-glossary.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/advanced-controls/controls-glossary.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/advanced-controls/controls-glossary.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/advanced-controls/controls-glossary.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controls Glossary &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controls-glossary.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Convenience Features" href="../convenience-features/index.html" />
+    <link rel="prev" title="Debugging State-Space Models and Controllers" href="state-space/state-space-debugging.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Advanced Controls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="video-walkthrough.html">A Video Walkthrough of Model Based Validation of Autonomous in FRC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/index.html">Advanced Controls Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters/index.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry/index.html">Geometry Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="controllers/index.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trajectories/index.html">Trajectory Generation and Following with WPILib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state-space/index.html">State-Space and Model Based Control with WPILib</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Controls Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Advanced Controls</a></li>
+      <li class="breadcrumb-item active">Controls Glossary</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/advanced-controls/controls-glossary.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="controls-glossary">
+<h1>Controls Glossary<a class="headerlink" href="#controls-glossary" title="Permalink to this heading"></a></h1>
+<dl class="glossary">
+<dt id="term-bang-bang-control">bang-bang control<a class="headerlink" href="#term-bang-bang-control" title="Permalink to this term"></a></dt><dd><p>A very simple, no-tuning-required closed-loop control technique. It simply “turns on” the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-control-effort"><span class="xref std std-term">control effort</span></a> when the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-process-variable"><span class="xref std std-term">process variable</span></a> is too small, and “turns off” the control effort when the process variable is too big. It works well in some cases, but not all. See <a class="reference external" href="https://en.wikipedia.org/wiki/Bang%E2%80%93bang_control">“Bang-bang” control</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-Cartesian-coordinate-system">Cartesian coordinate system<a class="headerlink" href="#term-Cartesian-coordinate-system" title="Permalink to this term"></a></dt><dd><p>A set of points in space where each point is described by a set of numbers, indicating its <em>coordinates</em> within that space. These coordinates are an expression of the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-orthogonal"><span class="xref std std-term">orthogonal</span></a> distance of each point from a set of fixed, orthogonal axes (IE, a “rectangular” system). 2-dimension and 3-dimension spaces are most common in FRC (and likely what was learned in algebra 1), but any number of dimensions is theoretically possible. See <a class="reference external" href="https://en.wikipedia.org/wiki/Cartesian_coordinate_system">Cartesian coordinate system</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-churning-losses">churning losses<a class="headerlink" href="#term-churning-losses" title="Permalink to this term"></a></dt><dd><p>Complex friction-like forces arising from the fact that when gears and bearings rotate, they must displace liquid lubricant. This reduces the efficiency of rotating mechanisms.</p>
+</dd>
+<dt id="term-control-signal">control signal<a class="headerlink" href="#term-control-signal" title="Permalink to this term"></a></dt><dd><p>The driving signal sent to a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-plant"><span class="xref std std-term">plant</span></a> by a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-controller"><span class="xref std std-term">controller</span></a>, usually quantified as a voltage.</p>
+</dd>
+<dt id="term-control-effort">control effort<a class="headerlink" href="#term-control-effort" title="Permalink to this term"></a></dt><dd><p><a class="reference internal" href="#term-control-signal"><span class="xref std std-term">Control signal</span></a></p>
+</dd>
+<dt id="term-control-law">control law<a class="headerlink" href="#term-control-law" title="Permalink to this term"></a></dt><dd><p>A mathematical formula that generates <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-input"><span class="xref std std-term">inputs</span></a> to drive a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> to a desired <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">state</span></a>, given the current <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">state</span></a>. A common example is the control law <span class="math notranslate nohighlight">\(\mathbf{u} = \mathbf{K(r - x)}\)</span></p>
+</dd>
+<dt id="term-controller">controller<a class="headerlink" href="#term-controller" title="Permalink to this term"></a></dt><dd><p>Used in position or negative feedback with a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-plant"><span class="xref std std-term">plant</span></a> to bring about a desired <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">system state</span></a> by driving the difference between a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-reference"><span class="xref std std-term">reference</span></a> signal and the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-output"><span class="xref std std-term">output</span></a> to zero.</p>
+</dd>
+<dt id="term-convolution">convolution<a class="headerlink" href="#term-convolution" title="Permalink to this term"></a></dt><dd><p>A mathematical operation that calculates a weighted moving average of one function, with the weights assigned by a second function. A common way to “filter” sensor input is to apply a <em>convolution</em> to it, using a carefully-chosen filtering function. See <a class="reference external" href="https://en.wikipedia.org/wiki/Convolution">convolution</a>. on Wikipedia for more info.</p>
+</dd>
+<dt id="term-counter-electromotive-force">counter-electromotive force<a class="headerlink" href="#term-counter-electromotive-force" title="Permalink to this term"></a></dt><dd><p>A <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-voltage"><span class="xref std std-term">voltage</span></a> generated in a spinning motor. The voltage is a result of the fact that has a coil of wire rotating near a magnet. See <a class="reference external" href="https://en.wikipedia.org/wiki/Counter-electromotive_force">Counter-electromotive_force</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-current">current<a class="headerlink" href="#term-current" title="Permalink to this term"></a></dt><dd><p>The flow of electrons through a conductor. Current is described with a unit of “Amps” (or simply “A”), and is measured at a single point in a circuit. One amp is equal to <span class="math notranslate nohighlight">\(6241509074000000000\)</span> electrons moving past the measurement point in one second.</p>
+</dd>
+<dt id="term-dynamics">dynamics<a class="headerlink" href="#term-dynamics" title="Permalink to this term"></a></dt><dd><p>A branch of physics concerned with the motion of bodies under the action of forces. In modern control, systems evolve according to their dynamics.</p>
+</dd>
+<dt id="term-derivative">derivative<a class="headerlink" href="#term-derivative" title="Permalink to this term"></a></dt><dd><p>A mathematical operation which evaluates the “rate-of-change” of a function at a given point. See <a class="reference external" href="https://en.wikipedia.org/wiki/Derivative">derivative</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-error">error<a class="headerlink" href="#term-error" title="Permalink to this term"></a></dt><dd><p><a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-reference"><span class="xref std std-term">Reference</span></a> minus an <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-output"><span class="xref std std-term">output</span></a> or <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">state</span></a>.</p>
+</dd>
+<dt id="term-exponential-search">exponential search<a class="headerlink" href="#term-exponential-search" title="Permalink to this term"></a></dt><dd><p>An iterative process of finding a specific value within a wide search range by applying a multiplicative factor to the search value. See <a class="reference external" href="https://en.wikipedia.org/wiki/Exponential_search">exponential search</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-exponential-smoothing">exponential smoothing<a class="headerlink" href="#term-exponential-smoothing" title="Permalink to this term"></a></dt><dd><p>A very common way to implement a simple low-pass filter, using an exponential window function in a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-convolution"><span class="xref std std-term">convolution</span></a> with an input signal. The convolution operation simplifies down to a very simple set of math operations on the current input and previous output. See <a class="reference external" href="https://en.wikipedia.org/wiki/Exponential_smoothing">exponential smoothing</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-gain">gain<a class="headerlink" href="#term-gain" title="Permalink to this term"></a></dt><dd><p>A scalar value that relates the magnitude of an input signal to the magnitude of an output signal. For example, <code class="docutils literal notranslate"><span class="pre">gain</span></code> in <code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">=</span> <span class="pre">gain</span> <span class="pre">*</span> <span class="pre">input</span></code>. A gain greater than one would amplify an input signal, while a gain less than one would dampen an input signal. A negative gain would negate the input signal.</p>
+</dd>
+<dt id="term-Gaussian-distribution">Gaussian distribution<a class="headerlink" href="#term-Gaussian-distribution" title="Permalink to this term"></a></dt><dd><p>A special mathematical function that describes distributions of averages. The graph of a Gaussian function is a “bell curve” shape. This function is described by its mean (the location of the “peak” of the bell curve) and variance (a measure of how “spread out” the bell curve is). See <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_function">Gaussian distribution</a>  on Wikipedia for more info.</p>
+</dd>
+<dt id="term-gradient">gradient<a class="headerlink" href="#term-gradient" title="Permalink to this term"></a></dt><dd><p>The <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-derivative"><span class="xref std std-term">derivative</span></a>, but applied to a function with multiple inputs. As a result, the output is both the magnitude of the rate of change, and the vector direction along which it occurs.</p>
+</dd>
+<dt id="term-hidden-state">hidden state<a class="headerlink" href="#term-hidden-state" title="Permalink to this term"></a></dt><dd><p>A <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">state</span></a> that cannot be directly measured, but whose <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-dynamics"><span class="xref std std-term">dynamics</span></a> can be related to other states.</p>
+</dd>
+<dt id="term-input">input<a class="headerlink" href="#term-input" title="Permalink to this term"></a></dt><dd><p>An input to the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-plant"><span class="xref std std-term">plant</span></a> (hence the name) that can be used to change the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-plant"><span class="xref std std-term">plant’s</span></a> <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">state</span></a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ex. A flywheel will have 1 input: the voltage of the motor driving it.</p></li>
+<li><p>Ex. A drivetrain might have 2 inputs: the voltages of the left and right motors.</p></li>
+</ul>
+</div></blockquote>
+<p>Inputs are often represented by the variable <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, a column vector with one entry per <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-input"><span class="xref std std-term">input</span></a> to the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a>.</p>
+</dd>
+<dt id="term-least-squares-regression">least-squares regression<a class="headerlink" href="#term-least-squares-regression" title="Permalink to this term"></a></dt><dd><p>A curve-fitting technique which picks a curve to minimizes the <em>square</em> of the error between the fitted curve, and the actual measured data. See <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_regression">ordinary least-squares regression</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-LQR">LQR<a class="headerlink" href="#term-LQR" title="Permalink to this term"></a></dt><dd><p>Linear-Quadratic Regulator - A feedback control scheme which seeks to operate a system in a “most optimal” or “lowest cost” manner, in the sense of minimizing the square of some “cost function” that represents a combination of system error and control effort. This requires an accurate mathematical model of the system being controlled, and function describing the “cost” of any given system state. See <a class="reference external" href="https://en.wikipedia.org/wiki/Linear%E2%80%93quadratic_regulator">LQR</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-measurement">measurement<a class="headerlink" href="#term-measurement" title="Permalink to this term"></a></dt><dd><p>Measurements are <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-output"><span class="xref std std-term">outputs</span></a> that are measured from a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-plant"><span class="xref std std-term">plant</span></a>, or physical system, using sensors.</p>
+</dd>
+<dt id="term-model">model<a class="headerlink" href="#term-model" title="Permalink to this term"></a></dt><dd><p>A set of mathematical equations that reflects some aspect of a physical <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system’s</span></a> behavior.</p>
+</dd>
+<dt id="term-observer">observer<a class="headerlink" href="#term-observer" title="Permalink to this term"></a></dt><dd><p>In control theory, a system that provides an estimate of the internal <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">state</span></a> of a given real <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> from measurements of the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-input"><span class="xref std std-term">input</span></a> and <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-output"><span class="xref std std-term">output</span></a> of the real <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a>. WPILib includes a Kalman Filter class for observing linear systems, and ExtendedKalmanFilter and UnscentedKalmanFilter classes for nonlinear systems.</p>
+</dd>
+<dt id="term-orthogonal">orthogonal<a class="headerlink" href="#term-orthogonal" title="Permalink to this term"></a></dt><dd><p>Having the property of being independent, or lacking mutual influence. For example, two lines are orthogonal if moving any number of units along one line causes zero displacement along the other line. In a <a class="reference internal" href="#term-Cartesian-coordinate-system"><span class="xref std std-term">cartesian coordinate system</span></a>, orthogonal lines are often said to have 90-degree angles between each other.</p>
+</dd>
+<dt id="term-output">output<a class="headerlink" href="#term-output" title="Permalink to this term"></a></dt><dd><p>Measurements from sensors. There can be more measurements then states. These outputs are used in the “correct” step of Kalman Filters.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ex. A flywheel might have 1 <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-output"><span class="xref std std-term">output</span></a> from a encoder that measures it’s velocity.</p></li>
+<li><p>Ex. A drivetrain might use solvePNP and V-SLAM to find it’s x/y/heading position on the field. It’s fine that there are 6 measurements (solvePNP x/y/heading and V-SLAM x/y/heading) and 3 states (robot x/y/heading).</p></li>
+</ul>
+</div></blockquote>
+<p>Outputs of a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> are often represented using the variable <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, a column vector with one entry per <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-output"><span class="xref std std-term">output</span></a> (or thing we can measure). For example, if our <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> had states for velocity and acceleration but our sensor could only measure velocity, our, our <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-output"><span class="xref std std-term">output</span></a> vector would only include the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a>'s velocity.</p>
+</dd>
+<dt id="term-phase-portrait">phase portrait<a class="headerlink" href="#term-phase-portrait" title="Permalink to this term"></a></dt><dd><p>A graph of a function’s value and its <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-derivative"><span class="xref std std-term">derivative</span></a> as they change in time, given some initial starting conditions. They are useful for analyzing system behavior (stable/unstable operating points, limit cycles, etc.) given a certain set of parameters or starting conditions. See <a class="reference external" href="https://en.wikipedia.org/wiki/Phase_portrait">phase portrait</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-PID">PID<a class="headerlink" href="#term-PID" title="Permalink to this term"></a></dt><dd><p>Proportional-Integral-Derivative - A feedback controller which calculates a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-control-signal"><span class="xref std std-term">control signal</span></a> from a weighted sum of the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-error"><span class="xref std std-term">error</span></a>, the rate of change of the error, and an accumulated sum of previous errors. See <a class="reference external" href="https://en.wikipedia.org/wiki/PID_controller">PID controller</a>. on Wikipedia for more info.</p>
+</dd>
+<dt id="term-plant">plant<a class="headerlink" href="#term-plant" title="Permalink to this term"></a></dt><dd><p>The <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> or collection of actuators being controlled.</p>
+</dd>
+<dt id="term-process-variable">process variable<a class="headerlink" href="#term-process-variable" title="Permalink to this term"></a></dt><dd><p>The term used to describe the output of a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-plant"><span class="xref std std-term">plant</span></a> in the context of PID control.</p>
+</dd>
+<dt id="term-r-squared">r-squared<a class="headerlink" href="#term-r-squared" title="Permalink to this term"></a></dt><dd><p>A statistical measurement of how well a model predicts a set of data, representing the fraction of the observed variation in the independent variable that is accurately predicted by the model. The value typically runs from 0.0 (a terrible fit, equivalent to just guessing the average value of your independent variable) to 1.0 (a perfect fit). See <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_determination">Coefficient_of_determination</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-reference">reference<a class="headerlink" href="#term-reference" title="Permalink to this term"></a></dt><dd><p>The desired state. This value is used as the reference point for a controller’s error calculation.</p>
+</dd>
+<dt id="term-rise-time">rise time<a class="headerlink" href="#term-rise-time" title="Permalink to this term"></a></dt><dd><p>The time a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> takes to initially reach the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-reference"><span class="xref std std-term">reference</span></a> after applying a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-step-input"><span class="xref std std-term">step input</span></a>.</p>
+</dd>
+<dt id="term-RMSE">RMSE<a class="headerlink" href="#term-RMSE" title="Permalink to this term"></a></dt><dd><p>Root Mean Squared Error - Statistical measurement of how well a curve is fit to a set of data. It is calculated as the square root of the average (mean) of the squares of all the errors between the actual sample and the curve fit. It has units of the original input data. See <a class="reference external" href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">Root Mean Squared Error</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-setpoint">setpoint<a class="headerlink" href="#term-setpoint" title="Permalink to this term"></a></dt><dd><p>The term used to describe the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-reference"><span class="xref std std-term">reference</span></a> of a PID controller.</p>
+</dd>
+<dt id="term-settling-time">settling time<a class="headerlink" href="#term-settling-time" title="Permalink to this term"></a></dt><dd><p>The time a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> takes to settle at the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-reference"><span class="xref std std-term">reference</span></a> after a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-step-input"><span class="xref std std-term">step input</span></a> is applied.</p>
+</dd>
+<dt id="term-signum-function">signum function<a class="headerlink" href="#term-signum-function" title="Permalink to this term"></a></dt><dd><p>A non-continuous function that expresses the “sign” of its input. It is equal to -1 for all negative input numbers, 0 for an input of 0, and 1 for all positive input numbers. See <a class="reference external" href="https://en.wikipedia.org/wiki/Sign_function">signum function</a>, on Wikipedia for more info.</p>
+</dd>
+<dt id="term-state">state<a class="headerlink" href="#term-state" title="Permalink to this term"></a></dt><dd><p>A characteristic of a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> (e.g., velocity) that can be used to determine the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system’s</span></a> future behavior. In state-space notation, the state of a system is written as a column vector describing it’s position in state-space.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ex. A drivetrain system might have the states <span class="math notranslate nohighlight">\(\begin{bmatrix}x \\ y \\ \theta \end{bmatrix}\)</span> to describe it’s position on the field.</p></li>
+<li><p>Ex. An elevator system might have the states <span class="math notranslate nohighlight">\(\begin{bmatrix} \text{position} \\ \text{velocity} \end{bmatrix}\)</span> to describe its current height and velocity.</p></li>
+</ul>
+</div></blockquote>
+<p>A <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system’s</span></a> state is often represented by the variable <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, a column vector with one entry per <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">state</span></a>.</p>
+</dd>
+<dt id="term-statistically-robust">statistically robust<a class="headerlink" href="#term-statistically-robust" title="Permalink to this term"></a></dt><dd><p>The property of a data processing algorithm which makes it resilient to a noisy or outlier-prone data set. Designing statistically robust algorithms on robots is important because real-world sensor data can often be unpredictable, but unexpected robot behavior is never desirable. See <a class="reference external" href="https://en.wikipedia.org/wiki/Robust_statistics">Robust Statistics</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-steady-state-error">steady-state error<a class="headerlink" href="#term-steady-state-error" title="Permalink to this term"></a></dt><dd><p><a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-error"><span class="xref std std-term">Error</span></a> after <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> reaches equilibrium.</p>
+</dd>
+<dt id="term-step-input">step input<a class="headerlink" href="#term-step-input" title="Permalink to this term"></a></dt><dd><p>A <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-input"><span class="xref std std-term">input</span></a> that is <span class="math notranslate nohighlight">\(0\)</span> for <span class="math notranslate nohighlight">\(t &lt; 0\)</span> and a constant greater than <span class="math notranslate nohighlight">\(0\)</span> for <span class="math notranslate nohighlight">\(t \geq 0\)</span>. A step input that is <span class="math notranslate nohighlight">\(1\)</span> for <span class="math notranslate nohighlight">\(t \geq 0\)</span> is called a unit step input.</p>
+</dd>
+<dt id="term-step-response">step response<a class="headerlink" href="#term-step-response" title="Permalink to this term"></a></dt><dd><p>The response of a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> to a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-step-input"><span class="xref std std-term">step input</span></a>.</p>
+</dd>
+<dt id="term-system">system<a class="headerlink" href="#term-system" title="Permalink to this term"></a></dt><dd><p>A term encompassing a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-plant"><span class="xref std std-term">plant</span></a> and it’s interaction with a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-controller"><span class="xref std std-term">controller</span></a> and <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-observer"><span class="xref std std-term">observer</span></a>, which is treated as a single entity. Mathematically speaking, a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> maps <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-input"><span class="xref std std-term">inputs</span></a> to <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-output"><span class="xref std std-term">outputs</span></a> through a linear combination of <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">states</span></a>.</p>
+</dd>
+<dt id="term-system-identification">system identification<a class="headerlink" href="#term-system-identification" title="Permalink to this term"></a></dt><dd><p>The process of capturing a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">systems</span></a> <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-dynamics"><span class="xref std std-term">dynamics</span></a> in a mathematical model using measured data. The SysId toolsuite uses system identification to find kS, kV and kA terms.</p>
+</dd>
+<dt id="term-system-response">system response<a class="headerlink" href="#term-system-response" title="Permalink to this term"></a></dt><dd><p>The behavior of a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> over time for a given <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-input"><span class="xref std std-term">input</span></a>.</p>
+</dd>
+<dt id="term-voltage">voltage<a class="headerlink" href="#term-voltage" title="Permalink to this term"></a></dt><dd><p>The measurement of how much an electric field is “pushing” electrons through a circuit. It is sometimes called “Electromotive Force”, or “EMF”. It is measured in units of “Volts”. It always is defined between <em>two</em> points in a circuit. If one electron travels between two points that have one volt of EMF between them, it will have been accelerated to the point of having <span class="math notranslate nohighlight">\(\frac{1}{6241509074000000000}\)</span> joules of energy.</p>
+</dd>
+<dt id="term-viscous-drag">viscous drag<a class="headerlink" href="#term-viscous-drag" title="Permalink to this term"></a></dt><dd><p>The force generated from an object moving <em>relatively</em> slowly through non-turbulent fluid. In this region, the force is roughly proportional to the <em>velocity</em> of the object. It describes the most common type of “air resistance” an FRC robot would encounter, as well as losses in a gearbox from displacing grease. See <a class="reference external" href="https://en.wikipedia.org/wiki/Drag_(physics)#Very_low_Reynolds_numbers:_Stokes'_drag">Drag (physics)</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-x-dot">x-dot<a class="headerlink" href="#term-x-dot" title="Permalink to this term"></a></dt><dd><p><span class="math notranslate nohighlight">\(\dot{\mathbf{x}}\)</span>, or x-dot: the derivative of the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">state</span></a> vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. If the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a> had just a velocity <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">state</span></a>, then <span class="math notranslate nohighlight">\(\dot{\mathbf{x}}\)</span> would represent the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-system"><span class="xref std std-term">system</span></a>'s acceleration.</p>
+</dd>
+<dt id="term-x-hat">x-hat<a class="headerlink" href="#term-x-hat" title="Permalink to this term"></a></dt><dd><p><span class="math notranslate nohighlight">\(\hat{\mathbf{x}}\)</span>, or x-hat: the estimated <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-state"><span class="xref std std-term">state</span></a> of a system, as estimated by an <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-observer"><span class="xref std std-term">observer</span></a>.</p>
+</dd>
+</dl>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="state-space/state-space-debugging.html" class="btn btn-neutral float-left" title="Debugging State-Space Models and Controllers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../convenience-features/index.html" class="btn btn-neutral float-right" title="Convenience Features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

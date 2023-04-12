@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="State Observers and Kalman Filters" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/state-space/state-space-observers.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="State observers combine information about a system’s behavior and external measurements to estimate the true state of the system. A common observer used for linear systems is the Kalman Filter. Kal..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/state-space/state-space-observers.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/state-space/state-space-observers.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/advanced-controls/state-space/state-space-observers.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/advanced-controls/state-space/state-space-observers.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/advanced-controls/state-space/state-space-observers.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/advanced-controls/state-space/state-space-observers.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/advanced-controls/state-space/state-space-observers.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/advanced-controls/state-space/state-space-observers.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>State Observers and Kalman Filters &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/state-space/state-space-observers.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Pose Estimators" href="state-space-pose-estimators.html" />
+    <link rel="prev" title="State-Space Controller Walkthrough" href="state-space-flywheel-walkthrough.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Advanced Controls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../video-walkthrough.html">A Video Walkthrough of Model Based Validation of Autonomous in FRC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">Advanced Controls Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/index.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/index.html">Geometry Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers/index.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trajectories/index.html">Trajectory Generation and Following with WPILib</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">State-Space and Model Based Control with WPILib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="state-space-intro.html">Introduction to State-Space Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="state-space-flywheel-walkthrough.html">State-Space Controller Walkthrough</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">State Observers and Kalman Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="state-space-pose-estimators.html">Pose Estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="state-space-debugging.html">Debugging State-Space Models and Controllers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../controls-glossary.html">Controls Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Advanced Controls</a></li>
+          <li class="breadcrumb-item"><a href="index.html">State-Space and Model Based Control with WPILib</a></li>
+      <li class="breadcrumb-item active">State Observers and Kalman Filters</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/advanced-controls/state-space/state-space-observers.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="state-observers-and-kalman-filters">
+<h1>State Observers and Kalman Filters<a class="headerlink" href="#state-observers-and-kalman-filters" title="Permalink to this heading"></a></h1>
+<p>State observers combine information about a system’s behavior and external measurements to estimate the true <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-state"><span class="xref std std-term">state</span></a> of the system. A common observer used for linear systems is the Kalman Filter. Kalman filters are advantageous over other <a class="reference internal" href="../filters/index.html#filters"><span class="std std-ref">filters</span></a> as they fuse measurements from one or more sensors with a state-space model of the system to optimally estimate a system’s state.</p>
+<p>This image shows flywheel velocity measurements over time, run through a variety of different filters. Note that a well-tuned Kalman filter shows no measurement lag during flywheel spinup while still rejecting noisy data and reacting quickly to disturbances as balls pass through it. More on filters can be found in the <a class="reference internal" href="../filters/index.html#filters"><span class="std std-ref">filters section</span></a>.</p>
+<img alt="Filter comparison between: Kalman, Median, and IIR." src="../../../../_images/filter_comparison.png" />
+<section id="gaussian-functions">
+<h2>Gaussian Functions<a class="headerlink" href="#gaussian-functions" title="Permalink to this heading"></a></h2>
+<p>Kalman filters utilize a <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-Gaussian-distribution"><span class="xref std std-term">Gaussian distribution</span></a> to model the noise in a process <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. In the case of a Kalman filter, the estimated <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-state"><span class="xref std std-term">state</span></a> of the system is the mean, while the variance is a measure of how certain (or uncertain) the filter is about the true <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-state"><span class="xref std std-term">state</span></a>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../../../_images/normal-distribution.png"><img alt="../../../../_images/normal-distribution.png" src="../../../../_images/normal-distribution.png" style="width: 600px;" /></a>
+</figure>
+<p>The idea of variance and covariance is central to the function of a Kalman filter. Covariance is a measurement of how two random variables are correlated. In a system with a single state, the covariance matrix is simply <span class="math notranslate nohighlight">\(\mathbf{\text{cov}(x_1, x_1)}\)</span>, or a matrix containing the variance <span class="math notranslate nohighlight">\(\mathbf{\text{var}(x_1)}\)</span> of the state <span class="math notranslate nohighlight">\(x_1\)</span>. The magnitude of this variance is the square of the standard deviation of the Gaussian function describing the current state estimate. Relatively large values for covariance might indicate noisy data, while small covariances might indicate that the filter is more confident about it’s estimate. Remember that “large” and “small” values for variance or covariance are relative to the base unit being used – for example, if <span class="math notranslate nohighlight">\(\mathbf{x_1}\)</span> was measured in meters, <span class="math notranslate nohighlight">\(\mathbf{\text{cov}(x_1, x_1)}\)</span> would be in meters squared.</p>
+<p>Covariance matrices are written in the following form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{\Sigma} &amp;= \begin{bmatrix}
+  \text{cov}(x_1, x_1) &amp; \text{cov}(x_1, x_2) &amp; \ldots &amp; \text{cov}(x_1, x_n) \\
+  \text{cov}(x_2, x_1) &amp; \text{cov}(x_2, x_2) &amp; \ldots &amp; \text{cov}(x_1, x_n) \\
+  \vdots         &amp; \vdots         &amp; \ddots &amp; \vdots \\
+  \text{cov}(x_n, x_1) &amp; \text{cov}(x_n, x_2) &amp; \ldots &amp; \text{cov}(x_n, x_n) \\
+\end{bmatrix}\end{split}\]</div>
+</section>
+<section id="kalman-filters">
+<h2>Kalman Filters<a class="headerlink" href="#kalman-filters" title="Permalink to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It is important to develop an intuition for what a Kalman filter is actually doing. The book <a class="reference external" href="https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python">Kalman and Bayesian Filters in Python by Roger Labbe</a> provides a great visual and interactive introduction to Bayesian filters. The Kalman filters in WPILib use linear algebra to gentrify the math, but the ideas are similar to the single-dimensional case. We suggest reading through Chapter 4 to gain an intuition for what these filters are doing.</p>
+</div>
+<p>To summarize, Kalman filters (and all Bayesian filters) have two parts: prediction and correction. Prediction projects our state estimate forward in time according to our system’s dynamics, and correct steers the estimated state towards the measured state. While filters often preform both in the same timestep, it’s not strictly necessary – For example, WPILib’s pose estimators call predict frequently, and correct only when new measurement data is available (for example, from a low-framerate vision system).</p>
+<p>The following shows the equations of a discrete-time Kalman filter:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{Predict step} \nonumber \\
+\hat{\mathbf{x}}_{k+1}^- &amp;= \mathbf{A}\hat{\mathbf{x}}_k + \mathbf{B} \mathbf{u}_k \\
+\mathbf{P}_{k+1}^- &amp;= \mathbf{A} \mathbf{P}_k^- \mathbf{A}^T +
+    \mathbf{\Gamma}\mathbf{Q}\mathbf{\Gamma}^T \\
+\text{Update step} \nonumber \\
+\mathbf{K}_{k+1} &amp;=
+    \mathbf{P}_{k+1}^- \mathbf{C}^T (\mathbf{C}\mathbf{P}_{k+1}^- \mathbf{C}^T +
+    \mathbf{R})^{-1} \\
+\hat{\mathbf{x}}_{k+1}^+ &amp;=
+    \hat{\mathbf{x}}_{k+1}^- + \mathbf{K}_{k+1}(\mathbf{y}_{k+1} -
+    \mathbf{C} \hat{\mathbf{x}}_{k+1}^- - \mathbf{D}\mathbf{u}_{k+1}) \\
+\mathbf{P}_{k+1}^+ &amp;= (\mathbf{I} - \mathbf{K}_{k+1}\mathbf{C})\mathbf{P}_{k+1}^-\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{llll}
+  \mathbf{A} &amp; \text{system matrix} &amp; \hat{\mathbf{x}} &amp; \text{state estimate vector} \\
+  \mathbf{B} &amp; \text{input matrix}       &amp; \mathbf{u} &amp; \text{input vector} \\
+  \mathbf{C} &amp; \text{output matrix}      &amp; \mathbf{y} &amp; \text{output vector} \\
+  \mathbf{D} &amp; \text{feedthrough matrix} &amp; \mathbf{\Gamma} &amp; \text{process noise intensity vector} \\
+  \mathbf{P} &amp; \text{error covariance matrix} &amp; \mathbf{Q} &amp; \text{process noise covariance matrix} \\
+  \mathbf{K} &amp; \text{Kalman gain matrix} &amp; \mathbf{R} &amp; \text{measurement noise covariance matrix}
+\end{array}\end{split}\]</div>
+<p>The state estimate <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, together with <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>, describe the mean and covariance of the Gaussian function that describes our filter’s estimate of the system’s true state.</p>
+<section id="process-and-measurement-noise-covariance-matrices">
+<h3>Process and Measurement Noise Covariance Matrices<a class="headerlink" href="#process-and-measurement-noise-covariance-matrices" title="Permalink to this heading"></a></h3>
+<p>The process and measurement noise covariance matrices <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> describe the variance of each of our states and measurements. Remember that for a Gaussian function, variance is the square of the function’s standard deviation. In a WPILib, Q and R are diagonal matrices whose diagonals contain their respective variances. For example, a Kalman filter with states <span class="math notranslate nohighlight">\(\begin{bmatrix}\text{position} \\ \text{velocity} \end{bmatrix}\)</span> and measurements <span class="math notranslate nohighlight">\(\begin{bmatrix}\text{position} \end{bmatrix}\)</span> with state standard deviations <span class="math notranslate nohighlight">\(\begin{bmatrix}0.1 \\ 1.0\end{bmatrix}\)</span> and measurement standard deviation <span class="math notranslate nohighlight">\(\begin{bmatrix}0.01\end{bmatrix}\)</span> would have the following <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> matrices:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Q = \begin{bmatrix}0.01 &amp; 0 \\ 0 &amp; 1.0\end{bmatrix},
+R = \begin{bmatrix}0.0001\end{bmatrix}\end{split}\]</div>
+</section>
+<section id="error-covariance-matrix">
+<h3>Error Covariance Matrix<a class="headerlink" href="#error-covariance-matrix" title="Permalink to this heading"></a></h3>
+<p>The error covariance matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> describes the covariance of the state estimate <span class="math notranslate nohighlight">\(\mathbf{\hat{x}}\)</span>. Informally, <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> describes our certainty about the estimated <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-state"><span class="xref std std-term">state</span></a>. If <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is large, our uncertainty about the true state is large. Conversely, a <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> with smaller elements would imply less uncertainty about our true state.</p>
+<p>As we project the model forward, <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> increases as our certainty about the system’s true state decreases.</p>
+</section>
+</section>
+<section id="predict-step">
+<h2>Predict step<a class="headerlink" href="#predict-step" title="Permalink to this heading"></a></h2>
+<p>In prediction, our state estimate is updated according to the linear system dynamics <span class="math notranslate nohighlight">\(\mathbf{\dot{x} = Ax + Bu}\)</span>. Furthermore, our error covariance <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> increases by the process noise covariance matrix <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span>. Larger values of <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> will make our error covariance <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> grow more quickly. This <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is used in the correction step to weight the model and measurements.</p>
+</section>
+<section id="correct-step">
+<h2>Correct step<a class="headerlink" href="#correct-step" title="Permalink to this heading"></a></h2>
+<p>In the correct step, our state estimate is updated to include new measurement information. This new information is weighted against the state estimate <span class="math notranslate nohighlight">\(\mathbf{\hat{x}}\)</span> by the Kalman gain <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>. Large values of <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> more highly weight incoming measurements, while smaller values of <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> more highly weight our state prediction. Because <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> is related to <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>, larger values of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> will increase <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> and more heavily weight measurements. If, for example, a filter is predicted for a long duration, the large <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> would heavily weight the new information.</p>
+<p>Finally, the error covariance <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> decreases to increase our confidence in the state estimate.</p>
+</section>
+<section id="tuning-kalman-filters">
+<h2>Tuning Kalman Filters<a class="headerlink" href="#tuning-kalman-filters" title="Permalink to this heading"></a></h2>
+<p>WPILib’s Kalman Filter classes’ constructors take a linear system, a vector of process noise standard deviations and measurement noise standard deviations. These are converted to <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> matrices by filling the diagonals with the square of the standard deviations, or variances, of each state or measurement. By decreasing a state’s standard deviation (and therefore its corresponding entry in <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span>), the filter will distrust incoming measurements more. Similarly, increasing a state’s standard deviation will trust incoming measurements more. The same holds for the measurement standard deviations – decreasing an entry will make the filter more highly trust the incoming measurement for the corresponding state, while increasing it will decrease trust in the measurement.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">49</span><span class="w">  </span><span class="c1">// The observer fuses our encoder data and voltage inputs to reject noise.</span><span class="w"></span>
+<span class="linenos">50</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">KalmanFilter</span><span class="o">&lt;</span><span class="n">N1</span><span class="p">,</span><span class="w"> </span><span class="n">N1</span><span class="p">,</span><span class="w"> </span><span class="n">N1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m_observer</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">      </span><span class="k">new</span><span class="w"> </span><span class="n">KalmanFilter</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">52</span><span class="w">          </span><span class="n">Nat</span><span class="p">.</span><span class="na">N1</span><span class="p">(),</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">          </span><span class="n">Nat</span><span class="p">.</span><span class="na">N1</span><span class="p">(),</span><span class="w"></span>
+<span class="linenos">54</span><span class="w">          </span><span class="n">m_flywheelPlant</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">55</span><span class="w">          </span><span class="n">VecBuilder</span><span class="p">.</span><span class="na">fill</span><span class="p">(</span><span class="mf">3.0</span><span class="p">),</span><span class="w"> </span><span class="c1">// How accurate we think our model is</span><span class="w"></span>
+<span class="linenos">56</span><span class="w">          </span><span class="n">VecBuilder</span><span class="p">.</span><span class="na">fill</span><span class="p">(</span><span class="mf">0.01</span><span class="p">),</span><span class="w"> </span><span class="c1">// How accurate we think our encoder</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">          </span><span class="c1">// data is</span><span class="w"></span>
+<span class="linenos">58</span><span class="w">          </span><span class="mf">0.020</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 5</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;numbers&gt;</span><span class="cp"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/DriverStation.h&gt;</span><span class="cp"></span>
+<span class="linenos"> 8</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/Encoder.h&gt;</span><span class="cp"></span>
+<span class="linenos"> 9</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/TimedRobot.h&gt;</span><span class="cp"></span>
+<span class="linenos">10</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/XboxController.h&gt;</span><span class="cp"></span>
+<span class="linenos">11</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/controller/LinearQuadraticRegulator.h&gt;</span><span class="cp"></span>
+<span class="linenos">12</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/drive/DifferentialDrive.h&gt;</span><span class="cp"></span>
+<span class="linenos">13</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/estimator/KalmanFilter.h&gt;</span><span class="cp"></span>
+<span class="linenos">14</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/motorcontrol/PWMSparkMax.h&gt;</span><span class="cp"></span>
+<span class="linenos">15</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/system/LinearSystemLoop.h&gt;</span><span class="cp"></span>
+<span class="linenos">16</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/system/plant/DCMotor.h&gt;</span><span class="cp"></span>
+<span class="linenos">17</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/system/plant/LinearSystemId.h&gt;</span><span class="cp"></span>
+<span class="linenos">18</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/angular_velocity.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">48</span><span class="w">  </span><span class="c1">// The observer fuses our encoder data and voltage inputs to reject noise.</span>
+<span class="linenos">49</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">KalmanFilter</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m_observer</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">50</span><span class="w">      </span><span class="n">m_flywheelPlant</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">      </span><span class="p">{</span><span class="mf">3.0</span><span class="p">},</span><span class="w">   </span><span class="c1">// How accurate we think our model is</span>
+<span class="linenos">52</span><span class="w">      </span><span class="p">{</span><span class="mf">0.01</span><span class="p">},</span><span class="w">  </span><span class="c1">// How accurate we think our encoder data is</span>
+<span class="linenos">53</span><span class="w">      </span><span class="mi">20</span><span class="n">_ms</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this heading"></a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>In a real robot, noise comes from all sorts of sources. Stray electromagnetic radiation adds extra voltages to sensor readings, vibrations and temperature variations throw off inertial measurement units, gear lash causes encoders to have inaccuracies when directions change… all sorts of things. It’s important to realize that, by themselves, each of these sources of “noise” aren’t guaranteed to follow any pattern. Some of them might be the “white noise” random vibrations you’ve probably heard on the radio. Others might be “pops” or single-loop errors. Others might be nominally zero, but strongly correlated with events on the robot. However, the <a class="reference internal" href="../../frc-glossary.html#term-central-limit-theorem"><span class="xref std std-term">Central Limit Theorem</span></a> shows mathematically that regardless of how the individual sources of noise are distributed, as we add more and more of them up their combined effect eventually is distributed like a Gaussian. Since we do not know the exact individual sources of noise, the best choice of a model we can make is indeed that Gaussian function.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="state-space-flywheel-walkthrough.html" class="btn btn-neutral float-left" title="State-Space Controller Walkthrough" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="state-space-pose-estimators.html" class="btn btn-neutral float-right" title="Pose Estimators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

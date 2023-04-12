@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Binding Commands to Triggers" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/commandbased/binding-commands-to-triggers.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Apart from autonomous commands, which are scheduled at the start of the autonomous period, and default commands, which are automatically scheduled whenever their subsystem is not currently in-use, ..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/binding-commands-to-triggers.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/binding-commands-to-triggers.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/commandbased/binding-commands-to-triggers.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/commandbased/binding-commands-to-triggers.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/commandbased/binding-commands-to-triggers.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/commandbased/binding-commands-to-triggers.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/commandbased/binding-commands-to-triggers.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/commandbased/binding-commands-to-triggers.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Binding Commands to Triggers &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/binding-commands-to-triggers.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Structuring a Command-Based Robot Project" href="structuring-command-based-project.html" />
+    <link rel="prev" title="Subsystems" href="subsystems.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Command-Based Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="what-is-command-based.html">What Is “Command-Based” Programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-compositions.html">Command Compositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subsystems.html">Subsystems</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Binding Commands to Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structuring-command-based-project.html">Structuring a Command-Based Robot Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing-command-based.html">Organizing Command-Based Robot Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-scheduler.html">The Command Scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp-command-discussion.html">A Technical Discussion on C++ Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-subsystems-commands.html">PID Control through PIDSubsystems and PIDCommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile-subsystems-commands.html">Motion Profiling through TrapezoidProfileSubsystems and TrapezoidProfileCommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profilepid-subsystems-commands.html">Combining Motion Profiling and PID in Command-Based</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-based-changes.html">2020 Command-Based Rewrite: What Changed?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Command-Based Programming</a></li>
+      <li class="breadcrumb-item active">Binding Commands to Triggers</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/commandbased/binding-commands-to-triggers.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="binding-commands-to-triggers">
+<h1>Binding Commands to Triggers<a class="headerlink" href="#binding-commands-to-triggers" title="Permalink to this heading"></a></h1>
+<p>Apart from autonomous commands, which are scheduled at the start of the autonomous period, and default commands, which are automatically scheduled whenever their subsystem is not currently in-use, the most common way to run a command is by binding it to a triggering event, such as a button being pressed by a human operator. The command-based paradigm makes this extremely easy to do.</p>
+<p>As mentioned earlier, command-based is a <a class="hxr-hoverxref hxr-tooltip reference internal" href="../frc-glossary.html#term-declarative-programming"><span class="xref std std-term">declarative programming</span></a> paradigm. Accordingly, binding buttons to commands is done declaratively; the association of a button and a command is “declared” once, during robot initialization. The library then does all the hard work of checking the button state and scheduling (or canceling) the command as needed, behind-the-scenes. Users only need to worry about designing their desired UI setup - not about implementing it!</p>
+<p>Command binding is done through the <code class="docutils literal notranslate"><span class="pre">Trigger</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/Trigger.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_trigger.html">C++</a>).</p>
+<section id="getting-a-trigger-instance">
+<h2>Getting a Trigger Instance<a class="headerlink" href="#getting-a-trigger-instance" title="Permalink to this heading"></a></h2>
+<p>To bind commands to conditions, we need a <code class="docutils literal notranslate"><span class="pre">Trigger</span></code> object. There are three ways to get a Trigger object:</p>
+<section id="hid-factories">
+<h3>HID Factories<a class="headerlink" href="#hid-factories" title="Permalink to this heading"></a></h3>
+<p>The command-based HID classes contain factory methods returning a <code class="docutils literal notranslate"><span class="pre">Trigger</span></code> for a given button. <code class="docutils literal notranslate"><span class="pre">CommandGenericHID</span></code> has an index-based <code class="docutils literal notranslate"><span class="pre">button(int)</span></code> factory (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/CommandGenericHID.html#button(int)">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_generic_h_i_d.html#a661f49794a913615c94fba927e1072a8">C++</a>), and its subclasses <code class="docutils literal notranslate"><span class="pre">CommandXboxController</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/CommandXboxController.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_xbox_controller.html">C++</a>), <code class="docutils literal notranslate"><span class="pre">CommandPS4Controller</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/CommandPS4Controller.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_p_s4_controller.html">C++</a>), and <code class="docutils literal notranslate"><span class="pre">CommandJoystick</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/CommandJoystick.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_joystick.html">C++</a>) have named factory methods for each button.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">CommandXboxController</span><span class="w"> </span><span class="n">exampleCommandController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CommandXboxController</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Creates a CommandXboxController on port 1.</span><span class="w"></span>
+<span class="n">Trigger</span><span class="w"> </span><span class="n">xButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exampleCommandController</span><span class="p">.</span><span class="na">x</span><span class="p">();</span><span class="w"> </span><span class="c1">// Creates a new Trigger object for the `X` button on exampleCommandController</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandXboxController</span><span class="w"> </span><span class="n">exampleCommandController</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="c1">// Creates a CommandXboxController on port 1</span>
+<span class="n">frc2</span><span class="o">::</span><span class="n">Trigger</span><span class="w"> </span><span class="n">xButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exampleCommandController</span><span class="p">.</span><span class="n">X</span><span class="p">()</span><span class="w"> </span><span class="c1">// Creates a new Trigger object for the `X` button on exampleCommandController</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="joystickbutton">
+<h3>JoystickButton<a class="headerlink" href="#joystickbutton" title="Permalink to this heading"></a></h3>
+<p>Alternatively, the <a class="reference internal" href="../basic-programming/joystick.html#joysticks"><span class="std std-ref">regular HID classes</span></a> can be used and passed to create an instance of <code class="docutils literal notranslate"><span class="pre">JoystickButton</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/button/JoystickButton.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_joystick_button.html">C++</a>), a constructor-only subclass of <code class="docutils literal notranslate"><span class="pre">Trigger</span></code>:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">XboxController</span><span class="w"> </span><span class="n">exampleController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XboxController</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// Creates an XboxController on port 2.</span><span class="w"></span>
+<span class="n">Trigger</span><span class="w"> </span><span class="n">yButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JoystickButton</span><span class="p">(</span><span class="n">exampleController</span><span class="p">,</span><span class="w"> </span><span class="n">XboxController</span><span class="p">.</span><span class="na">Button</span><span class="p">.</span><span class="na">kY</span><span class="p">.</span><span class="na">value</span><span class="p">);</span><span class="w"> </span><span class="c1">// Creates a new JoystickButton object for the `Y` button on exampleController</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc</span><span class="o">::</span><span class="n">XboxController</span><span class="w"> </span><span class="n">exampleController</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="w"> </span><span class="c1">// Creates an XboxController on port 2</span>
+<span class="n">frc2</span><span class="o">::</span><span class="n">JoystickButton</span><span class="w"> </span><span class="n">yButton</span><span class="p">(</span><span class="o">&amp;</span><span class="n">exampleStick</span><span class="p">,</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">XboxController</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">kY</span><span class="p">);</span><span class="w"> </span><span class="c1">// Creates a new JoystickButton object for the `Y` button on exampleController</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="arbitrary-triggers">
+<h3>Arbitrary Triggers<a class="headerlink" href="#arbitrary-triggers" title="Permalink to this heading"></a></h3>
+<p>While binding to HID buttons is by far the most common use case, users may want to bind commands to arbitrary triggering events. This can be done inline by passing a lambda to the constructor of <code class="docutils literal notranslate"><span class="pre">Trigger</span></code>:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">DigitalInput</span><span class="w"> </span><span class="n">limitSwitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DigitalInput</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// Limit switch on DIO 3</span><span class="w"></span>
+
+<span class="n">Trigger</span><span class="w"> </span><span class="n">exampleTrigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Trigger</span><span class="p">(</span><span class="n">limitSwitch</span><span class="p">::</span><span class="n">get</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc</span><span class="o">::</span><span class="n">DigitalInput</span><span class="w"> </span><span class="n">limitSwitch</span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="c1">// Limit switch on DIO 3</span>
+
+<span class="n">frc2</span><span class="o">::</span><span class="n">Trigger</span><span class="w"> </span><span class="nf">exampleTrigger</span><span class="p">([</span><span class="o">&amp;</span><span class="n">limitSwitch</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">limitSwitch</span><span class="p">.</span><span class="n">Get</span><span class="p">();</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="trigger-bindings">
+<h2>Trigger Bindings<a class="headerlink" href="#trigger-bindings" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The C++ command-based library offers two overloads of each button binding method - one that takes an <a class="reference external" href="http://thbecker.net/articles/rvalue_references/section_01.html">rvalue reference</a> (<code class="docutils literal notranslate"><span class="pre">CommandPtr&amp;&amp;</span></code>), and one that takes a raw pointer (<code class="docutils literal notranslate"><span class="pre">Command*</span></code>).  The rvalue overload moves ownership to the scheduler, while the raw pointer overload leaves the user responsible for the lifespan of the command object.  It is recommended that users preferentially use the rvalue reference overload unless there is a specific need to retain a handle to the command in the calling code.</p>
+</div>
+<p>There are a number of bindings available for the <code class="docutils literal notranslate"><span class="pre">Trigger</span></code> class. All of these bindings will automatically schedule a command when a certain trigger activation event occurs - however, each binding has different specific behavior.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Trigger</span></code> objects <em>do not need to survive past the call to a binding method</em>, so the binding methods may be simply called on a temp. Remember that button binding is <em>declarative</em>: bindings only need to be declared once, ideally some time during robot initialization. The library handles everything else.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Button</span></code> subclass is deprecated, and usage of its binding methods should be replaced according to the respective deprecation messages in the API docs.</p>
+</div>
+<section id="ontrue">
+<h3>onTrue<a class="headerlink" href="#ontrue" title="Permalink to this heading"></a></h3>
+<p>This binding schedules a command when a trigger changes from <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> (or, accordingly, when a button changes is initially pressed). The command will be scheduled on the iteration when the state changes, and will not be scheduled again unless the trigger becomes <code class="docutils literal notranslate"><span class="pre">false</span></code> and then <code class="docutils literal notranslate"><span class="pre">true</span></code> again (or the button is released and then re-pressed).</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">52</span><span class="w">    </span><span class="c1">// Move the arm to 2 radians above horizontal when the &#39;A&#39; button is pressed.</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">    </span><span class="n">m_driverController</span><span class="p">.</span><span class="na">a</span><span class="p">().</span><span class="na">onTrue</span><span class="p">(</span><span class="n">m_robotArm</span><span class="p">.</span><span class="na">setArmGoalCommand</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">24</span><span class="w">  </span><span class="c1">// Move the arm to 2 radians above horizontal when the &#39;A&#39; button is pressed.</span>
+<span class="linenos">25</span><span class="w">  </span><span class="n">m_driverController</span><span class="p">.</span><span class="n">A</span><span class="p">().</span><span class="n">OnTrue</span><span class="p">(</span><span class="n">m_arm</span><span class="p">.</span><span class="n">SetArmGoalCommand</span><span class="p">(</span><span class="mi">2</span><span class="n">_rad</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">onFalse</span></code> binding is identical, only that it schedules on <code class="docutils literal notranslate"><span class="pre">false</span></code> instead of on <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</section>
+<section id="whiletrue">
+<h3>whileTrue<a class="headerlink" href="#whiletrue" title="Permalink to this heading"></a></h3>
+<p>This binding schedules a command when a trigger changes from <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> (or, accordingly, when a button is initially pressed) and cancels it when the trigger becomes <code class="docutils literal notranslate"><span class="pre">false</span></code> again (or the button is released). The command will <em>not</em> be re-scheduled if it finishes while the trigger is still <code class="docutils literal notranslate"><span class="pre">true</span></code>. For the command to restart if it finishes while the trigger is <code class="docutils literal notranslate"><span class="pre">true</span></code>, wrap the command in a <code class="docutils literal notranslate"><span class="pre">RepeatCommand</span></code>, or use a <code class="docutils literal notranslate"><span class="pre">RunCommand</span></code> instead of an <code class="docutils literal notranslate"><span class="pre">InstantCommand</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">114</span><span class="w">    </span><span class="c1">// While holding the shoulder button, drive at half speed</span><span class="w"></span>
+<span class="linenos">115</span><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">JoystickButton</span><span class="p">(</span><span class="n">m_driverController</span><span class="p">,</span><span class="w"> </span><span class="n">Button</span><span class="p">.</span><span class="na">kRightBumper</span><span class="p">.</span><span class="na">value</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">116</span><span class="w">        </span><span class="p">.</span><span class="na">whileTrue</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">HalveDriveSpeed</span><span class="p">(</span><span class="n">m_robotDrive</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">75</span><span class="w">  </span><span class="c1">// While holding the shoulder button, drive at half speed</span>
+<span class="linenos">76</span><span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">JoystickButton</span><span class="p">(</span><span class="o">&amp;</span><span class="n">m_driverController</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">77</span><span class="w">                       </span><span class="n">frc</span><span class="o">::</span><span class="n">XboxController</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">kRightBumper</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">78</span><span class="w">      </span><span class="p">.</span><span class="n">WhileTrue</span><span class="p">(</span><span class="n">HalveDriveSpeed</span><span class="p">(</span><span class="o">&amp;</span><span class="n">m_drive</span><span class="p">).</span><span class="n">ToPtr</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">whileFalse</span></code> binding is identical, only that it schedules on <code class="docutils literal notranslate"><span class="pre">false</span></code> and cancels on <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</section>
+<section id="toggleontrue">
+<h3>toggleOnTrue<a class="headerlink" href="#toggleontrue" title="Permalink to this heading"></a></h3>
+<p>This binding toggles a command, scheduling it when a trigger changes from <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> (or a button is initially pressed), and canceling it under the same condition if the command is currently running. Note that while this functionality is supported, toggles are not a highly-recommended option for user control, as they require the driver to keep track of the robot state.  The preferred method is to use two buttons; one to turn on and another to turn off.  Using a <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/StartEndCommand.html">StartEndCommand</a> or a <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/ConditionalCommand.html">ConditionalCommand</a> is a good way to specify the commands that you want to be want to be toggled between.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-5-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-5-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">myButton</span><span class="p">.</span><span class="na">toggleOnTrue</span><span class="p">(</span><span class="n">Commands</span><span class="p">.</span><span class="na">startEnd</span><span class="p">(</span><span class="n">mySubsystem</span><span class="p">::</span><span class="n">onMethod</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">mySubsystem</span><span class="p">::</span><span class="n">offMethod</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">mySubsystem</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">myButton</span><span class="p">.</span><span class="n">ToggleOnTrue</span><span class="p">(</span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">StartEnd</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mySubsystem</span><span class="p">.</span><span class="n">OnMethod</span><span class="p">();</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">mySubsystem</span><span class="p">.</span><span class="n">OffMethod</span><span class="p">();</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="o">&amp;</span><span class="n">mySubsystem</span><span class="p">}));</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">toggleOnFalse</span></code> binding is identical, only that it toggles on <code class="docutils literal notranslate"><span class="pre">false</span></code> instead of on <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</section>
+</section>
+<section id="chaining-calls">
+<h2>Chaining Calls<a class="headerlink" href="#chaining-calls" title="Permalink to this heading"></a></h2>
+<p>It is useful to note that the command binding methods all return the trigger that they were called on, and thus can be chained to bind multiple commands to different states of the same trigger. For example:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-6-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-6-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-6-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">exampleButton</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Binds a FooCommand to be scheduled when the button is pressed</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">onTrue</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">FooCommand</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Binds a BarCommand to be scheduled when that same button is released</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">onFalse</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">BarCommand</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">exampleButton</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Binds a FooCommand to be scheduled when the button is pressed</span>
+<span class="w">    </span><span class="p">.</span><span class="n">OnTrue</span><span class="p">(</span><span class="n">FooCommand</span><span class="p">().</span><span class="n">ToPtr</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Binds a BarCommand to be scheduled when that same button is released</span>
+<span class="w">    </span><span class="p">.</span><span class="n">OnFalse</span><span class="p">(</span><span class="n">BarCommand</span><span class="p">().</span><span class="n">ToPtr</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="composing-triggers">
+<h2>Composing Triggers<a class="headerlink" href="#composing-triggers" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Trigger</span></code> class can be composed to create composite triggers through the <code class="docutils literal notranslate"><span class="pre">and()</span></code>, <code class="docutils literal notranslate"><span class="pre">or()</span></code>, and <code class="docutils literal notranslate"><span class="pre">negate()</span></code> methods (or, in C++, the <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">||</span></code>, and <code class="docutils literal notranslate"><span class="pre">!</span></code> operators). For example:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-7-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-7-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-7-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Binds an ExampleCommand to be scheduled when both the &#39;X&#39; and &#39;Y&#39; buttons of the driver gamepad are pressed</span><span class="w"></span>
+<span class="n">exampleCommandController</span><span class="p">.</span><span class="na">x</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">and</span><span class="p">(</span><span class="n">exampleCommandController</span><span class="p">.</span><span class="na">y</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">onTrue</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ExampleCommand</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-7-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Binds an ExampleCommand to be scheduled when both the &#39;X&#39; and &#39;Y&#39; buttons of the driver gamepad are pressed</span>
+<span class="p">(</span><span class="n">exampleCommandController</span><span class="p">.</span><span class="n">X</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">exampleCommandController</span><span class="p">.</span><span class="n">Y</span><span class="p">())</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">OnTrue</span><span class="p">(</span><span class="n">ExampleCommand</span><span class="p">().</span><span class="n">ToPtr</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="debouncing-triggers">
+<h2>Debouncing Triggers<a class="headerlink" href="#debouncing-triggers" title="Permalink to this heading"></a></h2>
+<p>To avoid rapid repeated activation, triggers (especially those originating from digital inputs) can be debounced with the <a class="reference internal" href="../advanced-controls/filters/debouncer.html#debouncer"><span class="std std-ref">WPILib Debouncer class</span></a> using the <cite>debounce</cite> method:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-8-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-8-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-8-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// debounces exampleButton with a 0.1s debounce time, rising edges only</span><span class="w"></span>
+<span class="n">exampleButton</span><span class="p">.</span><span class="na">debounce</span><span class="p">(</span><span class="mf">0.1</span><span class="p">).</span><span class="na">onTrue</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ExampleCommand</span><span class="p">());</span><span class="w"></span>
+
+<span class="c1">// debounces exampleButton with a 0.1s debounce time, both rising and falling edges</span><span class="w"></span>
+<span class="n">exampleButton</span><span class="p">.</span><span class="na">debounce</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="n">Debouncer</span><span class="p">.</span><span class="na">DebounceType</span><span class="p">.</span><span class="na">kBoth</span><span class="p">).</span><span class="na">onTrue</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ExampleCommand</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-8-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// debounces exampleButton with a 100ms debounce time, rising edges only</span>
+<span class="n">exampleButton</span><span class="p">.</span><span class="n">Debounce</span><span class="p">(</span><span class="mi">100</span><span class="n">_ms</span><span class="p">).</span><span class="n">OnTrue</span><span class="p">(</span><span class="n">ExampleCommand</span><span class="p">().</span><span class="n">ToPtr</span><span class="p">());</span><span class="w"></span>
+
+<span class="c1">// debounces exampleButton with a 100ms debounce time, both rising and falling edges</span>
+<span class="n">exampleButton</span><span class="p">.</span><span class="n">Debounce</span><span class="p">(</span><span class="mi">100</span><span class="n">_ms</span><span class="p">,</span><span class="w"> </span><span class="n">Debouncer</span><span class="o">::</span><span class="n">DebounceType</span><span class="o">::</span><span class="n">Both</span><span class="p">).</span><span class="n">OnTrue</span><span class="p">(</span><span class="n">ExampleCommand</span><span class="p">().</span><span class="n">ToPtr</span><span class="p">());</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="subsystems.html" class="btn btn-neutral float-left" title="Subsystems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="structuring-command-based-project.html" class="btn btn-neutral float-right" title="Structuring a Command-Based Robot Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

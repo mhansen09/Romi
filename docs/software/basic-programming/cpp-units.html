@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="The C++ Units Library" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/basic-programming/cpp-units.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="WPILib is coupled with a Units library for C++ teams. This library leverages the C++ type system to enforce proper dimensionality for method parameters, automatically perform unit conversions, and ..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/basic-programming/cpp-units.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/basic-programming/cpp-units.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/basic-programming/cpp-units.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/basic-programming/cpp-units.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/basic-programming/cpp-units.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/basic-programming/cpp-units.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/basic-programming/cpp-units.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/basic-programming/cpp-units.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The C++ Units Library &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/basic-programming/cpp-units.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Joysticks" href="joystick.html" />
+    <link rel="prev" title="Git Version Control Introduction" href="git-getting-started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="git-getting-started.html">Git Version Control Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The C++ Units Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="joystick.html">Joysticks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robot-preferences.html">Setting Robot Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-test-mode.html">Using Test Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reading-stacktraces.html">Reading Stacktraces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions-as-data.html">Treating Functions as Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Basic Programming</a></li>
+      <li class="breadcrumb-item active">The C++ Units Library</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/basic-programming/cpp-units.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-c-units-library">
+<h1>The C++ Units Library<a class="headerlink" href="#the-c-units-library" title="Permalink to this heading"></a></h1>
+<p>WPILib is coupled with a <a class="reference external" href="https://github.com/nholthaus/units">Units</a> library for C++ teams.  This library leverages the C++ <a class="reference external" href="https://docs.microsoft.com/en-us/cpp/cpp/cpp-type-system-modern-cpp?view=msvc-170&amp;viewFallbackFrom=vs-2019">type system</a> to enforce proper dimensionality for method parameters, automatically perform unit conversions, and even allow users to define arbitrary defined unit types.  Since the C++ type system is enforced at compile-time, the library has essentially no runtime cost.</p>
+<section id="using-the-units-library">
+<h2>Using the Units Library<a class="headerlink" href="#using-the-units-library" title="Permalink to this heading"></a></h2>
+<p>The units library is a header-only library. You must include the relevant header in your source files for the units you want to use. Here’s a list of available units.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/acceleration.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/angle.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/angular_acceleration.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/angular_velocity.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/area.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/capacitance.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/charge.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/concentration.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/conductance.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/current.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/curvature.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/data.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/data_transfer_rate.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/density.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/dimensionless.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/energy.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/force.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/frequency.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/illuminance.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/impedance.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/inductance.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/length.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/luminous_flux.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/luminous_intensity.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/magnetic_field_strength.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/magnetic_flux.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/mass.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/moment_of_inertia.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/power.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/pressure.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/radiation.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/solid_angle.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/substance.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/temperature.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/time.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/torque.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/velocity.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/voltage.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/volume.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">units/math.h</span></code> header provides unit-aware functions like <code class="docutils literal notranslate"><span class="pre">units::math::abs()</span></code>.</p>
+<section id="unit-types-and-container-types">
+<h3>Unit Types and Container Types<a class="headerlink" href="#unit-types-and-container-types" title="Permalink to this heading"></a></h3>
+<p>The C++ units library is based around two sorts of type definitions: unit types and container types.</p>
+<section id="unit-types">
+<h4>Unit Types<a class="headerlink" href="#unit-types" title="Permalink to this heading"></a></h4>
+<p>Unit types correspond to the abstract concept of a unit, without any actual stored value.  Unit types are the fundamental “building block” of the units library - all unit types are defined constructively (using the <code class="docutils literal notranslate"><span class="pre">compound_unit</span></code> template) from a small number of “basic” unit types (such as <code class="docutils literal notranslate"><span class="pre">meters</span></code>, <code class="docutils literal notranslate"><span class="pre">seconds</span></code>, etc).</p>
+<p>While unit types cannot contain numerical values, their use in building other unit types means that when a type or method uses a <a class="reference external" href="https://cplusplus.com/doc/oldtutorial/templates/">template parameter</a> to specify its dimensionality, that parameter will be a unit type.</p>
+</section>
+<section id="container-types">
+<h4>Container Types<a class="headerlink" href="#container-types" title="Permalink to this heading"></a></h4>
+<p>Container types correspond to an actual quantity dimensioned according to some unit - that is, they are what actually hold the numerical value. Container types are constructed from unit types with the <code class="docutils literal notranslate"><span class="pre">unit_t</span></code> template.  Most unit types have a corresponding container type that has the same name suffixed by <code class="docutils literal notranslate"><span class="pre">_t</span></code> - for example, the unit type <code class="docutils literal notranslate"><span class="pre">units::meter</span></code> corresponds to the container type <code class="docutils literal notranslate"><span class="pre">units::meter_t</span></code>.</p>
+<p>Whenever a specific quantity of a unit is used (as a variable or a method parameter), it will be an instance of the container type.  By default, container types will store the actual value as a <code class="docutils literal notranslate"><span class="pre">double</span></code> - advanced users may change this by calling the <code class="docutils literal notranslate"><span class="pre">unit_t</span></code> template manually.</p>
+<p>A full list of unit and container types can be found in the <a class="reference external" href="https://github.com/nholthaus/units#namespaces">documentation</a>.</p>
+</section>
+</section>
+<section id="creating-instances-of-units">
+<h3>Creating Instances of Units<a class="headerlink" href="#creating-instances-of-units" title="Permalink to this heading"></a></h3>
+<p>To create an instance of a specific unit, we create an instance of its container type:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// The variable speed has a value of 5 meters per second.</span>
+<span class="n">units</span><span class="o">::</span><span class="n">meter_per_second_t</span><span class="w"> </span><span class="n">speed</span><span class="p">{</span><span class="mf">5.0</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Alternatively, the units library has <a class="reference external" href="https://en.cppreference.com/w/cpp/language/user_literal">type literals</a> defined for some of the more common container types.  These can be used in conjunction with type inference via <code class="docutils literal notranslate"><span class="pre">auto</span></code> to define a unit more succinctly:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// The variable speed has a value of 5 meters per second.</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="n">_mps</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Units can also be initialized using a value of an another container type, as long as the types can be converted between one another. For example, a <code class="docutils literal notranslate"><span class="pre">meter_t</span></code> value can be created from a <code class="docutils literal notranslate"><span class="pre">foot_t</span></code> value.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">feet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="n">_ft</span><span class="p">;</span><span class="w"></span>
+<span class="n">units</span><span class="o">::</span><span class="n">meter_t</span><span class="w"> </span><span class="n">meters</span><span class="p">{</span><span class="n">feet</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In fact, all container types representing convertible unit types are <em>implicitly convertible</em>.  Thus, the following is perfectly legal:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">::</span><span class="n">meter_t</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="n">_ft</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In short, we can use <em>any</em> unit of length in place of <em>any other</em> unit of length, anywhere in our code; the units library will automatically perform the correct conversion for us.</p>
+</section>
+<section id="performing-arithmetic-with-units">
+<h3>Performing Arithmetic with Units<a class="headerlink" href="#performing-arithmetic-with-units" title="Permalink to this heading"></a></h3>
+<p>Container types support all of the ordinary arithmetic operations of their underlying data type, with the added condition that the operation must be <em>dimensionally</em> sound.  Thus, addition must always be performed on two compatible container types:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Add two meter_t values together</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="n">_m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="n">_m</span><span class="p">;</span><span class="w"> </span><span class="c1">// sum is 12_m</span>
+
+<span class="c1">// Adds meters to feet; both are length, so this is fine</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="n">_m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="n">_ft</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Tries to add a meter_t to a second_t, will throw a compile-time error</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="n">_m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">7</span><span class="n">_s</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Multiplication may be performed on any pair of container types, and yields the container type of a compound unit:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When a calculation yields a compound unit type, this type will only be checked for validity at the point of operation if the result type is specified explicitly.  If <code class="docutils literal notranslate"><span class="pre">auto</span></code> is used, this check will not occur.  For example, when we divide distance by time, we may want to ensure the result is, indeed, a velocity (i.e. <code class="docutils literal notranslate"><span class="pre">units::meter_per_second_t</span></code>). If the return type is declared as <code class="docutils literal notranslate"><span class="pre">auto</span></code>, this check will not be made.</p>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Multiply two meter_t values, result is square_meter_t</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="n">_m</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">7</span><span class="n">_m</span><span class="p">;</span><span class="w"> </span><span class="c1">// product is 35_sq_m</span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Divide a meter_t value by a second_t, result is a meter_per_second_t</span>
+<span class="n">units</span><span class="o">::</span><span class="n">meter_per_second_t</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="n">_m</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">0.5</span><span class="n">_s</span><span class="p">;</span><span class="w"> </span><span class="c1">// speed is 12_mps</span>
+</pre></div>
+</div>
+</section>
+<section id="cmath-functions">
+<h3><code class="docutils literal notranslate"><span class="pre">&lt;cmath&gt;</span></code> Functions<a class="headerlink" href="#cmath-functions" title="Permalink to this heading"></a></h3>
+<p>Some <code class="docutils literal notranslate"><span class="pre">std</span></code> functions (such as <code class="docutils literal notranslate"><span class="pre">clamp</span></code>) are templated to accept any type on which the arithmetic operations can be performed.  Quantities stored as container types will work with these functions without issue.</p>
+<p>However, other <code class="docutils literal notranslate"><span class="pre">std</span></code> functions work only on ordinary numerical types (e.g. <code class="docutils literal notranslate"><span class="pre">double</span></code>).  The units library’s <code class="docutils literal notranslate"><span class="pre">units::math</span></code> namespace contains wrappers for several of these functions that accept units. Examples of such functions include <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>, <code class="docutils literal notranslate"><span class="pre">pow</span></code>, etc.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">36</span><span class="n">_sq_m</span><span class="p">;</span><span class="w"></span>
+<span class="n">units</span><span class="o">::</span><span class="n">meter_t</span><span class="w"> </span><span class="n">sideLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">units</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="n">area</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="removing-the-unit-wrapper">
+<h3>Removing the Unit Wrapper<a class="headerlink" href="#removing-the-unit-wrapper" title="Permalink to this heading"></a></h3>
+<p>To convert a container type to its underlying value, use the <code class="docutils literal notranslate"><span class="pre">value()</span></code> method. This serves as an escape hatch from the units type system, which should be used only when necessary.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">units</span><span class="o">::</span><span class="n">meter_t</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6.5</span><span class="n">_m</span><span class="p">;</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">distanceMeters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">distance</span><span class="p">.</span><span class="n">value</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example-of-the-units-library-in-wpilib-code">
+<h2>Example of the Units Library in WPILib Code<a class="headerlink" href="#example-of-the-units-library-in-wpilib-code" title="Permalink to this heading"></a></h2>
+<p>Several arguments for methods in new features of WPILib (ex. <a class="reference internal" href="../kinematics-and-odometry/intro-and-chassis-speeds.html#what-is-kinematics"><span class="std std-ref">kinematics</span></a>) use the units library. Here is an example of <a class="reference internal" href="../advanced-controls/trajectories/manipulating-trajectories.html#sampling-the-trajectory"><span class="std std-ref">sampling a trajectory</span></a>.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Sample the trajectory at 1.2 seconds. This represents where the robot</span>
+<span class="c1">// should be after 1.2 seconds of traversal.</span>
+<span class="n">Trajectory</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trajectory</span><span class="p">.</span><span class="n">Sample</span><span class="p">(</span><span class="mf">1.2</span><span class="n">_s</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Since units of time are implicitly convertible, this is exactly equivalent to the above code</span>
+<span class="n">Trajectory</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trajectory</span><span class="p">.</span><span class="n">Sample</span><span class="p">(</span><span class="mi">1200</span><span class="n">_ms</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Some WPILib classes represent objects that could naturally work with multiple choices of unit types - for example, a motion profile might operate on either linear distance (e.g. meters) or angular distance (e.g. radians).  For such classes, the unit type is required as a template parameter:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates a new set of trapezoidal motion profile constraints</span>
+<span class="c1">// Max velocity of 10 meters per second</span>
+<span class="c1">// Max acceleration of 20 meters per second squared</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">TrapezoidProfile</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">meters</span><span class="o">&gt;::</span><span class="n">Constraints</span><span class="p">{</span><span class="mi">10</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="n">_mps_sq</span><span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Creates a new set of trapezoidal motion profile constraints</span>
+<span class="c1">// Max velocity of 10 radians per second</span>
+<span class="c1">// Max acceleration of 20 radians per second squared</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">TrapezoidProfile</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">radians</span><span class="o">&gt;::</span><span class="n">Constraints</span><span class="p">{</span><span class="mi">10</span><span class="n">_rad_per_s</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="n">__rad_per_s</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1</span><span class="n">_s</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>For more detailed documentation, please visit the official <a class="reference external" href="https://github.com/nholthaus/units">GitHub page</a> for the units library.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="git-getting-started.html" class="btn btn-neutral float-left" title="Git Version Control Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="joystick.html" class="btn btn-neutral float-right" title="Joysticks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

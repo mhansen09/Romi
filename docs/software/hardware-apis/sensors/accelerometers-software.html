@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Accelerometers - Software" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/accelerometers-software.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="An accelerometer is a device that measures acceleration. Accelerometers generally come in two types: single-axis and 3-axis. A single-axis accelerometer measures acceleration along one spatial dime..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/accelerometers-software.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/accelerometers-software.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/hardware-apis/sensors/accelerometers-software.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/hardware-apis/sensors/accelerometers-software.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/hardware-apis/sensors/accelerometers-software.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/hardware-apis/sensors/accelerometers-software.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/hardware-apis/sensors/accelerometers-software.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/hardware-apis/sensors/accelerometers-software.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accelerometers - Software &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/accelerometers-software.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Gyroscopes - Software" href="gyros-software.html" />
+    <link rel="prev" title="Sensor Overview - Software" href="sensor-overview-software.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Hardware APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../motors/index.html">Motors APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pneumatics/index.html">Pneumatics APIs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Sensors</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sensor-overview-software.html">Sensor Overview - Software</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Accelerometers - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gyros-software.html">Gyroscopes - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ultrasonics-software.html">Ultrasonics - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="counters.html">Counters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="encoders-software.html">Encoders - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="analog-inputs-software.html">Analog Inputs - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="analog-potentiometers-software.html">Analog Potentiometers - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="digital-inputs-software.html">Digital Inputs - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="limit-switch.html">Programming Limit Switches</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/index.html">Miscellaneous Hardware APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Hardware APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Sensors</a></li>
+      <li class="breadcrumb-item active">Accelerometers - Software</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/hardware-apis/sensors/accelerometers-software.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accelerometers-software">
+<h1>Accelerometers - Software<a class="headerlink" href="#accelerometers-software" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section covers accelerometers in software.  For a hardware guide to accelerometers, see <a class="reference internal" href="../../../hardware/sensors/accelerometers-hardware.html#accelerometers-hardware"><span class="std std-ref">Accelerometers - Hardware</span></a>.</p>
+</div>
+<p>An accelerometer is a device that measures acceleration.</p>
+<p>Accelerometers generally come in two types: single-axis and 3-axis.  A single-axis accelerometer measures acceleration along one spatial dimension; a 3-axis accelerometer measures acceleration along all three spatial dimensions at once.</p>
+<p>WPILib supports single-axis accelerometers through the <a class="reference internal" href="#analogaccelerometer">AnalogAccelerometer</a> class.</p>
+<p>Three-axis accelerometers often require more complicated communications protocols (such as SPI or I2C) in order to send multi-dimensional data.  WPILib has native support for the following 3-axis accelerometers:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#adxl345-i2c">ADXL345_I2C</a></p></li>
+<li><p><a class="reference internal" href="#adxl345-spi">ADXL345_SPI</a></p></li>
+<li><p><a class="reference internal" href="#adxl362">ADXL362</a></p></li>
+<li><p><a class="reference internal" href="#builtinaccelerometer">BuiltInAccelerometer</a></p></li>
+</ul>
+<section id="analogaccelerometer">
+<h2>AnalogAccelerometer<a class="headerlink" href="#analogaccelerometer" title="Permalink to this heading"></a></h2>
+<p>The <code class="code docutils literal notranslate"><span class="pre">AnalogAccelerometer</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/AnalogAccelerometer.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_analog_accelerometer.html">C++</a>) allows users to read values from a single-axis accelerometer that is connected to one of the roboRIO’s analog inputs.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an analog accelerometer on analog input 0</span><span class="w"></span>
+<span class="n">AnalogAccelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AnalogAccelerometer</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Sets the sensitivity of the accelerometer to 1 volt per G</span><span class="w"></span>
+<span class="n">accelerometer</span><span class="p">.</span><span class="na">setSensitivity</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Sets the zero voltage of the accelerometer to 3 volts</span><span class="w"></span>
+<span class="n">accelerometer</span><span class="p">.</span><span class="na">setZero</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Gets the current acceleration</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">.</span><span class="na">getAcceleration</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an analog accelerometer on analog input 0</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">AnalogAccelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Sets the sensitivity of the accelerometer to 1 volt per G</span>
+<span class="n">accelerometer</span><span class="p">.</span><span class="n">SetSensitivity</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Sets the zero voltage of the accelerometer to 3 volts</span>
+<span class="n">accelerometer</span><span class="p">.</span><span class="n">SetZero</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Gets the current acceleration</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">accel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">.</span><span class="n">GetAcceleration</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>If users have a 3-axis analog accelerometer, they can use three instances of this class, one for each axis.</p>
+</section>
+<section id="the-accelerometer-interface">
+<h2>The Accelerometer interface<a class="headerlink" href="#the-accelerometer-interface" title="Permalink to this heading"></a></h2>
+<p>All 3-axis accelerometers in WPILib implement the <code class="code docutils literal notranslate"><span class="pre">Accelerometer</span></code> interface (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/interfaces/Accelerometer.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_accelerometer.html">C++</a>).  This interface defines functionality and settings common to all supported 3-axis accelerometers.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">Accelerometer</span></code> interface contains getters for the acceleration along each cardinal direction (x, y, and z), as well as a setter for the range of accelerations the accelerometer will measure.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not all accelerometers are capable of measuring all ranges.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Sets the accelerometer to measure between -8 and 8 G&#39;s</span><span class="w"></span>
+<span class="n">accelerometer</span><span class="p">.</span><span class="na">setRange</span><span class="p">(</span><span class="n">Accelerometer</span><span class="p">.</span><span class="na">Range</span><span class="p">.</span><span class="na">k8G</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Sets the accelerometer to measure between -8 and 8 G&#39;s</span>
+<span class="n">accelerometer</span><span class="p">.</span><span class="n">SetRange</span><span class="p">(</span><span class="n">Accelerometer</span><span class="o">::</span><span class="n">Range</span><span class="o">::</span><span class="n">kRange_8G</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<section id="adxl345-i2c">
+<h3>ADXL345_I2C<a class="headerlink" href="#adxl345-i2c" title="Permalink to this heading"></a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">ADXL345_I2C</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/ADXL345_I2C.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_a_d_x_l345___i2_c.html">C++</a>) provides support for the ADXL345 accelerometer over the I2C communications bus.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an ADXL345 accelerometer object on the MXP I2C port</span><span class="w"></span>
+<span class="c1">// with a measurement range from -8 to 8 G&#39;s</span><span class="w"></span>
+<span class="n">Accelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ADXL345_I2C</span><span class="p">(</span><span class="n">I2C</span><span class="p">.</span><span class="na">Port</span><span class="p">.</span><span class="na">kMXP</span><span class="p">,</span><span class="w"> </span><span class="n">Accelerometer</span><span class="p">.</span><span class="na">Range</span><span class="p">.</span><span class="na">k8G</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an ADXL345 accelerometer object on the MXP I2C port</span>
+<span class="c1">// with a measurement range from -8 to 8 G&#39;s</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">ADXL345_I2C</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">{</span><span class="n">I2C</span><span class="o">::</span><span class="n">Port</span><span class="o">::</span><span class="n">kMXP</span><span class="p">,</span><span class="w"> </span><span class="n">Accelerometer</span><span class="o">::</span><span class="n">Range</span><span class="o">::</span><span class="n">kRange_8G</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="adxl345-spi">
+<h3>ADXL345_SPI<a class="headerlink" href="#adxl345-spi" title="Permalink to this heading"></a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">ADXL345_SPI</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/ADXL345_SPI.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_a_d_x_l345___s_p_i.html">C++</a>) provides support for the ADXL345 accelerometer over the SPI communications bus.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an ADXL345 accelerometer object on the MXP SPI port</span><span class="w"></span>
+<span class="c1">// with a measurement range from -8 to 8 G&#39;s</span><span class="w"></span>
+<span class="n">Accelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ADXL345_SPI</span><span class="p">(</span><span class="n">SPI</span><span class="p">.</span><span class="na">Port</span><span class="p">.</span><span class="na">kMXP</span><span class="p">,</span><span class="w"> </span><span class="n">Accelerometer</span><span class="p">.</span><span class="na">Range</span><span class="p">.</span><span class="na">k8G</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an ADXL345 accelerometer object on the MXP SPI port</span>
+<span class="c1">// with a measurement range from -8 to 8 G&#39;s</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">ADXL345_SPI</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">{</span><span class="n">SPI</span><span class="o">::</span><span class="n">Port</span><span class="o">::</span><span class="n">kMXP</span><span class="p">,</span><span class="w"> </span><span class="n">Accelerometer</span><span class="o">::</span><span class="n">Range</span><span class="o">::</span><span class="n">kRange_8G</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="adxl362">
+<h3>ADXL362<a class="headerlink" href="#adxl362" title="Permalink to this heading"></a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">ADXL362</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/ADXL362.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_a_d_x_l362.html">C++</a>) provides support for the ADXL362 accelerometer over the SPI communications bus.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an ADXL362 accelerometer object on the MXP SPI port</span><span class="w"></span>
+<span class="c1">// with a measurement range from -8 to 8 G&#39;s</span><span class="w"></span>
+<span class="n">Accelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ADXL362</span><span class="p">(</span><span class="n">SPI</span><span class="p">.</span><span class="na">Port</span><span class="p">.</span><span class="na">kMXP</span><span class="p">,</span><span class="w"> </span><span class="n">Accelerometer</span><span class="p">.</span><span class="na">Range</span><span class="p">.</span><span class="na">k8G</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an ADXL362 accelerometer object on the MXP SPI port</span>
+<span class="c1">// with a measurement range from -8 to 8 G&#39;s</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">ADXL362</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">{</span><span class="n">SPI</span><span class="o">::</span><span class="n">Port</span><span class="o">::</span><span class="n">kMXP</span><span class="p">,</span><span class="w"> </span><span class="n">Accelerometer</span><span class="o">::</span><span class="n">Range</span><span class="o">::</span><span class="n">kRange_8G</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="builtinaccelerometer">
+<h3>BuiltInAccelerometer<a class="headerlink" href="#builtinaccelerometer" title="Permalink to this heading"></a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">BuiltInAccelerometer</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/BuiltInAccelerometer.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_built_in_accelerometer.html">C++</a>) provides access to the roboRIO’s own built-in accelerometer:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-5-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-5-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an object for the built-in accelerometer</span><span class="w"></span>
+<span class="c1">// Range defaults to +- 8 G&#39;s</span><span class="w"></span>
+<span class="n">Accelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BuiltInAccelerometer</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an object for the built-in accelerometer</span>
+<span class="c1">// Range defaults to +- 8 G&#39;s</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">BuiltInAccelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">{};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="third-party-accelerometers">
+<h2>Third-party accelerometers<a class="headerlink" href="#third-party-accelerometers" title="Permalink to this heading"></a></h2>
+<p>While WPILib provides native support for a number of accelerometers that are available in the kit of parts or through FIRST Choice, there are a few popular AHRS (Attitude and Heading Reference System) devices commonly used in FRC that include accelerometers.  These are generally controlled through vendor libraries, though if they have a simple analog output they can be used with the <a class="reference internal" href="#analogaccelerometer">AnalogAccelerometer</a> class.</p>
+</section>
+<section id="using-accelerometers-in-code">
+<h2>Using accelerometers in code<a class="headerlink" href="#using-accelerometers-in-code" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Accelerometers, as their name suggests, measure acceleration.  Precise accelerometers can be used to determine position through double-integration (since acceleration is the second derivative of position), much in the way that gyroscopes are used to determine heading.  However, the accelerometers available for use in FRC are not nearly high-enough quality to be used this way.</p>
+</div>
+<p>It is recommended to use accelerometers in FRC® for any application which needs a rough measurement of the current acceleration.  This can include detecting collisions with other robots or field elements, so that vulnerable mechanisms can be automatically retracted.  They may also be used to determine when the robot is passing over rough terrain for an autonomous routine (such as traversing the defenses in FIRST Stronghold).</p>
+<p>For detecting collisions, it is often more robust to measure the jerk than the acceleration.  The jerk is the derivative (or rate of change) of acceleration, and indicates how rapidly the forces on the robot are changing - the sudden impulse from a collision causes a sharp spike in the jerk.  Jerk can be determined by simply taking the difference of subsequent acceleration measurements, and dividing by the time between them:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-6-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-6-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-6-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">prevXAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">prevYAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">Accelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BuiltInAccelerometer</span><span class="p">();</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Gets the current accelerations in the X and Y directions</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">xAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">.</span><span class="na">getX</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">yAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">.</span><span class="na">getY</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Calculates the jerk in the X and Y directions</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Divides by .02 because default loop timing is 20ms</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">xJerk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">xAccel</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prevXAccel</span><span class="p">)</span><span class="o">/</span><span class="mf">.02</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">yJerk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">yAccel</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prevYAccel</span><span class="p">)</span><span class="o">/</span><span class="mf">.02</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">prevXAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xAccel</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">prevYAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yAccel</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="n">prevXAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">prevYAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">BuiltInAccelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">{};</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::RobotPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Gets the current accelerations in the X and Y directions</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">xAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">.</span><span class="n">GetX</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">yAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">.</span><span class="n">GetY</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Calculates the jerk in the X and Y directions</span>
+<span class="w">    </span><span class="c1">// Divides by .02 because default loop timing is 20ms</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">xJerk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">xAccel</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prevXAccel</span><span class="p">)</span><span class="o">/</span><span class="mf">.02</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">yJerk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">yAccel</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">prevYAccel</span><span class="p">)</span><span class="o">/</span><span class="mf">.02</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">prevXAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xAccel</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">prevYAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yAccel</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Most accelerometers legal for FRC use are quite noisy, and it is often a good idea to combine them with the <code class="code docutils literal notranslate"><span class="pre">LinearFilter</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/filter/LinearFilter.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_linear_filter.html">C++</a>) to reduce the noise:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-7-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-7-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-7-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Accelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BuiltInAccelerometer</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// Create a LinearDigitalFilter that will calculate a moving average of the measured X acceleration over the past 10 iterations of the main loop</span><span class="w"></span>
+
+<span class="n">LinearDigitalFilter</span><span class="w"> </span><span class="n">xAccelFilter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LinearDigitalFilter</span><span class="p">.</span><span class="na">movingAverage</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Get the filtered X acceleration</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">filteredXAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xAccelFilter</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">accelerometer</span><span class="p">.</span><span class="na">getX</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-7-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc</span><span class="o">::</span><span class="n">BuiltInAccelerometer</span><span class="w"> </span><span class="n">accelerometer</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Create a LinearDigitalFilter that will calculate a moving average of the measured X acceleration over the past 10 iterations of the main loop</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">xAccelFilter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">LinearDigitalFilter</span><span class="o">::</span><span class="n">MovingAverage</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::RobotPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Get the filtered X acceleration</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">filteredXAccel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xAccelFilter</span><span class="p">.</span><span class="n">Calculate</span><span class="p">(</span><span class="n">accelerometer</span><span class="p">.</span><span class="n">GetX</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sensor-overview-software.html" class="btn btn-neutral float-left" title="Sensor Overview - Software" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gyros-software.html" class="btn btn-neutral float-right" title="Gyroscopes - Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

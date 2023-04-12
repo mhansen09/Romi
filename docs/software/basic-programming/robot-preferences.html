@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Setting Robot Preferences" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/basic-programming/robot-preferences.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="The Robot Preferences ( Java, C++) class is used to store values in the flash memory on the roboRIO. The values might be for remembering preferences on the robot such as calibration settings for po..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/basic-programming/robot-preferences.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/basic-programming/robot-preferences.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/basic-programming/robot-preferences.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/basic-programming/robot-preferences.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/basic-programming/robot-preferences.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/basic-programming/robot-preferences.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/basic-programming/robot-preferences.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/basic-programming/robot-preferences.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setting Robot Preferences &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/basic-programming/robot-preferences.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Using Test Mode" href="using-test-mode.html" />
+    <link rel="prev" title="Joysticks" href="joystick.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Basic Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="git-getting-started.html">Git Version Control Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp-units.html">The C++ Units Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="joystick.html">Joysticks</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setting Robot Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using-test-mode.html">Using Test Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reading-stacktraces.html">Reading Stacktraces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions-as-data.html">Treating Functions as Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Basic Programming</a></li>
+      <li class="breadcrumb-item active">Setting Robot Preferences</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/basic-programming/robot-preferences.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setting-robot-preferences">
+<h1>Setting Robot Preferences<a class="headerlink" href="#setting-robot-preferences" title="Permalink to this heading"></a></h1>
+<p>The Robot Preferences (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/Preferences.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_preferences.html">C++</a>) class is used to store values in the flash memory on the roboRIO. The values might be for remembering preferences on the robot such as calibration settings for potentiometers, PID values, setpoints, etc. that you would like to change without having to rebuild the program. The values can be viewed on SmartDashboard or Shuffleboard and read and written by the robot program.</p>
+<p>This example shows how to utilize Preferences to change the setpoint of a PID controller and the P constant. The code examples are adapted from the Arm Simulation example (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/armsimulation/Robot.java">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibcExamples/src/main/cpp/examples/ArmSimulation/cpp/Robot.cpp">C++</a>). You can run the Arm Simulation example in the Robot Simulator to see how to use the preference class and interact with it using the dashboards without needing a robot.</p>
+<section id="initializing-preferences">
+<h2>Initializing Preferences<a class="headerlink" href="#initializing-preferences" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">kArmPositionKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ArmPosition&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">kArmPKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ArmP&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c1">// The P gain for the PID controller that drives this arm.</span><span class="w"></span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kDefaultArmKp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50.0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kDefaultArmSetpointDegrees</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">75.0</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="c1">// The P gain for the PID controller that drives this arm.</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">m_armKp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Constants</span><span class="p">.</span><span class="na">kDefaultArmKp</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">m_armSetpointDegrees</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Constants</span><span class="p">.</span><span class="na">kDefaultArmSetpointDegrees</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/** Subsystem constructor. */</span><span class="w"></span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="nf">Arm</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Set the Arm position setpoint and P constant to Preferences if the keys don&#39;t already exist</span><span class="w"></span>
+<span class="w">    </span><span class="n">Preferences</span><span class="p">.</span><span class="na">initDouble</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kArmPositionKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_armSetpointDegrees</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Preferences</span><span class="p">.</span><span class="na">initDouble</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kArmPKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_armKp</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">kArmPositionKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ArmPosition&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">kArmPKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ArmP&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kDefaultArmKp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50.0</span><span class="p">;</span><span class="w"></span>
+<span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">units</span><span class="o">::</span><span class="n">degree_t</span><span class="w"> </span><span class="n">kDefaultArmSetpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">75.0</span><span class="n">_deg</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Arm</span><span class="o">::</span><span class="n">Arm</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Set the Arm position setpoint and P constant to Preferences if the keys</span>
+<span class="w">  </span><span class="c1">// don&#39;t already exist</span>
+<span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">Preferences</span><span class="o">::</span><span class="n">InitDouble</span><span class="p">(</span><span class="n">kArmPositionKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_armSetpoint</span><span class="p">.</span><span class="n">value</span><span class="p">());</span><span class="w"></span>
+<span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">Preferences</span><span class="o">::</span><span class="n">InitDouble</span><span class="p">(</span><span class="n">kArmPKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_armKp</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Preferences are stored using a name, the key. It’s helpful to store the key in a constant, like <code class="docutils literal notranslate"><span class="pre">kArmPositionKey</span></code> and <code class="docutils literal notranslate"><span class="pre">kArmPKey</span></code> in the code above to avoid typing it multiple times and avoid typos. We also declare variables, <code class="docutils literal notranslate"><span class="pre">kArmKp</span></code> and <code class="docutils literal notranslate"><span class="pre">armPositionDeg</span></code> to hold the data retrieved from preferences.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">robotInit</span></code>, each key is checked to see if it already exists in the Preferences database. The <code class="docutils literal notranslate"><span class="pre">containsKey</span></code> method takes one parameter, the key to check if data for that key already exists in the preferences database. If it doesn’t exist, a default value is written. The <code class="docutils literal notranslate"><span class="pre">setDouble</span></code> method takes two parameters, the key to write and the data to write. There are similar methods for other data types like booleans, ints, and strings.</p>
+<p>If using the Command Framework, this type of code could be placed in the constructor of a Subsystem or Command.</p>
+</section>
+<section id="reading-preferences">
+<h2>Reading Preferences<a class="headerlink" href="#reading-preferences" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">loadPreferences</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Read Preferences for Arm setpoint and kP on entering Teleop</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_armSetpointDegrees</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Preferences</span><span class="p">.</span><span class="na">getDouble</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kArmPositionKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_armSetpointDegrees</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_armKp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Preferences</span><span class="p">.</span><span class="na">getDouble</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kArmPKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_armKp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">m_armKp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Preferences</span><span class="p">.</span><span class="na">getDouble</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kArmPKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_armKp</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">m_controller</span><span class="p">.</span><span class="na">setP</span><span class="p">(</span><span class="n">m_armKp</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Arm::LoadPreferences</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Read Preferences for Arm setpoint and kP on entering Teleop</span>
+<span class="w">  </span><span class="n">m_armSetpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">units</span><span class="o">::</span><span class="n">degree_t</span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">frc</span><span class="o">::</span><span class="n">Preferences</span><span class="o">::</span><span class="n">GetDouble</span><span class="p">(</span><span class="n">kArmPositionKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_armSetpoint</span><span class="p">.</span><span class="n">value</span><span class="p">())};</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_armKp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">Preferences</span><span class="o">::</span><span class="n">GetDouble</span><span class="p">(</span><span class="n">kArmPKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_armKp</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_armKp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">Preferences</span><span class="o">::</span><span class="n">GetDouble</span><span class="p">(</span><span class="n">kArmPKey</span><span class="p">,</span><span class="w"> </span><span class="n">m_armKp</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_controller</span><span class="p">.</span><span class="n">SetP</span><span class="p">(</span><span class="n">m_armKp</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Reading a preference is easy. The <code class="docutils literal notranslate"><span class="pre">getDouble</span></code> method takes two parameters, the key to read, and a default value to use in case the preference doesn’t exist. There are similar methods for other data types like booleans, ints, and strings.</p>
+<p>Depending on the data that is stored in preferences, you can use it when you read it, such as the proportional constant above. Or you can store it in a variable and use it later, such as the setpoint, which is used in <code class="docutils literal notranslate"><span class="pre">telopPeriodic</span></code> below.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">teleopPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_joystick</span><span class="p">.</span><span class="na">getTrigger</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Here, we run PID control like normal.</span><span class="w"></span>
+<span class="w">      </span><span class="n">m_arm</span><span class="p">.</span><span class="na">reachSetpoint</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Otherwise, we disable the motor.</span><span class="w"></span>
+<span class="w">      </span><span class="n">m_arm</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="cm">/** Run the control loop to reach and maintain the setpoint from the preferences. */</span><span class="w"></span>
+<span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">reachSetpoint</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">pidOutput</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">        </span><span class="n">m_controller</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">m_encoder</span><span class="p">.</span><span class="na">getDistance</span><span class="p">(),</span><span class="w"> </span><span class="n">Units</span><span class="p">.</span><span class="na">degreesToRadians</span><span class="p">(</span><span class="n">m_armSetpointDegrees</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_motor</span><span class="p">.</span><span class="na">setVoltage</span><span class="p">(</span><span class="n">pidOutput</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Robot::TeleopPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_joystick</span><span class="p">.</span><span class="n">GetTrigger</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Here, we run PID control like normal.</span>
+<span class="w">    </span><span class="n">m_arm</span><span class="p">.</span><span class="n">ReachSetpoint</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Otherwise, we disable the motor.</span>
+<span class="w">    </span><span class="n">m_arm</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Arm::ReachSetpoint</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Here, we run PID control like normal, with a setpoint read from</span>
+<span class="w">  </span><span class="c1">// preferences in degrees.</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">pidOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_controller</span><span class="p">.</span><span class="n">Calculate</span><span class="p">(</span><span class="w"></span>
+<span class="w">      </span><span class="n">m_encoder</span><span class="p">.</span><span class="n">GetDistance</span><span class="p">(),</span><span class="w"> </span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">radian_t</span><span class="p">{</span><span class="n">m_armSetpoint</span><span class="p">}.</span><span class="n">value</span><span class="p">()));</span><span class="w"></span>
+<span class="w">  </span><span class="n">m_motor</span><span class="p">.</span><span class="n">SetVoltage</span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">volt_t</span><span class="p">{</span><span class="n">pidOutput</span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="using-preferences-in-smartdashboard">
+<h2>Using Preferences in SmartDashboard<a class="headerlink" href="#using-preferences-in-smartdashboard" title="Permalink to this heading"></a></h2>
+<section id="displaying-preferences-in-smartdashboard">
+<h3>Displaying Preferences in SmartDashboard<a class="headerlink" href="#displaying-preferences-in-smartdashboard" title="Permalink to this heading"></a></h3>
+<img alt="Adding preferences from the Smartdashboard menu" src="../../../_images/preferences-widget-smartdashboard.png" />
+<p>In the SmartDashboard, the Preferences display can be added to the display by selecting <span class="guilabel">View</span> then <span class="guilabel">Add…</span> then <span class="guilabel">Robot Preferences</span>. This reveals the contents of the preferences file stored in the roboRIO flash memory.</p>
+</section>
+<section id="editing-preferences-in-smartdashboard">
+<h3>Editing Preferences in SmartDashboard<a class="headerlink" href="#editing-preferences-in-smartdashboard" title="Permalink to this heading"></a></h3>
+<img alt="Editing the robot preferences via the SmartDashboard widget." src="../../../_images/view-edit-preferences-values-smartdashboard.png" />
+<p>The values are shown here with the default values from the code. If the values need to be adjusted they can be edited here and saved.</p>
+</section>
+</section>
+<section id="using-preferences-in-shuffleboard">
+<h2>Using Preferences in Shuffleboard<a class="headerlink" href="#using-preferences-in-shuffleboard" title="Permalink to this heading"></a></h2>
+<section id="displaying-preferences-in-shuffleboard">
+<h3>Displaying Preferences in Shuffleboard<a class="headerlink" href="#displaying-preferences-in-shuffleboard" title="Permalink to this heading"></a></h3>
+<img alt="Adding preferences from the sources window in Shuffleboard" src="../../../_images/preferences-widget-shuffleboard.png" />
+<p>In Shuffleboard, the Preferences display can be added to the display by dragging the preferences field from the sources window. This reveals the contents of the preferences file stored in the roboRIO flash memory.</p>
+</section>
+<section id="editing-preferences-in-shuffleboard">
+<h3>Editing Preferences in Shuffleboard<a class="headerlink" href="#editing-preferences-in-shuffleboard" title="Permalink to this heading"></a></h3>
+<img alt="Editing the robot preferences via the Shuffleboard widget." src="../../../_images/view-edit-preferences-values-shuffleboard.png" />
+<p>The values are shown here with the default values from the code. If the values need to be adjusted they can be edited here.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="joystick.html" class="btn btn-neutral float-left" title="Joysticks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="using-test-mode.html" class="btn btn-neutral float-right" title="Using Test Mode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

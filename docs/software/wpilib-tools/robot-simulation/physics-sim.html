@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Physics Simulation with WPILib" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/physics-sim.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Because state-space notation allows us to compactly represent the dynamics of systems, we can leverage it to provide a backend for simulating physical systems on robots. The goal of these simulator..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/physics-sim.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/physics-sim.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/wpilib-tools/robot-simulation/physics-sim.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/wpilib-tools/robot-simulation/physics-sim.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/wpilib-tools/robot-simulation/physics-sim.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/wpilib-tools/robot-simulation/physics-sim.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/wpilib-tools/robot-simulation/physics-sim.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/wpilib-tools/robot-simulation/physics-sim.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Physics Simulation with WPILib &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robot-simulation/physics-sim.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Device Simulation" href="device-sim.html" />
+    <link rel="prev" title="Simulation Specific User Interface Elements" href="simulation-gui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Robot Simulation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction to Robot Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation-gui.html">Simulation Specific User Interface Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dashboards/glass/widgets.html">Glass Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dashboards/glass/command-based-widgets.html">Widgets for the Command-Based Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dashboards/glass/field2d-widget.html">The Field2d Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dashboards/glass/plots.html">Plots</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Physics Simulation with WPILib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device-sim.html">Device Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drivesim-tutorial/index.html">Drivetrain Simulation Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit-testing.html">Unit Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Robot Simulation</a></li>
+      <li class="breadcrumb-item active">Physics Simulation with WPILib</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/wpilib-tools/robot-simulation/physics-sim.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="physics-simulation-with-wpilib">
+<h1>Physics Simulation with WPILib<a class="headerlink" href="#physics-simulation-with-wpilib" title="Permalink to this heading"></a></h1>
+<p>Because <a class="reference internal" href="../../advanced-controls/state-space/state-space-intro.html#what-is-state-space-notation"><span class="std std-ref">state-space notation</span></a> allows us to compactly represent the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../advanced-controls/controls-glossary.html#term-dynamics"><span class="xref std std-term">dynamics</span></a> of <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../advanced-controls/controls-glossary.html#term-system"><span class="xref std std-term">systems</span></a>, we can leverage it to provide a backend for simulating physical systems on robots. The goal of these simulators is to simulate the motion of robot mechanisms without modifying existing non-simulation user code. The basic flow of such simulators is as follows:</p>
+<ul>
+<li><p>In normal user code:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>PID or similar control algorithms generate voltage commands from encoder (or other sensor) readings</p></li>
+<li><p>Motor outputs are set</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>In simulation periodic code:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The simulation’s <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../advanced-controls/controls-glossary.html#term-state"><span class="xref std std-term">state</span></a> is updated using <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../advanced-controls/controls-glossary.html#term-input"><span class="xref std std-term">inputs</span></a>, usually voltages from motors set from a PID loop</p></li>
+<li><p>Simulated encoder (or other sensor) readings are set for user code to use in the next timestep</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<section id="wpilib-s-simulation-classes">
+<h2>WPILib’s Simulation Classes<a class="headerlink" href="#wpilib-s-simulation-classes" title="Permalink to this heading"></a></h2>
+<p>The following physics simulation classes are available in WPILib:</p>
+<ul class="simple">
+<li><p>LinearSystemSim, for modeling systems with linear dynamics</p></li>
+<li><p>FlywheelSim</p></li>
+<li><p>DifferentialDrivetrainSim</p></li>
+<li><p>ElevatorSim, which models gravity in the direction of elevator motion</p></li>
+<li><p>SingleJointedArmSim, which models gravity proportional to the arm angle</p></li>
+<li><p>BatterySim, which simply estimates battery voltage sag based on drawn currents</p></li>
+</ul>
+<p>All simulation classes (with the exception of the differential drive simulator) inherit from the <code class="code docutils literal notranslate"><span class="pre">LinearSystemSim</span></code> class. By default, the dynamics are the linear system dynamics <span class="math notranslate nohighlight">\(\mathbf{x}_{k+1} = \mathbf{A}\mathbf{x}_k + \mathbf{B}\mathbf{u}_k\)</span>. Subclasses override the <code class="code docutils literal notranslate"><span class="pre">UpdateX(x,</span> <span class="pre">u,</span> <span class="pre">dt)</span></code> method to provide custom, nonlinear dynamics, such as modeling gravity.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Swerve support for simulation is in the works, but we cannot provide an ETA. For updates on progress, please follow this <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/pull/3374">pull request</a>.</p>
+</div>
+</section>
+<section id="usage-in-user-code">
+<h2>Usage in User Code<a class="headerlink" href="#usage-in-user-code" title="Permalink to this heading"></a></h2>
+<p>The following is available from the WPILib <code class="code docutils literal notranslate"><span class="pre">elevatorsimulation</span></code> <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/elevatorsimulation">example project</a>.</p>
+<p>In addition to standard objects such as motors and encoders, we instantiate our elevator simulator using known constants such as carriage mass and gearing reduction. We also instantiate an <code class="code docutils literal notranslate"><span class="pre">EncoderSim</span></code>, which sets the distance and rate read by our <code class="code docutils literal notranslate"><span class="pre">Encoder</span></code>.</p>
+<p>In the following example, we simulate an elevator given the mass of the moving carriage (in kilograms), the radius of the drum driving the elevator (in meters), the gearing reduction between motor and drum as output over input (so usually greater than one), the minimum and maximum height of the elevator (in meters), and some random noise to add to our position estimate.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The elevator and arm simulators will prevent the simulated position from exceeding given minimum or maximum heights or angles. If you wish to simulate a mechanism with infinite rotation or motion, <code class="code docutils literal notranslate"><span class="pre">LinearSystemSim</span></code> may be a better option.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">47</span><span class="w">  </span><span class="c1">// Simulation classes help us simulate what&#39;s going on, including gravity.</span><span class="w"></span>
+<span class="linenos">48</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ElevatorSim</span><span class="w"> </span><span class="n">m_elevatorSim</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="linenos">49</span><span class="w">      </span><span class="k">new</span><span class="w"> </span><span class="n">ElevatorSim</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">50</span><span class="w">          </span><span class="n">m_elevatorGearbox</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">          </span><span class="n">Constants</span><span class="p">.</span><span class="na">kElevatorGearing</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">52</span><span class="w">          </span><span class="n">Constants</span><span class="p">.</span><span class="na">kCarriageMass</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">          </span><span class="n">Constants</span><span class="p">.</span><span class="na">kElevatorDrumRadius</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">54</span><span class="w">          </span><span class="n">Constants</span><span class="p">.</span><span class="na">kMinElevatorHeightMeters</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">55</span><span class="w">          </span><span class="n">Constants</span><span class="p">.</span><span class="na">kMaxElevatorHeightMeters</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">56</span><span class="w">          </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">          </span><span class="n">VecBuilder</span><span class="p">.</span><span class="na">fill</span><span class="p">(</span><span class="mf">0.01</span><span class="p">));</span><span class="w"></span>
+<span class="linenos">58</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">EncoderSim</span><span class="w"> </span><span class="n">m_encoderSim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EncoderSim</span><span class="p">(</span><span class="n">m_encoder</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">51</span><span class="w">  </span><span class="c1">// Simulation classes help us simulate what&#39;s going on, including gravity.</span>
+<span class="linenos">52</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">ElevatorSim</span><span class="w"> </span><span class="n">m_elevatorSim</span><span class="p">{</span><span class="n">m_elevatorGearbox</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">                                      </span><span class="n">Constants</span><span class="o">::</span><span class="n">kElevatorGearing</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">54</span><span class="w">                                      </span><span class="n">Constants</span><span class="o">::</span><span class="n">kCarriageMass</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">55</span><span class="w">                                      </span><span class="n">Constants</span><span class="o">::</span><span class="n">kElevatorDrumRadius</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">56</span><span class="w">                                      </span><span class="n">Constants</span><span class="o">::</span><span class="n">kMinElevatorHeight</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">                                      </span><span class="n">Constants</span><span class="o">::</span><span class="n">kMaxElevatorHeight</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">58</span><span class="w">                                      </span><span class="nb">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">59</span><span class="w">                                      </span><span class="p">{</span><span class="mf">0.01</span><span class="p">}};</span><span class="w"></span>
+<span class="linenos">60</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">EncoderSim</span><span class="w"> </span><span class="n">m_encoderSim</span><span class="p">{</span><span class="n">m_encoder</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Next, <code class="code docutils literal notranslate"><span class="pre">teleopPeriodic</span></code>/<code class="code docutils literal notranslate"><span class="pre">TeleopPeriodic</span></code> (Java/C++) uses a simple PID control loop to drive our elevator to a setpoint 30 inches off the ground.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">31</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">teleopPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_joystick</span><span class="p">.</span><span class="na">getTrigger</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">      </span><span class="c1">// Here, we set the constant setpoint of 0.75 meters.</span><span class="w"></span>
+<span class="linenos">35</span><span class="w">      </span><span class="n">m_elevator</span><span class="p">.</span><span class="na">reachGoal</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kSetpointMeters</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">36</span><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">37</span><span class="w">      </span><span class="c1">// Otherwise, we update the setpoint to 0.</span><span class="w"></span>
+<span class="linenos">38</span><span class="w">      </span><span class="n">m_elevator</span><span class="p">.</span><span class="na">reachGoal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">39</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 98</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">reachGoal</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">goal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 99</span><span class="w">    </span><span class="n">m_controller</span><span class="p">.</span><span class="na">setGoal</span><span class="p">(</span><span class="n">goal</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">100</span>
+<span class="linenos">101</span><span class="w">    </span><span class="c1">// With the setpoint value we run PID control like normal</span><span class="w"></span>
+<span class="linenos">102</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">pidOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_controller</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">m_encoder</span><span class="p">.</span><span class="na">getDistance</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">103</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">feedforwardOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_feedforward</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">m_controller</span><span class="p">.</span><span class="na">getSetpoint</span><span class="p">().</span><span class="na">velocity</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">104</span><span class="w">    </span><span class="n">m_motor</span><span class="p">.</span><span class="na">setVoltage</span><span class="p">(</span><span class="n">pidOutput</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">feedforwardOutput</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">105</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">20</span><span class="kt">void</span><span class="w"> </span><span class="nf">Robot::TeleopPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_joystick</span><span class="p">.</span><span class="n">GetTrigger</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">    </span><span class="c1">// Here, we set the constant setpoint of 0.75 meters.</span>
+<span class="linenos">23</span><span class="w">    </span><span class="n">m_elevator</span><span class="p">.</span><span class="n">ReachGoal</span><span class="p">(</span><span class="n">Constants</span><span class="o">::</span><span class="n">kSetpoint</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">    </span><span class="c1">// Otherwise, we update the setpoint to 0.</span>
+<span class="linenos">26</span><span class="w">    </span><span class="n">m_elevator</span><span class="p">.</span><span class="n">ReachGoal</span><span class="p">(</span><span class="mf">0.0</span><span class="n">_m</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">28</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">42</span><span class="kt">void</span><span class="w"> </span><span class="nf">Elevator::ReachGoal</span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">meter_t</span><span class="w"> </span><span class="n">goal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">43</span><span class="w">  </span><span class="n">m_controller</span><span class="p">.</span><span class="n">SetGoal</span><span class="p">(</span><span class="n">goal</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">44</span><span class="w">  </span><span class="c1">// With the setpoint value we run PID control like normal</span>
+<span class="linenos">45</span><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">pidOutput</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">      </span><span class="n">m_controller</span><span class="p">.</span><span class="n">Calculate</span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">meter_t</span><span class="p">{</span><span class="n">m_encoder</span><span class="p">.</span><span class="n">GetDistance</span><span class="p">()});</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">  </span><span class="n">units</span><span class="o">::</span><span class="n">volt_t</span><span class="w"> </span><span class="n">feedforwardOutput</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="linenos">48</span><span class="w">      </span><span class="n">m_feedforward</span><span class="p">.</span><span class="n">Calculate</span><span class="p">(</span><span class="n">m_controller</span><span class="p">.</span><span class="n">GetSetpoint</span><span class="p">().</span><span class="n">velocity</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">49</span><span class="w">  </span><span class="n">m_motor</span><span class="p">.</span><span class="n">SetVoltage</span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">volt_t</span><span class="p">{</span><span class="n">pidOutput</span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">feedforwardOutput</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">50</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Next, <code class="code docutils literal notranslate"><span class="pre">simulationPeriodic</span></code>/<code class="code docutils literal notranslate"><span class="pre">SimulationPeriodic</span></code> (Java/C++) uses the voltage applied to the motor to update the simulated position of the elevator. We use <code class="code docutils literal notranslate"><span class="pre">SimulationPeriodic</span></code> because it runs periodically only for simulated robots. This means that our simulation code will not be run on a real robot.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Classes inheriting from command-based’s <code class="docutils literal notranslate"><span class="pre">Subsystem</span></code> can override the inherited <code class="docutils literal notranslate"><span class="pre">simulationPeriodic()</span></code> method. Other classes will need their simulation update methods called from <code class="docutils literal notranslate"><span class="pre">Robot</span></code>’s <code class="docutils literal notranslate"><span class="pre">simulationPeriodic</span></code>.</p>
+</div>
+<p>Finally, the simulated encoder’s distance reading is set using the simulated elevator’s position, and the robot’s battery voltage is set using the estimated current drawn by the elevator.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">78</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">simulationPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">79</span><span class="w">    </span><span class="c1">// In this method, we update our simulation of what our elevator is doing</span><span class="w"></span>
+<span class="linenos">80</span><span class="w">    </span><span class="c1">// First, we set our &quot;inputs&quot; (voltages)</span><span class="w"></span>
+<span class="linenos">81</span><span class="w">    </span><span class="n">m_elevatorSim</span><span class="p">.</span><span class="na">setInput</span><span class="p">(</span><span class="n">m_motorSim</span><span class="p">.</span><span class="na">getSpeed</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">RobotController</span><span class="p">.</span><span class="na">getBatteryVoltage</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">82</span>
+<span class="linenos">83</span><span class="w">    </span><span class="c1">// Next, we update it. The standard loop time is 20ms.</span><span class="w"></span>
+<span class="linenos">84</span><span class="w">    </span><span class="n">m_elevatorSim</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="mf">0.020</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">85</span>
+<span class="linenos">86</span><span class="w">    </span><span class="c1">// Finally, we set our simulated encoder&#39;s readings and simulated battery voltage</span><span class="w"></span>
+<span class="linenos">87</span><span class="w">    </span><span class="n">m_encoderSim</span><span class="p">.</span><span class="na">setDistance</span><span class="p">(</span><span class="n">m_elevatorSim</span><span class="p">.</span><span class="na">getPositionMeters</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">88</span><span class="w">    </span><span class="c1">// SimBattery estimates loaded battery voltages</span><span class="w"></span>
+<span class="linenos">89</span><span class="w">    </span><span class="n">RoboRioSim</span><span class="p">.</span><span class="na">setVInVoltage</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">90</span><span class="w">        </span><span class="n">BatterySim</span><span class="p">.</span><span class="na">calculateDefaultBatteryLoadedVoltage</span><span class="p">(</span><span class="n">m_elevatorSim</span><span class="p">.</span><span class="na">getCurrentDrawAmps</span><span class="p">()));</span><span class="w"></span>
+<span class="linenos">91</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">20</span><span class="kt">void</span><span class="w"> </span><span class="nf">Elevator::SimulationPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">  </span><span class="c1">// In this method, we update our simulation of what our elevator is doing</span>
+<span class="linenos">22</span><span class="w">  </span><span class="c1">// First, we set our &quot;inputs&quot; (voltages)</span>
+<span class="linenos">23</span><span class="w">  </span><span class="n">m_elevatorSim</span><span class="p">.</span><span class="n">SetInput</span><span class="p">(</span><span class="n">frc</span><span class="o">::</span><span class="n">Vectord</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">      </span><span class="n">m_motorSim</span><span class="p">.</span><span class="n">GetSpeed</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">RobotController</span><span class="o">::</span><span class="n">GetInputVoltage</span><span class="p">()});</span><span class="w"></span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="w">  </span><span class="c1">// Next, we update it. The standard loop time is 20ms.</span>
+<span class="linenos">27</span><span class="w">  </span><span class="n">m_elevatorSim</span><span class="p">.</span><span class="n">Update</span><span class="p">(</span><span class="mi">20</span><span class="n">_ms</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="w">  </span><span class="c1">// Finally, we set our simulated encoder&#39;s readings and simulated battery</span>
+<span class="linenos">30</span><span class="w">  </span><span class="c1">// voltage</span>
+<span class="linenos">31</span><span class="w">  </span><span class="n">m_encoderSim</span><span class="p">.</span><span class="n">SetDistance</span><span class="p">(</span><span class="n">m_elevatorSim</span><span class="p">.</span><span class="n">GetPosition</span><span class="p">().</span><span class="n">value</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">  </span><span class="c1">// SimBattery estimates loaded battery voltages</span>
+<span class="linenos">33</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">RoboRioSim</span><span class="o">::</span><span class="n">SetVInVoltage</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">      </span><span class="n">frc</span><span class="o">::</span><span class="n">sim</span><span class="o">::</span><span class="n">BatterySim</span><span class="o">::</span><span class="n">Calculate</span><span class="p">({</span><span class="n">m_elevatorSim</span><span class="p">.</span><span class="n">GetCurrentDraw</span><span class="p">()}));</span><span class="w"></span>
+<span class="linenos">35</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simulation-gui.html" class="btn btn-neutral float-left" title="Simulation Specific User Interface Elements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="device-sim.html" class="btn btn-neutral float-right" title="Device Simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

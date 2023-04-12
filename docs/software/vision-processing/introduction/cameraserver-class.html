@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Read and Process Video: CameraServer Class" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/vision-processing/introduction/cameraserver-class.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Concepts: The cameras typically used in FRC ®(commodity USB and Ethernet cameras such as the Axis camera) offer relatively limited modes of operation. In general, they provide only a single image o..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/introduction/cameraserver-class.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/introduction/cameraserver-class.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/vision-processing/introduction/cameraserver-class.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/vision-processing/introduction/cameraserver-class.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/vision-processing/introduction/cameraserver-class.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/vision-processing/introduction/cameraserver-class.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/vision-processing/introduction/cameraserver-class.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/vision-processing/introduction/cameraserver-class.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read and Process Video: CameraServer Class &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/introduction/cameraserver-class.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="2017 Vision Examples" href="2017-vision-examples.html" />
+    <link rel="prev" title="Identifying and Processing the Targets" href="identifying-and-processing-the-targets.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Vision Processing</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Vision Introduction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="what-is-vision.html">What is Vision?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strategies-for-vision-programming.html">Strategies for Vision Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="target-info-and-retroreflection.html">Target Info and Retroreflection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="identifying-and-processing-the-targets.html">Identifying and Processing the Targets</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Read and Process Video: CameraServer Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2017-vision-examples.html">2017 Vision Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../wpilibpi/index.html">Vision with WPILibPi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apriltag/index.html">AprilTag Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grip/index.html">Vision with GRIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roborio/index.html">Vision on the RoboRIO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Vision Processing</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Vision Introduction</a></li>
+      <li class="breadcrumb-item active">Read and Process Video: CameraServer Class</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/vision-processing/introduction/cameraserver-class.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="read-and-process-video-cameraserver-class">
+<h1>Read and Process Video: CameraServer Class<a class="headerlink" href="#read-and-process-video-cameraserver-class" title="Permalink to this heading"></a></h1>
+<section id="concepts">
+<h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this heading"></a></h2>
+<p>The cameras typically used in FRC® (commodity USB and Ethernet cameras such as the Axis camera) offer relatively limited modes of operation. In general, they provide only a single image output (typically in an RGB compressed format such as JPG) at a single resolution and frame rate. USB cameras are particularly limited as only one application may access the camera at a time.</p>
+<p>CameraServer supports multiple cameras. It handles details such as automatically reconnecting when a camera is disconnected, and also makes images from the camera available to multiple “clients” (e.g. both your robot code and the dashboard can connect to the camera simultaneously).</p>
+<section id="camera-names">
+<h3>Camera Names<a class="headerlink" href="#camera-names" title="Permalink to this heading"></a></h3>
+<p>Each camera in CameraServer must be uniquely named. This is also the name that appears for the camera in the Dashboard. Some variants of the CameraServer <code class="docutils literal notranslate"><span class="pre">startAutomaticCapture()</span></code> and <code class="docutils literal notranslate"><span class="pre">addAxisCamera()</span></code> functions will automatically name the camera (e.g. “USB Camera 0” or “Axis Camera”), or you can give the camera a more descriptive name (e.g. “Intake Cam”). The only requirement is that each camera have a unique name.</p>
+</section>
+</section>
+<section id="usb-camera-notes">
+<h2>USB Camera Notes<a class="headerlink" href="#usb-camera-notes" title="Permalink to this heading"></a></h2>
+<section id="cpu-usage">
+<h3>CPU Usage<a class="headerlink" href="#cpu-usage" title="Permalink to this heading"></a></h3>
+<p>The CameraServer is designed to minimize CPU usage by only performing compression and decompression operations when required and automatically disabling streaming when no clients are connected.</p>
+<p>To minimize CPU usage, the dashboard resolution should be set to the same resolution as the camera; this allows the CameraServer to not decompress and recompress the image, instead, it can simply forward the JPEG image received from the camera directly to the dashboard. It’s important to note that changing the resolution on the dashboard does <em>not</em> change the camera resolution; changing the camera resolution may be done by calling <code class="docutils literal notranslate"><span class="pre">setResolution()</span></code> on the camera object.</p>
+</section>
+<section id="usb-bandwidth">
+<h3>USB Bandwidth<a class="headerlink" href="#usb-bandwidth" title="Permalink to this heading"></a></h3>
+<p>The roboRIO can only transmit and receive so much data at a time over its USB interfaces. Camera images can require a lot of data, and so it is relatively easy to run into this limit. The most common cause of a USB bandwidth error is selecting a non-JPEG video mode or running too high of a resolution, particularly when multiple cameras are connected.</p>
+</section>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading"></a></h2>
+<p>The CameraServer consists of two layers, the high level WPILib <strong>CameraServer class</strong> and the low level <strong>cscore library</strong>.</p>
+</section>
+<section id="cameraserver-class">
+<h2>CameraServer Class<a class="headerlink" href="#cameraserver-class" title="Permalink to this heading"></a></h2>
+<p>The CameraServer class (part of WPILib) provides a high level interface for adding cameras to your robot code. It also is responsible for publishing information about the cameras and camera servers to NetworkTables so that Driver Station dashboards such as the LabVIEW Dashboard and Shuffleboard can list the cameras and determine where their streams are located. It uses a singleton pattern to maintain a database of all created cameras and servers.</p>
+<p>Some key functions in CameraServer are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">startAutomaticCapture()</span></code>: Add a USB camera (e.g. Microsoft LifeCam) and starts a server for it so it can be viewed from the dashboard.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">addAxisCamera()</span></code>: Add an Axis camera. Even if you aren’t processing images from the Axis camera in your robot code, you may want to use this function so that the Axis camera appears in the Dashboard’s drop down list of cameras. It also starts a server so the Axis stream can still be viewed when your driver station is connected to the roboRIO via USB (useful at competition if you have both the Axis camera and roboRIO connected to the two robot radio Ethernet ports).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getVideo()</span></code>: Get OpenCV access to a camera. This allows you to get images from the camera for image processing on the roboRIO (in your robot code).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">putVideo()</span></code>: Start a server that you can feed OpenCV images to. This allows you to pass custom processed and/or annotated images to the dashboard.</p></li>
+</ul>
+</section>
+<section id="cscore-library">
+<h2>cscore Library<a class="headerlink" href="#cscore-library" title="Permalink to this heading"></a></h2>
+<p>The cscore library provides the lower level implementation to:</p>
+<ul class="simple">
+<li><p>Get images from USB and HTTP (e.g. Axis) cameras</p></li>
+<li><p>Change camera settings (e.g. contrast and brightness)</p></li>
+<li><p>Change camera video modes (pixel format, resolution and frame rate)</p></li>
+<li><p>Act as a web server and serve images as a standard MJPEG stream</p></li>
+<li><p>Convert images to/from OpenCV <code class="docutils literal notranslate"><span class="pre">Mat</span></code> objects for image processing</p></li>
+</ul>
+<section id="sources-and-sinks">
+<h3>Sources and Sinks<a class="headerlink" href="#sources-and-sinks" title="Permalink to this heading"></a></h3>
+<p>The basic architecture of the cscore library is similar to that of MJPGStreamer, with functionality split between sources and sinks. There can be multiple sources and multiple sinks created and operating simultaneously.</p>
+<p>An object that generates images is a source and an object that accepts/consumes images is a sink. The generate/consume is from the perspective of the library. Thus cameras are sources (they generate images). The MJPEG web server is a sink because it accepts images from within the program (even though it may be forwarding those images on to a web browser or dashboard). Sources may be connected to multiple sinks, but sinks can be connected to one and only one source. When a sink is connected to a source, the cscore library takes care of passing each image from the source to the sink.</p>
+<ul class="simple">
+<li><p><strong>Sources</strong> obtain individual frames (such as provided by a USB camera) and fire an event when a new frame is available. If no sinks are listening to a particular source, the library may pause or disconnect from a source to save processor and I/O resources. The library autonomously handles camera disconnects/reconnects by simply pausing and resuming firing of events (e.g. a disconnect results in no new frames, not an error).</p></li>
+<li><p><strong>Sinks</strong> listen to a particular source’s event, grab the latest image, and forward it to its destination in the appropriate format. Similarly to sources, if a particular sink is inactive (e.g. no client is connected to a configured MJPEG over HTTP server), the library may disable parts of its processing to save processor resources.</p></li>
+</ul>
+<p>User code (such as that used in a FRC robot program) can act as either a source (providing processed frames as if it were a camera) or as a sink (receiving a frame for processing) via OpenCV source and sink objects. Thus an image processing pipeline that gets images from a camera and serves the processed images out looks like the below graph:</p>
+<img alt="Block diagram showing that a program can either sink or source from OpenCV." src="../../../../_images/sink.drawio.svg" /><p>Because sources can have multiple sinks connected, the pipeline may branch. For example, the original camera image can also be served by connecting the UsbCamera source to a second MjpegServer sink in addition to the CvSink, resulting in the below graph:</p>
+<img alt="Block diagram of multiple sinks." src="../../../../_images/sources.drawio.svg" /><p>When a new image is captured by the camera, both the CvSink and the MjpegServer [1] receive it.</p>
+<p>The above graph is what the following CameraServer snippet creates:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.cameraserver.CameraServer</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.cscore.CvSink</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.cscore.CvSource</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Creates UsbCamera and MjpegServer [1] and connects them</span><span class="w"></span>
+<span class="n">CameraServer</span><span class="p">.</span><span class="na">startAutomaticCapture</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// Creates the CvSink and connects it to the UsbCamera</span><span class="w"></span>
+<span class="n">CvSink</span><span class="w"> </span><span class="n">cvSink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CameraServer</span><span class="p">.</span><span class="na">getVideo</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// Creates the CvSource and MjpegServer [2] and connects them</span><span class="w"></span>
+<span class="n">CvSource</span><span class="w"> </span><span class="n">outputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CameraServer</span><span class="p">.</span><span class="na">putVideo</span><span class="p">(</span><span class="s">&quot;Blur&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">480</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cameraserver/CameraServer.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// Creates UsbCamera and MjpegServer [1] and connects them</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">CameraServer</span><span class="o">::</span><span class="n">StartAutomaticCapture</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// Creates the CvSink and connects it to the UsbCamera</span>
+<span class="n">cs</span><span class="o">::</span><span class="n">CvSink</span><span class="w"> </span><span class="n">cvSink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">CameraServer</span><span class="o">::</span><span class="n">GetVideo</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// Creates the CvSource and MjpegServer [2] and connects them</span>
+<span class="n">cs</span><span class="o">::</span><span class="n">CvSource</span><span class="w"> </span><span class="n">outputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">CameraServer</span><span class="o">::</span><span class="n">PutVideo</span><span class="p">(</span><span class="s">&quot;Blur&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">480</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>The CameraServer implementation effectively does the following at the cscore level (for explanation purposes). CameraServer takes care of many of the details such as creating unique names for all cscore objects and automatically selecting port numbers. CameraServer also keeps a singleton registry of created objects so they aren’t destroyed if they go out of scope.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.cscore.CvSink</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.cscore.CvSource</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.cscore.MjpegServer</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.cscore.UsbCamera</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Creates UsbCamera and MjpegServer [1] and connects them</span><span class="w"></span>
+<span class="n">UsbCamera</span><span class="w"> </span><span class="n">usbCamera</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UsbCamera</span><span class="p">(</span><span class="s">&quot;USB Camera 0&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">MjpegServer</span><span class="w"> </span><span class="n">mjpegServer1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MjpegServer</span><span class="p">(</span><span class="s">&quot;serve_USB Camera 0&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1181</span><span class="p">);</span><span class="w"></span>
+<span class="n">mjpegServer1</span><span class="p">.</span><span class="na">setSource</span><span class="p">(</span><span class="n">usbCamera</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Creates the CvSink and connects it to the UsbCamera</span><span class="w"></span>
+<span class="n">CvSink</span><span class="w"> </span><span class="n">cvSink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CvSink</span><span class="p">(</span><span class="s">&quot;opencv_USB Camera 0&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">cvSink</span><span class="p">.</span><span class="na">setSource</span><span class="p">(</span><span class="n">usbCamera</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Creates the CvSource and MjpegServer [2] and connects them</span><span class="w"></span>
+<span class="n">CvSource</span><span class="w"> </span><span class="n">outputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CvSource</span><span class="p">(</span><span class="s">&quot;Blur&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">PixelFormat</span><span class="p">.</span><span class="na">kMJPEG</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">480</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w"></span>
+<span class="n">MjpegServer</span><span class="w"> </span><span class="n">mjpegServer2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MjpegServer</span><span class="p">(</span><span class="s">&quot;serve_Blur&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1182</span><span class="p">);</span><span class="w"></span>
+<span class="n">mjpegServer2</span><span class="p">.</span><span class="na">setSource</span><span class="p">(</span><span class="n">outputStream</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;cscore_oo.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// Creates UsbCamera and MjpegServer [1] and connects them</span>
+<span class="n">cs</span><span class="o">::</span><span class="n">UsbCamera</span><span class="w"> </span><span class="n">usbCamera</span><span class="p">(</span><span class="s">&quot;USB Camera 0&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">cs</span><span class="o">::</span><span class="n">MjpegServer</span><span class="w"> </span><span class="n">mjpegServer1</span><span class="p">(</span><span class="s">&quot;serve_USB Camera 0&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1181</span><span class="p">);</span><span class="w"></span>
+<span class="n">mjpegServer1</span><span class="p">.</span><span class="n">SetSource</span><span class="p">(</span><span class="n">usbCamera</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Creates the CvSink and connects it to the UsbCamera</span>
+<span class="n">cs</span><span class="o">::</span><span class="n">CvSink</span><span class="w"> </span><span class="n">cvSink</span><span class="p">(</span><span class="s">&quot;opencv_USB Camera 0&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">cvSink</span><span class="p">.</span><span class="n">SetSource</span><span class="p">(</span><span class="n">usbCamera</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Creates the CvSource and MjpegServer [2] and connects them</span>
+<span class="n">cs</span><span class="o">::</span><span class="n">CvSource</span><span class="w"> </span><span class="n">outputStream</span><span class="p">(</span><span class="s">&quot;Blur&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cs</span><span class="o">::</span><span class="n">PixelFormat</span><span class="o">::</span><span class="n">kMJPEG</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">480</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w"></span>
+<span class="n">cs</span><span class="o">::</span><span class="n">MjpegServer</span><span class="w"> </span><span class="n">mjpegServer2</span><span class="p">(</span><span class="s">&quot;serve_Blur&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1182</span><span class="p">);</span><span class="w"></span>
+<span class="n">mjpegServer2</span><span class="p">.</span><span class="n">SetSource</span><span class="p">(</span><span class="n">outputStream</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="reference-counting">
+<h3>Reference Counting<a class="headerlink" href="#reference-counting" title="Permalink to this heading"></a></h3>
+<p>All cscore objects are internally reference counted. Connecting a sink to a source increments the source’s reference count, so it’s only strictly necessary to keep the sink in scope. The CameraServer class keeps a registry of all objects created with CameraServer functions, so sources and sinks created in that way effectively never go out of scope (unless explicitly removed).</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="identifying-and-processing-the-targets.html" class="btn btn-neutral float-left" title="Identifying and Processing the Targets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="2017-vision-examples.html" class="btn btn-neutral float-right" title="2017 Vision Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

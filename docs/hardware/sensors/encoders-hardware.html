@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Encoders - Hardware" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/hardware/sensors/encoders-hardware.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Encoders are by far the most common method for measuring rotational motion in FRC ®, and for good reason - they are cheap, easy-to-use, and reliable. As they produce digital signals, they are less-..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/hardware/sensors/encoders-hardware.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/hardware/sensors/encoders-hardware.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/hardware/sensors/encoders-hardware.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/hardware/sensors/encoders-hardware.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/hardware/sensors/encoders-hardware.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/hardware/sensors/encoders-hardware.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/hardware/sensors/encoders-hardware.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/hardware/sensors/encoders-hardware.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encoders - Hardware &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/hardware/sensors/encoders-hardware.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Gyroscopes - Hardware" href="gyros-hardware.html" />
+    <link rel="prev" title="Proximity Switches - Hardware" href="proximity-switches.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Sensors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sensor-overview-hardware.html">Sensor Overview - Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analog-inputs-hardware.html">Analog Inputs - Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="analog-potentiometers-hardware.html">Analog Potentiometers - Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digital-inputs-hardware.html">Digital Inputs - Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proximity-switches.html">Proximity Switches - Hardware</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Encoders - Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gyros-hardware.html">Gyroscopes - Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonics-hardware.html">Ultrasonics - Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accelerometers-hardware.html">Accelerometers - Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lidar.html">LIDAR - Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="triangulating-rangefinders.html">Triangulating Rangefinders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="serial-buses.html">Serial Buses</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Sensors</a></li>
+      <li class="breadcrumb-item active">Encoders - Hardware</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/hardware/sensors/encoders-hardware.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encoders-hardware">
+<h1>Encoders - Hardware<a class="headerlink" href="#encoders-hardware" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section covers encoder hardware.  For a software guide to encoders, see <a class="reference internal" href="../../software/hardware-apis/sensors/encoders-software.html#encoders-software"><span class="std std-ref">Encoders - Software</span></a>.</p>
+</div>
+<p>Encoders are by far the most common method for measuring rotational motion in FRC®, and for good reason - they are cheap, easy-to-use, and reliable.  As they produce digital signals, they are less-prone to noise and interference than analog devices (such as <a class="reference internal" href="analog-potentiometers-hardware.html"><span class="doc">potentiometers</span></a>).</p>
+<section id="types-of-encoders">
+<h2>Types of Encoders<a class="headerlink" href="#types-of-encoders" title="Permalink to this heading"></a></h2>
+<p>There are three main ways encoders connect physically that are typically used in FRC:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#shafted-encoders">Shafted encoders</a></p></li>
+<li><p><a class="reference internal" href="#on-shaft-encoders">On-shaft encoders</a></p></li>
+<li><p><a class="reference internal" href="#magnetic-encoders">Magnetic encoders</a></p></li>
+</ul>
+<p>These encoders vary in how they are mounted to the mechanism in question.  In addition to these types of encoders, many FRC mechanisms come with quadrature encoders integrated into their design.</p>
+<p>There are also three main ways the encoder data is communicated that are typically used in FRC:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#quadrature-encoders">Quadrature encoders</a></p></li>
+<li><p><a class="reference internal" href="#duty-cycle-encoders">Duty Cycle encoders</a></p></li>
+<li><p><a class="reference internal" href="#analog-encoders">Analog encoders</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some encoders may support more then one communication method</p>
+</div>
+<section id="shafted-encoders">
+<h3>Shafted Encoders<a class="headerlink" href="#shafted-encoders" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../../_images/greyhill-63r-encoder.svg"><img alt="Diagram of the Greyhill 63R Optical Encoder." src="../../../_images/greyhill-63r-encoder.svg" width="400" /></a>
+<p>Shafted encoders have a sealed body with a shaft protruding out of it that must be coupled rotationally to a mechanism.  This is often done with a helical beam coupling, or, more cheaply, with a length of flexible tubing (such as surgical tubing or pneumatic tubing), fastened with cable ties and/or adhesive at either end.  Many commercial off-the-shelf FRC gearboxes have purpose-built mounting points for shafted encoders.</p>
+<p>Examples of shafted encoders:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.grayhill.com/documents/63R-Datasheet">Grayhill 63r</a></p></li>
+<li><p><a class="reference external" href="https://www.usdigital.com/products/encoders/absolute/shaft/ma3/">US Digital MA3</a></p></li>
+</ul>
+</section>
+<section id="on-shaft-encoders">
+<h3>On-shaft Encoders<a class="headerlink" href="#on-shaft-encoders" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../../_images/amt10x-encoders.svg"><img alt="Diagram of the AMT103 and the AMT102 shaft encoders." src="../../../_images/amt10x-encoders.svg" width="600" /></a>
+<p>On-shaft encoders couple to a shaft by fitting <em>around</em> it, forming a friction coupling between the shaft and a rotating hub inside the encoder.</p>
+<p>Examples of On-shaft encoders:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.cuidevices.com/product/motion/rotary-encoders/incremental/modular/amt10-v-kit/amt103-v">AMT103-V</a> available through FIRST Choice</p></li>
+<li><p><a class="reference external" href="https://www.revrobotics.com/rev-11-1271/">REV Through Bore Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.andymark.com/products/e4t-oem-miniature-optical-encoder-kit">US Digital E4T</a></p></li>
+</ul>
+</section>
+<section id="magnetic-encoders">
+<h3>Magnetic Encoders<a class="headerlink" href="#magnetic-encoders" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../../_images/ctre-magnetic-encoder.png"><img alt="Picture of the CTRE Mag Encoder." src="../../../_images/ctre-magnetic-encoder.png" style="width: 400px;" /></a>
+<p>Magnetic encoders require no mechanical coupling to the shaft at all; rather, they track the orientation of a magnet fixed to the shaft.  While the no-contact nature of magnetic encoders can be handy, they often require precise construction in order to ensure that the magnet is positioned correctly with respect to the encoder.</p>
+<p>Examples of magnetic encoders:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://store.ctr-electronics.com/srx-mag-encoder/">CTRE Mag Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.thethriftybot.com/bearings/Thrifty-Absolute-Magnetic-Encoder-p421607500">Thrifty Absolute Magnetic Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.andymark.com/products/lamprey-absolute-encoder">Team 221 Lamprey2</a></p></li>
+</ul>
+</section>
+<section id="quadrature-encoders">
+<h3>Quadrature Encoders<a class="headerlink" href="#quadrature-encoders" title="Permalink to this heading"></a></h3>
+<p>The term “quadrature” refers to the method by which the motion is measured/encoded.  A quadrature encoder produces two square-wave pulses that are 90-degrees out-of-phase from each other, as seen in the picture below:</p>
+<img alt="The signal pattern in both directions and how using two channels allows us to tell the direction." src="../../../_images/encoding-direction.png" />
+<p>Thus, across both channels, there are four total “edges” per period (hence “quad”).  The use of two out-of-phase pulses allows the direction of motion to be unambiguously determined from which pulse “leads” the other.</p>
+<p>As each square wave pulse is a digital signal, quadrature encoders connect to the <a class="reference internal" href="digital-inputs-hardware.html"><span class="doc">digital input</span></a> ports on the roboRIO.</p>
+<p>Examples of quadrature encoders:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.cuidevices.com/product/motion/rotary-encoders/incremental/modular/amt10-v-kit/amt103-v">AMT103-V</a> available through FIRST Choice</p></li>
+<li><p><a class="reference external" href="https://store.ctr-electronics.com/srx-mag-encoder/">CTRE Mag Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.grayhill.com/documents/63R-Datasheet">Grayhill 63r</a></p></li>
+<li><p><a class="reference external" href="https://www.revrobotics.com/rev-11-1271/">REV Through Bore Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.andymark.com/products/e4t-oem-miniature-optical-encoder-kit">US Digital E4T</a></p></li>
+</ul>
+<section id="quadrature-encoder-wiring">
+<h4>Quadrature Encoder Wiring<a class="headerlink" href="#quadrature-encoder-wiring" title="Permalink to this heading"></a></h4>
+<a class="reference internal image-reference" href="../../../_images/e4t-oem-miniature-optical-encoder-to-roborio.svg"><img alt="Wiring the E4T Optical Encoder to two DIO ports." src="../../../_images/e4t-oem-miniature-optical-encoder-to-roborio.svg" width="400" /></a>
+<p>Quadrature Encoders, such as the <a class="reference external" href="https://www.andymark.com/products/e4t-oem-miniature-optical-encoder-kit">E4T OEM Miniature Optical Encoder</a>, can be wired to two digital input ports as shown above.</p>
+</section>
+<section id="index">
+<h4>Index<a class="headerlink" href="#index" title="Permalink to this heading"></a></h4>
+<p>Some quadrature encoders have a third index pin which pulses when the encoder completes a revolution.</p>
+</section>
+<section id="quaderature-encoder-resolution">
+<h4>Quaderature Encoder Resolution<a class="headerlink" href="#quaderature-encoder-resolution" title="Permalink to this heading"></a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The acronyms “CPR” and “PPR” are <em>both</em> used by varying sources to denote both edges per revolution <em>and</em> cycles per revolution, so the acronym alone is not enough to tell which is of the two is meant when by a given value.  When in doubt, consult the technical manual of your specific encoder.</p>
+</div>
+<p>As encoders measure rotation with digital pulses, the accuracy of the measurement is limited by the number of pulses per given amount of rotational movement.  This is known as the “resolution” of the encoder, and is traditionally measured in one of two different ways: edges per revolution, or cycles per revolution.</p>
+<p><em>Edges per revolution</em> refers to the total number of transitions from high-to-low or low-to-high across both channels per revolution of the encoder shaft.  A full period contains <em>four</em> edges.</p>
+<p><em>Cycles per revolution</em> refers to the total number of <em>complete periods</em> of both channels per revolution of the encoder shaft.  A full period is <em>one</em> cycle.</p>
+<p>Thus, a resolution stated in edges per revolution has a value four times that of the same resolution stated in cycles per revolution.</p>
+<p>In general, the resolution of your encoder in edges-per-revolution should be somewhat finer than your smallest acceptable error in positioning.  Thus, if you want to know the mechanism plus-or-minus one degree, you should have an encoder with a resolution somewhat higher than 360 edges per revolution.</p>
+</section>
+</section>
+<section id="duty-cycle-encoders">
+<h3>Duty Cycle Encoders<a class="headerlink" href="#duty-cycle-encoders" title="Permalink to this heading"></a></h3>
+<img alt="The PWM signal pattern for minimum and maximum angles." src="../../../_images/encoding-direction.png" />
+<p>Duty cycle encoders connect to a single digital input on the roboRIO. They output a pulse where the length of a pulse is proportional to the absolute position of the encoder.</p>
+<p>Examples of duty cycle encoders:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.andymark.com/products/am-mag-encoder">AndyMark Mag Encoder</a></p></li>
+<li><p><a class="reference external" href="https://store.ctr-electronics.com/srx-mag-encoder/">CTRE Mag Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.revrobotics.com/rev-11-1271/">REV Through Bore Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.andymark.com/products/lamprey-absolute-encoder">Team 221 Lamprey2</a></p></li>
+<li><p><a class="reference external" href="https://www.usdigital.com/products/encoders/absolute/shaft/ma3/">US Digital MA3</a></p></li>
+</ul>
+</section>
+<section id="analog-encoders">
+<h3>Analog Encoders<a class="headerlink" href="#analog-encoders" title="Permalink to this heading"></a></h3>
+<img alt="The connection of a US Digital MA3 Analog encoder to the roboRIO analog input." src="../../../_images/absolute-encoder-to-roborio.svg" /><p>Analog encoders connect to a analog input on the roboRIO. They output a voltage proportional to the absolute position of the encoder.</p>
+<p>Examples of analog encoders:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.andymark.com/products/lamprey-absolute-encoder">Team 221 Lamprey2</a></p></li>
+<li><p><a class="reference external" href="https://www.thethriftybot.com/bearings/Thrifty-Absolute-Magnetic-Encoder-p421607500">Thrifty Absolute Magnetic Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.usdigital.com/products/encoders/absolute/shaft/ma3/">US Digital MA3</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="proximity-switches.html" class="btn btn-neutral float-left" title="Proximity Switches - Hardware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gyros-hardware.html" class="btn btn-neutral float-right" title="Gyroscopes - Hardware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

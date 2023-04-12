@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Feedforward Control in WPILib" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/feedforward.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="You may have used feedback control (such as PID) for reference tracking (making a system’s output follow a desired reference signal). While this is effective, it’s a reactionary measure; the system..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/feedforward.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/feedforward.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/advanced-controls/controllers/feedforward.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/advanced-controls/controllers/feedforward.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/advanced-controls/controllers/feedforward.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/advanced-controls/controllers/feedforward.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/advanced-controls/controllers/feedforward.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/advanced-controls/controllers/feedforward.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedforward Control in WPILib &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/feedforward.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Combining Feedforward and PID Control" href="combining-feedforward-feedback.html" />
+    <link rel="prev" title="PID Control in WPILib" href="pidcontroller.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Advanced Controls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../video-walkthrough.html">A Video Walkthrough of Model Based Validation of Autonomous in FRC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">Advanced Controls Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/index.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/index.html">Geometry Classes</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Controllers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="pidcontroller.html">PID Control in WPILib</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Feedforward Control in WPILib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="combining-feedforward-feedback.html">Combining Feedforward and PID Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trapezoidal-profiles.html">Trapezoidal Motion Profiles in WPILib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="profiled-pidcontroller.html">Combining Motion Profiling and PID Control with ProfiledPIDController</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bang-bang.html">Bang-Bang Control with BangBangController</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../trajectories/index.html">Trajectory Generation and Following with WPILib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../state-space/index.html">State-Space and Model Based Control with WPILib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controls-glossary.html">Controls Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Advanced Controls</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Controllers</a></li>
+      <li class="breadcrumb-item active">Feedforward Control in WPILib</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/advanced-controls/controllers/feedforward.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="feedforward-control-in-wpilib">
+<h1>Feedforward Control in WPILib<a class="headerlink" href="#feedforward-control-in-wpilib" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This article focuses on in-code implementation of feedforward control in WPILib. For a conceptual explanation of the feedforward equations used by WPILib, see <a class="reference internal" href="../introduction/introduction-to-feedforward.html#introduction-to-dc-motor-feedforward"><span class="std std-ref">Introduction to DC Motor Feedforward</span></a></p>
+</div>
+<p>You may have used feedback control (such as PID) for reference tracking (making a system’s output follow a desired reference signal). While this is effective, it’s a reactionary measure; the system won’t start applying control effort until the system is already behind. If we could tell the controller about the desired movement and required input beforehand, the system could react quicker and the feedback controller could do less work. A controller that feeds information forward into the plant like this is called a feedforward controller.</p>
+<p>A feedforward controller injects information about the system’s dynamics (like a mathematical model does) or the intended movement. Feedforward handles parts of the control actions we already know must be applied to make a system track a reference, then feedback compensates for what we do not or cannot know about the system’s behavior at runtime.</p>
+<section id="the-wpilib-feedforward-classes">
+<h2>The WPILib Feedforward Classes<a class="headerlink" href="#the-wpilib-feedforward-classes" title="Permalink to this heading"></a></h2>
+<p>WPILib provides a number of classes to help users implement accurate feedforward control for their mechanisms.  In many ways, an accurate feedforward is more important than feedback to effective control of a mechanism.  Since most FRC® mechanisms closely obey well-understood system equations, starting with an accurate feedforward is both easy and hugely beneficial to accurate and robust mechanism control.</p>
+<p>The WPILib feedforward classes closely match the available mechanism characterization tools available in the <a class="reference internal" href="../../pathplanning/system-identification/introduction.html#introduction-to-system-identification"><span class="std std-ref">SysId toolsuite</span></a>.  The system identification toolsuite can be used to quickly and effectively determine the correct gains for each type of feedforward.  If you are unable to empirically characterize your mechanism (due to space and/or time constraints), reasonable estimates of <code class="docutils literal notranslate"><span class="pre">kG</span></code>, <code class="docutils literal notranslate"><span class="pre">kV</span></code>, and <code class="docutils literal notranslate"><span class="pre">kA</span></code> can be obtained by fairly simple computation, and are also available from <a class="reference external" href="https://www.reca.lc/">ReCalc</a>.  <code class="docutils literal notranslate"><span class="pre">kS</span></code> is nearly impossible to model, and must be measured empirically.</p>
+<p>WPILib currently provides the following three helper classes for feedforward control:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#simplemotorfeedforward">SimpleMotorFeedforward</a> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/SimpleMotorFeedforward.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_simple_motor_feedforward.html">C++</a>)</p></li>
+<li><p><a class="reference internal" href="#armfeedforward">ArmFeedforward</a> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/ArmFeedforward.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_arm_feedforward.html">C++</a>)</p></li>
+<li><p><a class="reference internal" href="#elevatorfeedforward">ElevatorFeedforward</a> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/math/controller/ElevatorFeedforward.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_elevator_feedforward.html">C++</a>)</p></li>
+</ul>
+</section>
+<section id="simplemotorfeedforward">
+<h2>SimpleMotorFeedforward<a class="headerlink" href="#simplemotorfeedforward" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In C++, the <code class="docutils literal notranslate"><span class="pre">SimpleMotorFeedforward</span></code> class is templated on the unit type used for distance measurements, which may be angular or linear.  The passed-in gains <em>must</em> have units consistent with the distance units, or a compile-time error will be thrown.  <code class="docutils literal notranslate"><span class="pre">kS</span></code> should have units of <code class="docutils literal notranslate"><span class="pre">volts</span></code>, <code class="docutils literal notranslate"><span class="pre">kV</span></code> should have units of <code class="docutils literal notranslate"><span class="pre">volts</span> <span class="pre">*</span> <span class="pre">seconds</span> <span class="pre">/</span> <span class="pre">distance</span></code>, and <code class="docutils literal notranslate"><span class="pre">kA</span></code> should have units of <code class="docutils literal notranslate"><span class="pre">volts</span> <span class="pre">*</span> <span class="pre">seconds^2</span> <span class="pre">/</span> <span class="pre">distance</span></code>.  For more information on C++ units, see <a class="reference internal" href="../../basic-programming/cpp-units.html#the-c-units-library"><span class="std std-ref">The C++ Units Library</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Java feedforward components will calculate outputs in units determined by the units of the user-provided feedforward gains.  Users <em>must</em> take care to keep units consistent, as WPILibJ does not have a type-safe unit system.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">SimpleMotorFeedforward</span></code> class calculates feedforwards for mechanisms that consist of permanent-magnet DC motors with no external loading other than friction and inertia, such as flywheels and robot drives.</p>
+<p>To create a <code class="docutils literal notranslate"><span class="pre">SimpleMotorFeedforward</span></code>, simply construct it with the required gains:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">kA</span></code> gain can be omitted, and if it is, will default to a value of zero.  For many mechanisms, especially those with little inertia, it is not necessary.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a new SimpleMotorFeedforward with gains kS, kV, and kA</span><span class="w"></span>
+<span class="n">SimpleMotorFeedforward</span><span class="w"> </span><span class="n">feedforward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SimpleMotorFeedforward</span><span class="p">(</span><span class="n">kS</span><span class="p">,</span><span class="w"> </span><span class="n">kV</span><span class="p">,</span><span class="w"> </span><span class="n">kA</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a new SimpleMotorFeedforward with gains kS, kV, and kA</span>
+<span class="c1">// Distance is measured in meters</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">SimpleMotorFeedforward</span><span class="o">&lt;</span><span class="n">units</span><span class="o">::</span><span class="n">meters</span><span class="o">&gt;</span><span class="w"> </span><span class="n">feedforward</span><span class="p">(</span><span class="n">kS</span><span class="p">,</span><span class="w"> </span><span class="n">kV</span><span class="p">,</span><span class="w"> </span><span class="n">kA</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>To calculate the feedforward, simply call the <code class="docutils literal notranslate"><span class="pre">calculate()</span></code> method with the desired motor velocity and acceleration:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The acceleration argument may be omitted from the <code class="docutils literal notranslate"><span class="pre">calculate()</span></code> call, and if it is, will default to a value of zero.  This should be done whenever there is not a clearly-defined acceleration setpoint.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Calculates the feedforward for a velocity of 10 units/second and an acceleration of 20 units/second^2</span><span class="w"></span>
+<span class="c1">// Units are determined by the units of the gains passed in at construction.</span><span class="w"></span>
+<span class="n">feedforward</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Calculates the feedforward for a velocity of 10 meters/second and an acceleration of 20 meters/second^2</span>
+<span class="c1">// Output is in volts</span>
+<span class="n">feedforward</span><span class="p">.</span><span class="n">Calculate</span><span class="p">(</span><span class="mi">10</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="n">_mps_sq</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="armfeedforward">
+<h2>ArmFeedforward<a class="headerlink" href="#armfeedforward" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In C++, the <code class="docutils literal notranslate"><span class="pre">ArmFeedforward</span></code> class assumes distances are angular, not linear.  The passed-in gains <em>must</em> have units consistent with the angular unit, or a compile-time error will be thrown.  <code class="docutils literal notranslate"><span class="pre">kS</span></code> and <code class="docutils literal notranslate"><span class="pre">kG</span></code> should have units of <code class="docutils literal notranslate"><span class="pre">volts</span></code>, <code class="docutils literal notranslate"><span class="pre">kV</span></code> should have units of <code class="docutils literal notranslate"><span class="pre">volts</span> <span class="pre">*</span> <span class="pre">seconds</span> <span class="pre">/</span> <span class="pre">radians</span></code>, and <code class="docutils literal notranslate"><span class="pre">kA</span></code> should have units of <code class="docutils literal notranslate"><span class="pre">volts</span> <span class="pre">*</span> <span class="pre">seconds^2</span> <span class="pre">/</span> <span class="pre">radians</span></code>.  For more information on C++ units, see <a class="reference internal" href="../../basic-programming/cpp-units.html#the-c-units-library"><span class="std std-ref">The C++ Units Library</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Java feedforward components will calculate outputs in units determined by the units of the user-provided feedforward gains.  Users <em>must</em> take care to keep units consistent, as WPILibJ does not have a type-safe unit system.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ArmFeedforward</span></code> class calculates feedforwards for arms that are controlled directly by a permanent-magnet DC motor, with external loading of friction, inertia, and mass of the arm.  This is an accurate model of most arms in FRC.</p>
+<p>To create an <code class="docutils literal notranslate"><span class="pre">ArmFeedforward</span></code>, simply construct it with the required gains:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">kA</span></code> gain can be omitted, and if it is, will default to a value of zero.  For many mechanisms, especially those with little inertia, it is not necessary.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a new ArmFeedforward with gains kS, kG, kV, and kA</span><span class="w"></span>
+<span class="n">ArmFeedforward</span><span class="w"> </span><span class="n">feedforward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArmFeedforward</span><span class="p">(</span><span class="n">kS</span><span class="p">,</span><span class="w"> </span><span class="n">kG</span><span class="p">,</span><span class="w"> </span><span class="n">kV</span><span class="p">,</span><span class="w"> </span><span class="n">kA</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a new ArmFeedforward with gains kS, kG, kV, and kA</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">ArmFeedforward</span><span class="w"> </span><span class="nf">feedforward</span><span class="p">(</span><span class="n">kS</span><span class="p">,</span><span class="w"> </span><span class="n">kG</span><span class="p">,</span><span class="w"> </span><span class="n">kV</span><span class="p">,</span><span class="w"> </span><span class="n">kA</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>To calculate the feedforward, simply call the <code class="docutils literal notranslate"><span class="pre">calculate()</span></code> method with the desired arm position, velocity, and acceleration:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The acceleration argument may be omitted from the <code class="docutils literal notranslate"><span class="pre">calculate()</span></code> call, and if it is, will default to a value of zero.  This should be done whenever there is not a clearly-defined acceleration setpoint.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Calculates the feedforward for a position of 1 units, a velocity of 2 units/second, and</span><span class="w"></span>
+<span class="c1">// an acceleration of 3 units/second^2</span><span class="w"></span>
+<span class="c1">// Units are determined by the units of the gains passed in at construction.</span><span class="w"></span>
+<span class="n">feedforward</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Calculates the feedforward for a position of 1 radians, a velocity of 2 radians/second, and</span>
+<span class="c1">// an acceleration of 3 radians/second^2</span>
+<span class="c1">// Output is in volts</span>
+<span class="n">feedforward</span><span class="p">.</span><span class="n">Calculate</span><span class="p">(</span><span class="mi">1</span><span class="n">_rad</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="n">_rad_per_s</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="n">_rad</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="n">_s</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="n">_s</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="elevatorfeedforward">
+<h2>ElevatorFeedforward<a class="headerlink" href="#elevatorfeedforward" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In C++, the passed-in gains <em>must</em> have units consistent with the distance units, or a compile-time error will be thrown.  <code class="docutils literal notranslate"><span class="pre">kS</span></code> and <code class="docutils literal notranslate"><span class="pre">kG</span></code> should have units of <code class="docutils literal notranslate"><span class="pre">volts</span></code>, <code class="docutils literal notranslate"><span class="pre">kV</span></code> should have units of <code class="docutils literal notranslate"><span class="pre">volts</span> <span class="pre">*</span> <span class="pre">seconds</span> <span class="pre">/</span> <span class="pre">distance</span></code>, and <code class="docutils literal notranslate"><span class="pre">kA</span></code> should have units of <code class="docutils literal notranslate"><span class="pre">volts</span> <span class="pre">*</span> <span class="pre">seconds^2</span> <span class="pre">/</span> <span class="pre">distance</span></code>.  For more information on C++ units, see <a class="reference internal" href="../../basic-programming/cpp-units.html#the-c-units-library"><span class="std std-ref">The C++ Units Library</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Java feedforward components will calculate outputs in units determined by the units of the user-provided feedforward gains.  Users <em>must</em> take care to keep units consistent, as WPILibJ does not have a type-safe unit system.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ElevatorFeedforward</span></code> class calculates feedforwards for elevators that consist of permanent-magnet DC motors loaded by friction, inertia, and the mass of the elevator.  This is an accurate model of most elevators in FRC.</p>
+<p>To create a <code class="docutils literal notranslate"><span class="pre">ElevatorFeedforward</span></code>, simply construct it with the required gains:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">kA</span></code> gain can be omitted, and if it is, will default to a value of zero.  For many mechanisms, especially those with little inertia, it is not necessary.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a new ElevatorFeedforward with gains kS, kG, kV, and kA</span><span class="w"></span>
+<span class="n">ElevatorFeedforward</span><span class="w"> </span><span class="n">feedforward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ElevatorFeedforward</span><span class="p">(</span><span class="n">kS</span><span class="p">,</span><span class="w"> </span><span class="n">kG</span><span class="p">,</span><span class="w"> </span><span class="n">kV</span><span class="p">,</span><span class="w"> </span><span class="n">kA</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a new ElevatorFeedforward with gains kS, kV, and kA</span>
+<span class="c1">// Distance is measured in meters</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">ElevatorFeedforward</span><span class="w"> </span><span class="nf">feedforward</span><span class="p">(</span><span class="n">kS</span><span class="p">,</span><span class="w"> </span><span class="n">kG</span><span class="p">,</span><span class="w"> </span><span class="n">kV</span><span class="p">,</span><span class="w"> </span><span class="n">kA</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>To calculate the feedforward, simply call the <code class="docutils literal notranslate"><span class="pre">calculate()</span></code> method with the desired motor velocity and acceleration:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The acceleration argument may be omitted from the <code class="docutils literal notranslate"><span class="pre">calculate()</span></code> call, and if it is, will default to a value of zero.  This should be done whenever there is not a clearly-defined acceleration setpoint.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-5-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-5-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Calculates the feedforward for a velocity of 20 units/second</span><span class="w"></span>
+<span class="c1">// and an acceleration of 30 units/second^2</span><span class="w"></span>
+<span class="c1">// Units are determined by the units of the gains passed in at construction.</span><span class="w"></span>
+<span class="n">feedforward</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Calculates the feedforward for a velocity of 20 meters/second</span>
+<span class="c1">// and an acceleration of 30 meters/second^2</span>
+<span class="c1">// Output is in volts</span>
+<span class="n">feedforward</span><span class="p">.</span><span class="n">Calculate</span><span class="p">(</span><span class="mi">20</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="n">_mps_sq</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="using-feedforward-to-control-mechanisms">
+<h2>Using Feedforward to Control Mechanisms<a class="headerlink" href="#using-feedforward-to-control-mechanisms" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since feedforward voltages are physically meaningful, it is best to use the <code class="docutils literal notranslate"><span class="pre">setVoltage()</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/motorcontrol/MotorController.html#setVoltage(double)">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_motor_controller.html#a613c23a3336e103876e433bcb8b5ad3e">C++</a>) method when applying them to motors to compensate for “voltage sag” from the battery.</p>
+</div>
+<p>Feedforward control can be used entirely on its own, without a feedback controller.  This is known as “open-loop” control, and for many mechanisms (especially robot drives) can be perfectly satisfactory.  A <code class="docutils literal notranslate"><span class="pre">SimpleMotorFeedforward</span></code> might be employed to control a robot drive as follows:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-6-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-6-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-6-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">tankDriveWithFeedforward</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">leftVelocity</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">rightVelocity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">leftMotor</span><span class="p">.</span><span class="na">setVoltage</span><span class="p">(</span><span class="n">feedforward</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">leftVelocity</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">rightMotor</span><span class="p">.</span><span class="na">setVoltage</span><span class="p">(</span><span class="n">feedForward</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">rightVelocity</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">TankDriveWithFeedforward</span><span class="p">(</span><span class="n">units</span><span class="o">::</span><span class="n">meters_per_second_t</span><span class="w"> </span><span class="n">leftVelocity</span><span class="p">,</span><span class="w"></span>
+<span class="w">                              </span><span class="n">units</span><span class="o">::</span><span class="n">meters_per_second_t</span><span class="w"> </span><span class="n">rightVelocity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">leftMotor</span><span class="p">.</span><span class="n">SetVoltage</span><span class="p">(</span><span class="n">feedforward</span><span class="p">.</span><span class="n">Calculate</span><span class="p">(</span><span class="n">leftVelocity</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">rightMotor</span><span class="p">.</span><span class="n">SetVoltage</span><span class="p">(</span><span class="n">feedforward</span><span class="p">.</span><span class="n">Calculate</span><span class="p">(</span><span class="n">rightVelocity</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pidcontroller.html" class="btn btn-neutral float-left" title="PID Control in WPILib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="combining-feedforward-feedback.html" class="btn btn-neutral float-right" title="Combining Feedforward and PID Control" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

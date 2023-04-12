@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Swerve Drive Kinematics" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="The SwerveDriveKinematics class is a useful tool that converts between a ChassisSpeeds object and several SwerveModuleState objects, which contains velocities and angles for each swerve module of a..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swerve Drive Kinematics &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/swerve-drive-kinematics.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Swerve Drive Odometry" href="swerve-drive-odometry.html" />
+    <link rel="prev" title="Differential Drive Odometry" href="differential-drive-odometry.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Kinematics and Odometry</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro-and-chassis-speeds.html">Introduction to Kinematics and The Chassis Speeds Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differential-drive-kinematics.html">Differential Drive Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differential-drive-odometry.html">Differential Drive Odometry</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Swerve Drive Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="swerve-drive-odometry.html">Swerve Drive Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mecanum-drive-kinematics.html">Mecanum Drive Kinematics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mecanum-drive-odometry.html">Mecanum Drive Odometry</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Kinematics and Odometry</a></li>
+      <li class="breadcrumb-item active">Swerve Drive Kinematics</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/kinematics-and-odometry/swerve-drive-kinematics.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="swerve-drive-kinematics">
+<h1>Swerve Drive Kinematics<a class="headerlink" href="#swerve-drive-kinematics" title="Permalink to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">SwerveDriveKinematics</span></code> class is a useful tool that converts between a <code class="docutils literal notranslate"><span class="pre">ChassisSpeeds</span></code> object and several <code class="docutils literal notranslate"><span class="pre">SwerveModuleState</span></code> objects, which contains velocities and angles for each swerve module of a swerve drive robot.</p>
+<section id="the-swerve-module-state-class">
+<h2>The swerve module state class<a class="headerlink" href="#the-swerve-module-state-class" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">SwerveModuleState</span></code> class contains information about the velocity and angle of a singular module of a swerve drive. The constructor for a <code class="docutils literal notranslate"><span class="pre">SwerveModuleState</span></code> takes in two arguments, the velocity of the wheel on the module, and the angle of the module.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Java, the velocity of the wheel must be in meters per second. In C++, the units library can be used to provide the velocity using any linear velocity unit.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An angle of 0 corresponds to the modules facing forward.</p>
+</div>
+</section>
+<section id="constructing-the-kinematics-object">
+<h2>Constructing the kinematics object<a class="headerlink" href="#constructing-the-kinematics-object" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">SwerveDriveKinematics</span></code> class accepts a variable number of constructor arguments, with each argument being the location of a swerve module relative to the robot center (as a <code class="docutils literal notranslate"><span class="pre">Translation2d</span></code>. The number of constructor arguments corresponds to the number of swerve modules.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A swerve drive must have 2 or more modules.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In C++, the class is templated on the number of modules. Therefore, when constructing a <code class="docutils literal notranslate"><span class="pre">SwerveDriveKinematics</span></code> object as a member variable of a class, the number of modules must be passed in as a template argument. For example, for a typical swerve drive with four modules, the kinematics object must be constructed as follows: <code class="docutils literal notranslate"><span class="pre">frc::SwerveDriveKinematics&lt;4&gt;</span> <span class="pre">m_kinematics{...}</span></code>.</p>
+</div>
+<p>The locations for the modules must be relative to the center of the robot. Positive x values represent moving toward the front of the robot whereas positive y values represent moving toward the left of the robot.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Locations for the swerve drive modules relative to the robot center.</span><span class="w"></span>
+<span class="n">Translation2d</span><span class="w"> </span><span class="n">m_frontLeftLocation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Translation2d</span><span class="p">(</span><span class="mf">0.381</span><span class="p">,</span><span class="w"> </span><span class="mf">0.381</span><span class="p">);</span><span class="w"></span>
+<span class="n">Translation2d</span><span class="w"> </span><span class="n">m_frontRightLocation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Translation2d</span><span class="p">(</span><span class="mf">0.381</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.381</span><span class="p">);</span><span class="w"></span>
+<span class="n">Translation2d</span><span class="w"> </span><span class="n">m_backLeftLocation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Translation2d</span><span class="p">(</span><span class="o">-</span><span class="mf">0.381</span><span class="p">,</span><span class="w"> </span><span class="mf">0.381</span><span class="p">);</span><span class="w"></span>
+<span class="n">Translation2d</span><span class="w"> </span><span class="n">m_backRightLocation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Translation2d</span><span class="p">(</span><span class="o">-</span><span class="mf">0.381</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.381</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Creating my kinematics object using the module locations</span><span class="w"></span>
+<span class="n">SwerveDriveKinematics</span><span class="w"> </span><span class="n">m_kinematics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveDriveKinematics</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">m_frontLeftLocation</span><span class="p">,</span><span class="w"> </span><span class="n">m_frontRightLocation</span><span class="p">,</span><span class="w"> </span><span class="n">m_backLeftLocation</span><span class="p">,</span><span class="w"> </span><span class="n">m_backRightLocation</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Locations for the swerve drive modules relative to the robot center.</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Translation2d</span><span class="w"> </span><span class="n">m_frontLeftLocation</span><span class="p">{</span><span class="mf">0.381</span><span class="n">_m</span><span class="p">,</span><span class="w"> </span><span class="mf">0.381</span><span class="n">_m</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Translation2d</span><span class="w"> </span><span class="n">m_frontRightLocation</span><span class="p">{</span><span class="mf">0.381</span><span class="n">_m</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.381</span><span class="n">_m</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Translation2d</span><span class="w"> </span><span class="n">m_backLeftLocation</span><span class="p">{</span><span class="mf">-0.381</span><span class="n">_m</span><span class="p">,</span><span class="w"> </span><span class="mf">0.381</span><span class="n">_m</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Translation2d</span><span class="w"> </span><span class="n">m_backRightLocation</span><span class="p">{</span><span class="mf">-0.381</span><span class="n">_m</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.381</span><span class="n">_m</span><span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Creating my kinematics object using the module locations.</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">SwerveDriveKinematics</span><span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">m_kinematics</span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">m_frontLeftLocation</span><span class="p">,</span><span class="w"> </span><span class="n">m_frontRightLocation</span><span class="p">,</span><span class="w"> </span><span class="n">m_backLeftLocation</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">m_backRightLocation</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="converting-chassis-speeds-to-module-states">
+<h2>Converting chassis speeds to module states<a class="headerlink" href="#converting-chassis-speeds-to-module-states" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">toSwerveModuleStates(ChassisSpeeds</span> <span class="pre">speeds)</span></code> (Java) / <code class="docutils literal notranslate"><span class="pre">ToSwerveModuleStates(ChassisSpeeds</span> <span class="pre">speeds)</span></code> (C++) method should be used to convert a <code class="docutils literal notranslate"><span class="pre">ChassisSpeeds</span></code> object to a an array of <code class="docutils literal notranslate"><span class="pre">SwerveModuleState</span></code> objects. This is useful in situations where you have to convert a forward velocity, sideways velocity, and an angular velocity into individual module states.</p>
+<p>The elements in the array that is returned by this method are the same order in which the kinematics object was constructed. For example, if the kinematics object was constructed with the front left module location, front right module location, back left module location, and the back right module location in that order, the elements in the array would be the front left module state, front right module state, back left module state, and back right module state in that order.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Example chassis speeds: 1 meter per second forward, 3 meters</span><span class="w"></span>
+<span class="c1">// per second to the left, and rotation at 1.5 radians per second</span><span class="w"></span>
+<span class="c1">// counterclockwise.</span><span class="w"></span>
+<span class="n">ChassisSpeeds</span><span class="w"> </span><span class="n">speeds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ChassisSpeeds</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Convert to module states</span><span class="w"></span>
+<span class="n">SwerveModuleState</span><span class="o">[]</span><span class="w"> </span><span class="n">moduleStates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kinematics</span><span class="p">.</span><span class="na">toSwerveModuleStates</span><span class="p">(</span><span class="n">speeds</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Front left module state</span><span class="w"></span>
+<span class="n">SwerveModuleState</span><span class="w"> </span><span class="n">frontLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">moduleStates</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Front right module state</span><span class="w"></span>
+<span class="n">SwerveModuleState</span><span class="w"> </span><span class="n">frontRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">moduleStates</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Back left module state</span><span class="w"></span>
+<span class="n">SwerveModuleState</span><span class="w"> </span><span class="n">backLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">moduleStates</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Back right module state</span><span class="w"></span>
+<span class="n">SwerveModuleState</span><span class="w"> </span><span class="n">backRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">moduleStates</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Example chassis speeds: 1 meter per second forward, 3 meters</span>
+<span class="c1">// per second to the left, and rotation at 1.5 radians per second</span>
+<span class="c1">// counterclockwise.</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">ChassisSpeeds</span><span class="w"> </span><span class="n">speeds</span><span class="p">{</span><span class="mi">1</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="n">_rad_per_s</span><span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Convert to module states. Here, we can use C++17&#39;s structured</span>
+<span class="c1">// bindings feature to automatically split up the array into its</span>
+<span class="c1">// individual SwerveModuleState components.</span>
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">fl</span><span class="p">,</span><span class="w"> </span><span class="n">fr</span><span class="p">,</span><span class="w"> </span><span class="n">bl</span><span class="p">,</span><span class="w"> </span><span class="n">br</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kinematics</span><span class="p">.</span><span class="n">ToSwerveModuleStates</span><span class="p">(</span><span class="n">speeds</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<section id="module-angle-optimization">
+<h3>Module angle optimization<a class="headerlink" href="#module-angle-optimization" title="Permalink to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">SwerveModuleState</span></code> class contains a static <code class="docutils literal notranslate"><span class="pre">optimize()</span></code> (Java) / <code class="docutils literal notranslate"><span class="pre">Optimize()</span></code> (C++) method that is used to “optimize” the speed and angle setpoint of a given <code class="docutils literal notranslate"><span class="pre">SwerveModuleState</span></code> to minimize the change in heading. For example, if the angular setpoint of a certain module from inverse kinematics is 90 degrees, but your current angle is -89 degrees, this method will automatically negate the speed of the module setpoint and make the angular setpoint -90 degrees to reduce the distance the module has to travel.</p>
+<p>This method takes two parameters: the desired state (usually from the <code class="docutils literal notranslate"><span class="pre">toSwerveModuleStates</span></code> method) and the current angle. It will return the new optimized state which you can use as the setpoint in your feedback control loop.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span><span class="w"> </span><span class="n">frontLeftOptimized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SwerveModuleState</span><span class="p">.</span><span class="na">optimize</span><span class="p">(</span><span class="n">frontLeft</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="k">new</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">(</span><span class="n">m_turningEncoder</span><span class="p">.</span><span class="na">getDistance</span><span class="p">()));</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">flOptimized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">SwerveModuleState</span><span class="o">::</span><span class="n">Optimize</span><span class="p">(</span><span class="n">fl</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="n">units</span><span class="o">::</span><span class="n">radian_t</span><span class="p">(</span><span class="n">m_turningEncoder</span><span class="p">.</span><span class="n">GetDistance</span><span class="p">()));</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="field-oriented-drive">
+<h3>Field-oriented drive<a class="headerlink" href="#field-oriented-drive" title="Permalink to this heading"></a></h3>
+<p><a class="reference internal" href="intro-and-chassis-speeds.html#creating-a-chassisspeeds-object-from-field-relative-speeds"><span class="std std-ref">Recall</span></a> that a <code class="docutils literal notranslate"><span class="pre">ChassisSpeeds</span></code> object can be created from a set of desired field-oriented speeds. This feature can be used to get module states from a set of desired field-oriented speeds.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// The desired field relative speed here is 2 meters per second</span><span class="w"></span>
+<span class="c1">// toward the opponent&#39;s alliance station wall, and 2 meters per</span><span class="w"></span>
+<span class="c1">// second toward the left field boundary. The desired rotation</span><span class="w"></span>
+<span class="c1">// is a quarter of a rotation per second counterclockwise. The current</span><span class="w"></span>
+<span class="c1">// robot angle is 45 degrees.</span><span class="w"></span>
+<span class="n">ChassisSpeeds</span><span class="w"> </span><span class="n">speeds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChassisSpeeds</span><span class="p">.</span><span class="na">fromFieldRelativeSpeeds</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">.</span><span class="na">fromDegrees</span><span class="p">(</span><span class="mf">45.0</span><span class="p">));</span><span class="w"></span>
+
+<span class="c1">// Now use this in our kinematics</span><span class="w"></span>
+<span class="n">SwerveModuleState</span><span class="o">[]</span><span class="w"> </span><span class="n">moduleStates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kinematics</span><span class="p">.</span><span class="na">toSwerveModuleStates</span><span class="p">(</span><span class="n">speeds</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// The desired field relative speed here is 2 meters per second</span>
+<span class="c1">// toward the opponent&#39;s alliance station wall, and 2 meters per</span>
+<span class="c1">// second toward the left field boundary. The desired rotation</span>
+<span class="c1">// is a quarter of a rotation per second counterclockwise. The current</span>
+<span class="c1">// robot angle is 45 degrees.</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">ChassisSpeeds</span><span class="w"> </span><span class="n">speeds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">ChassisSpeeds</span><span class="o">::</span><span class="n">FromFieldRelativeSpeeds</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="mi">2</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="n">units</span><span class="o">::</span><span class="n">radians_per_second_t</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">numbers</span><span class="o">::</span><span class="n">pi</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2.0</span><span class="p">),</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">(</span><span class="mi">45</span><span class="n">_deg</span><span class="p">));</span><span class="w"></span>
+
+<span class="c1">// Now use this in our kinematics</span>
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">fl</span><span class="p">,</span><span class="w"> </span><span class="n">fr</span><span class="p">,</span><span class="w"> </span><span class="n">bl</span><span class="p">,</span><span class="w"> </span><span class="n">br</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kinematics</span><span class="p">.</span><span class="n">ToSwerveModuleStates</span><span class="p">(</span><span class="n">speeds</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="using-custom-centers-of-rotation">
+<h3>Using custom centers of rotation<a class="headerlink" href="#using-custom-centers-of-rotation" title="Permalink to this heading"></a></h3>
+<p>Sometimes, rotating around one specific corner might be desirable for certain evasive maneuvers. This type of behavior is also supported by the WPILib classes. The same <code class="docutils literal notranslate"><span class="pre">ToSwerveModuleStates()</span></code> method accepts a second parameter for the center of rotation (as a <code class="docutils literal notranslate"><span class="pre">Translation2d</span></code>). Just like the wheel locations, the <code class="docutils literal notranslate"><span class="pre">Translation2d</span></code> representing the center of rotation should be relative to the robot center.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because all robots are a rigid frame, the provided <code class="docutils literal notranslate"><span class="pre">vx</span></code> and <code class="docutils literal notranslate"><span class="pre">vy</span></code> velocities from the <code class="docutils literal notranslate"><span class="pre">ChassisSpeeds</span></code> object will still apply for the entirety of the robot. However, the <code class="docutils literal notranslate"><span class="pre">omega</span></code> from the <code class="docutils literal notranslate"><span class="pre">ChassisSpeeds</span></code> object will be measured from the center of rotation.</p>
+</div>
+<p>For example, one can set the center of rotation on a certain module and if the provided <code class="docutils literal notranslate"><span class="pre">ChassisSpeeds</span></code> object has a <code class="docutils literal notranslate"><span class="pre">vx</span></code> and <code class="docutils literal notranslate"><span class="pre">vy</span></code> of zero and a non-zero <code class="docutils literal notranslate"><span class="pre">omega</span></code>, the robot will appear to rotate around that particular swerve module.</p>
+</section>
+</section>
+<section id="converting-module-states-to-chassis-speeds">
+<h2>Converting module states to chassis speeds<a class="headerlink" href="#converting-module-states-to-chassis-speeds" title="Permalink to this heading"></a></h2>
+<p>One can also use the kinematics object to convert an array of <code class="docutils literal notranslate"><span class="pre">SwerveModuleState</span></code> objects to a singular <code class="docutils literal notranslate"><span class="pre">ChassisSpeeds</span></code> object. The <code class="docutils literal notranslate"><span class="pre">toChassisSpeeds(SwerveModuleState...</span> <span class="pre">states)</span></code> (Java) / <code class="docutils literal notranslate"><span class="pre">ToChassisSpeeds(SwerveModuleState...</span> <span class="pre">states)</span></code> (C++) method can be used to achieve this.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Example module states</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">frontLeftState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveModuleState</span><span class="p">(</span><span class="mf">23.43</span><span class="p">,</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">.</span><span class="na">fromDegrees</span><span class="p">(</span><span class="o">-</span><span class="mf">140.19</span><span class="p">));</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">frontRightState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveModuleState</span><span class="p">(</span><span class="mf">23.43</span><span class="p">,</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">.</span><span class="na">fromDegrees</span><span class="p">(</span><span class="o">-</span><span class="mf">39.81</span><span class="p">));</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">backLeftState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveModuleState</span><span class="p">(</span><span class="mf">54.08</span><span class="p">,</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">.</span><span class="na">fromDegrees</span><span class="p">(</span><span class="o">-</span><span class="mf">109.44</span><span class="p">));</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">backRightState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveModuleState</span><span class="p">(</span><span class="mf">54.08</span><span class="p">,</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">.</span><span class="na">fromDegrees</span><span class="p">(</span><span class="o">-</span><span class="mf">70.56</span><span class="p">));</span><span class="w"></span>
+
+<span class="c1">// Convert to chassis speeds</span><span class="w"></span>
+<span class="n">ChassisSpeeds</span><span class="w"> </span><span class="n">chassisSpeeds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kinematics</span><span class="p">.</span><span class="na">toChassisSpeeds</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">frontLeftState</span><span class="p">,</span><span class="w"> </span><span class="n">frontRightState</span><span class="p">,</span><span class="w"> </span><span class="n">backLeftState</span><span class="p">,</span><span class="w"> </span><span class="n">backRightState</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Getting individual speeds</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">forward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chassisSpeeds</span><span class="p">.</span><span class="na">vxMetersPerSecond</span><span class="p">;</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">sideways</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chassisSpeeds</span><span class="p">.</span><span class="na">vyMetersPerSecond</span><span class="p">;</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">angular</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chassisSpeeds</span><span class="p">.</span><span class="na">omegaRadiansPerSecond</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Example module States</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">SwerveModuleState</span><span class="w"> </span><span class="n">frontLeftState</span><span class="p">{</span><span class="mf">23.43</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">(</span><span class="mf">-140.19</span><span class="n">_deg</span><span class="p">)};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">SwerveModuleState</span><span class="w"> </span><span class="n">frontRightState</span><span class="p">{</span><span class="mf">23.43</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">(</span><span class="mf">-39.81</span><span class="n">_deg</span><span class="p">)};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">SwerveModuleState</span><span class="w"> </span><span class="n">backLeftState</span><span class="p">{</span><span class="mf">54.08</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">(</span><span class="mf">-109.44</span><span class="n">_deg</span><span class="p">)};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">SwerveModuleState</span><span class="w"> </span><span class="n">backRightState</span><span class="p">{</span><span class="mf">54.08</span><span class="n">_mps</span><span class="p">,</span><span class="w"> </span><span class="n">Rotation2d</span><span class="p">(</span><span class="mf">-70.56</span><span class="n">_deg</span><span class="p">)};</span><span class="w"></span>
+
+<span class="c1">// Convert to chassis speeds. Here, we can use C++17&#39;s structured bindings</span>
+<span class="c1">// feature to automatically break up the ChassisSpeeds struct into its</span>
+<span class="c1">// three components.</span>
+<span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">forward</span><span class="p">,</span><span class="w"> </span><span class="n">sideways</span><span class="p">,</span><span class="w"> </span><span class="n">angular</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kinematics</span><span class="p">.</span><span class="n">ToChassisSpeeds</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">frontLeftState</span><span class="p">,</span><span class="w"> </span><span class="n">frontRightState</span><span class="p">,</span><span class="w"> </span><span class="n">backLeftState</span><span class="p">,</span><span class="w"> </span><span class="n">backRightState</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="differential-drive-odometry.html" class="btn btn-neutral float-left" title="Differential Drive Odometry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="swerve-drive-odometry.html" class="btn btn-neutral float-right" title="Swerve Drive Odometry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

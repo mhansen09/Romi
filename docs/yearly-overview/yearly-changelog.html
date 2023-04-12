@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="New for 2023" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/yearly-overview/yearly-changelog.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="A number of improvements have been made to FRC ® Control System software for 2023. This article will describe and provide a brief overview of the new changes and features as well as a more complete..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/yearly-overview/yearly-changelog.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/yearly-overview/yearly-changelog.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/yearly-overview/yearly-changelog.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/yearly-overview/yearly-changelog.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/yearly-overview/yearly-changelog.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/yearly-overview/yearly-changelog.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/yearly-overview/yearly-changelog.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/yearly-overview/yearly-changelog.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New for 2023 &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/yearly-overview/yearly-changelog.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../_static/js/present.js"></script>
+        <script src="../../_static/js/hoverxref.js"></script>
+        <script src="../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../_static/js/micromodal.min.js"></script>
+        <script src="../../_static/js/versionwarning.js"></script>
+        <script src="../../_static/pid-tune.js"></script>
+        <script src="../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../_static/js/version-2014.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="VS Code Overview" href="../software/vscode-overview/index.html" />
+    <link rel="prev" title="Known Issues" href="known-issues.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../_static/wpilibDocsLogo_300.webp 300w, ../../_static/wpilibDocsLogo_500.webp 500w, ../../_static/wpilibDocsLogo_700.webp 700w, ../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../_static/wpilibDocsLogo_300.png 300w, ../../_static/wpilibDocsLogo_500.png 500w, ../../_static/wpilibDocsLogo_700.png 700w, ../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">2023 Overview</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known Issues</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">New for 2023</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">2023 Overview</a></li>
+      <li class="breadcrumb-item active">New for 2023</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/yearly-overview/yearly-changelog.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="new-for-2023">
+<h1>New for 2023<a class="headerlink" href="#new-for-2023" title="Permalink to this heading"></a></h1>
+<p>A number of improvements have been made to FRC® Control System software for 2023. This article will describe and provide a brief overview of the new changes and features as well as a more complete changelog for Java/C++ WPILib changes. This document only includes the most relevant changes for end users, the full list of changes can be viewed on the various <a class="reference external" href="https://github.com/wpilibsuite/">WPILib</a> GitHub repositories.</p>
+<p>It’s recommended to also review the list of <a class="reference internal" href="known-issues.html"><span class="doc">known issues</span></a>.</p>
+<section id="importing-projects-from-previous-years">
+<h2>Importing Projects from Previous Years<a class="headerlink" href="#importing-projects-from-previous-years" title="Permalink to this heading"></a></h2>
+<p>Due to internal GradleRIO changes, it is necessary to update projects from previous years. After <a class="reference internal" href="../zero-to-robot/step-2/wpilib-setup.html"><span class="doc">Installing WPILib for 2023</span></a>, any 2022 projects must be <a class="reference internal" href="../software/vscode-overview/importing-gradle-project.html"><span class="doc">imported</span></a> to be compatible.</p>
+</section>
+<section id="major-changes-java-c">
+<h2>Major Changes (Java/C++)<a class="headerlink" href="#major-changes-java-c" title="Permalink to this heading"></a></h2>
+<p>These changes contain <em>some</em> of the major changes to the library that it’s important for the user to recognize. This does not include all of the breaking changes, see the other sections of this document for more changes.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../software/networktables/networktables-intro.html"><span class="doc">NetworkTables</span></a> has been completely rewritten as version 4.0. This introduces pub/sub semantics to NetworkTables and adds a number of new features, including timestamped updates. Its wire protocol is also now WebSockets-based for easier use by browser applications. While most of the changes should be transparent to users who don’t use the new features, there are several breaking changes.</p></li>
+<li><p>Added support for <a class="reference internal" href="../software/telemetry/datalog.html"><span class="doc">on-robot telemetry recording into data logs</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LiveWindow</span></code> telemetry is now disabled by default. This has been observed as a consistent source of loop overruns. Use <code class="docutils literal notranslate"><span class="pre">LiveWindow.enableAllTelemetry</span></code> to restore the previous behavior</p></li>
+<li><p><a class="reference internal" href="../software/vision-processing/apriltag/apriltag-intro.html"><span class="doc">AprilTag</span></a> library has been added</p></li>
+<li><p>Bundled Java version has been bumped to 17 from 11</p></li>
+<li><p>GCC 12.1 with C++ 20 support. Visual Studio 2022 is required for running C++ Simulation on Windows</p></li>
+<li><p>CameraServer now supports USB cameras on Mac operating systems</p></li>
+</ul>
+<dl class="simple">
+<dt>Supported Operating Systems and Architectures:</dt><dd><ul class="simple">
+<li><p>Windows 10 &amp; 11, 64 bit. 32 bit and Arm are not supported</p></li>
+<li><p>Ubuntu 22.04, 64 bit. Other Linux distributions with glibc &gt;= 2.32 may work, but are unsupported</p></li>
+<li><p>macOS 11 or later, Intel and Arm.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The following OSes are no longer supported: macOS 10.15, Ubuntu 18.04 &amp; 20.04, Windows 7, Windows 8.1, and any 32-bit Windows.</p>
+</div>
+</section>
+<section id="wpilib">
+<h2>WPILib<a class="headerlink" href="#wpilib" title="Permalink to this heading"></a></h2>
+<section id="general-library">
+<h3>General Library<a class="headerlink" href="#general-library" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Deprecated <code class="docutils literal notranslate"><span class="pre">PerpetualCommand</span></code>/<code class="docutils literal notranslate"><span class="pre">perpetually()</span></code>, use <code class="docutils literal notranslate"><span class="pre">RepeatCommand</span></code>/<code class="docutils literal notranslate"><span class="pre">repeatedly()</span></code> instead</p></li>
+<li><p>Renamed <code class="docutils literal notranslate"><span class="pre">withInterrupt(BooleanSupplier)</span></code> to <code class="docutils literal notranslate"><span class="pre">until()</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">InterpolatedTreeMap</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">RepeatCommand</span></code> and matching <code class="docutils literal notranslate"><span class="pre">repeatedly</span></code> decorator</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">unless(BooleanSupplier)</span></code> decorator</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">ignoringDisable(boolean)</span></code> decorator to set the <code class="docutils literal notranslate"><span class="pre">runsWhenDisabled</span></code> property of a command</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">finallyDo(BooleanConsumer)</span></code> and <code class="docutils literal notranslate"><span class="pre">handleInterrupt(Runnable)</span></code> decorators</p></li>
+<li><p>Added static command factories in Commands</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">ComputerVisionUtil</span></code></p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">EventLoop</span></code> and <code class="docutils literal notranslate"><span class="pre">BooleanEvent</span></code>, an expansion of the existing Trigger framework encompassing non-commandbased</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">BooleanEvent</span></code>-returning factory methods to the HID classes</p></li>
+<li><p>Added command-based versions of HID classes (<code class="docutils literal notranslate"><span class="pre">CommandXboxController</span></code> etc.) with <code class="docutils literal notranslate"><span class="pre">Trigger</span></code>-returning factory methods</p></li>
+<li><p>Added LTV unicycle controllers</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">Rotation2d</span></code> factory method that uses rotations and radians; <code class="docutils literal notranslate"><span class="pre">fromRotations()</span></code> and <code class="docutils literal notranslate"><span class="pre">fromRadians()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HolonomicDriveController</span></code> now uses continuous input on heading PID</p></li>
+<li><p>Added various 3d geometry classes</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pose3d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Quaternion</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rotation3d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transform3d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Translation3d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Twist3d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CoordinateAxis</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CoordinateSystem</span></code></p></li>
+</ul>
+</li>
+<li><p>Added various pneumatic sim classes</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CTREPCMSim</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DoubleSolenoidSim</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REVPHSim</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SolenoidSim</span></code></p></li>
+</ul>
+</li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">getAngle()</span></code> to <code class="docutils literal notranslate"><span class="pre">Translation2d</span></code></p></li>
+<li><p>Deprecated <code class="docutils literal notranslate"><span class="pre">Compressor.enable()</span></code>. Use <code class="docutils literal notranslate"><span class="pre">isEnabled</span></code> instead</p></li>
+<li><p>Add missing <code class="docutils literal notranslate"><span class="pre">PS4Controller</span></code> triangle methods</p></li>
+<li><p>Add method to disable LW actuator control in test mode</p></li>
+<li><p>Enhanced <code class="docutils literal notranslate"><span class="pre">Sendable</span></code> representation of commands</p></li>
+<li><p>Deprecated <code class="docutils literal notranslate"><span class="pre">CommandGroupBase</span></code>; the static factories have been moved to <code class="docutils literal notranslate"><span class="pre">Commands</span></code></p></li>
+<li><p>Refactor SelectCommand’s <cite>Supplier&lt;Command&gt;</cite> constructor and ProxyScheduleCommand into ProxyCommand</p></li>
+<li><p>Remove <cite>isFinished</cite> check for default commands</p></li>
+<li><p>Add method to remove default commands</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Trigger</span></code> and <code class="docutils literal notranslate"><span class="pre">Button</span></code> methods were renamed to be consistent and <code class="docutils literal notranslate"><span class="pre">Button</span></code> class deprecated.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Trigger</span></code>’s bindings are changed to use <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> terminology, as it should be unambiguous. Each binding type has both <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> variants; for brevity, only the <code class="docutils literal notranslate"><span class="pre">True</span></code> variants are listed here:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">onTrue</span></code> (replaces <code class="docutils literal notranslate"><span class="pre">whenActive</span></code> and <code class="docutils literal notranslate"><span class="pre">whenPressed</span></code>): schedule on rising edge.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">whileTrue</span></code> (replaces <code class="docutils literal notranslate"><span class="pre">whileActiveOnce</span></code>): schedule on rising edge, cancel on falling edge.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">toggleOnTrue</span></code> (replaces <code class="docutils literal notranslate"><span class="pre">toggleWhenActive</span></code>): on rising edge, schedule if unscheduled and cancel if scheduled.</p></li>
+</ul>
+</li>
+<li><p>Two binding types are completely deprecated:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">cancelWhenActive</span></code>: this is a fairly niche use case which is better described as having the trigger’s rising edge (<code class="docutils literal notranslate"><span class="pre">Trigger.rising()</span></code>) as an end condition for the command (using <code class="docutils literal notranslate"><span class="pre">Command.until()</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">whileActiveContinuously</span></code>: however common, this relied on the no-op behavior of scheduling an already-scheduled command. The more correct way to repeat the command if it ends before the falling edge is using <code class="docutils literal notranslate"><span class="pre">Command.repeatedly</span></code>/<code class="docutils literal notranslate"><span class="pre">RepeatCommand</span></code> or a <code class="docutils literal notranslate"><span class="pre">RunCommand</span></code> – the only difference is if the command is interrupted, but that is more likely to result in two commands perpetually canceling each other than achieve the desired behavior. Manually implementing a blindly-scheduling binding like <code class="docutils literal notranslate"><span class="pre">whileActiveContinuously</span></code> is still possible, though might not be intuitive.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Precompile common template instantiations to improve C++ compile times.</p></li>
+</ul>
+</section>
+<section id="breaking-changes">
+<h3>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permalink to this heading"></a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The 2023 release no longer includes the old command-based framework. Users must refactor existing code to use the new <a class="reference internal" href="../software/commandbased/index.html"><span class="doc">command-based framework</span></a></p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Updated <code class="docutils literal notranslate"><span class="pre">DifferentialDrive</span></code> and <code class="docutils literal notranslate"><span class="pre">MecanumDrive</span></code> classes to use North-West-Up axis conventions to match the rest of WPILib. The Z-axis (i.e. turning) will need to be inverted to restore the old behavior.</p>
+</div>
+<ul>
+<li><p>NetworkTables 4.0 (NT4) introduced several breaking changes. Shuffleboard classes now return <code class="docutils literal notranslate"><span class="pre">GenericEntry</span></code> instead of <code class="docutils literal notranslate"><span class="pre">NetworkTableEntry</span></code>; as <code class="docutils literal notranslate"><span class="pre">GenericEntry</span></code> provides nearly all the same methods, a simple textual replacement of the class name should suffice. Also, the <code class="docutils literal notranslate"><span class="pre">force</span></code> setters have been removed. See the <a class="reference internal" href="../software/networktables/nt4-migration-guide.html"><span class="doc">NT4 migration guide</span></a> for more information.</p></li>
+<li><p>Removed deprecated <code class="docutils literal notranslate"><span class="pre">MakeMatrix()</span></code> from <code class="docutils literal notranslate"><span class="pre">StateSpaceUtil</span></code></p></li>
+<li><p>Removed deprecated <code class="docutils literal notranslate"><span class="pre">KilloughDrive</span></code> class</p></li>
+<li><p>Removed <code class="docutils literal notranslate"><span class="pre">Vector2d</span></code>, which was an implementation detail of MecanumDrive and KilloughDrive. In Java, use <code class="docutils literal notranslate"><span class="pre">Vector&lt;N2&gt;</span></code> (<code class="docutils literal notranslate"><span class="pre">edu.wpi.first.math.Vector</span></code>) or <code class="docutils literal notranslate"><span class="pre">Translation2d</span></code> (<code class="docutils literal notranslate"><span class="pre">edu.wpi.first.math.geometry.Translation2d</span></code>) instead. In C++, use <code class="docutils literal notranslate"><span class="pre">Eigen::Vector2d</span></code> from <code class="docutils literal notranslate"><span class="pre">&lt;Eigen/Core&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">Translation2d</span></code> from <code class="docutils literal notranslate"><span class="pre">&lt;frc/geometry/Translation2d.h&gt;</span></code> instead.</p></li>
+<li><p>Removed deprecated <code class="docutils literal notranslate"><span class="pre">SpeedController</span></code> and <code class="docutils literal notranslate"><span class="pre">SpeedControllerGroup</span></code> classes. Use MotorController and MotorControllerGroup instead</p></li>
+<li><p>Removed deprecated <code class="docutils literal notranslate"><span class="pre">MatrixUtils</span></code> class</p></li>
+<li><p>Removed various deprecated overloads that used above mentioned classes</p></li>
+<li><p>Removed various deprecated <code class="docutils literal notranslate"><span class="pre">getInstance()</span></code> functions. Static functions are available instead</p></li>
+<li><p>Removed various deprecated functions in <code class="docutils literal notranslate"><span class="pre">SimDevice</span></code></p></li>
+<li><p>Refactored command <code class="docutils literal notranslate"><span class="pre">interruptible</span></code> to be an enum property (<code class="docutils literal notranslate"><span class="pre">getInterruptionBehavior()</span></code>) of the command object rather than a boolean flag when scheduling; the <code class="docutils literal notranslate"><span class="pre">withInterruptBehavior(InterruptBehavior)</span></code> decorator can be used to set this property</p></li>
+<li><p>Command lifecycle methods of command groups cannot be overridden</p></li>
+<li><p>[C++ only] Command Decorators changed to return <code class="docutils literal notranslate"><span class="pre">CommandPtr</span></code> – a new move-only value type for holding commands</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SwerveDriveOdometry</span></code> and <code class="docutils literal notranslate"><span class="pre">SwerveDrivePoseEstimator</span></code> now use wheel distances instead of wheel speeds; Use <code class="docutils literal notranslate"><span class="pre">SwerveModulePosition</span></code> to represent a swerve module’s angle and distance driven.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SwerveDriveOdometry</span></code> and <code class="docutils literal notranslate"><span class="pre">SwerveDrivePoseEstimator</span></code> now take in the wheel distances in an array rather than as a variadic parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MecanumDriveOdometry</span></code> and <code class="docutils literal notranslate"><span class="pre">MecanumDrivePoseEstimator</span></code> now use wheel distances instead of wheel speeds; Use <code class="docutils literal notranslate"><span class="pre">MecanumDriveWheelPositions</span></code> to represent the wheel distances.</p></li>
+<li><p>Constructors and <code class="docutils literal notranslate"><span class="pre">resetPosition</span></code> methods on all odometry and pose estimation classes now have mandatory wheel distance parameters.</p></li>
+<li><p>Odometry and pose estimator constructor and function arguments have been rearranged to be consistent between implementations. Users should consult the API documentation for the particular class they’re using and update the method calls accordingly.</p></li>
+<li><p>Removed wpi versions of C++20 methods</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">std::numbers</span></code> instead of <code class="docutils literal notranslate"><span class="pre">wpi::numbers</span></code> (include <code class="docutils literal notranslate"><span class="pre">&lt;numbers&gt;</span></code>)</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">std::span</span></code> instead of <code class="docutils literal notranslate"><span class="pre">wpi::span</span></code> (include <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;</span></code>)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Removed template argument from <code class="docutils literal notranslate"><span class="pre">ElevatorFeedforward</span></code> in C++.</p></li>
+</ul>
+</section>
+</section>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Added precision setting for NetworkTables decimal values</p></li>
+<li><p>Added docking support for GUI elements</p></li>
+<li><p>Save secondary Y axis in plots</p></li>
+</ul>
+</section>
+<section id="shuffleboard">
+<h2>Shuffleboard<a class="headerlink" href="#shuffleboard" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Added vertical orientation option to number bar widget</p></li>
+<li><p>Fixed Field2d widget not auto populating</p></li>
+<li><p>Update PowerDistribution Widget to support 24 channels</p></li>
+<li><p>Added 2023 Charged Up field image</p></li>
+<li><p>Update PID widget to remove features no longer supported by PIDController (kF and enable)</p></li>
+</ul>
+</section>
+<section id="smartdashboard">
+<h2>SmartDashboard<a class="headerlink" href="#smartdashboard" title="Permalink to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>SmartDashboard is not supported on Apple Silicon (Arm64) Macs.</p>
+</div>
+<ul class="simple">
+<li><p>Update PowerDistribution Widget to support 24 channels</p></li>
+<li><p>Add option to clear all plots</p></li>
+<li><p>Update PID widget to remove features no longer supported by PIDController (kF and enable)</p></li>
+</ul>
+</section>
+<section id="glass">
+<h2>Glass<a class="headerlink" href="#glass" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Added precision setting for NetworkTables decimal values</p></li>
+<li><p>Added docking support for GUI elements</p></li>
+<li><p>Save secondary Y axis in plots</p></li>
+</ul>
+</section>
+<section id="pathweaver">
+<h2>PathWeaver<a class="headerlink" href="#pathweaver" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Added 2023 Charged Up field image</p></li>
+</ul>
+</section>
+<section id="gradlerio">
+<h2>GradleRIO<a class="headerlink" href="#gradlerio" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Upgrade to Gradle 7.5.1</p></li>
+<li><p>Fixed issue where start-up scripts could get damaged if roboRIO powered off during deploy</p></li>
+</ul>
+</section>
+<section id="cscore">
+<h2>cscore<a class="headerlink" href="#cscore" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Update to opencv 4.6.0</p></li>
+<li><p>Added ArUco module</p></li>
+</ul>
+</section>
+<section id="outlineviewer">
+<h2>OutlineViewer<a class="headerlink" href="#outlineviewer" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Added precision setting for NetworkTables decimal values</p></li>
+</ul>
+</section>
+<section id="wpilib-all-in-one-installer">
+<h2>WPILib All in One Installer<a class="headerlink" href="#wpilib-all-in-one-installer" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Apple Silicon (Arm64) Macs are now supported</p></li>
+<li><p>Update to VS Code 1.74</p></li>
+<li><p>Update to use .NET 7</p></li>
+<li><p>Add links to changelog and known issues</p></li>
+</ul>
+</section>
+<section id="visual-studio-code-extension">
+<h2>Visual Studio Code Extension<a class="headerlink" href="#visual-studio-code-extension" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Update templates to JUnit 5.8.2</p></li>
+<li><p>Add copy button from project versions dialog</p></li>
+<li><p>Allow importing Romi projects</p></li>
+</ul>
+</section>
+<section id="robotbuilder">
+<h2>RobotBuilder<a class="headerlink" href="#robotbuilder" title="Permalink to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>With the removal of old command-based, the legacy RobotBuilder install has been removed.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to project file changes, Robotbuilder will not import yaml save files from 2022 or earlier.</p>
+</div>
+<ul class="simple">
+<li><p>Add support for <code class="docutils literal notranslate"><span class="pre">DoubleSupplier</span></code> and <code class="docutils literal notranslate"><span class="pre">std::function&lt;double&gt;</span></code> parameters</p></li>
+<li><p>Add option to put commands tied to Joystick Buttons to SmartDashboard</p></li>
+<li><p>Add PS4 Controller</p></li>
+<li><p>Validate Team Number</p></li>
+</ul>
+</section>
+<section id="sysid">
+<h2>SysID<a class="headerlink" href="#sysid" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Added Pigeon 2 support</p></li>
+<li><p>User can now specify a measurement delay of 0</p></li>
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">Override</span> <span class="pre">Units</span></code> option not overriding units per rotations</p></li>
+</ul>
+</section>
+<section id="romi">
+<h2>Romi<a class="headerlink" href="#romi" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>No major changes</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="known-issues.html" class="btn btn-neutral float-left" title="Known Issues" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../software/vscode-overview/index.html" class="btn btn-neutral float-right" title="VS Code Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

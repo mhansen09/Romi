@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Software Component Overview" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/controls-overviews/control-system-software.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="The FRC ® software consists of a wide variety of mandatory and optional components. These elements are designed to assist you in the design, development, and debugging of your robot code as well as..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/controls-overviews/control-system-software.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/controls-overviews/control-system-software.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/controls-overviews/control-system-software.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/controls-overviews/control-system-software.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/controls-overviews/control-system-software.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/controls-overviews/control-system-software.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/controls-overviews/control-system-software.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/controls-overviews/control-system-software.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Component Overview &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/controls-overviews/control-system-software.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../_static/js/present.js"></script>
+        <script src="../../_static/js/hoverxref.js"></script>
+        <script src="../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../_static/js/micromodal.min.js"></script>
+        <script src="../../_static/js/versionwarning.js"></script>
+        <script src="../../_static/pid-tune.js"></script>
+        <script src="../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../_static/js/version-2014.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="What is WPILib?" href="../software/what-is-wpilib.html" />
+    <link rel="prev" title="Hardware Component Overview" href="control-system-hardware.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../_static/wpilibDocsLogo_300.webp 300w, ../../_static/wpilibDocsLogo_500.webp 500w, ../../_static/wpilibDocsLogo_700.webp 700w, ../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../_static/wpilibDocsLogo_300.png 300w, ../../_static/wpilibDocsLogo_500.png 500w, ../../_static/wpilibDocsLogo_700.png 700w, ../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Software Component Overview</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/controls-overviews/control-system-software.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="software-component-overview">
+<h1>Software Component Overview<a class="headerlink" href="#software-component-overview" title="Permalink to this heading"></a></h1>
+<p>The FRC® software consists of a wide variety of mandatory and optional components. These elements are designed to assist you in the design, development, and debugging of your robot code as well as assist with control robot operation and to provide feedback when troubleshooting. For each software component this document will provide a brief overview of its purpose, a link to the package download, if appropriate, and a link to further documentation where available.</p>
+<section id="operating-system-compatibility">
+<h2>Operating System Compatibility<a class="headerlink" href="#operating-system-compatibility" title="Permalink to this heading"></a></h2>
+<p>The primary supported OS for FRC components is Windows. All required FRC software components have been tested on Windows 10 &amp; 11.</p>
+<p>Many of the tools for C++/Java programming are also supported and tested on macOS and Linux. Teams programming in C++/Java should be able to develop using these systems, using a Windows system for the Windows-only operations such as the Driver Station, Radio Configuration Utility, and roboRIO Imaging Tool.</p>
+</section>
+<section id="labview-frc-windows-only">
+<h2>LabVIEW FRC (Windows Only)<a class="headerlink" href="#labview-frc-windows-only" title="Permalink to this heading"></a></h2>
+<img alt="LabVIEW FRC Getting Started screen." src="../../_images/creating-a-project.png" />
+<p>LabVIEW FRC, based on a recent version of LabVIEW Professional, is one of the three officially supported languages for programming an FRC robot. LabVIEW is a graphical, dataflow-driven language. LabVIEW programs consist of a collection of icons, called VIs, wired together with wires which pass data between the VIs. The LabVIEW FRC installer is distributed on a DVD found in the Kickoff Kit of Parts and is also available for download.  A guide to getting started with the LabVIEW FRC software, including installation instructions can be found <a class="reference internal" href="../zero-to-robot/step-2/labview-setup.html#installing-labview-for-frc-labview-only"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="visual-studio-code">
+<h2>Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permalink to this heading"></a></h2>
+<img alt="Welcome screen of Visual Studio Code." src="../../_images/visual-studio-code.png" />
+<p>Visual Studio Code is the supported development environment for C++ and Java (the other two supported languages). Both are object-oriented text based programming languages. A guide to getting started with C++ or Java for FRC, including the installation and configuration of Visual Studio Code can be found <a class="reference internal" href="../zero-to-robot/step-2/wpilib-setup.html#wpilib-installation-guide"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="frc-driver-station-powered-by-ni-labview-windows-only">
+<h2>FRC Driver Station Powered by NI LabVIEW (Windows Only)<a class="headerlink" href="#frc-driver-station-powered-by-ni-labview-windows-only" title="Permalink to this heading"></a></h2>
+<img alt="Driver Station on the first tab with the robot disabled and disconnected." src="../../_images/frc-driver-station.png" />
+<p>This is the only software allowed to be used for the purpose of controlling the state of the robot during competition. This software sends data to your robot from a variety of input devices. It also contains a number of tools used to help troubleshoot robot issues.  More information about the FRC Driver Station Powered by NI LabVIEW can be found <a class="reference internal" href="../software/driverstation/driver-station.html#frc-driver-station-powered-by-ni-labview"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="dashboard-options">
+<h2>Dashboard Options<a class="headerlink" href="#dashboard-options" title="Permalink to this heading"></a></h2>
+<section id="labview-dashboard-windows-only">
+<h3>LabVIEW Dashboard (Windows Only)<a class="headerlink" href="#labview-dashboard-windows-only" title="Permalink to this heading"></a></h3>
+<img alt="The default LabVIEW Dashboard on the Drive tab." src="../../_images/frc-labview-dashboard.png" />
+<p>The LabVIEW Dashboard is automatically launched by the FRC Driver Station by default. The purpose of the Dashboard is to provide feedback about the operation of the robot using tabbed display with a variety of built in features.  More information about the FRC Default Dashboard software can be found <a class="reference internal" href="../software/dashboards/labview-dashboard/driver-station-labview-dashboard.html#frc-labview-dashboard"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="smartdashboard">
+<h3>SmartDashboard<a class="headerlink" href="#smartdashboard" title="Permalink to this heading"></a></h3>
+<img alt="SmartDashboard with 3 widgets added." src="../../_images/smartdashboard.png" />
+<p>SmartDashboard allows you to view your robot data by automatically creating customizable indicators specifically for each piece of data sent from your robot.  Additional documentation on SmartDashboard can be found <a class="reference internal" href="../software/dashboards/smartdashboard/index.html#smartdashboard"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="shuffleboard">
+<h3>Shuffleboard<a class="headerlink" href="#shuffleboard" title="Permalink to this heading"></a></h3>
+<img alt="Shuffleboard with 3 widgets from their NetworkTables entries added." src="../../_images/shuffleboard.png" />
+<p>Shuffleboard has the same features as SmartDashboard. It also improves on the setup and visualization of your data with new features and a modern design at the cost of being less resource efficient.  Additional documentation on Shuffleboard can be found <a class="reference internal" href="../software/dashboards/shuffleboard/index.html#shuffleboard"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="glass">
+<h3>Glass<a class="headerlink" href="#glass" title="Permalink to this heading"></a></h3>
+<img alt="Glass connected and showing NetworkTables, a Field2D window, and a plot of a couple signals." src="../../_images/glass.png" />
+<p><a class="reference internal" href="../software/dashboards/glass/index.html#glass"><span class="std std-ref">Glass</span></a> is a Dashboard focused on being a programmer’s tool for debugging.  The primary advantages are the field view, pose visualization and advanced signal plotting tools.</p>
+</section>
+</section>
+<section id="livewindow">
+<h2>LiveWindow<a class="headerlink" href="#livewindow" title="Permalink to this heading"></a></h2>
+<img alt="LiveWindow showing two different subsystems." src="../../_images/livewindow-smartdashboard.png" />
+<p>LiveWindow is a feature of SmartDashboard and Shuffleboard, designed for use with the Test Mode of the Driver Station. LiveWindow allows the user to see feedback from sensors on the robot and control actuators independent of the written user code. More information about LiveWindow can be found <a class="reference internal" href="../software/dashboards/smartdashboard/test-mode-and-live-window/index.html#smartdashboard-test-mode-and-live-window"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="frc-roborio-imaging-tool-windows-only">
+<h2>FRC roboRIO Imaging Tool (Windows Only)<a class="headerlink" href="#frc-roborio-imaging-tool-windows-only" title="Permalink to this heading"></a></h2>
+<img alt="roboRIO Imaging Tool after it has found a connected roboRIO." src="../../_images/roborio-imaging-tool.png" />
+<p>This tool is used to format and setup a roboRIO for use in FRC. Installation instructions can be found <a class="reference internal" href="../zero-to-robot/step-2/frc-game-tools.html#installing-the-frc-game-tools"><span class="std std-ref">here</span></a>. Additional instructions on imaging your roboRIO using this tool can be found <a class="reference internal" href="../zero-to-robot/step-3/imaging-your-roborio.html"><span class="doc">here</span></a>.</p>
+</section>
+<section id="frc-radio-configuration-utility-windows-only">
+<h2>FRC Radio Configuration Utility (Windows Only)<a class="headerlink" href="#frc-radio-configuration-utility-windows-only" title="Permalink to this heading"></a></h2>
+<img alt="Initial screen of the FRC Radio Configuration Utility." src="../../_images/frc-radio-configuration-utility.png" />
+<p>The FRC Radio Configuration Utility is a tool used to configure the standard radio for practice use at home. This tool sets the appropriate network settings to mimic the experience of the FRC playing field. The FRC Radio Configuration Utility is installed by a standalone installer that can be found <a class="reference internal" href="../zero-to-robot/step-3/radio-programming.html#programming-your-radio"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="frc-driver-station-log-viewer-windows-only">
+<h2>FRC Driver Station Log Viewer (Windows Only)<a class="headerlink" href="#frc-driver-station-log-viewer-windows-only" title="Permalink to this heading"></a></h2>
+<img alt="Driver Station Log Viewer showing a logged practice session." src="../../_images/frc-log-viewer.png" />
+<p>The FRC Driver Station Log Viewer is used to view logs created by the FRC Driver Station. These logs contain a variety of information important for understanding what happened during a practice session or FRC match. More information about the FRC Driver Station Log Viewer and understanding the logs can be found <a class="reference internal" href="../software/driverstation/driver-station-log-viewer.html#driver-station-log-file-viewer"><span class="std std-ref">here</span></a></p>
+</section>
+<section id="robotbuilder">
+<h2>RobotBuilder<a class="headerlink" href="#robotbuilder" title="Permalink to this heading"></a></h2>
+<img alt="RobotBuilder building a robot with two subsystems." src="../../_images/robot-builder.png" />
+<p>RobotBuilder is a tool designed to aid in setup and structuring of a Command Based robot project for C++ or Java. RobotBuilder allows you to enter in the various components of your robot subsystems and operator interface and define what your commands are in a graphical tree structure.  RobotBuilder will then generate structural template code to get you started.  More information about RobotBuilder can be found <a class="reference internal" href="../software/wpilib-tools/robotbuilder/index.html#robotbuilder"><span class="std std-ref">here</span></a>. More information about the Command Based programming architecture can be found <a class="reference internal" href="../software/commandbased/index.html#command-based-programming"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="robot-simulation">
+<h2>Robot Simulation<a class="headerlink" href="#robot-simulation" title="Permalink to this heading"></a></h2>
+<img alt="The Simulation GUI similar to Glass but also has Joysticks and control over the robot state and a few other features." src="../../_images/sim-gui.png" />
+<p>Robot Simulation offers a way for Java and C++ teams to verify their actual robot code is working in a simulated environment.  This simulation can be launched directly from VS Code and includes a 2D field that users can visualize their robot’s movement on.  For more information see the <a class="reference internal" href="../software/wpilib-tools/robot-simulation/introduction.html#introduction-to-robot-simulation"><span class="std std-ref">Robot Simulation section</span></a>.</p>
+</section>
+<section id="frc-labview-robot-simulator-windows-only">
+<h2>FRC LabVIEW Robot Simulator (Windows Only)<a class="headerlink" href="#frc-labview-robot-simulator-windows-only" title="Permalink to this heading"></a></h2>
+<img alt="FRC LabVIEW Robot Simulator" src="../../_images/robot-simulator.png" />
+<p>The FRC Robot Simulator is a component of the LabVIEW programming environment that allows you to operate a predefined robot in a simulated environment to test code and/or Driver Station functions.  Information on using the FRC Robot Simulator can be found <a class="reference external" href="https://forums.ni.com/t5/FIRST-Robotics-Competition/LabVIEW-Tutorial-10-Robot-Simulation/ta-p/3739702?profile.language=en">here</a> or by opening the Robot Simulation Readme.html file in the LabVIEW Project Explorer.</p>
+</section>
+<section id="pathweaver">
+<h2>PathWeaver<a class="headerlink" href="#pathweaver" title="Permalink to this heading"></a></h2>
+<img alt="PathWeaver UI with a project for FRC Deep Space plotting a trajectory to the back of the rocket." src="../../_images/pathweaver.png" />
+<p>PathWeaver allows teams to quickly generate and configure paths for advanced autonomous routines.  These paths have smooth curves allowing the team to quickly navigate their robot between points on the field.  For more information see the <a class="reference internal" href="../software/pathplanning/pathweaver/introduction.html#introduction-to-pathweaver"><span class="std std-ref">PathWeaver section</span></a>.</p>
+</section>
+<section id="system-identification">
+<h2>System Identification<a class="headerlink" href="#system-identification" title="Permalink to this heading"></a></h2>
+<img alt="System Identification new project screen." src="../../_images/analysis-type.png" />
+<p>This tool helps teams automatically calculate constants that can be used to describe the physical properties of your robot for use in features like robot simulation, trajectory following, and PID control.  For more information see the <a class="reference internal" href="../software/pathplanning/system-identification/introduction.html#introduction-to-system-identification"><span class="std std-ref">System Identification section</span></a>.</p>
+</section>
+<section id="outlineviewer">
+<h2>OutlineViewer<a class="headerlink" href="#outlineviewer" title="Permalink to this heading"></a></h2>
+<img alt="OutlineViewer with the preferences dialog box." src="../../_images/outline-viewer.png" />
+<p>OutlineViewer is a utility used to view, modify and add to all of the contents of the NetworkTables for debugging purposes. LabVIEW teams can use the Variables tab of the LabVIEW Dashboard to accomplish this functionality.  For more information see the <a class="reference internal" href="../software/wpilib-tools/outlineviewer/index.html#outlineviewer"><span class="std std-ref">Outline Viewer section</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="control-system-hardware.html" class="btn btn-neutral float-left" title="Hardware Component Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../software/what-is-wpilib.html" class="btn btn-neutral float-right" title="What is WPILib?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Writing the Code for a Command" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Subsystem classes get the mechanisms on your robot moving, but to get it to stop at the right time and sequence through more complex operations you write Commands. Previously in writing the code fo..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing the Code for a Command &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../../_static/js/present.js"></script>
+        <script src="../../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../../_static/pid-tune.js"></script>
+        <script src="../../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../../_static/tabs.js"></script>
+        <script src="../../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Driving the Robot with Tank Drive and Joysticks" href="robotbuilder-drive-tank.html" />
+    <link rel="prev" title="Writing the Code for a Subsystem" href="robotbuilder-writing-subsystem-code.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">RobotBuilder</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">RobotBuilder - Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">RobotBuilder - Writing the Code</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-generating-code.html">Generating Code for a Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-writing-subsystem-code.html">Writing the Code for a Subsystem</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Writing the Code for a Command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-drive-tank.html">Driving the Robot with Tank Drive and Joysticks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced/index.html">RobotBuilder - Advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">RobotBuilder</a></li>
+          <li class="breadcrumb-item"><a href="index.html">RobotBuilder - Writing the Code</a></li>
+      <li class="breadcrumb-item active">Writing the Code for a Command</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/wpilib-tools/robotbuilder/writing-code/robotbuilder-writing-command-code.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="writing-the-code-for-a-command">
+<h1>Writing the Code for a Command<a class="headerlink" href="#writing-the-code-for-a-command" title="Permalink to this heading"></a></h1>
+<p>Subsystem classes get the mechanisms on your robot moving, but to get it to stop at the right time and sequence through more complex operations you write Commands. Previously in <a class="reference internal" href="robotbuilder-writing-subsystem-code.html"><span class="doc">writing the code for a subsystem</span></a> we developed the code for the <cite>Claw</cite> subsystem on a robot to start the claw opening, closing, or to stop moving. Now we will write the code for a command that will actually run the claw motor for the right time to get the claw to open and close. Our claw example is a very simple mechanism where we run the motor for 1 second to open it or until the limit switch is tripped to close it.</p>
+<section id="close-claw-command-in-robotbuilder">
+<h2>Close Claw Command in RobotBuilder<a class="headerlink" href="#close-claw-command-in-robotbuilder" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/writing-command-code-1.png" src="../../../../../_images/writing-command-code-1.png" />
+<p>This is the definition of the <cite>CloseClaw</cite> command in RobotBuilder. Notice that it requires the <cite>Claw</cite> subsystem. This is explained in the next step.</p>
+</section>
+<section id="generated-closeclaw-class">
+<h2>Generated CloseClaw Class<a class="headerlink" href="#generated-closeclaw-class" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="w"> </span><span class="c1">// ROBOTBUILDER TYPE: Command.</span><span class="w"></span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="w"> </span><span class="kn">package</span><span class="w"> </span><span class="nn">frc.robot.commands</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">14</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj2.command.CommandBase</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="w"> </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=IMPORTS</span><span class="w"></span>
+<span class="linenos">17</span><span class="w"> </span><span class="kn">import</span><span class="w"> </span><span class="nn">frc.robot.subsystems.Claw</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="w">     </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=IMPORTS</span><span class="w"></span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="w"> </span><span class="cm">/**</span>
+<span class="linenos">22</span><span class="cm">  *</span>
+<span class="linenos">23</span><span class="cm">  */</span><span class="w"></span>
+<span class="linenos">24</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CloseClaw</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">CommandBase</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="w">     </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=VARIABLE_DECLARATIONS</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">         </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Claw</span><span class="w"> </span><span class="n">m_claw</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="w">     </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=VARIABLE_DECLARATIONS</span><span class="w"></span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="w">     </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS</span><span class="w"></span>
+<span class="linenos">32</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="w">     </span><span class="kd">public</span><span class="w"> </span><span class="nf">CloseClaw</span><span class="p">(</span><span class="n">Claw</span><span class="w"> </span><span class="n">subsystem</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">35</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="w">     </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTORS</span><span class="w"></span>
+<span class="linenos">38</span><span class="w">         </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=VARIABLE_SETTING</span><span class="w"></span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="w">     </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=VARIABLE_SETTING</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">         </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=REQUIRES</span><span class="w"></span>
+<span class="linenos">42</span>
+<span class="linenos">43</span><span class="w">         </span><span class="n">m_claw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subsystem</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">44</span><span class="w">         </span><span class="n">addRequirements</span><span class="p">(</span><span class="n">m_claw</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">45</span>
+<span class="linenos">46</span><span class="w">     </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=REQUIRES</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">48</span>
+<span class="linenos">49</span><span class="w">     </span><span class="c1">// Called when the command is initially scheduled.</span><span class="w"></span>
+<span class="linenos">50</span><span class="w">     </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">     </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">52</span><span class="w">         </span><span class="n">m_claw</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"> </span><span class="c1">// (1)</span><span class="w"></span>
+</span><span class="linenos">53</span><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">54</span>
+<span class="linenos">55</span><span class="w">     </span><span class="c1">// Called every time the scheduler runs while the command is scheduled.</span><span class="w"></span>
+<span class="linenos">56</span><span class="w">     </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">     </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">58</span><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">59</span>
+<span class="linenos">60</span><span class="w">     </span><span class="c1">// Called once the command ends or is interrupted.</span><span class="w"></span>
+<span class="linenos">61</span><span class="w">     </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">62</span><span class="w">     </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">end</span><span class="p">(</span><span class="kt">boolean</span><span class="w"> </span><span class="n">interrupted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">63</span><span class="w">         </span><span class="n">m_claw</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span><span class="w"> </span><span class="c1">// (3)</span><span class="w"></span>
+</span><span class="linenos">64</span><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">65</span>
+<span class="linenos">66</span><span class="w">     </span><span class="c1">// Returns true when the command should end.</span><span class="w"></span>
+<span class="linenos">67</span><span class="w">     </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">68</span><span class="w">     </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isFinished</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">69</span><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="n">m_claw</span><span class="p">.</span><span class="na">isGripping</span><span class="p">();</span><span class="w"> </span><span class="c1">// (2)</span><span class="w"></span>
+</span><span class="linenos">70</span><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">71</span>
+<span class="linenos">72</span><span class="w">     </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">73</span><span class="w">     </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">runsWhenDisabled</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">74</span><span class="w">         </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DISABLED</span><span class="w"></span>
+<span class="linenos">75</span><span class="w">         </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">76</span>
+<span class="linenos">77</span><span class="w">     </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DISABLED</span><span class="w"></span>
+<span class="linenos">78</span><span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">79</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">11</span><span class="c1">// ROBOTBUILDER TYPE: Command.</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTOR</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;commands/CloseClaw.h&quot;</span><span class="cp"></span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">CloseClaw</span><span class="o">::</span><span class="n">CloseClaw</span><span class="p">(</span><span class="n">Claw</span><span class="o">*</span><span class="w"> </span><span class="n">m_claw</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">18</span><span class="o">:</span><span class="n">m_claw</span><span class="p">(</span><span class="n">m_claw</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">    </span><span class="c1">// Use AddRequirements() here to declare subsystem dependencies</span>
+<span class="linenos">21</span><span class="w">    </span><span class="c1">// eg. AddRequirements(m_Subsystem);</span>
+<span class="linenos">22</span><span class="w">    </span><span class="n">SetName</span><span class="p">(</span><span class="s">&quot;CloseClaw&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">    </span><span class="n">AddRequirements</span><span class="p">({</span><span class="n">m_claw</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=CONSTRUCTOR</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="c1">// Called just before this Command runs the first time</span>
+<span class="linenos">30</span><span class="kt">void</span><span class="w"> </span><span class="n">CloseClaw</span><span class="o">::</span><span class="n">Initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">31</span><span class="w">    </span><span class="n">m_claw</span><span class="o">-&gt;</span><span class="n">Close</span><span class="p">();</span><span class="w"> </span><span class="c1">// (1)</span>
+</span><span class="linenos">32</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="c1">// Called repeatedly when this Command is scheduled to run</span>
+<span class="linenos">35</span><span class="kt">void</span><span class="w"> </span><span class="n">CloseClaw</span><span class="o">::</span><span class="n">Execute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">38</span>
+<span class="linenos">39</span><span class="c1">// Make this return true when this Command no longer needs to run execute()</span>
+<span class="linenos">40</span><span class="kt">bool</span><span class="w"> </span><span class="n">CloseClaw</span><span class="o">::</span><span class="n">IsFinished</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">41</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">m_claw</span><span class="o">-&gt;</span><span class="n">IsGripping</span><span class="p">();</span><span class="w"> </span><span class="c1">// (2)</span>
+</span><span class="linenos">42</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">43</span>
+<span class="linenos">44</span><span class="c1">// Called once after isFinished returns true</span>
+<span class="linenos">45</span><span class="kt">void</span><span class="w"> </span><span class="n">CloseClaw</span><span class="o">::</span><span class="n">End</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">interrupted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos">46</span><span class="w">    </span><span class="n">m_claw</span><span class="o">-&gt;</span><span class="n">Stop</span><span class="p">();</span><span class="w"> </span><span class="c1">// (3)</span>
+</span><span class="linenos">47</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">48</span>
+<span class="linenos">49</span><span class="kt">bool</span><span class="w"> </span><span class="n">CloseClaw</span><span class="o">::</span><span class="n">RunsWhenDisabled</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">50</span><span class="w">    </span><span class="c1">// BEGIN AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DISABLED</span>
+<span class="linenos">51</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">52</span>
+<span class="linenos">53</span><span class="w">    </span><span class="c1">// END AUTOGENERATED CODE, SOURCE=ROBOTBUILDER ID=DISABLED</span>
+<span class="linenos">54</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>RobotBuilder will generate the class files for the <cite>CloseClaw</cite> command. The command represents the behavior of the claw, that is the operation over time. To operate this very simple claw mechanism the motor needs to operate in the close direction,. The <cite>Claw</cite> subsystem has methods to start the motor running in the right direction and to stop it. The commands responsibility is to run the motor for the correct time. The lines of code that are shown in the boxes are added to add this behavior.</p>
+<ol class="arabic simple">
+<li><p>Start the claw motor moving in the closing direction by calling the <code class="docutils literal notranslate"><span class="pre">Close()</span></code> method that was added to the <cite>Claw</cite> subsystem in the <cite>CloseClaw</cite> Initialize method.</p></li>
+<li><p>This command is finished when the limit switch in the <cite>Claw</cite> subsystem is tripped.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">End()</span></code> method is called when the command is finished and is a place to clean up. In this case, the motor is stopped since the time has run out.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="robotbuilder-writing-subsystem-code.html" class="btn btn-neutral float-left" title="Writing the Code for a Subsystem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="robotbuilder-drive-tank.html" class="btn btn-neutral float-right" title="Driving the Robot with Tank Drive and Joysticks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

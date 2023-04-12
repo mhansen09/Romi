@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Using the WPILib Classes to Drive your Robot" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="WPILib includes many classes to help make your robot get driving faster. Standard drivetrains: Differential Drive Robots: The wiring of a simple differential drive robot. These drive bases typicall..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using the WPILib Classes to Drive your Robot &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Repeatable Low Power Movement - Controlling Servos with WPILib" href="servos.html" />
+    <link rel="prev" title="PWM Motor Controllers in Depth" href="pwm-controllers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Hardware APIs</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Motors APIs</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="using-motor-controllers.html">Using Motor Controllers in Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pwm-controllers.html">PWM Motor Controllers in Depth</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using the WPILib Classes to Drive your Robot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servos.html">Repeatable Low Power Movement - Controlling Servos with WPILib</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pneumatics/index.html">Pneumatics APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors/index.html">Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/index.html">Miscellaneous Hardware APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Hardware APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Motors APIs</a></li>
+      <li class="breadcrumb-item active">Using the WPILib Classes to Drive your Robot</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/hardware-apis/motors/wpi-drive-classes.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-wpilib-classes-to-drive-your-robot">
+<h1>Using the WPILib Classes to Drive your Robot<a class="headerlink" href="#using-the-wpilib-classes-to-drive-your-robot" title="Permalink to this heading"></a></h1>
+<p>WPILib includes many classes to help make your robot get driving faster.</p>
+<section id="standard-drivetrains">
+<h2>Standard drivetrains<a class="headerlink" href="#standard-drivetrains" title="Permalink to this heading"></a></h2>
+<section id="differential-drive-robots">
+<h3>Differential Drive Robots<a class="headerlink" href="#differential-drive-robots" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../../../_images/layout.jpg"><img alt="The wiring of a simple differential drive robot." src="../../../../_images/layout.jpg" style="width: 600px;" /></a>
+<p>These drive bases typically have two or more in-line traction or omni  wheels per side (e.g., 6WD or 8WD) and may also be known as  “skid-steer”, “tank drive”, or “West Coast Drive”. The Kit of Parts  drivetrain is an example of a differential drive. These drivetrains are capable of driving forward/backward and can turn by driving the two sides in opposite directions causing the wheels to skid sideways. These drivetrains are not capable of sideways translational movement.</p>
+</section>
+<section id="mecanum-drive">
+<h3>Mecanum Drive<a class="headerlink" href="#mecanum-drive" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../../../_images/am-14u4-6in-mecanum-upgrade.png"><img alt="A four wheel Mecanum robot using the KOP chassis." src="../../../../_images/am-14u4-6in-mecanum-upgrade.png" style="width: 600px;" /></a>
+<p>Mecanum drive is a method of driving using specially designed wheels that allow the robot to drive in any direction without changing the orientation of the robot. A robot with a conventional drivetrain (all wheels pointing in the same direction) must turn in the direction it needs to drive. A mecanum robot can move in any direction without first turning and is called a holonomic drive. The wheels (shown on this robot) have rollers that cause the forces from driving to be applied at a 45 degree angle rather than straight forward as in the case of a conventional drive.</p>
+<p>When viewed from the top, the rollers on a mecanum drivetrain should form an ‘X’ pattern. This results in the force vectors (when driving the wheel forward) on the front two wheels pointing forward and inward and the rear two wheels pointing forward and outward. By spinning the wheels in different directions, various components of the force vectors cancel out, resulting in the desired robot movement. A quick chart of different movements has been provided below, drawing out the force vectors for each of these motions may help in understanding how these drivetrains work. By varying the speeds of the wheels in addition to the direction, movements can be combined resulting in translation in any direction and rotation, simultaneously.</p>
+</section>
+</section>
+<section id="drive-class-conventions">
+<h2>Drive Class Conventions<a class="headerlink" href="#drive-class-conventions" title="Permalink to this heading"></a></h2>
+<section id="motor-inversion">
+<h3>Motor Inversion<a class="headerlink" href="#motor-inversion" title="Permalink to this heading"></a></h3>
+<p>As of 2022, the right side of the drivetrain is <strong>no longer</strong> inverted by default. It is the responsibility of the user to manage proper inversions for their drivetrain. Users can invert motors by calling <code class="docutils literal notranslate"><span class="pre">setInverted()</span></code>/<code class="docutils literal notranslate"><span class="pre">SetInverted()</span></code> on their motor objects.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-0-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">m_motorRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">m_motorRight</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">frc</span><span class="o">::</span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">m_motorLeft</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">RobotInit</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">m_motorRight</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">robotInit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">motorRight</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">motorRight</span><span class="o">.</span><span class="n">setInverted</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="squaring-inputs">
+<h3>Squaring Inputs<a class="headerlink" href="#squaring-inputs" title="Permalink to this heading"></a></h3>
+<p>When driving robots, it is often desirable to manipulate the joystick inputs such that the robot has finer control at low speeds while still using the full output range. One way to accomplish this is by squaring the joystick input, then reapplying the sign. By default the Differential Drive class will square the inputs. If this is not desired (e.g. if passing values in from a PIDController), use one of the drive methods with the squaredInputs parameter and set it to false.</p>
+</section>
+<section id="input-deadband">
+<h3>Input Deadband<a class="headerlink" href="#input-deadband" title="Permalink to this heading"></a></h3>
+<p>By default, the Differential Drive class applies an input deadband of 0.02. This means that input values with a magnitude below 0.02 (after any squaring as described above) will be set to 0. In most cases these small inputs result from imperfect joystick centering and are not sufficient to cause drivetrain movement, the deadband helps reduce unnecessary motor heating that may result from applying these small values to the drivetrain. To change the deadband, use the <cite>setDeadband()</cite> method.</p>
+</section>
+<section id="maximum-output">
+<h3>Maximum Output<a class="headerlink" href="#maximum-output" title="Permalink to this heading"></a></h3>
+<p>Sometimes drivers feel that their drivetrain is driving too fast and want to limit the output.  This can be accomplished with the <cite>setMaxOutput()</cite> method.  This maximum output is multiplied by result of the previous drive functions like deadband and squared inputs.</p>
+</section>
+<section id="motor-safety">
+<h3>Motor Safety<a class="headerlink" href="#motor-safety" title="Permalink to this heading"></a></h3>
+<p>Motor Safety is a mechanism in WPILib that takes the concept of a watchdog and breaks it out into one watchdog (Motor Safety timer) for each individual actuator. Note that this protection mechanism is in addition to the System Watchdog which is controlled by the Network Communications code and the FPGA and will disable all actuator outputs if it does not receive a valid data packet for 125ms.</p>
+<p>The purpose of the Motor Safety mechanism is the same as the purpose of a watchdog timer, to disable mechanisms which may cause harm to themselves, people or property if the code locks up and does not properly update the actuator output. Motor Safety breaks this concept out on a per actuator basis so that you can appropriately determine where it is necessary and where it is not. Examples of mechanisms that should have motor safety enabled are systems like drive trains and arms. If these systems get latched on a particular value they could cause damage to their environment or themselves. An example of a mechanism that may not need motor safety is a spinning flywheel for a shooter. If this mechanism gets latched on a particular value it will simply continue spinning until the robot is disabled. By default Motor Safety is enabled for DifferentialDrive and MecanumDrive objects and disabled for all other motor controllers and servos.</p>
+<p>The Motor Safety feature operates by maintaining a timer that tracks how long it has been since the feed() method has been called for that actuator. Code in the Driver Station class initiates a comparison of these timers to the timeout values for any actuator with safety enabled every 5 received packets (100ms nominal). The set() methods of each motor controller class and the set() and setAngle() methods of the servo class call feed() to indicate that the output of the actuator has been updated.</p>
+<p>The Motor Safety interface of motor controllers can be interacted with by the user using the following methods:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-1-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">exampleJaguar</span><span class="p">.</span><span class="na">setSafetyEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleJaguar</span><span class="p">.</span><span class="na">setSafetyEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleJaguar</span><span class="p">.</span><span class="na">setExpiration</span><span class="p">(</span><span class="mf">.1</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleJaguar</span><span class="p">.</span><span class="na">feed</span><span class="p">()</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">exampleJaguar</span><span class="o">-&gt;</span><span class="n">SetSafetyEnabled</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleJaguar</span><span class="o">-&gt;</span><span class="n">SetSafetyEnabled</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleJaguar</span><span class="o">-&gt;</span><span class="n">SetExpiration</span><span class="p">(</span><span class="mf">.1</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleJaguar</span><span class="o">-&gt;</span><span class="n">Feed</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exampleJaguar</span><span class="o">.</span><span class="n">setSafetyEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">exampleJaguar</span><span class="o">.</span><span class="n">setSafetyEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">exampleJaguar</span><span class="o">.</span><span class="n">setExpiration</span><span class="p">(</span><span class="mf">.1</span><span class="p">)</span>
+<span class="n">exampleJaguar</span><span class="o">.</span><span class="n">feed</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></div>
+<p>By default all Drive objects enable Motor Safety. Depending on the mechanism and the structure of your program, you may wish to configure the timeout length of the motor safety (in seconds). The timeout length is configured on a per actuator basis and is not a global setting. The default (and minimum useful) value is 100ms.</p>
+</section>
+<section id="axis-conventions">
+<h3>Axis Conventions<a class="headerlink" href="#axis-conventions" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../../../_images/drive-axis.png"><img alt="Show the axis of the robot with X+ going forward.  Y+ to the right and Z+ downward." src="../../../../_images/drive-axis.png" style="width: 600px;" /></a>
+<p>The drive classes use the NED axes convention (North-East-Down as external reference in the world frame). The positive X axis points ahead, the positive Y axis points right, and the positive Z axis points down. The rest of the library, and math in general, uses NWU axes convention (North-West-Up). We use NED here because joysticks use NED, and they use NED because the aviation industry does.</p>
+<p>Joysticks follow NED convention, but it’s important to note that axes values are rotations around the respective axes, not translations. When viewed with each axis pointing toward you, CCW is a positive value and CW is a negative value. Pushing forward on the joystick is a CW rotation around the Y axis, so you get a negative value. Pushing to the right is a CCW rotation around the X axis, so you get a positive value.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">MecanumDrive</span></code> class does not follow this convention. The positive Y axis points ahead, the positive X axis points right. This may change in a future year’s WPILib release.</p>
+</div>
+</section>
+</section>
+<section id="using-the-differentialdrive-class-to-control-differential-drive-robots">
+<h2>Using the DifferentialDrive class to control Differential Drive robots<a class="headerlink" href="#using-the-differentialdrive-class-to-control-differential-drive-robots" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>WPILib provides separate Robot Drive classes for the most common drive train configurations (differential and mecanum).  The DifferentialDrive class handles the differential drivetrain configuration. These drive bases typically have two or more in-line traction or omni wheels per side (e.g., 6WD or 8WD) and may also be known as “skid-steer”, “tank drive”, or “West Coast Drive” (WCD). The Kit of Parts drivetrain is an example of a differential drive. There are methods to control the drive with 3 different styles (“Tank”, “Arcade”, or “Curvature”), explained in the article below.</p>
+</div>
+<p>DifferentialDrive is a method provided for the control of “skid-steer” or “West Coast” drivetrains, such as the Kit of Parts chassis. Instantiating a DifferentialDrive is as simple as so:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-QysrIChIZWFkZXIp" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-QysrIChIZWFkZXIp" name="QysrIChIZWFkZXIp" role="tab" tabindex="-1">C++ (Header)</button><button aria-controls="panel-2-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button><button aria-controls="panel-2-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Robot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Spark</span><span class="w"> </span><span class="n">m_left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Spark</span><span class="w"> </span><span class="n">m_right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_drive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">m_left</span><span class="p">,</span><span class="w"> </span><span class="n">m_right</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">m_left</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// if you want to invert motor outputs, you must do so here</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-QysrIChIZWFkZXIp" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-QysrIChIZWFkZXIp" name="QysrIChIZWFkZXIp" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Robot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">m_left</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">m_right</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_drive</span><span class="p">{</span><span class="n">m_left</span><span class="p">,</span><span class="w"> </span><span class="n">m_right</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Robot::RobotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_left</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// if you want to invert motor outputs, you must do so here</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-UHl0aG9u" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">robotInit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">Spark</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">left</span><span class="o">.</span><span class="n">setInverted</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># if you want to invert motor outputs, you can do so here</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">Spark</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">drive</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<section id="multi-motor-differentialdrive-with-motorcontrollergroups">
+<h3>Multi-Motor DifferentialDrive with MotorControllerGroups<a class="headerlink" href="#multi-motor-differentialdrive-with-motorcontrollergroups" title="Permalink to this heading"></a></h3>
+<p>Many FRC® drivetrains have more than 1 motor on each side. In order to use these with DifferentialDrive, the motors on each side have to be collected into a single MotorController, using the MotorControllerGroup class. The examples below show a 4 motor (2 per side) drivetrain. To extend to more motors, simply create the additional controllers and pass them all into the MotorController group constructor (it takes an arbitrary number of inputs).</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-QysrIChIZWFkZXIp" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-QysrIChIZWFkZXIp" name="QysrIChIZWFkZXIp" role="tab" tabindex="-1">C++ (Header)</button><button aria-controls="panel-3-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button><button aria-controls="panel-3-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Robot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Spark</span><span class="w"> </span><span class="n">m_frontLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Spark</span><span class="w"> </span><span class="n">m_rearLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">m_left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">m_frontLeft</span><span class="p">,</span><span class="w"> </span><span class="n">m_rearLeft</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">Spark</span><span class="w"> </span><span class="n">m_frontRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Spark</span><span class="w"> </span><span class="n">m_rearRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">m_right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">m_frontRight</span><span class="p">,</span><span class="w"> </span><span class="n">m_rearRight</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_drive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">m_left</span><span class="p">,</span><span class="w"> </span><span class="n">m_right</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">m_left</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// if you want to invert the entire side you can do so here</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-QysrIChIZWFkZXIp" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-QysrIChIZWFkZXIp" name="QysrIChIZWFkZXIp" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Robot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">m_frontLeft</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">m_rearLeft</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">m_left</span><span class="p">{</span><span class="n">m_frontLeft</span><span class="p">,</span><span class="w"> </span><span class="n">m_rearLeft</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">m_frontRight</span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">m_rearRight</span><span class="p">{</span><span class="mi">4</span><span class="p">};</span><span class="w"></span>
+<span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">m_right</span><span class="p">{</span><span class="n">m_frontRight</span><span class="p">,</span><span class="w"> </span><span class="n">m_rearRight</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_drive</span><span class="p">{</span><span class="n">m_left</span><span class="p">,</span><span class="w"> </span><span class="n">m_right</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">Robot::RobotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_left</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// if you want to invert the entire side you can do so here</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-UHl0aG9u" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">robotInit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">frontLeft</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">Spark</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">rearLeft</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">Spark</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">frontLeft</span><span class="p">,</span> <span class="n">rearLeft</span><span class="p">)</span>
+    <span class="n">left</span><span class="o">.</span><span class="n">setInverted</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># if you want to invert the entire side you can do so here</span>
+
+    <span class="n">frontRight</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">Spark</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">rearRight</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">Spark</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">frontLeft</span><span class="p">,</span> <span class="n">rearLeft</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">drive</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="drive-modes">
+<h3>Drive Modes<a class="headerlink" href="#drive-modes" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The DifferentialDrive class contains three different default modes of driving your robot’s motors.</p>
+<ul class="simple">
+<li><p>Tank Drive, which controls the left and right side independently</p></li>
+<li><p>Arcade Drive, which controls a forward and turn speed</p></li>
+<li><p>Curvature Drive, a subset of Arcade Drive, which makes your robot handle like a car with constant-curvature turns.</p></li>
+</ul>
+</div>
+<p>The DifferentialDrive class contains three default methods for controlling skid-steer or WCD robots. Note that you can create your own methods of controlling the robot’s driving and have them call tankDrive() with the derived inputs for left and right motors.</p>
+<p>The Tank Drive mode is used to control each side of the drivetrain independently (usually with an individual joystick axis controlling each). This example shows how to use the Y-axis of two separate joysticks to run the drivetrain in Tank mode. Construction of the objects has been omitted, for above for drivetrain construction and here for Joystick construction.</p>
+<p>The Arcade Drive mode is used to control the drivetrain using speed/throttle and rotation rate. This is typically used either with two axes from a single joystick, or split across joysticks (often on a single gamepad) with the throttle coming from one stick and the rotation from another. This example shows how to use a single joystick with the Arcade mode. Construction of the objects has been omitted, for above for drivetrain construction and here for Joystick construction.</p>
+<p>Like Arcade Drive, the Curvature Drive mode is used to control the drivetrain using speed/throttle and rotation rate. The difference is that the rotation control input controls the radius of curvature instead of rate of heading change, much like the steering wheel of a car. This mode also supports turning in place, which is enabled when the third <code class="code docutils literal notranslate"><span class="pre">boolean</span></code> parameter is true.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-4-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">teleopPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Tank drive with a given left and right rates</span><span class="w"></span>
+<span class="w">    </span><span class="n">myDrive</span><span class="p">.</span><span class="na">tankDrive</span><span class="p">(</span><span class="o">-</span><span class="n">leftStick</span><span class="p">.</span><span class="na">getY</span><span class="p">(),</span><span class="w"> </span><span class="o">-</span><span class="n">rightStick</span><span class="p">.</span><span class="na">getY</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Arcade drive with a given forward and turn rate</span><span class="w"></span>
+<span class="w">    </span><span class="n">myDrive</span><span class="p">.</span><span class="na">arcadeDrive</span><span class="p">(</span><span class="o">-</span><span class="n">driveStick</span><span class="p">.</span><span class="na">getY</span><span class="p">(),</span><span class="w"> </span><span class="n">driveStick</span><span class="p">.</span><span class="na">getX</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Curvature drive with a given forward and turn rate, as well as a button for turning in-place.</span><span class="w"></span>
+<span class="w">    </span><span class="n">myDrive</span><span class="p">.</span><span class="na">curvatureDrive</span><span class="p">(</span><span class="o">-</span><span class="n">driveStick</span><span class="p">.</span><span class="na">getY</span><span class="p">(),</span><span class="w"> </span><span class="n">driveStick</span><span class="p">.</span><span class="na">getX</span><span class="p">(),</span><span class="w"> </span><span class="n">driveStick</span><span class="p">.</span><span class="na">getButton</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">TeleopPeriodic</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Tank drive with a given left and right rates</span>
+<span class="w">    </span><span class="n">myDrive</span><span class="p">.</span><span class="n">TankDrive</span><span class="p">(</span><span class="o">-</span><span class="n">leftStick</span><span class="p">.</span><span class="n">GetY</span><span class="p">(),</span><span class="w"> </span><span class="o">-</span><span class="n">rightStick</span><span class="p">.</span><span class="n">GetY</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Arcade drive with a given forward and turn rate</span>
+<span class="w">    </span><span class="n">myDrive</span><span class="p">.</span><span class="n">ArcadeDrive</span><span class="p">(</span><span class="o">-</span><span class="n">driveStick</span><span class="p">.</span><span class="n">GetY</span><span class="p">(),</span><span class="w"> </span><span class="n">driveStick</span><span class="p">.</span><span class="n">GetX</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Curvature drive with a given forward and turn rate, as well as a quick-turn button</span>
+<span class="w">    </span><span class="n">myDrive</span><span class="p">.</span><span class="n">CurvatureDrive</span><span class="p">(</span><span class="o">-</span><span class="n">driveStick</span><span class="p">.</span><span class="n">GetY</span><span class="p">(),</span><span class="w"> </span><span class="n">driveStick</span><span class="p">.</span><span class="n">GetX</span><span class="p">(),</span><span class="w"> </span><span class="n">driveStick</span><span class="p">.</span><span class="n">GetButton</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">teleopPeriodic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Tank drive with a given left and right rates</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">myDrive</span><span class="o">.</span><span class="n">tankDrive</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">leftStick</span><span class="o">.</span><span class="n">getY</span><span class="p">(),</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">rightStick</span><span class="o">.</span><span class="n">getY</span><span class="p">())</span>
+
+    <span class="c1"># Arcade drive with a given forward and turn rate</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">myDrive</span><span class="o">.</span><span class="n">arcadeDrive</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">driveStick</span><span class="o">.</span><span class="n">getY</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">driveStick</span><span class="o">.</span><span class="n">getX</span><span class="p">())</span>
+
+    <span class="c1"># Curvature drive with a given forward and turn rate, as well as a button for turning in-place.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">myDrive</span><span class="o">.</span><span class="n">curvatureDrive</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">driveStick</span><span class="o">.</span><span class="n">getY</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">driveStick</span><span class="o">.</span><span class="n">getX</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">driveStick</span><span class="o">.</span><span class="n">getButton</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="using-the-mecanumdrive-class-to-control-mecanum-drive-robots">
+<h2>Using the MecanumDrive class to control Mecanum Drive robots<a class="headerlink" href="#using-the-mecanumdrive-class-to-control-mecanum-drive-robots" title="Permalink to this heading"></a></h2>
+<p>MecanumDrive is a method provided for the control of holonomic drivetrains with Mecanum wheels, such as the Kit of Parts chassis with the mecanum drive upgrade kit, as shown above. Instantiating a MecanumDrive is as simple as so:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">C++</button><button aria-controls="panel-5-5-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-2" name="5-2" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">24</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">    </span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">frontLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="n">kFrontLeftChannel</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">    </span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">rearLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="n">kRearLeftChannel</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">    </span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">frontRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="n">kFrontRightChannel</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">    </span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">rearRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="n">kRearRightChannel</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="w">    </span><span class="c1">// Invert the right side motors.</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">    </span><span class="c1">// You may need to change or remove this to match your robot.</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">    </span><span class="n">frontRight</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">    </span><span class="n">rearRight</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="w">    </span><span class="n">m_robotDrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MecanumDrive</span><span class="p">(</span><span class="n">frontLeft</span><span class="p">,</span><span class="w"> </span><span class="n">rearLeft</span><span class="p">,</span><span class="w"> </span><span class="n">frontRight</span><span class="p">,</span><span class="w"> </span><span class="n">rearRight</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="w">    </span><span class="n">m_stick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Joystick</span><span class="p">(</span><span class="n">kJoystickChannel</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">39</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">31</span><span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kFrontLeftChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kRearLeftChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kFrontRightChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">35</span><span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kRearRightChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kJoystickChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">38</span>
+<span class="linenos">39</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">m_frontLeft</span><span class="p">{</span><span class="n">kFrontLeftChannel</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">m_rearLeft</span><span class="p">{</span><span class="n">kRearLeftChannel</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">m_frontRight</span><span class="p">{</span><span class="n">kFrontRightChannel</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">m_rearRight</span><span class="p">{</span><span class="n">kRearRightChannel</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">43</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">MecanumDrive</span><span class="w"> </span><span class="n">m_robotDrive</span><span class="p">{</span><span class="n">m_frontLeft</span><span class="p">,</span><span class="w"> </span><span class="n">m_rearLeft</span><span class="p">,</span><span class="w"> </span><span class="n">m_frontRight</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">44</span><span class="w">                                 </span><span class="n">m_rearRight</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-5-2" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-2" name="5-2" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">21</span>    <span class="k">def</span> <span class="nf">robotInit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">22</span>        <span class="bp">self</span><span class="o">.</span><span class="n">frontLeft</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kFrontLeftChannel</span><span class="p">)</span>
+<span class="linenos">23</span>        <span class="bp">self</span><span class="o">.</span><span class="n">rearLeft</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kRearLeftChannel</span><span class="p">)</span>
+<span class="linenos">24</span>        <span class="bp">self</span><span class="o">.</span><span class="n">frontRight</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kFrontRightChannel</span><span class="p">)</span>
+<span class="linenos">25</span>        <span class="bp">self</span><span class="o">.</span><span class="n">rearRight</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kRearRightChannel</span><span class="p">)</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>        <span class="c1"># invert the right side motors</span>
+<span class="linenos">28</span>        <span class="c1"># you may need to change or remove this to match your robot</span>
+<span class="linenos">29</span>        <span class="bp">self</span><span class="o">.</span><span class="n">frontRight</span><span class="o">.</span><span class="n">setInverted</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">30</span>        <span class="bp">self</span><span class="o">.</span><span class="n">rearRight</span><span class="o">.</span><span class="n">setInverted</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span>        <span class="bp">self</span><span class="o">.</span><span class="n">robotDrive</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">MecanumDrive</span><span class="p">(</span>
+<span class="linenos">33</span>            <span class="bp">self</span><span class="o">.</span><span class="n">frontLeft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rearLeft</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frontRight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rearRight</span>
+<span class="linenos">34</span>        <span class="p">)</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span>        <span class="bp">self</span><span class="o">.</span><span class="n">stick</span> <span class="o">=</span> <span class="n">wpilib</span><span class="o">.</span><span class="n">Joystick</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kJoystickChannel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<section id="mecanum-drive-modes">
+<h3>Mecanum Drive Modes<a class="headerlink" href="#mecanum-drive-modes" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The drive axis conventions are different from common joystick axis conventions. See the <a class="reference internal" href="#axis-conventions">Axis Conventions</a> above for more information.</p>
+</div>
+<p>The MecanumDrive class contains two different default modes of driving your robot’s motors.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>driveCartesian: Angles are measured clockwise from the positive X axis. The robot’s speed is independent from its angle or rotation rate.</p></li>
+<li><p>drivePolar: Angles are measured counter-clockwise from straight ahead. The speed at which the robot drives (translation) is independent from its angle or rotation rate.</p></li>
+</ul>
+</div></blockquote>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-6-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button><button aria-controls="panel-6-UHl0aG9u" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-UHl0aG9u" name="UHl0aG9u" role="tab" tabindex="-1">Python</button></div><div aria-labelledby="tab-6-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-6-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">teleopPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="na">driveCartesian</span><span class="p">(</span><span class="o">-</span><span class="n">m_stick</span><span class="p">.</span><span class="na">getY</span><span class="p">(),</span><span class="w"> </span><span class="n">m_stick</span><span class="p">.</span><span class="na">getX</span><span class="p">(),</span><span class="w"> </span><span class="n">m_stick</span><span class="p">.</span><span class="na">getZ</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="na">drivePolar</span><span class="p">(</span><span class="o">-</span><span class="n">m_stick</span><span class="p">.</span><span class="na">getY</span><span class="p">(),</span><span class="w"> </span><span class="n">m_stick</span><span class="p">.</span><span class="na">getX</span><span class="p">(),</span><span class="w"> </span><span class="n">m_stick</span><span class="p">.</span><span class="na">getZ</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">TeleopPeriodic</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="n">driveCartesian</span><span class="p">(</span><span class="o">-</span><span class="n">m_stick</span><span class="p">.</span><span class="n">GetY</span><span class="p">(),</span><span class="w"> </span><span class="n">m_stick</span><span class="p">.</span><span class="n">GetX</span><span class="p">(),</span><span class="w"> </span><span class="n">m_stick</span><span class="p">.</span><span class="n">GetZ</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="n">drivePolar</span><span class="p">(</span><span class="o">-</span><span class="n">m_stick</span><span class="p">.</span><span class="n">GetY</span><span class="p">(),</span><span class="w"> </span><span class="n">m_stick</span><span class="p">.</span><span class="n">GetX</span><span class="p">(),</span><span class="w"> </span><span class="n">m_stick</span><span class="p">.</span><span class="n">GetZ</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-UHl0aG9u" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-UHl0aG9u" name="UHl0aG9u" role="tabpanel" tabindex="0"><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">teleopPeriodic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">robotDrive</span><span class="o">.</span><span class="n">driveCartesian</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">stick</span><span class="o">.</span><span class="n">getY</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">stick</span><span class="o">.</span><span class="n">getX</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">stick</span><span class="o">.</span><span class="n">getZ</span><span class="p">())</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">robotDrive</span><span class="o">.</span><span class="n">drivePolar</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">stick</span><span class="o">.</span><span class="n">getY</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">stick</span><span class="o">.</span><span class="n">getX</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">stick</span><span class="o">.</span><span class="n">getZ</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="field-oriented-driving">
+<h3>Field-Oriented Driving<a class="headerlink" href="#field-oriented-driving" title="Permalink to this heading"></a></h3>
+<p>A 4th parameter can be supplied to the <code class="docutils literal notranslate"><span class="pre">driveCartesian(double</span> <span class="pre">ySpeed,</span> <span class="pre">double</span> <span class="pre">xSpeed,</span> <span class="pre">double</span> <span class="pre">zRotation,</span> <span class="pre">double</span> <span class="pre">gyroAngle)</span></code> method, the angle returned from a Gyro sensor. This will adjust the rotation value supplied. This is particularly useful with mecanum drive since, for the purposes of steering, the robot really has no front, back or sides. It can go in any direction. Adding the angle in degrees from a gyro object will cause the robot to move away from the drivers when the joystick is pushed forwards, and towards the drivers when it is pulled towards them, regardless of what direction the robot is facing.</p>
+<p>The use of field-oriented driving makes often makes the robot much easier to drive, especially compared to a “robot-oriented” drive system where the controls are reversed when the robot is facing the drivers.</p>
+<p>Just remember to get the gyro angle each time <code class="docutils literal notranslate"><span class="pre">driveCartesian()</span></code> is called.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many teams also like to ramp the joysticks inputs over time to promote a smooth acceleration and reduce jerk.  This can be accomplished with a <a class="reference internal" href="../../advanced-controls/filters/slew-rate-limiter.html#slew-rate-limiter"><span class="std std-ref">Slew Rate Limiter</span></a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pwm-controllers.html" class="btn btn-neutral float-left" title="PWM Motor Controllers in Depth" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="servos.html" class="btn btn-neutral float-right" title="Repeatable Low Power Movement - Controlling Servos with WPILib" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

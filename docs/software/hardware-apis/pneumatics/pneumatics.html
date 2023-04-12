@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Operating pneumatic cylinders" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/pneumatics/pneumatics.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Using the FRC Control System to control Pneumatics: There are two options for operating solenoids to control pneumatic cylinders, the CTRE Pneumatics Control Module and the REV Robotics Pneumatics ..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/pneumatics/pneumatics.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/pneumatics/pneumatics.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/hardware-apis/pneumatics/pneumatics.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/hardware-apis/pneumatics/pneumatics.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/hardware-apis/pneumatics/pneumatics.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/hardware-apis/pneumatics/pneumatics.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/hardware-apis/pneumatics/pneumatics.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/hardware-apis/pneumatics/pneumatics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operating pneumatic cylinders &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/pneumatics/pneumatics.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Sensors" href="../sensors/index.html" />
+    <link rel="prev" title="Pneumatics APIs" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Hardware APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../motors/index.html">Motors APIs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Pneumatics APIs</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Operating pneumatic cylinders</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors/index.html">Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/index.html">Miscellaneous Hardware APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Hardware APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Pneumatics APIs</a></li>
+      <li class="breadcrumb-item active">Operating pneumatic cylinders</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/hardware-apis/pneumatics/pneumatics.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="operating-pneumatic-cylinders">
+<h1>Operating pneumatic cylinders<a class="headerlink" href="#operating-pneumatic-cylinders" title="Permalink to this heading"></a></h1>
+<section id="using-the-frc-control-system-to-control-pneumatics">
+<h2>Using the FRC Control System to control Pneumatics<a class="headerlink" href="#using-the-frc-control-system-to-control-pneumatics" title="Permalink to this heading"></a></h2>
+<p>There are two options for operating solenoids to control pneumatic cylinders, the CTRE Pneumatics Control Module and the REV Robotics Pneumatics Hub.</p>
+<a class="reference internal image-reference" href="../../../../_images/pneumatics-control-module.png"><img alt="The Pneumatics Control Module (PCM)" src="../../../../_images/pneumatics-control-module.png" style="width: 400px;" /></a>
+<p>The CTRE Pneumatics Control Module (PCM) is a CAN-based device that provides control over the compressor and up to 8 solenoids per module.</p>
+<a class="reference internal image-reference" href="../../../../_images/pneumatic-hub.png"><img alt="The Pneumatic Hub (PH)" src="../../../../_images/pneumatic-hub.png" style="width: 400px;" /></a>
+<p>The REV Pneumatic Hub (PH) is a CAN-based device that provides control over the compressor and up to 16 solenoids per module.</p>
+<p>These devices are integrated into WPILib through a series of classes that make them simple to use. The closed loop control of the Compressor and Pressure switch is handled by the PCM hardware and the Solenoids are handled by the <code class="docutils literal notranslate"><span class="pre">Solenoid</span></code> class that controls the solenoid channels.
+These modules are responsible for regulating the robot’s pressure using a pressure switch and a compressor and switching solenoids on and off. They communicate with the roboRIO over CAN. For more information, see <a class="reference internal" href="../../../controls-overviews/control-system-hardware.html"><span class="doc">Hardware Component Overview</span></a></p>
+</section>
+<section id="module-numbers">
+<h2>Module Numbers<a class="headerlink" href="#module-numbers" title="Permalink to this heading"></a></h2>
+<p>CAN Devices are identified by their Node ID. The default Node ID for PCMs is 0. The default Node ID for PHs is 1. If using a single module on the bus it is recommended to leave it at the default Node ID. Additional modules can be used where the modules corresponding solenoids are differentiated by the module number in the constructors of the <code class="docutils literal notranslate"><span class="pre">Solenoid</span></code> and <code class="docutils literal notranslate"><span class="pre">Compressor</span></code> classes.</p>
+</section>
+<section id="generating-and-storing-pressure">
+<h2>Generating and Storing Pressure<a class="headerlink" href="#generating-and-storing-pressure" title="Permalink to this heading"></a></h2>
+<p>Pressure is created using a pneumatic compressor and stored in pneumatic tanks. The compressor doesn’t necessarily have to be on the robot, but must be powered by the robot’s pneumatics module. The “Closed Loop” mode on the Compressor is enabled by default, and it is <em>not</em> recommended that teams change this setting. When closed loop control is enabled the pneumatic module will automatically turn the compressor on when the digital pressure switch is closed (below the pressure threshold) and turn it off when the pressure switch is open (~120PSI). When closed loop control is disabled the compressor will not be turned on. Using the <code class="docutils literal notranslate"><span class="pre">Compressor</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/Compressor.html">Java</a> / <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_compressor.html">C++</a>) class, users can query the status of the compressor. The state (currently on or off), pressure switch state, and compressor current can all be queried from the Compressor object.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Compressor object is only needed if you want the ability to turn off the compressor, change the pressure sensor (PH only), or query compressor status.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Compressor</span><span class="w"> </span><span class="n">pcmCompressor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Compressor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">PneumaticsModuleType</span><span class="p">.</span><span class="na">CTREPCM</span><span class="p">);</span><span class="w"></span>
+<span class="n">Compressor</span><span class="w"> </span><span class="n">phCompressor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Compressor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">PneumaticsModuleType</span><span class="p">.</span><span class="na">REVPH</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">pcmCompressor</span><span class="p">.</span><span class="na">enableDigital</span><span class="p">();</span><span class="w"></span>
+<span class="n">pcmCompressor</span><span class="p">.</span><span class="na">disable</span><span class="p">();</span><span class="w"></span>
+
+<span class="kt">boolean</span><span class="w"> </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcmCompressor</span><span class="p">.</span><span class="na">enabled</span><span class="p">();</span><span class="w"></span>
+<span class="kt">boolean</span><span class="w"> </span><span class="n">pressureSwitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcmCompressor</span><span class="p">.</span><span class="na">getPressureSwitchValue</span><span class="p">();</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcmCompressor</span><span class="p">.</span><span class="na">getCompressorCurrent</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc</span><span class="o">::</span><span class="n">Compressor</span><span class="w"> </span><span class="n">pcmCompressor</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">PneumaticsModuleType</span><span class="o">::</span><span class="n">CTREPCM</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Compressor</span><span class="w"> </span><span class="n">phCompressor</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">PneumaticsModuleType</span><span class="o">::</span><span class="n">REVPH</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">pcmCompressor</span><span class="p">.</span><span class="n">EnableDigital</span><span class="p">();</span><span class="w"></span>
+<span class="n">pcmCompressor</span><span class="p">.</span><span class="n">Disable</span><span class="p">();</span><span class="w"></span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcmCompressor</span><span class="p">.</span><span class="n">Enabled</span><span class="p">();</span><span class="w"></span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">pressureSwitch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcmCompressor</span><span class="p">.</span><span class="n">GetPressureSwitchValue</span><span class="p">();</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcmCompressor</span><span class="p">.</span><span class="n">GetCompressorCurrent</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>The Pneumatic Hub also has methods for enabling compressor control using the REV Analog Pressure Sensor (<code class="docutils literal notranslate"><span class="pre">enableAnalog</span></code> method).</p>
+</section>
+<section id="solenoid-control">
+<h2>Solenoid Control<a class="headerlink" href="#solenoid-control" title="Permalink to this heading"></a></h2>
+<p>FRC teams can use a <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../frc-glossary.html#term-solenoid-valve"><span class="xref std std-term">solenoid valve</span></a> as part of performing a variety of tasks, including shifting gearboxes and moving robot mechanisms. A solenoid valve is used to electronically switch a pressurized air line “on” or “off”. Solenoids are controlled by a robot’s Pneumatics Control Module, or Pneumatic Hub, which is in turn connected to the robot’s roboRIO via CAN. The easiest way to see a solenoid’s state is via the LEDs on the PCM or PH (which indicates if the valve is “on” or not). When un-powered, solenoids can be manually actuated with the small button on the valve body.</p>
+<p>Single acting solenoids apply or vent pressure from a single output port. They are typically used either when an external force will provide the return action of the cylinder (spring, gravity, separate mechanism) or in pairs to act as a double solenoid. A double solenoid switches air flow between two output ports (many also have a center position where neither output is vented or connected to the input). Double solenoid valves are commonly used when you wish to control both the extend and retract actions of a cylinder using air pressure. Double solenoid valves have two electrical inputs which connect back to two separate channels on the solenoid breakout.</p>
+</section>
+<section id="single-solenoids-in-wpilib">
+<h2>Single Solenoids in WPILib<a class="headerlink" href="#single-solenoids-in-wpilib" title="Permalink to this heading"></a></h2>
+<p>Single solenoids in WPILib are controlled using the <code class="docutils literal notranslate"><span class="pre">Solenoid</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/Solenoid.html">Java</a> / <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_solenoid.html">C++</a>). To construct a Solenoid object, simply pass the desired port number (assumes default CAN ID) and pneumatics module type or CAN ID, pneumatics module type, and port number to the constructor. To set the value of the solenoid call set(true) to enable or set(false) to disable the solenoid output.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Solenoid</span><span class="w"> </span><span class="n">exampleSolenoidPCM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Solenoid</span><span class="p">(</span><span class="n">PneumaticsModuleType</span><span class="p">.</span><span class="na">CTREPCM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="n">Solenoid</span><span class="w"> </span><span class="n">exampleSolenoidPH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Solenoid</span><span class="p">(</span><span class="n">PneumaticsModuleType</span><span class="p">.</span><span class="na">REVPH</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">exampleSolenoidPCM</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleSolenoidPCM</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc</span><span class="o">::</span><span class="n">Solenoid</span><span class="w"> </span><span class="n">exampleSolenoidPCM</span><span class="p">{</span><span class="n">frc</span><span class="o">::</span><span class="n">PneumaticsModuleType</span><span class="o">::</span><span class="n">CTREPCM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Solenoid</span><span class="w"> </span><span class="n">exampleSolenoidPH</span><span class="p">{</span><span class="n">frc</span><span class="o">::</span><span class="n">PneumaticsModuleType</span><span class="o">::</span><span class="n">REVPH</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">exampleSolenoidPCM</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleSolenoidPCM</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="double-solenoids-in-wpilib">
+<h2>Double Solenoids in WPILib<a class="headerlink" href="#double-solenoids-in-wpilib" title="Permalink to this heading"></a></h2>
+<p>Double solenoids are controlled by the <code class="docutils literal notranslate"><span class="pre">DoubleSolenoid</span></code> class in WPILib (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/DoubleSolenoid.html">Java</a> / <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_double_solenoid.html">C++</a>). These are constructed similarly to the single solenoid but there are now two port numbers to pass to the constructor, a forward channel (first) and a reverse channel (second). The state of the valve can then be set to <cite>kOff</cite> (neither output activated), <cite>kForward</cite> (forward channel enabled) or <cite>kReverse</cite> (reverse channel enabled). Additionally, the CAN ID can be passed to the DoubleSolenoid if teams have a non-standard CAN ID.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Using &quot;import static an.enum.or.constants.inner.class.*;&quot; helps reduce verbosity</span><span class="w"></span>
+<span class="c1">// this replaces &quot;DoubleSolenoid.Value.kForward&quot; with just kForward</span><span class="w"></span>
+<span class="c1">// further reading is available at https://www.geeksforgeeks.org/static-import-java/</span><span class="w"></span>
+<span class="kn">import static</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.DoubleSolenoid.Value.*</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">DoubleSolenoid</span><span class="w"> </span><span class="n">exampleDoublePCM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DoubleSolenoid</span><span class="p">(</span><span class="n">PneumaticsModuleType</span><span class="p">.</span><span class="na">CTREPCM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">DoubleSolenoid</span><span class="w"> </span><span class="n">exampleDoublePH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DoubleSolenoid</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="n">PneumaticsModuleType</span><span class="p">.</span><span class="na">REVPH</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+
+
+<span class="n">exampleDoublePCM</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">kOff</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleDoublePCM</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">kForward</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleDoublePCM</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">kReverse</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc</span><span class="o">::</span><span class="n">DoubleSolenoid</span><span class="w"> </span><span class="n">exampleDoublePCM</span><span class="p">{</span><span class="n">frc</span><span class="o">::</span><span class="n">PneumaticsModuleType</span><span class="o">::</span><span class="n">CTREPCM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">DoubleSolenoid</span><span class="w"> </span><span class="n">exampleDoublePH</span><span class="p">{</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">PneumaticsModuleType</span><span class="o">::</span><span class="n">REVPH</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">exampleDoublePCM</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">frc</span><span class="o">::</span><span class="n">DoubleSolenoid</span><span class="o">::</span><span class="n">Value</span><span class="o">::</span><span class="n">kOff</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleDoublePCM</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">frc</span><span class="o">::</span><span class="n">DoubleSolenoid</span><span class="o">::</span><span class="n">Value</span><span class="o">::</span><span class="n">kForward</span><span class="p">);</span><span class="w"></span>
+<span class="n">exampleDoublePCM</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">frc</span><span class="o">::</span><span class="n">DoubleSolenoid</span><span class="o">::</span><span class="n">Value</span><span class="o">::</span><span class="n">kReverse</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="toggling-solenoids">
+<h2>Toggling Solenoids<a class="headerlink" href="#toggling-solenoids" title="Permalink to this heading"></a></h2>
+<p>Solenoids can be switched from one output to the other (known as toggling) by using the <cite>.toggle()</cite> method.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since a DoubleSolenoid defaults to off, you will have to set it before it can be toggled.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Solenoid</span><span class="w"> </span><span class="n">exampleSingle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Solenoid</span><span class="p">(</span><span class="n">PneumaticsModuleType</span><span class="p">.</span><span class="na">CTREPCM</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">DoubleSolenoid</span><span class="w"> </span><span class="n">exampleDouble</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DoubleSolenoid</span><span class="p">(</span><span class="n">PneumaticsModuleType</span><span class="p">.</span><span class="na">CTREPCM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Initialize the DoubleSolenoid so it knows where to start.  Not required for single solenoids.</span><span class="w"></span>
+<span class="n">exampleDouble</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">kReverse</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_controller</span><span class="p">.</span><span class="na">getYButtonPressed</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">exampleSingle</span><span class="p">.</span><span class="na">toggle</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">exampleDouble</span><span class="p">.</span><span class="na">toggle</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc</span><span class="o">::</span><span class="n">Solenoid</span><span class="w"> </span><span class="n">exampleSingle</span><span class="p">{</span><span class="n">frc</span><span class="o">::</span><span class="n">PneumaticsModuleType</span><span class="o">::</span><span class="n">CTREPCM</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">DoubleSolenoid</span><span class="w"> </span><span class="n">exampleDouble</span><span class="p">{</span><span class="n">frc</span><span class="o">::</span><span class="n">PneumaticsModuleType</span><span class="o">::</span><span class="n">CTREPCM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Initialize the DoubleSolenoid so it knows where to start.  Not required for single solenoids.</span>
+<span class="n">exampleDouble</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">frc</span><span class="o">::</span><span class="n">DoubleSolenoid</span><span class="o">::</span><span class="n">Value</span><span class="o">::</span><span class="n">kReverse</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_controller</span><span class="p">.</span><span class="n">GetYButtonPressed</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="n">exampleSingle</span><span class="p">.</span><span class="n">Toggle</span><span class="p">();</span><span class="w"></span>
+<span class="w">   </span><span class="n">exampleDouble</span><span class="p">.</span><span class="n">Toggle</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="pressure-transducers">
+<h2>Pressure Transducers<a class="headerlink" href="#pressure-transducers" title="Permalink to this heading"></a></h2>
+<p>A pressure transducer is a sensor where analog voltage is proportial to the measured pressure.</p>
+<section id="pneumatic-hub">
+<h3>Pneumatic Hub<a class="headerlink" href="#pneumatic-hub" title="Permalink to this heading"></a></h3>
+<p>The Pneumatic Hub has analog inputs that may be used to read a pressure transducer using the Compressor class.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Compressor</span><span class="w"> </span><span class="n">phCompressor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Compressor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">PneumaticsModuleType</span><span class="p">.</span><span class="na">REVPH</span><span class="p">);</span><span class="w"></span>
+
+<span class="kt">double</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">phCompressor</span><span class="p">.</span><span class="na">getPressure</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;units/pressure.h&gt;</span><span class="cp"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">Compressor</span><span class="w"> </span><span class="n">phCompressor</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">PneumaticsModuleType</span><span class="o">::</span><span class="n">REVPH</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">units</span><span class="o">::</span><span class="n">pounds_per_square_inch_t</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">phCompressor</span><span class="p">.</span><span class="n">GetPressure</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="roborio">
+<h3>roboRIO<a class="headerlink" href="#roborio" title="Permalink to this heading"></a></h3>
+<p>A pressure transducer can be connected to the Analog Input ports on the roboRIO, and can be read by the <code class="docutils literal notranslate"><span class="pre">AnalogInput</span></code> or <code class="docutils literal notranslate"><span class="pre">AnalogPotentiometer</span></code> classes in WPILib.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-5-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-5-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.AnalogInput</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.AnalogPotentiometer</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// product-specific voltage-&gt;pressure conversion, see product manual</span><span class="w"></span>
+<span class="c1">// in this case, 250(V/5)-25</span><span class="w"></span>
+<span class="c1">// the scale parameter in the AnalogPotentiometer constructor is scaled from 1 instead of 5,</span><span class="w"></span>
+<span class="c1">// so if r is the raw AnalogPotentiometer output, the pressure is 250r-25</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">25</span><span class="p">;</span><span class="w"></span>
+<span class="n">AnalogPotentiometer</span><span class="w"> </span><span class="n">pressureTransducer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AnalogPotentiometer</span><span class="p">(</span><span class="cm">/* the AnalogIn port*/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// scaled values in psi units</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">psi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pressureTransducer</span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// product-specific voltage-&gt;pressure conversion, see product manual</span>
+<span class="c1">// in this case, 250(V/5)-25</span>
+<span class="c1">// the scale parameter in the AnalogPotentiometer constructor is scaled from 1 instead of 5,</span>
+<span class="c1">// so if r is the raw AnalogPotentiometer output, the pressure is 250r-25</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-25</span><span class="p">;</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">AnalogPotentiometer</span><span class="w"> </span><span class="n">pressureTransducer</span><span class="p">{</span><span class="cm">/* the AnalogIn port*/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">};</span><span class="w"></span>
+
+<span class="c1">// scaled values in psi units</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">psi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pressureTransducer</span><span class="p">.</span><span class="n">Get</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Pneumatics APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../sensors/index.html" class="btn btn-neutral float-right" title="Sensors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

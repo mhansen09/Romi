@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Adding Custom Components" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="RobotBuilder works very well for creating robot programs that just use WPILib for motors, controllers, and sensors. But for teams that use custom classes, RobotBuilder doesn’t have any support for ..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adding Custom Components &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../../_static/js/present.js"></script>
+        <script src="../../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../../_static/pid-tune.js"></script>
+        <script src="../../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../../_static/tabs.js"></script>
+        <script src="../../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Robot Simulation" href="../../robot-simulation/index.html" />
+    <link rel="prev" title="Setpoint Command" href="robotbuilder-setpoint-command.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">RobotBuilder</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">RobotBuilder - Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../writing-code/index.html">RobotBuilder - Writing the Code</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">RobotBuilder - Advanced</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-pidsubsystem-actuators.html">Using PIDSubsystem to Control Actuators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-writing-pidsubsystem-code.html">Writing the Code for a PIDSubsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robotbuilder-setpoint-command.html">Setpoint Command</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding Custom Components</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">RobotBuilder</a></li>
+          <li class="breadcrumb-item"><a href="index.html">RobotBuilder - Advanced</a></li>
+      <li class="breadcrumb-item active">Adding Custom Components</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/wpilib-tools/robotbuilder/advanced/robotbuilder-custom-components.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="adding-custom-components">
+<h1>Adding Custom Components<a class="headerlink" href="#adding-custom-components" title="Permalink to this heading"></a></h1>
+<p>RobotBuilder works very well for creating robot programs that just use WPILib for motors, controllers, and sensors. But for teams that use custom classes, RobotBuilder doesn’t have any support for those classes, so a few steps need to be taken to use them in RobotBuilder</p>
+<section id="custom-component-structure">
+<h2>Custom Component Structure<a class="headerlink" href="#custom-component-structure" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/custom-components-1.png" src="../../../../../_images/custom-components-1.png" />
+<p>Custom components all go in <code class="docutils literal notranslate"><span class="pre">~/wpilib/YYYY/Robotbuilder/extensions</span></code> where ~ is <code class="docutils literal notranslate"><span class="pre">C:\Users\Public</span></code> on Windows and YYYY is the FRC® year.</p>
+<p>There are seven files and one folder that are needed for a custom component. The folder contains the files describing the component and how to export it. It should have the same name as the component (e.g.”Kiwi Drive” for a kiwi drive controller, “Robot Drive 6” for a six-motor drive controller, etc.). The files should have the same names and extensions as the ones shown here. Other files can be in the folder along with these seven, but the seven must be present for RobotBuilder to recognize the custom component.</p>
+</section>
+<section id="palettedescription-yaml">
+<h2>PaletteDescription.yaml<a class="headerlink" href="#palettedescription-yaml" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/custom-components-2.png" src="../../../../../_images/custom-components-2.png" />
+<p>Line-by-line:</p>
+<ul class="simple">
+<li><p>!Component: Declares the beginning of a new component</p></li>
+<li><p>name: The name of the component. This is what will show up in the palette/tree – this should also be the same as the name of the containing folder</p></li>
+<li><p>type: the type of the component (these will be explained in depth later on)</p></li>
+<li><p>supports: a map of the amount of each type of component this can support. Motor controllers in RobotBuilder are all PIDOutputs, so a kiwi drive can support three PIDOutputs. If a component doesn’t support anything (such as sensors or motor controllers), just leave this line out</p></li>
+<li><p>help: a short string that gives a helpful message when one of these components is hovered over</p></li>
+<li><p>properties: a list of the properties of this component. In this kiwi drive example, there are three very similar properties, one for each motor. A ChildSelectionProperty allows the user to choose a component of the given type from the subcomponents of the one being edited (so here, they would show a dropdown asking for a PIDOutput - i.e. a motor controller - that has been added to the kiwi drive)</p></li>
+</ul>
+<p>The types of component RobotBuilder supports (these are case-sensitive):</p>
+<ul class="simple">
+<li><p>Command</p></li>
+<li><p>Subsystem</p></li>
+<li><p>PIDOutput (motor controller)</p></li>
+<li><p>PIDSource (sensor that implements PIDSource e.g. analog potentiometer, encoder)</p></li>
+<li><p>Sensor (sensor that does not implement PIDSource e.g. limit switch)</p></li>
+<li><p>Controller (robot drive, PID controller, etc.)</p></li>
+<li><p>Actuator (an output that is not a motor, e.g. solenoid, servo)</p></li>
+<li><p>Joystick</p></li>
+<li><p>Joystick Button</p></li>
+</ul>
+<section id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h3>
+<p>The properties relevant for a custom component:</p>
+<ul class="simple">
+<li><p>StringProperty: used when a component needs a string e.g. the name of the component</p></li>
+<li><p>BooleanProperty: used when a component needs a boolean value e.g. putting a button on the SmartDashboard</p></li>
+<li><p>DoubleProperty: used when a component needs a number value e.g. PID constantsChoicesProperty</p></li>
+<li><p>ChildSelectionProperty: used when you need to choose a child component e.g. motor controllers in a RobotDrive</p></li>
+<li><p>TypeSelectionProperty: used when you need to choose any component of the given type from anywhere in the program e.g. input and output for a PID command</p></li>
+</ul>
+<p>The fields for each property are described below:</p>
+<img alt="../../../../../_images/custom-components-3.png" src="../../../../../_images/custom-components-3.png" />
+</section>
+</section>
+<section id="validators-yaml">
+<h2>Validators.yaml<a class="headerlink" href="#validators-yaml" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/custom-components-4.png" src="../../../../../_images/custom-components-4.png" />
+<p>You may have noticed “KiwiDriveValidator” in the validators entry of each of the motor properties in PaletteDescription.yaml. It’s not a built-in validator, so it had to be defined in Validators.yaml. This example validator is very simple - it just makes sure that each of the named fields has a different value than the others.</p>
+<section id="built-in-validators-and-validator-types">
+<h3>Built-in Validators and Validator Types<a class="headerlink" href="#built-in-validators-and-validator-types" title="Permalink to this heading"></a></h3>
+<img alt="../../../../../_images/custom-components-5.png" src="../../../../../_images/custom-components-5.png" />
+<p>The built-in validators are very useful (especially the UniqueValidators for port/channel use), but sometimes a custom validator is needed, like in the previous step</p>
+<ul class="simple">
+<li><p>DistinctValidator: Makes sure the values of each of the given fields are unique</p></li>
+<li><p>ExistsValidator: Makes sure that a value has been set for the property using this validator</p></li>
+<li><p>UniqueValidator: Makes sure that the value for the property is unique globally for the given fields</p></li>
+<li><p>ListValidator: Makes sure that all the values in a list property are valid</p></li>
+</ul>
+</section>
+</section>
+<section id="c-export-yaml">
+<h2>C++ Export.yaml<a class="headerlink" href="#c-export-yaml" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/custom-components-6.png" src="../../../../../_images/custom-components-6.png" />
+<p>A line-by-line breakdown of the file:</p>
+<ul class="simple">
+<li><p>Kiwi Drive: the name of the component being exported. This is the same as the name set in PaletteDescription.yaml, and the name of the folder containing this file</p></li>
+<li><p>Defaults: provides some default values for includes needed by this component, the name of the class, a construction template, and more. The CustomComponent default adds an include for <code class="docutils literal notranslate"><span class="pre">Custom/${ClassName}.h</span></code> to every generated file that uses the component (e.g. <code class="docutils literal notranslate"><span class="pre">RobotDrive.h</span></code> would have <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;Custom/KiwiDrive.h</span></code> the top of the file)</p></li>
+<li><p>ClassName: the name of the custom class you’re adding.</p></li>
+<li><p>Construction: an instruction for how the component should be constructed. Variables will be replaced with their values (“${ClassName}” will be replaced with “KiwiDrive”), then macros will be evaluated (for example, <code class="docutils literal notranslate"><span class="pre">#variable($Name)</span></code> may be replaced with <code class="docutils literal notranslate"><span class="pre">drivebaseKiwiDrive</span></code>).</p></li>
+</ul>
+<p>This example expects a KiwiDrive class with the constructor</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">KiwiDrive</span><span class="p">(</span><span class="n">SpeedController</span><span class="p">,</span><span class="w"> </span><span class="n">SpeedController</span><span class="p">,</span><span class="w"> </span><span class="n">SpeedController</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If your team uses Java, this file can be empty.</p>
+</section>
+<section id="java-export-yaml">
+<h2>Java Export.yaml<a class="headerlink" href="#java-export-yaml" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/custom-components-7.png" src="../../../../../_images/custom-components-7.png" />
+<p>Very similar to the C++ export file; the only difference should be the Construction line. This example expects a KiwiDrive class with the constructor</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">KiwiDrive</span><span class="p">(</span><span class="n">SpeedController</span><span class="p">,</span><span class="w"> </span><span class="n">SpeedController</span><span class="p">,</span><span class="w"> </span><span class="n">SpeedController</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If your team uses C++, this file can be empty.</p>
+</section>
+<section id="using-macros-and-variables">
+<h2>Using Macros and Variables<a class="headerlink" href="#using-macros-and-variables" title="Permalink to this heading"></a></h2>
+<p>Macros are simple functions that RobotBuilder uses to turn variables into text that will be inserted into generated code. They always start with the “#” symbol, and have a syntax similar to functions: <code class="docutils literal notranslate"><span class="pre">&lt;macro_name&gt;(</span> <span class="pre">arg0,</span> <span class="pre">arg1,</span> <span class="pre">arg2,</span> <span class="pre">...)</span></code>. The only macro you’ll probably need to use is <code class="docutils literal notranslate"><span class="pre">#variable(</span> <span class="pre">component_name</span> <span class="pre">)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">#variable</span></code> takes a string, usually the a variable defined somewhere (i.e. “Name” is the name given to the component in RobotBuilder, such as “Arm Motor”), and turns it into the name of a variable defined in the generated code. For example, <code class="docutils literal notranslate"><span class="pre">#variable(&quot;Arm</span> <span class="pre">Motor&quot;)</span></code> results in the string <code class="docutils literal notranslate"><span class="pre">ArmMotor</span></code></p>
+<p>Variables are referenced by placing a dollar sign (“$”) in front of the variable name, which an optionally be placed inside curly braces to easily distinguish the variable from other text in the file. When the file is parsed, the dollar sign, variable name, and curly braces are replaced with the value of the variable (e.g. <code class="docutils literal notranslate"><span class="pre">${ClassName}</span></code> is replaced with <code class="docutils literal notranslate"><span class="pre">KiwiDrive</span></code>).</p>
+<p>Variables are either component properties (e.g. “Motor 1”, “Motor 2”, “Motor 3” in the kiwi drive example), or one of the following:</p>
+<ol class="arabic simple">
+<li><p>Short_Name: the name given to the component in the editor panel in RobotBuilder</p></li>
+<li><p>Name: the full name of the component. If the component is in a subsystem, this will be the short name appended to the name of the subsystem</p></li>
+<li><p>Export: The name of the file this component should be created in, if any. This should be “RobotMap” for components like actuators, controllers, and sensors; or “OI” for things like gamepads or other custom OI components. Note that the “CustomComponent” default will export to the RobotMap.</p></li>
+<li><p>Import: Files that need to be included or imported for this component to be able to be used.</p></li>
+<li><p>Declaration: an instruction, similar to Construction, for how to declare a variable of this component type. This is taken care of by the default “None”</p></li>
+<li><p>Construction: an instruction for how to create a new instance of this component</p></li>
+<li><p>LiveWindow: an instruction for how to add this component to the LiveWindow</p></li>
+<li><p>Extra: instructions for any extra functions or method calls for this component to behave correctly, such as encoders needing to set the encoding type.</p></li>
+<li><p>Prototype (C++ only): The prototype for a function to be created in the file the component is declared in, typically a getter in the OI class</p></li>
+<li><p>Function: A function to be created in the file the component is declared in, typically a getter in the OI class</p></li>
+<li><p>PID: An instruction for how to get the PID output of the component, if it has one (e.g. <code class="docutils literal notranslate"><span class="pre">#variable($Short_Name)-&gt;PIDGet()</span></code>)</p></li>
+<li><p>ClassName: The name of the class that the component represents (e.g. <code class="docutils literal notranslate"><span class="pre">KiwiDrive</span></code> or <code class="docutils literal notranslate"><span class="pre">Joystick</span></code>)</p></li>
+</ol>
+<p>If you have variables with spaces in the name (such as “Motor 1”, “Right Front Motor”, etc.), the spaces need to be replaced with underscores when using them in the export files.</p>
+</section>
+<section id="help-html">
+<h2>help.html<a class="headerlink" href="#help-html" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/custom-components-8.png" src="../../../../../_images/custom-components-8.png" />
+<p>A HTML file giving information on the component. It is better to have this be as detailed as possible, though it certainly isn’t necessary if the programmer(s) are familiar enough with the component, or if it’s so simple that there’s little point in a detailed description.</p>
+</section>
+<section id="config-txt">
+<h2>config.txt<a class="headerlink" href="#config-txt" title="Permalink to this heading"></a></h2>
+<img alt="../../../../../_images/custom-components-9.png" src="../../../../../_images/custom-components-9.png" />
+<p>A configuration file to hold miscellaneous information about the component. Currently, this only has the section of the palette to put the component in.</p>
+<p>The sections of the palette (these are case sensitive):</p>
+<ul class="simple">
+<li><p>Subsystems</p></li>
+<li><p>Controllers</p></li>
+<li><p>Sensors</p></li>
+<li><p>Actuators</p></li>
+<li><p>Pneumatics</p></li>
+<li><p>OI</p></li>
+<li><p>Commands</p></li>
+</ul>
+</section>
+<section id="icon-png">
+<h2>icon.png<a class="headerlink" href="#icon-png" title="Permalink to this heading"></a></h2>
+<p>The icon that shows up in the palette and the help page. This should be a 64x64 <code class="docutils literal notranslate"><span class="pre">.png</span></code> file.</p>
+<p>It should use the color scheme and general style of the section it’s in to avoid visual clutter, but this is entirely optional. Photoshop <code class="docutils literal notranslate"><span class="pre">.psd</span></code> files of the icons and backgrounds are in <a class="reference external" href="https://github.com/wpilibsuite/RobotBuilder/tree/main/src/main/icons/icons">src/main/icons/icons</a> and png files of the icons and backgrounds are in <a class="reference external" href="https://github.com/wpilibsuite/RobotBuilder/tree/main/src/main/resources/icons">src/main/resources/icons</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="robotbuilder-setpoint-command.html" class="btn btn-neutral float-left" title="Setpoint Command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../robot-simulation/index.html" class="btn btn-neutral float-right" title="Robot Simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

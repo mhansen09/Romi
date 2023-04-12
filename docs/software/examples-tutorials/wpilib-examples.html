@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="WPILib Example Projects" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/examples-tutorials/wpilib-examples.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="WPILib example projects demonstrate a large number of library features and use patterns. Projects range from simple demonstrations of a single functionality to complete, competition-capable robot p..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/examples-tutorials/wpilib-examples.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/examples-tutorials/wpilib-examples.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/examples-tutorials/wpilib-examples.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/examples-tutorials/wpilib-examples.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/examples-tutorials/wpilib-examples.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/examples-tutorials/wpilib-examples.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/examples-tutorials/wpilib-examples.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/examples-tutorials/wpilib-examples.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WPILib Example Projects &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/examples-tutorials/wpilib-examples.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Third Party Example Projects" href="third-party-examples.html" />
+    <link rel="prev" title="Event-Based Programming With EventLoop" href="../convenience-features/event-based.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">WPILib Example Projects</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/examples-tutorials/wpilib-examples.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wpilib-example-projects">
+<h1>WPILib Example Projects<a class="headerlink" href="#wpilib-example-projects" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While every attempt is made to keep WPILib examples functional, they are <em>not</em> intended to be used “as-is.”  At the very least, robot-specific constants will need to be changed for the code to work on a user robot.  Many empirical constants have their values “faked” for demonstration purposes.  Users are strongly encouraged to write their own code (from scratch or from an existing template) rather than copy example code.</p>
+</div>
+<p>WPILib example projects demonstrate a large number of library features and use patterns.  Projects range from simple demonstrations of a single functionality to complete, competition-capable robot programs. All of these examples are available in VS Code by entering <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd>, then selecting <cite>WPILib: Create a new project</cite> and choosing example.</p>
+<img alt="../../../_images/create-new-project.png" src="../../../_images/create-new-project.png" />
+<section id="basic-examples">
+<h2>Basic Examples<a class="headerlink" href="#basic-examples" title="Permalink to this heading"></a></h2>
+<p>These examples demonstrate basic/minimal robot functionality.  They are useful for beginning teams who are gaining initial familiarity with robot programming, but are highly limited in functionality.</p>
+<ul class="simple">
+<li><p><strong>Arcade Drive</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/arcadedrive">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/ArcadeDrive">C++</a>): Demonstrates a simple differential drive implementation using “arcade”-style controls through the <code class="docutils literal notranslate"><span class="pre">DifferentialDrive</span></code> class.</p></li>
+<li><p><strong>Arcade Drive Xbox Controller</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/arcadedrivexboxcontroller">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/ArcadeDriveXboxController">C++</a>): Demonstrates the same functionality seen in the previous example, except using an <code class="docutils literal notranslate"><span class="pre">XboxController</span></code> instead of an ordinary joystick.</p></li>
+<li><p><strong>Getting Started</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/gettingstarted">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/GettingStarted">C++</a>): Demonstrates a simple autonomous routine that drives forwards for two seconds at half speed.</p></li>
+<li><p><strong>Mecanum Drive</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/mecanumdrive">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/MecanumDrive">C++</a>): Demonstrates a simple mecanum drive implementation using the <code class="docutils literal notranslate"><span class="pre">MecanumDrive</span></code> class.</p></li>
+<li><p><strong>Motor Controller</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/motorcontrol">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/MotorControl">C++</a>): Demonstrates how to control the output of a motor with a joystick with an encoder to read motor position.</p></li>
+<li><p><strong>Simple Vision</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/quickvision">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/QuickVision">C++</a>): Demonstrates how to stream video from a USB camera to the dashboard.</p></li>
+<li><p><strong>Relay</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/relay">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/Relay">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">Relay</span></code> class to control a relay output with a set of joystick buttons.</p></li>
+<li><p><strong>Solenoids</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/solenoid">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/Solenoid">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">Solenoid</span></code> and <code class="docutils literal notranslate"><span class="pre">DoubleSolenoid</span></code> classes to control solenoid outputs with a set of joystick buttons.</p></li>
+<li><p><strong>TankDrive</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/tankdrive">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/TankDrive">C++</a>): Demonstrates a simple differential drive implementation using “tank”-style controls through the <code class="docutils literal notranslate"><span class="pre">DifferentialDrive</span></code> class.</p></li>
+<li><p><strong>Tank Drive Xbox Controller</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/tankdrivexboxcontroller">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/TankDriveXboxController">C++</a>): Demonstrates the same functionality seen in the previous example, except using an <code class="docutils literal notranslate"><span class="pre">XboxController</span></code> instead of an ordinary joystick.</p></li>
+</ul>
+</section>
+<section id="control-examples">
+<h2>Control Examples<a class="headerlink" href="#control-examples" title="Permalink to this heading"></a></h2>
+<p>These examples demonstrate WPILib implementations of common robot controls.  Sensors may be present, but are not the emphasized concept of these examples.</p>
+<ul class="simple">
+<li><p><strong>DifferentialDriveBot</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/differentialdrivebot">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/DifferentialDriveBot">C++</a>): Demonstrates an advanced differential drive implementation, including encoder-and-gyro odometry through the <code class="docutils literal notranslate"><span class="pre">DifferentialDriveOdometry</span></code> class, and composition with PID velocity control through the <code class="docutils literal notranslate"><span class="pre">DifferentialDriveKinematics</span></code> and <code class="docutils literal notranslate"><span class="pre">PIDController</span></code> classes.</p></li>
+<li><p><strong>Elevator with profiled PID controller</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/elevatorprofiledpid">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/ElevatorProfiledPID">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">ProfiledPIDController</span></code> class to control the position of an elevator mechanism.</p></li>
+<li><p><strong>Elevator with trapezoid profiled PID</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/elevatortrapezoidprofile">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/ElevatorTrapezoidProfile">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">TrapezoidProfile</span></code> class in conjunction with a “smart motor controller” to control the position of an elevator mechanism.</p></li>
+<li><p><strong>Gyro Mecanum</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/gyromecanum">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/GyroMecanum">C++</a>): Demonstrates field-oriented control of a mecanum robot through the <code class="docutils literal notranslate"><span class="pre">MecanumDrive</span></code> class in conjunction with a gyro.</p></li>
+<li><p><strong>MecanumBot</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/mecanumbot">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/MecanumBot">C++</a>): Demonstrates an advanced mecanum drive implementation, including encoder-and-gyro odometry through the <code class="docutils literal notranslate"><span class="pre">MecanumDriveOdometry</span></code> class, and composition with PID velocity control through the <code class="docutils literal notranslate"><span class="pre">MecanumDriveKinematics</span></code> and <code class="docutils literal notranslate"><span class="pre">PIDController</span></code> classes.</p></li>
+<li><p><strong>PotentiometerPID</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/potentiometerpid">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/PotentiometerPID">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">PIDController</span></code> class and a potentiometer to control the position of an elevator mechanism.</p></li>
+<li><p><strong>RamseteController</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/ramsetecontroller">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/RamseteController">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">RamseteController</span></code> class to follow a trajectory during the autonomous period.</p></li>
+<li><p><strong>SwerveBot</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/swervebot">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/SwerveBot">C++</a>): Demonstrates an advanced swerve drive implementation, including encoder-and-gyro odometry through the <code class="docutils literal notranslate"><span class="pre">SwerveDriveOdometry</span></code> class, and composition with PID position and velocity control through the <code class="docutils literal notranslate"><span class="pre">SwerveDriveKinematics</span></code> and <code class="docutils literal notranslate"><span class="pre">PIDController</span></code> classes.</p></li>
+<li><p><strong>UltrasonicPID</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/ultrasonicpid">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/UltrasonicPID">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">PIDController</span></code> class in conjunction with an ultrasonic sensor to drive to a set distance from an object.</p></li>
+</ul>
+</section>
+<section id="sensor-examples">
+<h2>Sensor Examples<a class="headerlink" href="#sensor-examples" title="Permalink to this heading"></a></h2>
+<p>These examples demonstrate sensor reading and data processing using WPILib.  Mechanisms control may be present, but is not the emphasized concept of these examples.</p>
+<ul class="simple">
+<li><p><strong>Axis Camera Sample</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/axiscamera">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/AxisCameraSample">C++</a>): Demonstrates the use of OpenCV and an Axis Netcam to overlay a rectangle on a captured video feed and stream it to the dashboard.</p></li>
+<li><p><strong>Power Distribution CAN Monitoring</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/canpdp">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/CANPDP">C++</a>): Demonstrates obtaining sensor information from a Power Distribution module over CAN using the <code class="docutils literal notranslate"><span class="pre">PowerDistribution</span></code> class.</p></li>
+<li><p><strong>Duty Cycle Encoder</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/dutycycleencoder">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/DutyCycleEncoder">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">DutyCycleEncoder</span></code> class to read values from a PWM-type absolute encoder.</p></li>
+<li><p><strong>DutyCycleInput</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/dutycycleinput">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/DutyCycleInput">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">DutyCycleInput</span></code> class to read the frequency and fractional duty cycle of a PWM input.</p></li>
+<li><p><strong>Encoder</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/encoder">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/Encoder">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">Encoder</span></code> class to read values from a quadrature encoder.</p></li>
+<li><p><strong>Gyro</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/gyro">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/Gyro">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">AnalogGyro</span></code> class to measure robot heading and stabilize driving.</p></li>
+<li><p><strong>Intermediate Vision</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/intermediatevision">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/IntermediateVision">C++</a>): Demonstrates the use of OpenCV and a USB camera to overlay a rectangle on a captured video feed and stream it to the dashboard.</p></li>
+<li><p><strong>AprilTagsVision</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/apriltagsvision">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/AprilTagsVision">C++</a>): Demonstrates on-roboRIO detection of AprilTags using an attached USB camera.</p></li>
+<li><p><strong>Ultrasonic</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/ultrasonic">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/Ultrasonic">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">Ultrasonic</span></code> class to read data from an ultrasonic sensor in conjunction with the <code class="docutils literal notranslate"><span class="pre">MedianFilter</span></code> class to reduce signal noise.</p></li>
+</ul>
+</section>
+<section id="command-based-examples">
+<h2>Command-Based Examples<a class="headerlink" href="#command-based-examples" title="Permalink to this heading"></a></h2>
+<p>These examples demonstrate the use of the <a class="reference internal" href="../commandbased/what-is-command-based.html#what-is-command-based-programming"><span class="std std-ref">Command-Based framework</span></a>.</p>
+<ul class="simple">
+<li><p><strong>ArmBot</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/armbot">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/ArmBot">C++</a>): Demonstrates the use of a <code class="docutils literal notranslate"><span class="pre">ProfiledPIDSubsystem</span></code> to control a robot arm.</p></li>
+<li><p><strong>ArmBotOffboard</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/armbotoffboard">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/ArmBotOffboard">C++</a>): Demonstrates the use of a <code class="docutils literal notranslate"><span class="pre">TrapezoidProfileSubsystem</span></code> in conjunction with a “smart motor controller” to control a robot arm.</p></li>
+<li><p><strong>DriveDistanceOffboard</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/drivedistanceoffboard">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/DriveDistanceOffboard">C++</a>): Demonstrates the use of a <code class="docutils literal notranslate"><span class="pre">TrapezoidProfileCommand</span></code> in conjunction with a “smart motor controller” to drive forward by a set distance with a trapezoidal motion profile.</p></li>
+<li><p><strong>FrisbeeBot</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/frisbeebot">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/Frisbeebot">C++</a>): A complete set of robot code for a simple frisbee-shooting robot typical of the 2013 FRC® game <em>Ultimate Ascent</em>.  Demonstrates simple PID control through the <code class="docutils literal notranslate"><span class="pre">PIDSubystem</span></code> class.</p></li>
+<li><p><strong>Gears Bot</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/gearsbot">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/GearsBot">C++</a>): A complete set of robot code for the WPI demonstration robot, GearsBot.</p></li>
+<li><p><strong>Gyro Drive Commands</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/gyrodrivecommands">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/GyroDriveCommands">C++</a>): Demonstrates the use of <code class="docutils literal notranslate"><span class="pre">PIDCommand</span></code> and <code class="docutils literal notranslate"><span class="pre">ProfiledPIDCommand</span></code> in conjunction with a gyro to turn a robot to face a specified heading and to stabilize heading while driving.</p></li>
+<li><p><strong>Inlined Hatchbot</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/hatchbotinlined">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/HatchbotInlined">C++</a>): A complete set of robot code for a simple hatch-delivery bot typical of the 2019 FRC game <em>Destination: Deep Space</em>.  Commands are written in an “inline” style, in which explicit subclassing of <code class="docutils literal notranslate"><span class="pre">Command</span></code> is avoided.</p></li>
+<li><p><strong>Traditional Hatchbot</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/hatchbottraditional">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/HatchbotTraditional">C++</a>): A complete set of robot code for a simple hatch-delivery bot typical of the 2019 FRC game <em>Destination: Deep Space</em>.  Commands are written in a “traditional” style, in which subclasses of <code class="docutils literal notranslate"><span class="pre">Command</span></code> are written for each robot action.</p></li>
+<li><p><strong>MecanumControllerCommand</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/mecanumcontrollercommand">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/MecanumControllerCommand">C++</a>): Demonstrates trajectory generation and following with a mecanum drive using the <code class="docutils literal notranslate"><span class="pre">TrajectoryGenerator</span></code> and <code class="docutils literal notranslate"><span class="pre">MecanumControllerCommand</span></code> classes.</p></li>
+<li><p><strong>RamseteCommand</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/ramsetecommand">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/RamseteCommand">C++</a>): Demonstrates trajectory generation and following with a differential drive using the <code class="docutils literal notranslate"><span class="pre">TrajectoryGenerator</span></code> and <code class="docutils literal notranslate"><span class="pre">RamseteCommand</span></code> classes.  A matching step-by-step tutorial can be found <a class="reference internal" href="../pathplanning/trajectory-tutorial/index.html#trajectory-tutorial"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>Select Command Example</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/selectcommand">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/SelectCommand">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">SelectCommand</span></code> class to run one of a selection of commands depending on a runtime-evaluated condition.</p></li>
+<li><p><strong>SwerveControllerCommand</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/swervecontrollercommand">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/SwerveControllerCommand">C++</a>): Demonstrates trajectory generation and following with a swerve drive using the <code class="docutils literal notranslate"><span class="pre">TrajectoryGenerator</span></code> and <code class="docutils literal notranslate"><span class="pre">SwerveControllerCommand</span></code> classes.</p></li>
+</ul>
+</section>
+<section id="state-space-examples">
+<h2>State-Space Examples<a class="headerlink" href="#state-space-examples" title="Permalink to this heading"></a></h2>
+<p>These examples demonstrate the use of the <a class="reference internal" href="../advanced-controls/state-space/state-space-intro.html#introduction-to-state-space-control"><span class="std std-ref">State-Space Control</span></a>.</p>
+<ul class="simple">
+<li><p><strong>StateSpaceFlywheel</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/statespaceflywheel">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/StateSpaceFlywheel">C++</a>): Demonstrates state-space control of a flywheel.</p></li>
+<li><p><strong>StateSpaceFlywheelSysId</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/statespaceflywheelsysid">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/StateSpaceFlywheelSysId">C++</a>): Demonstrates state-space control using SysId’s System Identification for controlling a flywheel.</p></li>
+<li><p><strong>StateSpaceElevator</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/statespaceelevator">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/StateSpaceElevator">C++</a>): Demonstrates state-space control of an elevator.</p></li>
+<li><p><strong>StateSpaceArm</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/statespacearm">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/StateSpaceArm">C++</a>): Demonstrates state-space control of an Arm.</p></li>
+<li><p><strong>StateSpaceDriveSimulation</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/statespacedifferentialdrivesimulation">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/StateSpaceDifferentialDriveSimulation">C++</a>): Demonstrates state-space control of a differential drivetrain in combination with a RAMSETE path following controller and Field2d class.</p></li>
+</ul>
+</section>
+<section id="simulation-physics-examples">
+<h2>Simulation Physics Examples<a class="headerlink" href="#simulation-physics-examples" title="Permalink to this heading"></a></h2>
+<p>These examples demonstrate the use of the physics simulation.</p>
+<ul class="simple">
+<li><p><strong>ElevatorSimulation</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/elevatorsimulation">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/ElevatorSimulation">C++</a>): Demonstrates the use of physics simulation with a simple elevator.</p></li>
+<li><p><strong>ArmSimulation</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/armsimulation">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/ArmSimulation">C++</a>): Demonstrates the use of physics simulation with a simple single-jointed arm.</p></li>
+<li><p><strong>StateSpaceDriveSimulation</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/statespacedifferentialdrivesimulation">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/StateSpaceDifferentialDriveSimulation">C++</a>): Demonstrates state-space control of a differential drivetrain in combination with a RAMSETE path following controller and Field2d class.</p></li>
+<li><p><strong>SimpleDifferentialDriveSimulation</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/simpledifferentialdrivesimulation">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/SimpleDifferentialDriveSimulation">C++</a>): A barebones example of a basic drivetrain that can be used in simulation.</p></li>
+</ul>
+</section>
+<section id="miscellaneous-examples">
+<h2>Miscellaneous Examples<a class="headerlink" href="#miscellaneous-examples" title="Permalink to this heading"></a></h2>
+<p>These examples demonstrate miscellaneous WPILib functionality that does not fit into any of the above categories.</p>
+<ul class="simple">
+<li><p><strong>Addressable LED</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/addressableled">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/AddressableLED">C++</a>): Demonstrates the use of the <code class="docutils literal notranslate"><span class="pre">AddressableLED</span></code> class to control RGB LEDs for robot decoration and/or driver feedback.</p></li>
+<li><p><strong>DMA</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/dma/">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/DMA">C++</a>): Demonstrates the use of DMA (Direct Memory Access) to read from sensors without using the RoboRIO’s CPU.</p></li>
+<li><p><strong>HAL</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/HAL">C++</a>): Demonstrates the use of HAL (Hardware Abstraction Layer) without the use of the rest of WPILib. This example is for advanced users (C++ only).</p></li>
+<li><p><strong>HID Rumble</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/hidrumble">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/HidRumble">C++</a>): Demonstrates the use of the “rumble” functionality for tactile feedback on supported HIDs (such as XboxControllers).</p></li>
+<li><p><strong>Shuffleboard</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/shuffleboard">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/ShuffleBoard">C++</a>): Demonstrates configuring tab/widget layouts on the “Shuffleboard” dashboard from robot code through the <code class="docutils literal notranslate"><span class="pre">Shuffleboard</span></code> class’s fluent builder API.</p></li>
+<li><p><strong>RomiReference</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/romireference">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/RomiReference">C++</a>): A command based example of how to run the <a class="reference internal" href="../../romi-robot/index.html"><span class="doc">Romi robot</span></a>.</p></li>
+<li><p><strong>Mechanism2d</strong> (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/mechanism2d">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/Mechanism2d">C++</a>): A simple example of using <a class="reference internal" href="../dashboards/glass/mech2d-widget.html"><span class="doc">Mechanism2d</span></a>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../convenience-features/event-based.html" class="btn btn-neutral float-left" title="Event-Based Programming With EventLoop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="third-party-examples.html" class="btn btn-neutral float-right" title="Third Party Example Projects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

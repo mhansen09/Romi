@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Status Light Quick Reference" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/hardware/hardware-basics/status-lights-ref.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Many of the components of the FRC ® Control System have indicator lights that can be used to quickly diagnose problems with your robot. This guide shows each of the hardware components and describe..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/hardware/hardware-basics/status-lights-ref.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/hardware/hardware-basics/status-lights-ref.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/hardware/hardware-basics/status-lights-ref.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/hardware/hardware-basics/status-lights-ref.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/hardware/hardware-basics/status-lights-ref.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/hardware/hardware-basics/status-lights-ref.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/hardware/hardware-basics/status-lights-ref.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/hardware/hardware-basics/status-lights-ref.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Status Light Quick Reference &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/hardware/hardware-basics/status-lights-ref.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Robot Preemptive Troubleshooting" href="preemptive-troubleshooting.html" />
+    <link rel="prev" title="Wiring Pneumatics" href="wiring-pneumatics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Hardware - Basics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiring-best-practices.html">Wiring Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="can-wiring-basics.html">CAN Wiring Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wiring-pneumatics.html">Wiring Pneumatics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Status Light Quick Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preemptive-troubleshooting.html">Robot Preemptive Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robot-battery.html">Robot Battery Basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Hardware - Basics</a></li>
+      <li class="breadcrumb-item active">Status Light Quick Reference</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/hardware/hardware-basics/status-lights-ref.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="status-light-quick-reference">
+<h1>Status Light Quick Reference<a class="headerlink" href="#status-light-quick-reference" title="Permalink to this heading"></a></h1>
+<p>Many of the components of the FRC® Control System have indicator lights that can be used to quickly diagnose problems with your robot. This guide shows each of the hardware components and describes the meaning of the indicators. Photos and information from Innovation FIRST and Cross the Road Electronics.</p>
+<section id="robot-signal-light-rsl">
+<h2>Robot Signal Light (RSL)<a class="headerlink" href="#robot-signal-light-rsl" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/rsl.svg"><img alt="Robot Signal Light with wiring." src="../../../_images/rsl.svg" width="400" /></a>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Solid ON</p></td>
+<td><p>Robot On and Disabled</p></td>
+</tr>
+<tr class="row-even"><td><p>Blinking</p></td>
+<td><p>Robot On and Enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>Off</p></td>
+<td><p>Robot Off, roboRIO not powered or RSL not wired properly</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="roborio">
+<h2>roboRIO<a class="headerlink" href="#roborio" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/roborio-status-lights.svg"><img alt="roboRIO status lights highlighted." src="../../../_images/roborio-status-lights.svg" width="400" /></a>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td rowspan="3"><p><strong>Power</strong></p></td>
+<td><p>Green</p></td>
+<td colspan="2"><p>Power is good</p></td>
+</tr>
+<tr class="row-even"><td><p>Amber</p></td>
+<td colspan="2"><p>Brownout protection tripped, outputs disabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>Red</p></td>
+<td colspan="2"><p>Power fault, check user rails for short circuit</p></td>
+</tr>
+<tr class="row-even"><td rowspan="5"><p><strong>Status</strong></p></td>
+<td colspan="3"><p>On while the controller is booting, then should turn off</p></td>
+</tr>
+<tr class="row-odd"><td><p>2 blinks</p></td>
+<td colspan="2"><p>Software error, reimage roboRIO</p></td>
+</tr>
+<tr class="row-even"><td><p>3 blinks</p></td>
+<td colspan="2"><p>Safe Mode, restart roboRIO, reimage if not resolved</p></td>
+</tr>
+<tr class="row-odd"><td><p>4 blinks</p></td>
+<td colspan="2"><p>Software crashed twice without rebooting, reboot roboRIO, reimage if not resolved</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>Constant flash or stays solid on</p></td>
+<td><p>Unrecoverable error</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Radio</strong></p></td>
+<td colspan="3"><p>Not currently implemented</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p><strong>Comm</strong></p></td>
+<td><p>Off</p></td>
+<td colspan="2"><p>No Communication</p></td>
+</tr>
+<tr class="row-odd"><td><p>Red Solid</p></td>
+<td colspan="2"><p>Communication with DS, but no user code running</p></td>
+</tr>
+<tr class="row-even"><td><p>Red Blinking</p></td>
+<td colspan="2"><p>E-stop triggered</p></td>
+</tr>
+<tr class="row-odd"><td><p>Green Solid</p></td>
+<td colspan="2"><p>Good communications with DS</p></td>
+</tr>
+<tr class="row-even"><td rowspan="4"><p><strong>Mode</strong></p></td>
+<td><p>Off</p></td>
+<td colspan="2"><p>Outputs disabled (robot in Disabled, brown-out, etc.)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Orange</p></td>
+<td colspan="2"><p>Autonomous Enabled</p></td>
+</tr>
+<tr class="row-even"><td><p>Green</p></td>
+<td colspan="2"><p>Teleop Enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>Red</p></td>
+<td colspan="2"><p>Test Enabled</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RSL</strong></p></td>
+<td colspan="3"><p><a class="reference external" href="#robot-signal-light-rsl">See above</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="openmesh-radio">
+<h2>OpenMesh Radio<a class="headerlink" href="#openmesh-radio" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/openmesh-radio-status-lights.png"><img alt="Radio with the Wifi, Eth Link (2), and Power ports labeled." src="../../../_images/openmesh-radio-status-lights.png" style="width: 600px;" /></a>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>Power</p></td>
+<td><p>Blue</p></td>
+<td><p>On or Powering up</p></td>
+</tr>
+<tr class="row-even"><td><p>Blue Blinking</p></td>
+<td><p>Powering Up</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Eth Link</p></td>
+<td><p>Blue</p></td>
+<td><p>Link up</p></td>
+</tr>
+<tr class="row-even"><td><p>Blue Blinking</p></td>
+<td><p>Traffic Present</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><p>WiFi</p></td>
+<td><p>Off</p></td>
+<td><p>Bridge mode,
+Unlinked or non-FRC firmware</p></td>
+</tr>
+<tr class="row-even"><td><p>Red</p></td>
+<td><p>AP, Unlinked</p></td>
+</tr>
+<tr class="row-odd"><td><p>Yellow/Orange</p></td>
+<td><p>AP, Linked</p></td>
+</tr>
+<tr class="row-even"><td><p>Green</p></td>
+<td><p>Bridge mode, Linked</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="power-distribution-panel">
+<h2>Power Distribution Panel<a class="headerlink" href="#power-distribution-panel" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/pdp-status-lights.svg"><img alt="The location of the &quot;STAT&quot; and &quot;COMM&quot; lights on the PDP." src="../../../_images/pdp-status-lights.svg" width="600" /></a>
+<section id="pdp-status-comm-leds">
+<h3>PDP Status/Comm LEDs<a class="headerlink" href="#pdp-status-comm-leds" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED</p></th>
+<th class="head"><p>Strobe</p></th>
+<th class="head"><p>Slow</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Green</p></td>
+<td><p>No Fault - Robot Enabled</p></td>
+<td><p>No Fault - Robot Disabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>Orange</p></td>
+<td><p>NA</p></td>
+<td><p>Sticky Fault</p></td>
+</tr>
+<tr class="row-even"><td><p>Red</p></td>
+<td><p>NA</p></td>
+<td><p>No CAN Comm</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If a PDP LED is showing more than one color, see the PDP LED special states table below. For more information on resolving PDP faults see the PDP User Manual.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the No CAN Comm fault will occur if the PDP cannot communicate with the roboRIO via CAN Bus.</p>
+</div>
+</section>
+<section id="pdp-special-states">
+<h3>PDP Special States<a class="headerlink" href="#pdp-special-states" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED Colors</p></th>
+<th class="head"><p>Problem</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Red/Orange</p></td>
+<td><p>Damaged Hardware</p></td>
+</tr>
+<tr class="row-odd"><td><p>Green/Orange</p></td>
+<td><p>In Bootloader</p></td>
+</tr>
+<tr class="row-even"><td><p>No LED</p></td>
+<td><p>No Power/ Incorrect Polarity</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="power-distribution-hub">
+<h2>Power Distribution Hub<a class="headerlink" href="#power-distribution-hub" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/power-distribution-hub1.png"><img alt="REV Power Distribution Hub with Status LED, and Channel LEDs Highlighted" src="../../../_images/power-distribution-hub1.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These led patterns only apply to firmware version 21.1.7 and later</p>
+</div>
+</section>
+<section id="pdh-status-led">
+<h2>PDH Status LED<a class="headerlink" href="#pdh-status-led" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>LED Color</p></td>
+<td><p>Status</p></td>
+</tr>
+<tr class="row-even"><td><p>Blue Solid</p></td>
+<td><p>Device on but no communication established</p></td>
+</tr>
+<tr class="row-odd"><td><p>Green Solid</p></td>
+<td><p>Main Communication with roboRIO established</p></td>
+</tr>
+<tr class="row-even"><td><p>Magenta Blinking</p></td>
+<td><p>Keep Alive Timeout</p></td>
+</tr>
+<tr class="row-odd"><td><p>Solid Cyan</p></td>
+<td><p>Secondary Heartbeat (Connected to REV Hardware Client)</p></td>
+</tr>
+<tr class="row-even"><td><p>Orange/Blue Blinking</p></td>
+<td><p>Low Battery</p></td>
+</tr>
+<tr class="row-odd"><td><p>Orange/Yellow Blinking</p></td>
+<td><p>CAN Fault</p></td>
+</tr>
+<tr class="row-even"><td><p>Orange/Cyan Blinking</p></td>
+<td><p>Hardware Fault</p></td>
+</tr>
+<tr class="row-odd"><td><p>Orange/Red Blinking</p></td>
+<td><p>Fail Safe</p></td>
+</tr>
+<tr class="row-even"><td><p>Orange/Magenta Blinking</p></td>
+<td><p>Device Over Current</p></td>
+</tr>
+</tbody>
+</table>
+<section id="channel-leds">
+<h3>Channel LEDs<a class="headerlink" href="#channel-leds" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>LED Color</p></td>
+<td><p>Status</p></td>
+</tr>
+<tr class="row-even"><td><p>Off</p></td>
+<td><p>Channel has voltage and is operating as expected</p></td>
+</tr>
+<tr class="row-odd"><td><p>Red Solid</p></td>
+<td><p>Channel has NO voltage and there is an active fault. Check for tripped or missing circuit breaker / fuse</p></td>
+</tr>
+<tr class="row-even"><td><p>Red Blinking</p></td>
+<td><p>Sticky fault on the channel. Check for tripped circuit breaker / fuse.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="voltage-regulator-module">
+<h2>Voltage Regulator Module<a class="headerlink" href="#voltage-regulator-module" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/vrm-status-lights.svg"><img alt="Highlights the position of the 12V and 5V status lights." src="../../../_images/vrm-status-lights.svg" width="400" /></a>
+<p>The status LEDs on the VRM indicate the state of the two power supplies. If the supply is functioning properly the LED should be lit bright green. If the LED is not lit or is dim, the output may be shorted or drawing too much current.</p>
+</section>
+<section id="pneumatics-control-module-pcm">
+<h2>Pneumatics Control Module (PCM)<a class="headerlink" href="#pneumatics-control-module-pcm" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/pcm-status-lights.svg"><img alt="Highlights both the &quot;Status&quot; and &quot;Comp&quot; lights in the middle and the individual channel lights on the sides." src="../../../_images/pcm-status-lights.svg" width="400" /></a>
+<section id="pcm-status-led">
+<h3>PCM Status LED<a class="headerlink" href="#pcm-status-led" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED</p></th>
+<th class="head"><p>Strobe</p></th>
+<th class="head"><p>Slow</p></th>
+<th class="head"><p>Long</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Green</p></td>
+<td><p>No Fault
+Robot Enabled</p></td>
+<td><p>Sticky Fault</p></td>
+<td><p>NA</p></td>
+</tr>
+<tr class="row-odd"><td><p>Orange</p></td>
+<td><p>NA</p></td>
+<td><p>Sticky Fault</p></td>
+<td><p>NA</p></td>
+</tr>
+<tr class="row-even"><td><p>Red</p></td>
+<td><p>NA</p></td>
+<td><p>No CAN Comm or Solenoid Fault
+(Blinks Solenoid Index)</p></td>
+<td><p>Compressor Fault</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If a PCM LED is showing more than one color, see the PCM LED special states table below. For more information on resolving PCM faults see the PCM User Manual.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the No CAN Comm fault will not occur only if the device cannot communicate with any other device, if the PCM and PDP can communicate with each other, but not the roboRIO.</p>
+</div>
+</section>
+<section id="pcm-led-special-states-table">
+<h3>PCM LED Special States Table<a class="headerlink" href="#pcm-led-special-states-table" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED</p></th>
+<th class="head"><p>Problems</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Red/Orange</p></td>
+<td><p>Damaged Hardware</p></td>
+</tr>
+<tr class="row-odd"><td><p>Green/Orange</p></td>
+<td><p>In Bootloader</p></td>
+</tr>
+<tr class="row-even"><td><p>No LED</p></td>
+<td><p>No Power/Incorrect Polarity</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pcm-comp-led">
+<h3>PCM Comp LED<a class="headerlink" href="#pcm-comp-led" title="Permalink to this heading"></a></h3>
+<p>This is the Compressor LED. This LED is green when the compressor output is active (compressor is currently on) and off when the compressor output is not active.</p>
+</section>
+<section id="pcm-solenoid-channel-leds">
+<h3>PCM Solenoid Channel LEDs<a class="headerlink" href="#pcm-solenoid-channel-leds" title="Permalink to this heading"></a></h3>
+<p>These LEDs are lit red if the Solenoid channel is enabled and not lit if it is disabled.</p>
+</section>
+</section>
+<section id="pneumatic-hub">
+<h2>Pneumatic Hub<a class="headerlink" href="#pneumatic-hub" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/pneumatic-hub1.png"><img alt="REV Pneumatic Hub with Status LED, Compressor LED, and Solenoid LEDs highlighted" src="../../../_images/pneumatic-hub1.png" style="width: 400px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These led patterns only apply to firmware version 21.1.7 and later</p>
+</div>
+<section id="ph-status-led">
+<h3>PH Status LED<a class="headerlink" href="#ph-status-led" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED Color</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Blue Solid</p></td>
+<td><p>Device on but no communication established</p></td>
+</tr>
+<tr class="row-odd"><td><p>Green Solid</p></td>
+<td><p>Main Communication established</p></td>
+</tr>
+<tr class="row-even"><td><p>Magenta Blinking</p></td>
+<td><p>Keep Alive Timeout</p></td>
+</tr>
+<tr class="row-odd"><td><p>Solid Cyan</p></td>
+<td><p>Secondary Heartbeat (connected to REV HW Client)</p></td>
+</tr>
+<tr class="row-even"><td><p>Orange/Blue Blinking</p></td>
+<td><p>Hardware Fault</p></td>
+</tr>
+<tr class="row-odd"><td><p>Orange/Yellow Blinking</p></td>
+<td><p>CAN Fault</p></td>
+</tr>
+<tr class="row-even"><td><p>Orange/Red Blinking</p></td>
+<td><p>Fail Safe</p></td>
+</tr>
+<tr class="row-odd"><td><p>Orange/Magenta Blinking</p></td>
+<td><p>Device Over Current</p></td>
+</tr>
+<tr class="row-even"><td><p>Orange/Green Blinking</p></td>
+<td><p>Orange/Green Blinking</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="compressor-led">
+<h3>Compressor LED<a class="headerlink" href="#compressor-led" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED Color</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Green Solid</p></td>
+<td><p>Compressor On</p></td>
+</tr>
+<tr class="row-odd"><td><p>Black Solid</p></td>
+<td><p>Compressor Off</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="solenoid-leds">
+<h3>Solenoid LEDs<a class="headerlink" href="#solenoid-leds" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED Color</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Green Solid</p></td>
+<td><p>Solenoid On</p></td>
+</tr>
+<tr class="row-odd"><td><p>Black Solid</p></td>
+<td><p>Solenoid Off</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="talon-srx-victor-spx-talon-fx-motor-controllers">
+<h2>Talon SRX &amp; Victor SPX &amp; Talon FX Motor Controllers<a class="headerlink" href="#talon-srx-victor-spx-talon-fx-motor-controllers" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/talon-srx-status-lights.png"><img alt="Status LEDs on either side of the center of the Talon SRX." src="../../../_images/talon-srx-status-lights.png" style="width: 600px;" /></a>
+<section id="status-leds-during-normal-operation">
+<h3>Status LEDs During Normal Operation<a class="headerlink" href="#status-leds-during-normal-operation" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>LEDs</p></th>
+<th class="head"><p>Colors</p></th>
+<th class="head"><p>Talon SRX State</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Both</p></td>
+<td><p>Blinking Green</p></td>
+<td><p>Forward throttle is applied.
+Blink rate is proportional to Duty Cycle.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Both</p></td>
+<td><p>Blinking Red</p></td>
+<td><p>Reverse throttle is applied.
+Blink rate is proportional to Duty Cycle.</p></td>
+</tr>
+<tr class="row-even"><td><p>None</p></td>
+<td><p>None</p></td>
+<td><p>No power is being applied to Talon SRX</p></td>
+</tr>
+<tr class="row-odd"><td><p>LEDs Alternate</p></td>
+<td><p>Off/Orange</p></td>
+<td><p>CAN bus detected, robot disabled</p></td>
+</tr>
+<tr class="row-even"><td><p>LEDs Alternate</p></td>
+<td><p>Off/Slow Red</p></td>
+<td><p>CAN bus/PWM is not detected</p></td>
+</tr>
+<tr class="row-odd"><td><p>LEDs Alternate</p></td>
+<td><p>Off/Fast Red</p></td>
+<td><p>Fault Detected</p></td>
+</tr>
+<tr class="row-even"><td><p>LEDs Alternate</p></td>
+<td><p>Red/Orange</p></td>
+<td><p>Damaged Hardware</p></td>
+</tr>
+<tr class="row-odd"><td><p>LEDs Strobe towards (M-)</p></td>
+<td><p>Off/Red</p></td>
+<td><p>Forward Limit Switch or Forward Soft Limit</p></td>
+</tr>
+<tr class="row-even"><td><p>LEDs Strobe towards (M+)</p></td>
+<td><p>Off/Red</p></td>
+<td><p>Reverse Limit Switch or Reverse Soft Limit</p></td>
+</tr>
+<tr class="row-odd"><td><p>LED1 Only (closest to M+/V+)</p></td>
+<td><p>Green/Orange</p></td>
+<td><p>In Boot-loader</p></td>
+</tr>
+<tr class="row-even"><td><p>LEDs Strobe towards (M+)</p></td>
+<td><p>Off/Orange</p></td>
+<td><p>Thermal Fault / Shutoff (Talon FX Only)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="status-leds-during-calibration">
+<h3>Status LEDs During Calibration<a class="headerlink" href="#status-leds-during-calibration" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Status LEDs Blink Code</p></th>
+<th class="head"><p>Talon SRX State</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Flashing Red/Green</p></td>
+<td><p>Calibration Mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>Blinking Green</p></td>
+<td><p>Successful Calibration</p></td>
+</tr>
+<tr class="row-even"><td><p>Blinking Red</p></td>
+<td><p>Failed Calibration</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="b-c-cal-blink-codes">
+<h3>B/C CAL Blink Codes<a class="headerlink" href="#b-c-cal-blink-codes" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>B/C CAL Button Color</p></th>
+<th class="head"><p>Talon SRX State</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Solid Red</p></td>
+<td><p>Brake Mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>Off</p></td>
+<td><p>Coast Mode</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="spark-max-motor-controller">
+<h2>SPARK-MAX Motor Controller<a class="headerlink" href="#spark-max-motor-controller" title="Permalink to this heading"></a></h2>
+<img alt="Table listing the SPARKMAX blink codes." src="../../../_images/sparkMAXLight.png" />
+</section>
+<section id="rev-robotics-spark">
+<h2>REV Robotics SPARK<a class="headerlink" href="#rev-robotics-spark" title="Permalink to this heading"></a></h2>
+<img alt="Table of the SPARK blink codes." src="../../../_images/sparkLight.png" />
+</section>
+<section id="victor-sp-motor-controller">
+<h2>Victor-SP Motor Controller<a class="headerlink" href="#victor-sp-motor-controller" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/victorSPLight.png"><img alt="Status LEDs on either side of the center of the Victor-SP." src="../../../_images/victorSPLight.png" style="width: 600px;" /></a>
+<p>Brake/Coast/Cal Button/LED - Red if the controller is in brake mode, off if the controller is in coast mode</p>
+<section id="status">
+<h3>Status<a class="headerlink" href="#status" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>Green</p></td>
+<td><p>Solid</p></td>
+<td><p>Full forward output</p></td>
+</tr>
+<tr class="row-even"><td><p>Blinking</p></td>
+<td><p>Proportional to forward output voltage</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Red</p></td>
+<td><p>Solid</p></td>
+<td><p>Full reverse output</p></td>
+</tr>
+<tr class="row-even"><td><p>Blinking</p></td>
+<td><p>Proportional to forward output voltage</p></td>
+</tr>
+<tr class="row-odd"><td><p>Orange</p></td>
+<td><p>Solid</p></td>
+<td><p>FRC robot disabled, PWM signal lost, or
+signal in deadband range (+/- 4% output)</p></td>
+</tr>
+<tr class="row-even"><td><p>Red/Green</p></td>
+<td><p>Blinking</p></td>
+<td><p>Ready for calibration. Several green flashes indicates successful
+calibration, and red several times indicates unsuccessful calibration.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="talon-motor-controller">
+<h2>Talon Motor Controller<a class="headerlink" href="#talon-motor-controller" title="Permalink to this heading"></a></h2>
+<img alt="Talon motor controller with a single multicolor LED in the bottom right corner." src="../../../_images/talonsr-status-light.png" />
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>Green</p></td>
+<td><p>Solid</p></td>
+<td><p>Full forward output</p></td>
+</tr>
+<tr class="row-even"><td><p>Blinking</p></td>
+<td><p>Proportional to forward output voltage</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Red</p></td>
+<td><p>Solid</p></td>
+<td><p>Full reverse output</p></td>
+</tr>
+<tr class="row-even"><td><p>Blinking</p></td>
+<td><p>Proportional to reverse output voltage</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Orange</p></td>
+<td><p>Solid</p></td>
+<td><p>No CAN devices are connected</p></td>
+</tr>
+<tr class="row-even"><td><p>Blinking</p></td>
+<td><p>Disabled state, PWM signal lost, FRC robot disabled, or
+signal in deadband range (+/- 4% output)</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>Off</p></td>
+<td><p>No input power to Talon</p></td>
+</tr>
+<tr class="row-even"><td><p>Red/Green</p></td>
+<td><p>Flashing</p></td>
+<td><p>Ready for calibration. Several green flashes indicates successful
+calibration, and red several times indicates unsuccessful calibration.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="victor888-motor-controller">
+<h2>Victor888 Motor Controller<a class="headerlink" href="#victor888-motor-controller" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/victor888-status-light.svg"><img alt="Victor888 motor controller with a single multicolor LED in the bottom right corner." src="../../../_images/victor888-status-light.svg" width="600" /></a>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>Green</p></td>
+<td><p>Solid</p></td>
+<td><p>Full forward output</p></td>
+</tr>
+<tr class="row-even"><td><p>Blinking</p></td>
+<td><p>Successful calibration</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Red</p></td>
+<td><p>Solid</p></td>
+<td><p>Full reverse output</p></td>
+</tr>
+<tr class="row-even"><td><p>Blinking</p></td>
+<td><p>Unsuccessful calibration</p></td>
+</tr>
+<tr class="row-odd"><td><p>Orange</p></td>
+<td><p>Solid</p></td>
+<td><p>Neutral/brake</p></td>
+</tr>
+<tr class="row-even"><td><p>Red/Green</p></td>
+<td><p>Blinking</p></td>
+<td><p>Calibration mode</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="jaguar-motor-controller">
+<h2>Jaguar Motor Controller<a class="headerlink" href="#jaguar-motor-controller" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/jaguar-status-light.png"><img alt="Jaguar motor controller with a single multicolor LED in the bottom center." src="../../../_images/jaguar-status-light.png" style="width: 400px;" /></a>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED State</p></th>
+<th class="head"><p>Module Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="2"><p>Normal Operating Conditions</p></td>
+</tr>
+<tr class="row-odd"><td><p>Solid Yellow</p></td>
+<td><p>Neutral (speed set to 0)</p></td>
+</tr>
+<tr class="row-even"><td><p>Fast Flashing Green</p></td>
+<td><p>Forward</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fast Flashing Red</p></td>
+<td><p>Reverse</p></td>
+</tr>
+<tr class="row-even"><td><p>Solid Green</p></td>
+<td><p>Full-speed forward</p></td>
+</tr>
+<tr class="row-odd"><td><p>Solid Red</p></td>
+<td><p>Full-speed reverse</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>Fault Conditions</p></td>
+</tr>
+<tr class="row-odd"><td><p>Slow Flashing Yellow</p></td>
+<td><p>Loss of servo or Network link</p></td>
+</tr>
+<tr class="row-even"><td><p>Fast Flashing Yellow</p></td>
+<td><p>Invalid CAN ID</p></td>
+</tr>
+<tr class="row-odd"><td><p>Slow Flashing Red</p></td>
+<td><p>Voltage, Temperature, or
+Limit Switch fault condition</p></td>
+</tr>
+<tr class="row-even"><td><p>Slow Flashing Red and Yellow</p></td>
+<td><p>Current fault condition</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>Calibration or CAN Conditions</p></td>
+</tr>
+<tr class="row-even"><td><p>Flashing Red and Green</p></td>
+<td><p>Calibration mode active</p></td>
+</tr>
+<tr class="row-odd"><td><p>Flashing Red and Yellow</p></td>
+<td><p>Calibration mode failure</p></td>
+</tr>
+<tr class="row-even"><td><p>Flashing Green and Yellow</p></td>
+<td><p>Calibration mode success</p></td>
+</tr>
+<tr class="row-odd"><td><p>Slow Flashing Green</p></td>
+<td><p>CAN ID assignment mode</p></td>
+</tr>
+<tr class="row-even"><td><p>Fast Flashing Yellow</p></td>
+<td><p>Current CAN ID (count flashes to determine ID)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Flashing Yellow</p></td>
+<td><p>CAN ID invalid (that is, Set to 0)
+awaiting valid ID assignment</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="digilent-dmc-60">
+<h2>Digilent DMC-60<a class="headerlink" href="#digilent-dmc-60" title="Permalink to this heading"></a></h2>
+<img alt="The 5 LEDs in each of the corners plus the center." src="../../../_images/dmc60c-status-lights.png" />
+<p>The DMC60C contains four RGB (Red, Green, and Blue) LEDs and one Brake/Coast CAL LED. The four RGB LEDs are located in the corners and are used to indicate status during normal operation, as well as when a fault occurs. The Brake/Coast CAL LED is located in the center of the triangle, which is located at the center of the housing, and is used to indicate the current Brake/Coast setting. When the center LED is off, the device is operating in coast mode. When the center LED is illuminated, the device is operating in brake mode. The Brake/Coast mode can be toggled by pressing down on the center of the triangle, and then releasing the button.</p>
+<p>At power-on, the RGB LEDs illuminate Blue, continually getting brighter. This lasts for approximately five seconds. During this time, the motor controller will not respond to an input signal, nor will the output drivers be enabled. After the initial power-on has completed, the device begins normal operation and what gets displayed on the RGB LEDs is a function of the input signal being applied, as well as the current fault state. Assuming that no faults have occurred, the RGB LEDs function as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>PWM Signal Applied</p></th>
+<th class="head"><p>LED State</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>No Input Signal or
+Invalid Input Pulse Width</p></td>
+<td><p>Alternate between top (LED1 and LED2) and bottom (LED3 and LED4) LEDs being illuminated Red and Off.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Neutral Input Pulse Width</p></td>
+<td><p>All 4 LEDs illuminated Orange.</p></td>
+</tr>
+<tr class="row-even"><td><p>Positive Input Pulse Width</p></td>
+<td><p>LEDs blink Green in a clockwise circular pattern (LED1 → LED2 → LED3 → LED4 → LED1).
+The LED update rate is proportional to the duty cycle of the output and increases with increased duty cycle.
+At 100% duty cycle, all 4 LEDs are illuminated Green.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Negative Input Pulse Width</p></td>
+<td><p>LEDs blink Red in a counter-clockwise circular pattern (LED1 → LED4 → LED3 → LED2 → LED1).
+The LED update rate is proportional to the duty cycle of the output and increases with increased duty cycle.
+At 100% duty cycle, all 4 LEDs are illuminated Red.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>CAN Bus Control State</p></th>
+<th class="head"><p>LED State</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>No Input Signal or CAN bus error detected</p></td>
+<td><p>Alternate between top (LED1 and LED2) and bottom (LED3 and LED4) LEDs being illuminated Red and Off.</p></td>
+</tr>
+<tr class="row-odd"><td><p>No CAN Control Frame received within the last 100ms or
+the last control frame specified modeNoDrive (Output Disabled)</p></td>
+<td><p>Alternate between top (LED1 and LED2) and bottom (LED3 and LED4) LEDs being illuminated Orange and Off.</p></td>
+</tr>
+<tr class="row-even"><td><p>Valid CAN Control Frame received within the last 100ms.
+The specified control mode resulted in a Neutral Duty Cycle being applied to Motor Output</p></td>
+<td><p>All 4 LEDs illuminated solid Orange.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Valid CAN Control Frame received within the last 100ms.
+The specified control mode resulted in a Positive Duty Cycle being Motor Output</p></td>
+<td><p>LEDs blink Green in a clockwise circular pattern (LED1 → LED2 → LED3 → LED4 → LED1).
+The LED update rate is proportional to the duty cycle of the output and increases with increased duty cycle. At 100% duty cycle, all 4 LEDs are illuminated Green.</p></td>
+</tr>
+<tr class="row-even"><td><p>Valid CAN Control Frame received within the last 100ms.
+The specified control mode resulted in a Negative Duty Cycle being Motor Output</p></td>
+<td><p>LEDs blink Red in a counter-clockwise circular pattern (LED1 → LED4 → LED3 → LED2 → LED1).
+The LED update rate is proportional to the duty cycle of the output and increases with increased duty cycle. At 100% duty cycle, all 4 LEDs are illuminated Red.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="fault-color-indicators">
+<h3>Fault Color Indicators<a class="headerlink" href="#fault-color-indicators" title="Permalink to this heading"></a></h3>
+<p>When a fault condition is detected, the output duty cycle is reduced to 0% and a fault is signaled. The output then remains disabled for 3 seconds. During this time the onboard LEDs (LED1-4) are used to indicate the fault condition. The fault condition is indicated by toggling between the top (LED1 and LED2) and bottom (LED3 and LED4) LEDs being illuminated Red and off. The color of the bottom LEDs depends on which faults are presently active. The table below describes how the color of the bottom LEDs maps to the presently active faults.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Color</p></th>
+<th class="head"><p>Over Temperature</p></th>
+<th class="head"><p>Under Voltage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Green</p></td>
+<td><p>On</p></td>
+<td><p>Off</p></td>
+</tr>
+<tr class="row-odd"><td><p>Blue</p></td>
+<td><p>Off</p></td>
+<td><p>On</p></td>
+</tr>
+<tr class="row-even"><td><p>Cyan / Aqua</p></td>
+<td><p>On</p></td>
+<td><p>On</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="break-coast-mode">
+<h3>Break/Coast Mode<a class="headerlink" href="#break-coast-mode" title="Permalink to this heading"></a></h3>
+<p>When the center LED is off the device is operating in coast mode. When the center LED is illuminated the device is operating in brake mode. The Brake/Coast mode can be toggled by pressing down on the center of the triangle and then releasing the button.</p>
+</section>
+</section>
+<section id="venom-motor-controller">
+<h2>Venom Motor Controller<a class="headerlink" href="#venom-motor-controller" title="Permalink to this heading"></a></h2>
+<img alt="The LED blink codes for the Venom." src="../../../_images/venom1.png" />
+</section>
+<section id="mindsensors-sd540b-pwm">
+<h2>Mindsensors SD540B (PWM)<a class="headerlink" href="#mindsensors-sd540b-pwm" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/sd540b-status-lights.png"><img alt="The two LEDs on the top one at each end and the LED on the side next to the connector." src="../../../_images/sd540b-status-lights.png" style="width: 600px;" /></a>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>Power LED</p></td>
+<td><p>Off</p></td>
+<td><p>Power is not supplied</p></td>
+</tr>
+<tr class="row-even"><td><p>Red</p></td>
+<td><p>Power is supplied</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Motor LED</p></td>
+<td><p>Red</p></td>
+<td><p>Forward direction</p></td>
+</tr>
+<tr class="row-even"><td><p>Green</p></td>
+<td><p>Reverse direction</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>PWM Signal LED</p></td>
+<td><p>Red</p></td>
+<td><p>No valid PWM signal is detected</p></td>
+</tr>
+<tr class="row-even"><td><p>Green</p></td>
+<td><p>Valid PWM signal is detected</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mindsensors-sd540c-can-bus">
+<h2>Mindsensors SD540C (CAN Bus)<a class="headerlink" href="#mindsensors-sd540c-can-bus" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/sd540c-status-lights.png"><img alt="The two LEDs on the top one at each end and the LED on the side next to the connector." src="../../../_images/sd540c-status-lights.png" style="width: 600px;" /></a>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>Power LED</p></td>
+<td><p>Off</p></td>
+<td><p>Power is not supplied</p></td>
+</tr>
+<tr class="row-even"><td><p>Red</p></td>
+<td><p>Power is supplied</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>Motor LED</p></td>
+<td><p>Red</p></td>
+<td><p>Forward direction</p></td>
+</tr>
+<tr class="row-even"><td><p>Green</p></td>
+<td><p>Reverse direction</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p>CAN Signal LED</p></td>
+<td><p>Blinking quickly</p></td>
+<td><p>No CAN devices are connected</p></td>
+</tr>
+<tr class="row-even"><td><p>Off</p></td>
+<td><p>Connected to the roboRIO and the driver station is open</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rev-robotics-servo-power-module">
+<h2>REV Robotics Servo Power Module<a class="headerlink" href="#rev-robotics-servo-power-module" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/rev-robotics-servo-power-module.png"><img alt="One power LED and a status LED for each channel all down the center." src="../../../_images/rev-robotics-servo-power-module.png" style="width: 400px;" /></a>
+<section id="status-leds">
+<h3>Status LEDs<a class="headerlink" href="#status-leds" title="Permalink to this heading"></a></h3>
+<p>Each channel has a corresponding status LED that will indicate the sensed state of the connected PWM signal. The table below describes each state’s corresponding LED pattern.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>State</p></th>
+<th class="head"><p>Pattern</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>No Signal</p></td>
+<td><p>Blinking Amber</p></td>
+</tr>
+<tr class="row-odd"><td><p>Left/Reverse Signal</p></td>
+<td><p>Solid Red</p></td>
+</tr>
+<tr class="row-even"><td><p>Center/Neutral Signal</p></td>
+<td><p>Solid Amber</p></td>
+</tr>
+<tr class="row-odd"><td><p>Right/Forward Signal</p></td>
+<td><p>Solid Green</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>6V Power LED off, dim or flickering with power applied = Over-current shutdown</p></li>
+</ul>
+</section>
+</section>
+<section id="spike-relay-configured-as-a-motor-light-or-solenoid-switch">
+<h2>Spike relay configured as a motor, light, or solenoid switch<a class="headerlink" href="#spike-relay-configured-as-a-motor-light-or-solenoid-switch" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/spikeRelay1Light.png"><img alt="Single LED in the corner." src="../../../_images/spikeRelay1Light.png" style="width: 600px;" /></a>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p><strong>Inputs</strong></p></td>
+<td colspan="2"><p><strong>Outputs</strong></p></td>
+<td rowspan="2"><p><strong>Indicator</strong></p></td>
+<td rowspan="2"><p><strong>Motor Function</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Forward (White)</strong></p></td>
+<td><p><strong>Reverse (Red)</strong></p></td>
+<td><p><strong>M+</strong></p></td>
+<td><p><strong>M-</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Off</p></td>
+<td><p>Off</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>Orange</p></td>
+<td><p>Off/Brake Condition (default)</p></td>
+</tr>
+<tr class="row-even"><td><p>On</p></td>
+<td><p>Off</p></td>
+<td><p>+12v</p></td>
+<td><p>GND</p></td>
+<td><p>Green</p></td>
+<td><p>Motor rotates in one direction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Off</p></td>
+<td><p>On</p></td>
+<td><p>GND</p></td>
+<td><p>+12v</p></td>
+<td><p>Red</p></td>
+<td><p>Motor rotates in opposite direction</p></td>
+</tr>
+<tr class="row-even"><td><p>On</p></td>
+<td><p>On</p></td>
+<td><p>+12v</p></td>
+<td><p>+12v</p></td>
+<td><p>Off</p></td>
+<td><p>Off/Brake Condition</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>‘Brake Condition’ refers to the dynamic stopping of the motor due to the shorting of the motor inputs. This condition is not optional when going to an off state.</p>
+</div>
+</section>
+<section id="spike-relay-configured-as-for-one-or-two-solenoids">
+<h2>Spike relay configured as for one or two solenoids<a class="headerlink" href="#spike-relay-configured-as-for-one-or-two-solenoids" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/spikeRelay2Light.png"><img alt="Single LED in the corner." src="../../../_images/spikeRelay2Light.png" style="width: 600px;" /></a>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td colspan="2"><p><strong>Inputs</strong></p></td>
+<td colspan="2"><p><strong>Outputs</strong></p></td>
+<td rowspan="2"><p><strong>Indicator</strong></p></td>
+<td rowspan="2"><p><strong>Motor Function</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Forward (White)</strong></p></td>
+<td><p><strong>Reverse (Red)</strong></p></td>
+<td><p><strong>M+</strong></p></td>
+<td><p><strong>M-</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Off</p></td>
+<td><p>Off</p></td>
+<td><p>GND</p></td>
+<td><p>GND</p></td>
+<td><p>Orange</p></td>
+<td><p>Both Solenoids Off (default)</p></td>
+</tr>
+<tr class="row-even"><td><p>On</p></td>
+<td><p>Off</p></td>
+<td><p>+12v</p></td>
+<td><p>GND</p></td>
+<td><p>Green</p></td>
+<td><p>Solenoid connected to M+ is ON</p></td>
+</tr>
+<tr class="row-odd"><td><p>Off</p></td>
+<td><p>On</p></td>
+<td><p>GND</p></td>
+<td><p>+12v</p></td>
+<td><p>Red</p></td>
+<td><p>Solenoid connected to M- is ON</p></td>
+</tr>
+<tr class="row-even"><td><p>On</p></td>
+<td><p>On</p></td>
+<td><p>+12v</p></td>
+<td><p>+12v</p></td>
+<td><p>Off</p></td>
+<td><p>Both Solenoids ON</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cancoder-encoder">
+<h2>CANCoder Encoder<a class="headerlink" href="#cancoder-encoder" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../../_images/cancoder-status-lights.png"><img alt="LED at the top of the encoder." src="../../../_images/cancoder-status-lights.png" style="width: 400px;" /></a>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>LED Color</p></th>
+<th class="head"><p>LED Brightness</p></th>
+<th class="head"><p>CAN Bus detection</p></th>
+<th class="head"><p>Magnet Field Strength</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Off</p></td>
+<td><p>Off</p></td>
+<td></td>
+<td></td>
+<td><p>CANCoder is not powered</p></td>
+</tr>
+<tr class="row-odd"><td><p>Yellow/Green</p></td>
+<td><p>Bright</p></td>
+<td></td>
+<td></td>
+<td><p>Device is in boot-loader. See user manual for more information.</p></td>
+</tr>
+<tr class="row-even"><td><p>Slow Red Blink</p></td>
+<td><p>Bright</p></td>
+<td><p>CAN bus has been lost</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Rapid Red Blink</p></td>
+<td rowspan="3"><p>Dim</p></td>
+<td rowspan="3"><p>CAN bus never detected since boot</p></td>
+<td><p>Magnet is out of range (&lt;25mT or &gt;135mT)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Rapid Yellow Blink</p></td>
+<td><p>Magnet in range with slightly reduced accuracy (25-45mT or 75-135mT)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Rapid Green Blink</p></td>
+<td><p>Magnet in range (between 45mT - 75mT)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Rapid Red Blink</p></td>
+<td rowspan="3"><p>Bright</p></td>
+<td rowspan="3"><p>CAN bus present</p></td>
+<td><p>Magnet is out of range (&lt;25mT or &gt;135mT)</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Rapid Yellow Blink</p></td>
+<td><p>Magnet in range with slightly reduced accuracy (25-45mT or 75-135mT)</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Rapid Green Blink</p></td>
+<td><p>Magnet in range (between 45mT - 75mT)</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wiring-pneumatics.html" class="btn btn-neutral float-left" title="Wiring Pneumatics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="preemptive-troubleshooting.html" class="btn btn-neutral float-right" title="Robot Preemptive Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

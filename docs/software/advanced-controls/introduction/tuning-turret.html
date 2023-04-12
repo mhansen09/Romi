@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Tuning a Turret Position Controller" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/tuning-turret.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="In this section, we will tune a simple position controller for a turret. The tuning principles explained here will also work for almost any position-control scenarios under no external loading. Tur..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/tuning-turret.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/tuning-turret.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/advanced-controls/introduction/tuning-turret.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/advanced-controls/introduction/tuning-turret.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/advanced-controls/introduction/tuning-turret.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/advanced-controls/introduction/tuning-turret.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/advanced-controls/introduction/tuning-turret.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/advanced-controls/introduction/tuning-turret.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tuning a Turret Position Controller &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/introduction/tuning-turret.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Tuning a Vertical Arm Position Controller" href="tuning-vertical-arm.html" />
+    <link rel="prev" title="Tuning a Flywheel Velocity Controller" href="tuning-flywheel.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Advanced Controls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../video-walkthrough.html">A Video Walkthrough of Model Based Validation of Autonomous in FRC</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Advanced Controls Introduction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="control-system-basics.html">Control System Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="picking-control-strategy.html">Picking a Control Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-to-feedforward.html">Introduction to DC Motor Feedforward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction-to-pid.html">Introduction to PID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pid-video.html">PID Introduction Video by WPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-intro.html">Introduction To Controls Tuning Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tuning-flywheel.html">Tuning a Flywheel Velocity Controller</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tuning a Turret Position Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tuning-vertical-arm.html">Tuning a Vertical Arm Position Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common-control-issues.html">Common Control Loop Tuning Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/index.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/index.html">Geometry Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers/index.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trajectories/index.html">Trajectory Generation and Following with WPILib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../state-space/index.html">State-Space and Model Based Control with WPILib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controls-glossary.html">Controls Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Advanced Controls</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Advanced Controls Introduction</a></li>
+      <li class="breadcrumb-item active">Tuning a Turret Position Controller</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/advanced-controls/introduction/tuning-turret.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tuning-a-turret-position-controller">
+<h1>Tuning a Turret Position Controller<a class="headerlink" href="#tuning-a-turret-position-controller" title="Permalink to this heading"></a></h1>
+<p>In this section, we will tune a simple position controller for a turret.  The tuning principles explained here will also work for almost any position-control scenarios under no external loading.</p>
+<section id="turret-model-description">
+<h2>Turret Model Description<a class="headerlink" href="#turret-model-description" title="Permalink to this heading"></a></h2>
+<p>A turret rotates some mechanism side-to-side to position it for scoring gamepieces.</p>
+<p>Our “turret” consists of:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A rotating inertial mass (the turret)</p></li>
+<li><p>A motor and gearbox driving the mass</p></li>
+</ul>
+</div></blockquote>
+<p>For the purposes of this tutorial, this plant is modeled with the same equation used by WPILib’s <a class="reference internal" href="../controllers/feedforward.html#simplemotorfeedforward"><span class="std std-ref">SimpleMotorFeedforward</span></a>, with additional adjustment for sensor delay and gearbox inefficiency. The simulation assumes the plant is controlled by feedforward and feedback controllers, composed in this fashion:</p>
+<img alt="Tuning Exercise Block Diagrams showing feedforward and feedback blocks, controlling a plant." src="../../../../_images/control-system-basics-ctrl-plus-plant.png" />
+<p>Where:</p>
+<ul class="simple">
+<li><p>The plant’s <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-output"><span class="xref std std-term">output</span></a> <span class="math notranslate nohighlight">\(y(t)\)</span> is the turret’s position</p></li>
+<li><p>The controller’s <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-setpoint"><span class="xref std std-term">setpoint</span></a> <span class="math notranslate nohighlight">\(r(t)\)</span> is the desired position of the turret</p></li>
+<li><p>The controller’s <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-effort"><span class="xref std std-term">control effort</span></a>, <span class="math notranslate nohighlight">\(u(t)\)</span> is the voltage applied to the motor driving the turret</p></li>
+</ul>
+</section>
+<section id="picking-the-control-strategy-for-a-turret-position-controller">
+<h2>Picking the Control Strategy for a Turret Position Controller<a class="headerlink" href="#picking-the-control-strategy-for-a-turret-position-controller" title="Permalink to this heading"></a></h2>
+<p>In general: the more voltage that is applied to the motor, the faster the motor (and turret) will spin. Once voltage is removed, friction and back-EMF slowly decrease the spinning until the turret stops.  We want to make the turret rotate to a given position.</p>
+<p>The tutorials below will demonstrate the behavior of the system under pure feedforward, pure feedback (PID), and combined feedforward-feedback control strategies.  Follow the instructions to learn how to manually tune these controllers, and expand the “tuning solution” to view an optimal model-based set of tuning parameters.  Even though WPILib tooling can provide you with optimal gains, it is worth going through the manual tuning process to see how the different control strategies interact with the mechanism.</p>
+<p>This simulation does not include any motion profile generation, so acceleration setpoints are not very well-defined.  Accordingly, the <cite>kA</cite> term of the feedforward equation is not used by the controller.  This means there will be some amount of delay/lag inherent to the feedforward-only response.</p>
+<section id="pure-feedforward-control">
+<h3>Pure Feedforward Control<a class="headerlink" href="#pure-feedforward-control" title="Permalink to this heading"></a></h3>
+<p>Interact with the simulation below to examine how the turret system responds when controlled only by a feedforward controller.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To change the turret setpoint, click on the desired angle along the perimeter of the turret.  To command smooth motion, click and drag the setpoint indicator.</p>
+</div>
+<div class="viz-div" id="turret_feedforward_container">
+  <div>
+     <div class="col" id="turret_feedforward_plotVals"></div>
+     <div class="col" id="turret_feedforward_plotVolts"></div>
+  </div>
+  <div class="flex-grid">
+     <div class="col" id="turret_feedforward_viz"></div>
+     <div id="turret_feedforward_ctrls"></div>
+  </div>
+  <script>
+     turret_pidf = new TurretPIDF("turret_feedforward", "feedforward");
+  </script>
+</div><p>To tune the feedforward controller, perform the following:</p>
+<ol class="arabic simple">
+<li><p>Set <span class="math notranslate nohighlight">\(K_v\)</span> to zero.</p></li>
+<li><p>Increase the velocity feedforward gain <span class="math notranslate nohighlight">\(K_v\)</span> until the turret tracks the setpoint during smooth, slow motion.  If the turret overshoots, reduce the gain.</p></li>
+</ol>
+<p>Note that the turret may “lag” the commanded motion - this is normal, and is fine so long as it moves the correct amount in total.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Feedforward-only control is not a viable control scheme for turrets!  Do not be surprised if/when the simulation below does not behave well, even when the “correct” constants are used.</p>
+</div>
+<details class="summary-tuning-solution">
+<summary>Tuning solution</summary><p>The exact gain used by the plant is <span class="math notranslate nohighlight">\(K_v = 0.2\)</span>. Note that due to timing inaccuracy in browser simulations, the <span class="math notranslate nohighlight">\(K_v\)</span> that works best in the simulation may be somewhat smaller than this.</p>
+</details><section id="issues-with-feed-forward-control-alone">
+<h4>Issues with Feed-Forward Control Alone<a class="headerlink" href="#issues-with-feed-forward-control-alone" title="Permalink to this heading"></a></h4>
+<p>As mentioned above, our simulated mechanism perfectly obeys the WPILib <a class="reference internal" href="../controllers/feedforward.html#simplemotorfeedforward"><span class="std std-ref">SimpleMotorFeedforward</span></a> equation (as long as the “system noise” option is disabled).  We might then expect, like in the case of the <a class="reference internal" href="tuning-flywheel.html#tuning-a-flywheel-velocity-controller"><span class="std std-ref">flywheel velocity controller</span></a>, that we should be able to achieve perfect convergence-to-setpoint with a feedforward loop alone.</p>
+<p>However, our feedforward equation relates <em>velocity</em> and <em>acceleration</em> to voltage - it allows us to control the <em>instantaneous motion</em> of our mechanism with high accuracy, but it does not allow us direct control over the <em>position</em>.  This is a problem even in our simulation (in which the feedforward equation is the <em>actual</em> equation of motion), because unless we employ a <a class="reference internal" href="../controllers/trapezoidal-profiles.html#trapezoidal-motion-profiles-in-wpilib"><span class="std std-ref">motion profile</span></a> to generate a sequence of velocity setpoints we can ask the turret to jump immediately from one position to another.  This is impossible, even for our simulated turret.</p>
+<p>The resulting behavior from the feedforward controller is to output a single “voltage spike” when the position setpoint changes (corresponding to a single loop iteration of very high velocity), and then zero voltage (because it is assumed that the system has already reached the setpoint).  In practice, we can see in the simulation that this results in an initial “impulse” movement towards the target position, that stops at some indeterminate position in-between.  This kind of response is called a “kick,” and is generally seen as undesirable.</p>
+<p>You may notice that <em>smooth</em> motion below the turret’s maximum achievable speed can be followed accurately in the simulation with feedforward alone.  This is misleading, however, because no real mechanism perfectly obeys its feedforward equation.  With the “system noise” option enabled, we can see that even smooth, slow motion eventually results in compounding position errors when only feedforward control is used.  To accurately converge to the setpoint, we need to use a feedback (PID) controller.</p>
+</section>
+</section>
+<section id="pure-feedback-control">
+<h3>Pure Feedback Control<a class="headerlink" href="#pure-feedback-control" title="Permalink to this heading"></a></h3>
+<p>Interact with the simulation below to examine how the turret system responds when controlled only by a feedback (PID) controller.</p>
+<div class="viz-div" id="turret_feedback_container">
+  <div>
+     <div class="col" id="turret_feedback_plotVals"></div>
+     <div class="col" id="turret_feedback_plotVolts"></div>
+  </div>
+  <div class="flex-grid">
+     <div class="col" id="turret_feedback_viz"></div>
+     <div id="turret_feedback_ctrls"></div>
+  </div>
+  <script>
+     turret_pidf = new TurretPIDF("turret_feedback", "feedback");
+  </script>
+</div><p>Perform the following:</p>
+<ol class="arabic simple">
+<li><p>Set <span class="math notranslate nohighlight">\(K_p\)</span>, <span class="math notranslate nohighlight">\(K_i\)</span>, <span class="math notranslate nohighlight">\(K_d\)</span>, and <span class="math notranslate nohighlight">\(K_v\)</span> to zero.</p></li>
+<li><p>Increase <span class="math notranslate nohighlight">\(K_p\)</span> until the mechanism responds to a sudden change in setpoint by moving sharply to the new position.  If the controller oscillates too much around the setpoint, reduce <cite>K_p</cite> until it stops.</p></li>
+<li><p>Increase <span class="math notranslate nohighlight">\(K_d\)</span> to reduce the amount of “lag” when the controller tries to track a smoothly moving setpoint (reminder: click and drag the turret’s directional indicator to move it smoothly).  If the controller starts to oscillate, reduce <cite>K_d</cite> until it stops.</p></li>
+</ol>
+<details class="summary-tuning-solution">
+<summary>Tuning solution</summary><p>Gains of <span class="math notranslate nohighlight">\(K_p = 0.3\)</span> and <span class="math notranslate nohighlight">\(K_d = 0.05\)</span> yield rapid and stable convergence to the setpoint.  Other, similar gains will work nearly as well.</p>
+</details><section id="issues-with-feedback-control-alone">
+<h4>Issues with Feedback Control Alone<a class="headerlink" href="#issues-with-feedback-control-alone" title="Permalink to this heading"></a></h4>
+<p>Note that even with system noise enabled, the feedback controller is able to drive the turret to the setpoint in a stable manner over time.  However, it may not be possible to smoothly track a moving setpoint without lag using feedback alone, as the feedback controller can only respond to errors once they have built up.  To get the best of both worlds, we need to combine our feedback controller with a feedforward controller.</p>
+</section>
+</section>
+<section id="combined-feedforward-and-feedback-control">
+<h3>Combined Feedforward and Feedback Control<a class="headerlink" href="#combined-feedforward-and-feedback-control" title="Permalink to this heading"></a></h3>
+<p>Interact with the simulation below to examine how the turret system responds under simultaneous feedforward and feedback control.</p>
+<div class="viz-div" id="turret_feedforward_feedback_container">
+  <div >
+     <div class="col" id="turret_feedforward_feedback_plotVals"></div>
+     <div class="col" id="turret_feedforward_feedback_plotVolts"></div>
+  </div>
+  <div class="flex-grid">
+     <div class="col" id="turret_feedforward_feedback_viz"></div>
+     <div id="turret_feedforward_feedback_ctrls"></div>
+  </div>
+  <script>
+     turret_pidf = new TurretPIDF("turret_feedforward_feedback", "both");
+  </script>
+</div><p>Tuning the combined turret controller is simple - we first tune the feedforward controller following the same procedure as in the feedforward-only section, and then we tune the PID controller following the same procedure as in the feedback-only section.  Notice that PID portion of the controller is <em>much</em> easier to tune “on top of” an accurate feedforward.</p>
+<details class="summary-tuning-solution">
+<summary>Tuning solution</summary><p>The optimal gains for the combined controller are just the optimal gains for the individual controllers: gains of <span class="math notranslate nohighlight">\(K_v = 0.15\)</span>, <span class="math notranslate nohighlight">\(K_p = 0.3\)</span>, and <span class="math notranslate nohighlight">\(K_d = 0.05\)</span> yield rapid and stable convergence to the setpoint and relatively accurate tracking of smooth motion.  Other, similar gains will work nearly as well.</p>
+</details><p>Once tuned properly, the combined controller should accurately track a smoothly moving setpoint, and also accurately converge to the setpoint over time after a “jump” command.</p>
+</section>
+</section>
+<section id="tuning-conclusions">
+<h2>Tuning Conclusions<a class="headerlink" href="#tuning-conclusions" title="Permalink to this heading"></a></h2>
+<section id="choice-of-control-strategies">
+<h3>Choice of Control Strategies<a class="headerlink" href="#choice-of-control-strategies" title="Permalink to this heading"></a></h3>
+<p>Like in the case of the <a class="reference internal" href="tuning-vertical-arm.html#tuning-a-vertical-arm-position-controller"><span class="std std-ref">vertical arm</span></a>, and unlike the case of the <a class="reference internal" href="tuning-flywheel.html#tuning-a-flywheel-velocity-controller"><span class="std std-ref">flywheel</span></a>, we are trying to control the <em>position</em> rather than the <em>velocity</em> of our mechanism.</p>
+<p>In the case of the flywheel <em>velocity</em> controller we could achieve good control performance with feedforward alone.  However, it is very hard to predict how much voltage will cause a certain total change in <em>position</em> (time can turn even small errors in velocity into very big errors in position).  In this case, we cannot rely on feedforward control alone - as with the vertical arm, we will need a feedback controller.</p>
+<p>Unlike in the case of the vertical arm, though, there is no voltage required to keep the mechanism at the setpoint once it’s there.  As a consequence, it is often possible to effectively control a turret without any feedforward controller at all, relying only on the output of the feedback controller (if the mechanism has a lot of friction, this may not work well and both a feedforward and feedback controller may be needed).  Simple position control in the absence of external forces is one of the only cases in which pure feedback control works well.</p>
+<p>Controlling a mechanism with only feedback can produce reasonable results in cases where no <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-effort"><span class="xref std std-term">control effort</span></a> is required to keep the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-output"><span class="xref std std-term">output</span></a> at the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-setpoint"><span class="xref std std-term">setpoint</span></a>. On a turret, this can work acceptably - however, it may still run into problems when trying to follow a moving setpoint, as it relies entirely on the controller transients to control the mechanism’s intermediate motion between position setpoints.</p>
+<p>We saw in the feedforward-only example above that an accurate feedforward can track slow, smooth velocity setpoints quite well.  Combining a feedforward controller with the feedback controller gives the smooth velocity-following of a feedforward controller with the stable long-term error elimination of a feedback controller.</p>
+</section>
+<section id="reasons-for-non-ideal-performance">
+<h3>Reasons for Non-Ideal Performance<a class="headerlink" href="#reasons-for-non-ideal-performance" title="Permalink to this heading"></a></h3>
+<p>This simulation does not include any motion profile generation, so acceleration setpoints are not very well-defined.  Accordingly, the <cite>kA</cite> term of the feedforward equation is not used by the controller.  This means there will be some amount of delay/lag inherent to the feedforward-only response.</p>
+</section>
+</section>
+<section id="a-note-on-feedforward-and-static-friction">
+<h2>A Note on Feedforward and Static Friction<a class="headerlink" href="#a-note-on-feedforward-and-static-friction" title="Permalink to this heading"></a></h2>
+<p>For the sake of simplicity, the simulations above omit the <span class="math notranslate nohighlight">\(K_s\)</span> term from the WPILib SimpleMotorFeedforward equation.  On actual mechanisms, however, this can be important - especially if there’s a lot of friction in the mechanism gearing.  A turret with a lot of static friction will be very hard to control accurately with feedback alone - it will get “stuck” near (but not at) the setpoint when the loop output falls below <span class="math notranslate nohighlight">\(K_s\)</span>.</p>
+<p>To measure <span class="math notranslate nohighlight">\(K_s\)</span> manually, slowly increase the voltage to the mechanism until it starts to move.  The value of <span class="math notranslate nohighlight">\(K_s\)</span> is the largest voltage applied before the mechanism begins to move.</p>
+<p>It can be mildly difficult to <em>apply</em> the measured <span class="math notranslate nohighlight">\(K_s\)</span> to a position controller without motion profiling, as the WPILib SimpleMotorFeedforward class uses the velocity setpoint to determine the direction in which the <span class="math notranslate nohighlight">\(K_s\)</span> term should point.  To overcome this, either use a motion profile, or else add <span class="math notranslate nohighlight">\(K_s\)</span> manually to the output of the controller depending on which direction the mechanism needs to move to get to the setpoint.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tuning-flywheel.html" class="btn btn-neutral float-left" title="Tuning a Flywheel Velocity Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tuning-vertical-arm.html" class="btn btn-neutral float-right" title="Tuning a Vertical Arm Position Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

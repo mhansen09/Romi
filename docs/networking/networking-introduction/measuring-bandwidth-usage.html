@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Measuring Bandwidth Usage" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/networking/networking-introduction/measuring-bandwidth-usage.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="On the FRC ® Field each team is allocated limited network bandwidth (see R704 in the 2023 manual). The FMS Whitepaper provides more information on determining the bandwidth usage of the Axis camera..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/networking/networking-introduction/measuring-bandwidth-usage.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/networking/networking-introduction/measuring-bandwidth-usage.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/networking/networking-introduction/measuring-bandwidth-usage.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/networking/networking-introduction/measuring-bandwidth-usage.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/networking/networking-introduction/measuring-bandwidth-usage.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/networking/networking-introduction/measuring-bandwidth-usage.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/networking/networking-introduction/measuring-bandwidth-usage.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/networking/networking-introduction/measuring-bandwidth-usage.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Measuring Bandwidth Usage &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/networking/networking-introduction/measuring-bandwidth-usage.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="OM5P-AC Radio Modification" href="om5p-ac-radio-modification.html" />
+    <link rel="prev" title="Windows Firewall Configuration" href="windows-firewall-configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Networking Introduction</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="networking-basics.html">Networking Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ip-configurations.html">IP Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roborio-network-troubleshooting.html">roboRIO Network Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows-firewall-configuration.html">Windows Firewall Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Measuring Bandwidth Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="om5p-ac-radio-modification.html">OM5P-AC Radio Modification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Networking Introduction</a></li>
+      <li class="breadcrumb-item active">Measuring Bandwidth Usage</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/networking/networking-introduction/measuring-bandwidth-usage.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="measuring-bandwidth-usage">
+<h1>Measuring Bandwidth Usage<a class="headerlink" href="#measuring-bandwidth-usage" title="Permalink to this heading"></a></h1>
+<p>On the FRC® Field each team is allocated limited network bandwidth (see R704 in the 2023 manual). The <a class="reference external" href="https://fms-manual.readthedocs.io/en/latest/fms-whitepaper/fms-whitepaper.html">FMS Whitepaper</a> provides more information on determining the bandwidth usage of the Axis camera, but some teams may wish to measure their overall bandwidth consumption. This document details how to make that measurement.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Teams can simulate the bandwidth throttling at home using the FRC Bridge Configuration Utility with the bandwidth checkbox checked.</p>
+</div>
+<section id="measuring-bandwidth-using-the-performance-monitor-win-7-10">
+<h2>Measuring Bandwidth Using the Performance Monitor (Win 7/10)<a class="headerlink" href="#measuring-bandwidth-using-the-performance-monitor-win-7-10" title="Permalink to this heading"></a></h2>
+<p>Windows contains a built-in tool called the Performance Monitor that can be used to monitor the bandwidth usage over a network interface.</p>
+<section id="launching-the-performance-monitor">
+<h3>Launching the Performance Monitor<a class="headerlink" href="#launching-the-performance-monitor" title="Permalink to this heading"></a></h3>
+<img alt="Using the start menu to type &quot;perfmon.msc&quot;." src="../../../_images/start-menu.png" />
+<p>Click <code class="docutils literal notranslate"><span class="pre">Start</span></code> and in the search box, type <code class="docutils literal notranslate"><span class="pre">perfmon.msc</span></code> and press Enter.</p>
+</section>
+<section id="open-real-time-monitor">
+<h3>Open Real-Time Monitor<a class="headerlink" href="#open-real-time-monitor" title="Permalink to this heading"></a></h3>
+<img alt="Click &quot;Performance Monitor&quot; under &quot;Monitoring Tools&quot; in the tree view." src="../../../_images/performance-monitor.png" />
+<p>In the left pane, click <code class="docutils literal notranslate"><span class="pre">Performance</span> <span class="pre">Monitor</span></code> to display the real-time monitor.</p>
+</section>
+<section id="add-network-counter">
+<h3>Add Network Counter<a class="headerlink" href="#add-network-counter" title="Permalink to this heading"></a></h3>
+<img alt="The &quot;Add Counters&quot; screen showinging the steps below." src="../../../_images/network-counter.png" />
+<ol class="arabic simple">
+<li><p>Click the green plus near the top of the screen to add a counter</p></li>
+<li><p>In the top left pane, locate and click on <code class="docutils literal notranslate"><span class="pre">Network</span> <span class="pre">Interface</span></code> to select it</p></li>
+<li><p>In the bottom left pane, locate the desired network interface (or use All instances to monitor all interfaces)</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Add&gt;&gt;</span></code> to add the counter to the right pane.</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">OK</span></code> to add the counters to the graph.</p></li>
+</ol>
+</section>
+<section id="remove-extra-counters">
+<h3>Remove Extra Counters<a class="headerlink" href="#remove-extra-counters" title="Permalink to this heading"></a></h3>
+<img alt="Removing the counter at the bottom of the graph screen." src="../../../_images/extra-counters.png" />
+<p>In the bottom pane, select each counter other than <code class="docutils literal notranslate"><span class="pre">Bytes</span> <span class="pre">Total/sec</span></code> and press the <code class="docutils literal notranslate"><span class="pre">Delete</span></code> key. The <code class="docutils literal notranslate"><span class="pre">Bytes</span> <span class="pre">Total/sec</span></code> entry should be the only entry remaining in the pane.</p>
+</section>
+<section id="configure-data-properties">
+<h3>Configure Data Properties<a class="headerlink" href="#configure-data-properties" title="Permalink to this heading"></a></h3>
+<img alt="Scale dropdown highlighted on the Performance Monitor Properties page." src="../../../_images/data-properties.png" />
+<p>Press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Q</kbd></kbd> to bring up the Properties window. Click on the dropdown next to <code class="docutils literal notranslate"><span class="pre">Scale</span></code> and select <code class="docutils literal notranslate"><span class="pre">1.0</span></code>. Then click on the <code class="docutils literal notranslate"><span class="pre">Graph</span></code> tab.</p>
+</section>
+<section id="configure-graph-properties">
+<h3>Configure Graph Properties<a class="headerlink" href="#configure-graph-properties" title="Permalink to this heading"></a></h3>
+<img alt="Moving to the Graph tab the Maximum field under Vertical Scale is highlighted." src="../../../_images/graph-properties.png" />
+<p>In the <code class="docutils literal notranslate"><span class="pre">Maximum</span> <span class="pre">Box</span></code> under <code class="docutils literal notranslate"><span class="pre">Vertical</span> <span class="pre">Scale</span></code> enter 917504 (this is 7 Megabits converted to Bytes). If desired, turn on the horizontal grid by checking the box. Then click <code class="docutils literal notranslate"><span class="pre">OK</span></code> to close the dialog.</p>
+</section>
+<section id="viewing-bandwidth-usage">
+<h3>Viewing Bandwidth Usage<a class="headerlink" href="#viewing-bandwidth-usage" title="Permalink to this heading"></a></h3>
+<img alt="Observing the bandwidth usage on the chart screen." src="../../../_images/graph.png" />
+<p>You may now connect to your robot as normal over the selected interface (if you haven’t done so already). The graph will show the total bandwidth usage of the connection, with the bandwidth cap at the top of the graph. The Last, Average, Min and Max values are also displayed at the bottom of the graph. Note that these values are in Bytes/Second meaning the cap is 917,504. With just the Driver Station open you should see a flat line at ~100000 Bytes/Second.</p>
+</section>
+</section>
+<section id="measuring-bandwidth-usage-using-wireshark">
+<h2>Measuring Bandwidth Usage using Wireshark<a class="headerlink" href="#measuring-bandwidth-usage-using-wireshark" title="Permalink to this heading"></a></h2>
+<p>If you can not use performance monitor, you will need to install a 3rd party program to monitor bandwidth usage. One program that can be used for this purpose is Wireshark. Download and install the latest version of Wireshark for your version of Windows. After installation is complete, locate and open Wireshark. Connect your computer to your robot, open the Driver Station and any Dashboard or custom programs you may be using.</p>
+<section id="select-the-interface-and-start-capture">
+<h3>Select the interface and Start capture<a class="headerlink" href="#select-the-interface-and-start-capture" title="Permalink to this heading"></a></h3>
+<img alt="Selecting the Start button and choosing the NIC in Wireshark." src="../../../_images/start-capture.png" />
+<p>In the Wireshark program on the left side, select the interface you are using to connect to the robot and click <code class="docutils literal notranslate"><span class="pre">Start</span></code>.</p>
+</section>
+<section id="open-statistics-summary">
+<h3>Open Statistics Summary<a class="headerlink" href="#open-statistics-summary" title="Permalink to this heading"></a></h3>
+<img alt="In the menu bar at the top choosing &quot;Statistics&quot; then &quot;Summary&quot;" src="../../../_images/summary.png" />
+<p>Let the capture run for at least 1 minute, then click <code class="docutils literal notranslate"><span class="pre">Statistics</span></code> then <code class="docutils literal notranslate"><span class="pre">Summary</span></code>.</p>
+</section>
+<section id="view-bandwidth-usage">
+<h3>View Bandwidth Usage<a class="headerlink" href="#view-bandwidth-usage" title="Permalink to this heading"></a></h3>
+<img alt="Looking at the &quot;Avg. MBit/sec&quot; field of the Wireshark summary." src="../../../_images/view-usage.png" />
+<p>Average bandwidth usage, in Megabits/Second is displayed near the bottom of the summary window.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="windows-firewall-configuration.html" class="btn btn-neutral float-left" title="Windows Firewall Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="om5p-ac-radio-modification.html" class="btn btn-neutral float-right" title="OM5P-AC Radio Modification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

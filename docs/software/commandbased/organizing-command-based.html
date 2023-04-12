@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Organizing Command-Based Robot Projects" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="As robot code becomes more complicated, navigating, understanding, and maintaining the code takes up more and more time and energy. Making changes to the code often becomes more difficult, sometime..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/commandbased/organizing-command-based.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/commandbased/organizing-command-based.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/commandbased/organizing-command-based.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/commandbased/organizing-command-based.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/commandbased/organizing-command-based.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/commandbased/organizing-command-based.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organizing Command-Based Robot Projects &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="The Command Scheduler" href="command-scheduler.html" />
+    <link rel="prev" title="Structuring a Command-Based Robot Project" href="structuring-command-based-project.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Command-Based Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="what-is-command-based.html">What Is “Command-Based” Programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-compositions.html">Command Compositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subsystems.html">Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binding-commands-to-triggers.html">Binding Commands to Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structuring-command-based-project.html">Structuring a Command-Based Robot Project</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Organizing Command-Based Robot Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-scheduler.html">The Command Scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp-command-discussion.html">A Technical Discussion on C++ Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-subsystems-commands.html">PID Control through PIDSubsystems and PIDCommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile-subsystems-commands.html">Motion Profiling through TrapezoidProfileSubsystems and TrapezoidProfileCommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profilepid-subsystems-commands.html">Combining Motion Profiling and PID in Command-Based</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-based-changes.html">2020 Command-Based Rewrite: What Changed?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Command-Based Programming</a></li>
+      <li class="breadcrumb-item active">Organizing Command-Based Robot Projects</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/commandbased/organizing-command-based.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="organizing-command-based-robot-projects">
+<h1>Organizing Command-Based Robot Projects<a class="headerlink" href="#organizing-command-based-robot-projects" title="Permalink to this heading"></a></h1>
+<p>As robot code becomes more complicated, navigating, understanding, and maintaining the code takes up more and more time and energy. Making changes to the code often becomes more difficult, sometimes for reasons that have very little to do with the actual complexity of the underlying logic. For a simplified example: putting the logic for many unrelated robot functions into a single 1000-line file makes it difficult to find a specific piece of code within that file, particularly under stress at a competition. But spreading out closely related logic across dozens of tiny files is often just as difficult to navigate.</p>
+<p>This is not a problem unique to FRC, and in fact, good organization only becomes more and more critical as software projects become bigger and bigger. The “best” organization system is a perennial topic of debate, much like the “best” programming language, but in the end, the choice (in both cases) comes down to the specific task at hand and the programmer (or programmers) implementing said task. Even in the relatively small space of FRC robot programming, there is no right answer. The best choice for a given team will depend on the nature of the specific robot code, team structure, and pure personal preference.</p>
+<p>This article discusses various facets of command-based robot program design that advanced FRC programmers may want to be aware of when writing code. It is not a prescriptive tutorial, though it presents some recommended best practices. If this level of choice seems daunting, however, many teams have been highly successful while sticking closely to WPILib’s example code and guidelines. However, this discussion may be of interest to intermediate and advanced programmers who want to make their code not only effective, but flexible, easily changeable, and sometimes even beautiful.</p>
+<section id="why-care-about-organization">
+<h2>Why Care About Organization?<a class="headerlink" href="#why-care-about-organization" title="Permalink to this heading"></a></h2>
+<p>Good code organization will rarely make or break a team’s competitive ability—but it does mean easier debugging, faster modifications, nicer-looking code, and happier programmers. While it’s impossible to define “good” organization by way of what the code looks like from the inside, it’s easier to define in terms of what the robot’s software looks like from the outside.</p>
+<section id="what-good-organization-looks-like">
+<h3>What Good Organization Looks Like<a class="headerlink" href="#what-good-organization-looks-like" title="Permalink to this heading"></a></h3>
+<p>When code is well-designed and well-organized, the code’s internal structure is intuitive and easily comprehensible. Cumbersome boilerplate is minimized, meaning that new robot functionality can often be added with just a few lines of code. When a constant value (such as the speed of the robot’s intake) needs to be changed, it only needs to change in one place. If multiple programmers are working together, they can easily understand each others’ work. Bugs are rare, since it is difficult to accidentally introduce unintended behavior (such as creating a command that does not require necessary subsystems). Implementing more advanced functions like unit tests is easier, since the code is abstracted away from the physical hardware. Programmers are happy (most of the time).</p>
+</section>
+<section id="what-bad-organization-looks-like">
+<h3>What Bad Organization Looks Like<a class="headerlink" href="#what-bad-organization-looks-like" title="Permalink to this heading"></a></h3>
+<p>Poorly organized code often has internal structure that makes little to no sense, even to whoever wrote it. When functionality has to be added or changed, it often breaks unrelated parts of the robot: adding automatic shooter control might introduce a bug in the climbing sequence for unclear reasons. Alternatively, the organizational framework might be so strict that it’s impossible to implement necessary behavior, requiring nasty hacks or workarounds. Many lines of boilerplate code are needed for simple robot logic. Constants are scattered across the codebase, and changing basic behavior often requires making the same change to many different files. Collaboration among multiple programmers is difficult or impossible.</p>
+</section>
+</section>
+<section id="defining-commands">
+<h2>Defining Commands<a class="headerlink" href="#defining-commands" title="Permalink to this heading"></a></h2>
+<p>In larger robot codebases, multiple copies of the same command need to be used in many different places. For instance, a command that runs a robot’s intake might be used in teleop, bound to a certain button; as part of a complicated command group for an autonomous routine; and as part of a self-test sequence.</p>
+<p>As an example, let’s look at some ways to define a simple command that simply runs the robot’s intake forward at full power until canceled.</p>
+<section id="inline-commands">
+<h3>Inline Commands<a class="headerlink" href="#inline-commands" title="Permalink to this heading"></a></h3>
+<p>The easiest and most expressive way to do this is with a <code class="docutils literal notranslate"><span class="pre">StartEndCommand</span></code>:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Command</span><span class="w"> </span><span class="n">runIntake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Commands</span><span class="p">.</span><span class="na">startEnd</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">intake</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandPtr</span><span class="w"> </span><span class="n">runIntake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">StartEnd</span><span class="p">([</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">});</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>This is sufficient for commands that are only used once. However, for a command like this that might get used in many different autonomous routines and button bindings, inline commands everywhere means a lot of repetitive code:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// RobotContainer.java</span><span class="w"></span>
+<span class="n">intakeButton</span><span class="p">.</span><span class="na">whileTrue</span><span class="p">(</span><span class="n">Commands</span><span class="p">.</span><span class="na">startEnd</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">intake</span><span class="p">));</span><span class="w"></span>
+
+<span class="n">Command</span><span class="w"> </span><span class="n">intakeAndShoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Commands</span><span class="p">.</span><span class="na">startEnd</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">intake</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">alongWith</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">RunShooter</span><span class="p">(</span><span class="n">shooter</span><span class="p">));</span><span class="w"></span>
+
+<span class="n">Command</span><span class="w"> </span><span class="n">autonomousCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Commands</span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">Commands</span><span class="p">.</span><span class="na">startEnd</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span><span class="w"> </span><span class="n">intake</span><span class="p">).</span><span class="na">withTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">Commands</span><span class="p">.</span><span class="na">waitSeconds</span><span class="p">(</span><span class="mf">3.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">Commands</span><span class="p">.</span><span class="na">startEnd</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span><span class="w"> </span><span class="n">intake</span><span class="p">).</span><span class="na">withTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">intakeButton</span><span class="p">.</span><span class="n">WhileTrue</span><span class="p">(</span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">StartEnd</span><span class="p">([</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">}));</span><span class="w"></span>
+
+<span class="n">frc2</span><span class="o">::</span><span class="n">CommandPtr</span><span class="w"> </span><span class="n">intakeAndShoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">StartEnd</span><span class="p">([</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">})</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">AlongWith</span><span class="p">(</span><span class="n">RunShooter</span><span class="p">(</span><span class="o">&amp;</span><span class="n">shooter</span><span class="p">).</span><span class="n">ToPtr</span><span class="p">());</span><span class="w"></span>
+
+<span class="n">frc2</span><span class="o">::</span><span class="n">CommandPtr</span><span class="w"> </span><span class="n">autonomousCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">Sequence</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">StartEnd</span><span class="p">([</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">}).</span><span class="n">WithTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="n">_s</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">Wait</span><span class="p">(</span><span class="mf">3.0</span><span class="n">_s</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">StartEnd</span><span class="p">([</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="o">&amp;</span><span class="n">intake</span><span class="p">}).</span><span class="n">WithTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="n">_s</span><span class="p">)</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Creating one <code class="docutils literal notranslate"><span class="pre">StartEndCommand</span></code> instance and putting it in a variable won’t work here, since once an instance of a command is added to a command group it is effectively “owned” by that command group and cannot be used in any other context.</p>
+<section id="instance-command-factory-methods">
+<h4>Instance Command Factory Methods<a class="headerlink" href="#instance-command-factory-methods" title="Permalink to this heading"></a></h4>
+<p>One way to solve this quandary is using the “factory method” design pattern: a function that returns a new object every invocation, according to some specification. Using <a class="reference internal" href="command-compositions.html#command-compositions"><span class="std std-ref">command composition</span></a>, a factory method can construct a complex command object with merely a few lines of code.</p>
+<p>For example, a command like the intake-running command is conceptually related to exactly one subsystem: the <code class="docutils literal notranslate"><span class="pre">Intake</span></code>. As such, it makes sense to put a <code class="docutils literal notranslate"><span class="pre">runIntakeCommand</span></code> method as an instance method of the <code class="docutils literal notranslate"><span class="pre">Intake</span></code> class:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this document we will name factory methods as <code class="docutils literal notranslate"><span class="pre">lowerCamelCaseCommand</span></code>, but teams may decide on other conventions.  In general, it is recommended to end the method name with <code class="docutils literal notranslate"><span class="pre">Command</span></code> if it might otherwise be confused with an ordinary method (e.g. <code class="docutils literal notranslate"><span class="pre">intake.run</span></code> might be the name of a method that simply turns on the intake).</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Intake</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SubsystemBase</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// [code for motor controllers, configuration, etc.]</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// ...</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">runIntakeCommand</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// implicitly requires `this`</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">startEnd</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">0.0</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandPtr</span><span class="w"> </span><span class="nf">Intake::RunIntakeCommand</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// implicitly requires `this`</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">StartEnd</span><span class="p">([</span><span class="k">this</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Notice how since we are in the <code class="docutils literal notranslate"><span class="pre">Intake</span></code> class, we no longer refer to <code class="docutils literal notranslate"><span class="pre">intake</span></code>; instead, we use the <code class="docutils literal notranslate"><span class="pre">this</span></code> keyword to refer to the current instance.</p>
+<p>Since we are inside the <code class="docutils literal notranslate"><span class="pre">Intake</span></code> class, technically we can access <code class="docutils literal notranslate"><span class="pre">private</span></code> variables and methods directly from within the <code class="docutils literal notranslate"><span class="pre">runIntakeCommand</span></code> method, thus not needing intermediary methods. (For example, the <code class="docutils literal notranslate"><span class="pre">runIntakeCommand</span></code> method can directly interface with the motor controller objects instead of calling <code class="docutils literal notranslate"><span class="pre">set()</span></code>.) On the other hand, these intermediary methods can reduce code duplication and increase encaspulation. Like many other choices outlined in this document, this tradeoff is a matter of personal preference on a case-by-case basis.</p>
+<p>Using this new factory method in command groups and button bindings is highly expressive:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">intakeButton</span><span class="p">.</span><span class="na">whileTrue</span><span class="p">(</span><span class="n">intake</span><span class="p">.</span><span class="na">runIntakeCommand</span><span class="p">());</span><span class="w"></span>
+
+<span class="n">Command</span><span class="w"> </span><span class="n">intakeAndShoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">runIntakeCommand</span><span class="p">().</span><span class="na">alongWith</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">RunShooter</span><span class="p">(</span><span class="n">shooter</span><span class="p">));</span><span class="w"></span>
+
+<span class="n">Command</span><span class="w"> </span><span class="n">autonomousCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Commands</span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">intake</span><span class="p">.</span><span class="na">runIntakeCommand</span><span class="p">().</span><span class="na">withTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">Commands</span><span class="p">.</span><span class="na">waitSeconds</span><span class="p">(</span><span class="mf">3.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">intake</span><span class="p">.</span><span class="na">runIntakeCommand</span><span class="p">().</span><span class="na">withTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">intakeButton</span><span class="p">.</span><span class="n">WhileTrue</span><span class="p">(</span><span class="n">intake</span><span class="p">.</span><span class="n">RunIntakeCommand</span><span class="p">());</span><span class="w"></span>
+
+<span class="n">frc2</span><span class="o">::</span><span class="n">CommandPtr</span><span class="w"> </span><span class="n">intakeAndShoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">RunIntakeCommand</span><span class="p">().</span><span class="n">AlongWith</span><span class="p">(</span><span class="n">RunShooter</span><span class="p">(</span><span class="o">&amp;</span><span class="n">shooter</span><span class="p">).</span><span class="n">ToPtr</span><span class="p">());</span><span class="w"></span>
+
+<span class="n">frc2</span><span class="o">::</span><span class="n">CommandPtr</span><span class="w"> </span><span class="n">autonomousCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">Sequence</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="n">intake</span><span class="p">.</span><span class="n">RunIntakeCommand</span><span class="p">().</span><span class="n">WithTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="n">_s</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">Wait</span><span class="p">(</span><span class="mf">3.0</span><span class="n">_s</span><span class="p">),</span><span class="w"></span>
+<span class="w">  </span><span class="n">intake</span><span class="p">.</span><span class="n">RunIntakeCommand</span><span class="p">().</span><span class="n">WithTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="n">_s</span><span class="p">)</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Adding a parameter to the <code class="docutils literal notranslate"><span class="pre">runIntakeCommand</span></code> method to provide the exact percentage to run the intake is easy and allows for even more flexibility.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">runIntakeCommand</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">percent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StartEndCommand</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">percent</span><span class="p">),</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span><span class="w"> </span><span class="k">this</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandPtr</span><span class="w"> </span><span class="nf">Intake::RunIntakeCommand</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// implicitly requires `this`</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">StartEnd</span><span class="p">([</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">percent</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="n">percent</span><span class="p">);</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="k">this</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>For instance, this code creates a command group that runs the intake forwards for two seconds, waits for two seconds, and then runs the intake backwards for five seconds.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-5-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-5-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Command</span><span class="w"> </span><span class="n">intakeRunSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="na">runIntakeCommand</span><span class="p">(</span><span class="mf">1.0</span><span class="p">).</span><span class="na">withTimeout</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">andThen</span><span class="p">(</span><span class="n">Commands</span><span class="p">.</span><span class="na">waitSeconds</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">andThen</span><span class="p">(</span><span class="n">intake</span><span class="p">.</span><span class="na">runIntakeCommand</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">).</span><span class="na">withTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandPtr</span><span class="w"> </span><span class="n">intakeRunSequence</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intake</span><span class="p">.</span><span class="n">RunIntakeCommand</span><span class="p">(</span><span class="mf">1.0</span><span class="p">).</span><span class="n">WithTimeout</span><span class="p">(</span><span class="mf">2.0</span><span class="n">_s</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">AndThen</span><span class="p">(</span><span class="n">frc2</span><span class="o">::</span><span class="n">cmd</span><span class="o">::</span><span class="n">Wait</span><span class="p">(</span><span class="mf">2.0</span><span class="n">_s</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">AndThen</span><span class="p">(</span><span class="n">intake</span><span class="p">.</span><span class="n">RunIntakeCommand</span><span class="p">(</span><span class="mf">-1.0</span><span class="p">).</span><span class="n">WithTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="n">_s</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>This approach is recommended for commands that are conceptually related to only a single subsystem, and is very concise. However, it doesn’t fare well with commands related to more than one subsystem: passing in other subsystem objects is unintuitive and can cause race conditions and circular dependencies, and thus should be avoided. Therefore, this approach is best suited for single-subsystem commands, and should be used only for those cases.</p>
+</section>
+<section id="static-command-factories">
+<h4>Static Command Factories<a class="headerlink" href="#static-command-factories" title="Permalink to this heading"></a></h4>
+<p>Instance factory methods work great for single-subsystem commands.  However, complicated robot actions (like the ones often required during the autonomous period) typically need to coordinate multiple subsystems at once.  When we want to define an inline command that uses multiple subsystems, it doesn’t make sense for the command factory to live in any single one of those subsystems.  Instead, it can be cleaner to define the command factory methods statically in some external class:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sequence</span></code> and <code class="docutils literal notranslate"><span class="pre">parallel</span></code> static factories construct sequential and parallel command groups: this is equivalent to the <code class="docutils literal notranslate"><span class="pre">andThen</span></code> and <code class="docutils literal notranslate"><span class="pre">alongWith</span></code> decorators, but can be more readable. Their use is a matter of personal preference.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-6-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-6-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-6-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AutoRoutines</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">driveAndIntake</span><span class="p">(</span><span class="n">Drivetrain</span><span class="w"> </span><span class="n">drivetrain</span><span class="p">,</span><span class="w"> </span><span class="n">Intake</span><span class="w"> </span><span class="n">intake</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Commands</span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">Commands</span><span class="p">.</span><span class="na">parallel</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="n">drivetrain</span><span class="p">.</span><span class="na">driveCommand</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="n">intake</span><span class="p">.</span><span class="na">runIntakeCommand</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="p">).</span><span class="na">withTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">Commands</span><span class="p">.</span><span class="na">parallel</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="n">drivetrain</span><span class="p">.</span><span class="na">stopCommand</span><span class="p">();</span><span class="w"></span>
+<span class="w">              </span><span class="n">intake</span><span class="p">.</span><span class="na">stopCommand</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// TODO</span>
+</pre></div>
+</div>
+</div></div>
+<p>If we want to avoid the verbosity of adding required subsystems as parameters to our factory methods, we can instead construct an instance of our <cite>AutoRoutines</cite> class and inject our subsystems through the constructor:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-7-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-7-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-7-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AutoRoutines</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Drivetrain</span><span class="w"> </span><span class="n">drivetrain</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Intake</span><span class="w"> </span><span class="n">intake</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">AutoRoutines</span><span class="p">(</span><span class="n">Drivetrain</span><span class="w"> </span><span class="n">drivetrain</span><span class="p">,</span><span class="w"> </span><span class="n">Intake</span><span class="w"> </span><span class="n">intake</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="na">drivetrain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">drivetrain</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="na">intake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intake</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">driveAndIntake</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Commands</span><span class="p">.</span><span class="na">sequence</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">Commands</span><span class="p">.</span><span class="na">parallel</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="n">drivetrain</span><span class="p">.</span><span class="na">driveCommand</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="n">intake</span><span class="p">.</span><span class="na">runIntakeCommand</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="p">).</span><span class="na">withTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">Commands</span><span class="p">.</span><span class="na">parallel</span><span class="p">(</span><span class="w"></span>
+<span class="w">              </span><span class="n">drivetrain</span><span class="p">.</span><span class="na">stopCommand</span><span class="p">();</span><span class="w"></span>
+<span class="w">              </span><span class="n">intake</span><span class="p">.</span><span class="na">stopCommand</span><span class="p">();</span><span class="w"></span>
+<span class="w">            </span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-7-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// TODO</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="capturing-state-in-inline-commands">
+<h4>Capturing State in Inline Commands<a class="headerlink" href="#capturing-state-in-inline-commands" title="Permalink to this heading"></a></h4>
+<p>Inline commands are extremely concise and expressive, but do not offer explicit support for commands that have their own internal state (such as a drivetrain trajectory following command, which may encapsulate an entire controller).  This is often accomplished by instead writing a Command class, which will be covered later in this article.</p>
+<p>However, it is still possible to ergonomically write a stateful command composition using inline syntax, so long as we are working within a factory method.  To do so, we declare the state as a method local and “capture” it in our inline definition.  For example, consider the following instance command factory to turn a drivetrain to a specific angle with a PID controller:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Subsystem.run</span></code> and <code class="docutils literal notranslate"><span class="pre">Subsystem.runOnce</span></code> factory methods sugar the creation of a <code class="docutils literal notranslate"><span class="pre">RunCommand</span></code> and an <code class="docutils literal notranslate"><span class="pre">InstantCommand</span></code> requiring <code class="docutils literal notranslate"><span class="pre">this</span></code> subsystem.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-8-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-8-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-8-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">turnToAngle</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">targetDegrees</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Create a controller for the inline command to capture</span><span class="w"></span>
+<span class="w">    </span><span class="n">PIDController</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kTurnToAngleP</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// We can do whatever configuration we want on the created state before returning from the factory</span><span class="w"></span>
+<span class="w">    </span><span class="n">controller</span><span class="p">.</span><span class="na">setPositionTolerance</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kTurnToAngleTolerance</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Try to turn at a rate proportional to the heading error until we&#39;re at the setpoint, then stop</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">run</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">arcadeDrive</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">controller</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">gyro</span><span class="p">.</span><span class="na">getHeading</span><span class="p">(),</span><span class="w"> </span><span class="n">targetDegrees</span><span class="p">)))</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">until</span><span class="p">(</span><span class="n">controller</span><span class="p">::</span><span class="n">atSetpoint</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">andThen</span><span class="p">(</span><span class="n">runOnce</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">arcadeDrive</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-8-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// TODO</span>
+</pre></div>
+</div>
+</div></div>
+<p>This pattern works very well in Java so long as the captured state is “effectively final” - i.e., it is never reassigned.  This means that we cannot directly define and capture primitive types (e.g. <cite>int</cite>, <cite>double</cite>, <cite>boolean</cite>) - to circumvent this, we need to wrap any state primitives in a mutable container type (the same way <cite>PIDController</cite> wraps its internal <cite>kP</cite>, <cite>kI</cite>, and <cite>kD</cite> values).</p>
+</section>
+</section>
+<section id="writing-command-classes">
+<h3>Writing Command Classes<a class="headerlink" href="#writing-command-classes" title="Permalink to this heading"></a></h3>
+<p>Another possible way to define reusable commands is to write a class that represents the command.  This is typically done by subclassing either <code class="docutils literal notranslate"><span class="pre">CommandBase</span></code> or one of the <code class="docutils literal notranslate"><span class="pre">CommandGroup</span></code> classes.</p>
+<section id="subclassing-commandbase">
+<h4>Subclassing CommandBase<a class="headerlink" href="#subclassing-commandbase" title="Permalink to this heading"></a></h4>
+<p>Returning to our simple intake command from earlier, we could do this by creating a new subclass of <code class="docutils literal notranslate"><span class="pre">CommandBase</span></code> that implements the necessary <code class="docutils literal notranslate"><span class="pre">initialize</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> methods.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-9-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-9-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-9-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RunIntakeCommand</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">CommandBase</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Intake</span><span class="w"> </span><span class="n">m_intake</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">RunIntakeCommand</span><span class="p">(</span><span class="n">Intake</span><span class="w"> </span><span class="n">intake</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">m_intake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intake</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">addRequirements</span><span class="p">(</span><span class="n">intake</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">m_intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">end</span><span class="p">(</span><span class="kt">boolean</span><span class="w"> </span><span class="n">interrupted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">m_intake</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// execute() defaults to do nothing</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// isFinished() defaults to return false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-9-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// TODO</span>
+</pre></div>
+</div>
+</div></div>
+<p>This, however, is just as cumbersome as the original repetitive code, if not more verbose. The only two lines that really matter in this entire file are the two calls to <code class="docutils literal notranslate"><span class="pre">intake.set()</span></code>, yet there are over 20 lines of boilerplate code! Not to mention, doing this for a lot of robot actions quickly clutters up a robot project with dozens of small files. Nevertheless, this might feel more “natural,” particularly for programmers who prefer to stick closely to an object-oriented model.</p>
+<p>This approach should be used for commands with internal state (not subsystem state!), as the class can have fields to manage said state. It may also be more intuitive to write commands with complex logic as classes, especially for those less experienced with command composition. As the command is detached from any specific subsystem class and the required subsystem objects are injected through the constructor, this approach deals well with commands involving multiple subsystems.</p>
+</section>
+<section id="subclassing-command-groups">
+<h4>Subclassing Command Groups<a class="headerlink" href="#subclassing-command-groups" title="Permalink to this heading"></a></h4>
+<p>If we wish to write composite commands as their own classes, we may write a constructor-only subclass of the most exterior group type. For example, an intake-then-outtake sequence (with single-subsystem commands defined as instance factory methods) can look like this:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-10-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-10-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-10-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-10-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-10-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">IntakeThenOuttake</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SequentialCommandGroup</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">IntakeThenOuttake</span><span class="p">(</span><span class="n">Intake</span><span class="w"> </span><span class="n">intake</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">intake</span><span class="p">.</span><span class="na">runIntakeCommand</span><span class="p">(</span><span class="mf">1.0</span><span class="p">).</span><span class="na">withTimeout</span><span class="p">(</span><span class="mf">2.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">WaitCommand</span><span class="p">(</span><span class="mf">2.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">            </span><span class="n">intake</span><span class="p">.</span><span class="na">runIntakeCommand</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">).</span><span class="na">withTimeout</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-10-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// TODO</span>
+</pre></div>
+</div>
+</div></div>
+<p>This is relatively short and minimizes boilerplate. It is also comfortable to use in a purely object-oriented paradigm and may be more acceptable to novice programmers. However, it has some downsides. For one, it is not immediately clear exactly what type of command group this is from the constructor definition: it is better to define this in a more inline and expressive way, particularly when nested command groups start showing up. Additionally, it requires a new file for every single command group, even when the groups are conceptually related.</p>
+<p>As with factory methods, state can be defined and captured within the command group subclass constructor, if necessary.</p>
+</section>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Approach</p></th>
+<th class="head"><p>Primary Use Case</p></th>
+<th class="head"><p>Single-subsystem Commands</p></th>
+<th class="head"><p>Multi-subsystem Commands</p></th>
+<th class="head"><p>Stateful Commands</p></th>
+<th class="head"><p>Complex Logic Commands</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Instance Factory Methods</p></td>
+<td><p>Single-subsystem commands</p></td>
+<td><p>Excels at them</p></td>
+<td><p>No</p></td>
+<td><p>Yes, but must obey capture rules</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Subclassing CommandBase</p></td>
+<td><p>Stateful commands</p></td>
+<td><p>Very verbose</p></td>
+<td><p>Relatively verbose</p></td>
+<td><p>Excels at them</p></td>
+<td><p>Yes; may be more natural than other approaches</p></td>
+</tr>
+<tr class="row-even"><td><p>Static Factory Methods</p></td>
+<td><p>Multi-subsystem commands</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes, but must obey capture rules</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Subclassing Command Groups</p></td>
+<td><p>Multi-subsystem command groups</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes, but must obey capture rules</p></td>
+<td><p>Yes</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="structuring-command-based-project.html" class="btn btn-neutral float-left" title="Structuring a Command-Based Robot Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="command-scheduler.html" class="btn btn-neutral float-right" title="The Command Scheduler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

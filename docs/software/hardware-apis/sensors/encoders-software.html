@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Encoders - Software" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/encoders-software.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Encoders are devices used to measure motion (usually, the rotation of a shaft). Quadrature Encoders - The Encoder Class: WPILib provides support for quadrature encoders through the Encoder class ( ..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/encoders-software.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/encoders-software.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/hardware-apis/sensors/encoders-software.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/hardware-apis/sensors/encoders-software.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/hardware-apis/sensors/encoders-software.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/hardware-apis/sensors/encoders-software.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/hardware-apis/sensors/encoders-software.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/hardware-apis/sensors/encoders-software.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encoders - Software &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/encoders-software.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Analog Inputs - Software" href="analog-inputs-software.html" />
+    <link rel="prev" title="Counters" href="counters.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Hardware APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../motors/index.html">Motors APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pneumatics/index.html">Pneumatics APIs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Sensors</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sensor-overview-software.html">Sensor Overview - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accelerometers-software.html">Accelerometers - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gyros-software.html">Gyroscopes - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ultrasonics-software.html">Ultrasonics - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="counters.html">Counters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Encoders - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="analog-inputs-software.html">Analog Inputs - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="analog-potentiometers-software.html">Analog Potentiometers - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="digital-inputs-software.html">Digital Inputs - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="limit-switch.html">Programming Limit Switches</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/index.html">Miscellaneous Hardware APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Hardware APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Sensors</a></li>
+      <li class="breadcrumb-item active">Encoders - Software</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/hardware-apis/sensors/encoders-software.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encoders-software">
+<h1>Encoders - Software<a class="headerlink" href="#encoders-software" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section covers encoders in software.  For a hardware guide to encoders, see <a class="reference internal" href="../../../hardware/sensors/encoders-hardware.html#encoders-hardware"><span class="std std-ref">Encoders - Hardware</span></a>.</p>
+</div>
+<p>Encoders are devices used to measure motion (usually, the rotation of a shaft).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The classes in this document are only used for encoders that are plugged directly into the roboRIO! Please reference the appropriate vendors’ documentation for using encoders plugged into motor controllers.</p>
+</div>
+<section id="quadrature-encoders-the-encoder-class">
+<h2>Quadrature Encoders - The <code class="code docutils literal notranslate"><span class="pre">Encoder</span></code> Class<a class="headerlink" href="#quadrature-encoders-the-encoder-class" title="Permalink to this heading"></a></h2>
+<p>WPILib provides support for quadrature encoders through the <code class="code docutils literal notranslate"><span class="pre">Encoder</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/Encoder.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_encoder.html">C++</a>).  This class provides a simple API for configuring and reading data from encoders.</p>
+<img alt="Quadrature Encoders determine direction by observing which pulse channel (A or B) receives a pulse first." src="../../../../_images/encoding-direction.png" />
+<p>These encoders produce square-wave signals on two channels that are a quarter-period out-of-phase (hence the term, “quadrature”).  The pulses are used to measure the rotation, and the direction of motion can be determined from which channel “leads” the other.</p>
+<img alt="A Quadrature Decoder analyzing the A, B, and Index signals." src="../../../../_images/encoder-modules.png" />
+<p>The FPGA handles quadrature encoders either through a counter module or an encoder module, depending on the <a class="reference internal" href="#decoding-type"><span class="std std-ref">decoding type</span></a> - the choice is handled automatically by WPILib.  The FPGA contains 8 encoder modules.</p>
+<p>Examples of quadrature encoders:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.cuidevices.com/product/motion/rotary-encoders/incremental/modular/amt10-v-kit/amt103-v">AMT103-V</a> available through FIRST Choice</p></li>
+<li><p><a class="reference external" href="https://store.ctr-electronics.com/srx-mag-encoder/">CTRE Mag Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.grayhill.com/documents/63R-Datasheet">Grayhill 63r</a></p></li>
+<li><p><a class="reference external" href="https://www.revrobotics.com/rev-11-1271/">REV Through Bore Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.andymark.com/products/e4t-oem-miniature-optical-encoder-kit">US Digital E4T</a></p></li>
+</ul>
+<section id="initializing-a-quadrature-encoder">
+<h3>Initializing a Quadrature Encoder<a class="headerlink" href="#initializing-a-quadrature-encoder" title="Permalink to this heading"></a></h3>
+<p>A quadrature encoder can be instantiated as follows:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initializes an encoder on DIO pins 0 and 1</span><span class="w"></span>
+<span class="c1">// Defaults to 4X decoding and non-inverted</span><span class="w"></span>
+<span class="n">Encoder</span><span class="w"> </span><span class="n">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Encoder</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initializes an encoder on DIO pins 0 and 1</span>
+<span class="c1">// Defaults to 4X decoding and non-inverted</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">encoder</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<section id="decoding-type">
+<h4>Decoding Type<a class="headerlink" href="#decoding-type" title="Permalink to this heading"></a></h4>
+<p>The WPILib <code class="code docutils literal notranslate"><span class="pre">Encoder</span></code> class can decode encoder signals in three different modes:</p>
+<ul class="simple">
+<li><p><strong>1X Decoding</strong>: Increments the distance for every complete period of the encoder signal (once per four edges).</p></li>
+<li><p><strong>2X Decoding</strong>: Increments the distance for every half-period of the encoder signal (once per two edges).</p></li>
+<li><p><strong>4X Decoding</strong>: Increments the distance for every edge of the encoder signal (four times per period).</p></li>
+</ul>
+<p>4X decoding offers the greatest precision, but at the potential cost of increased “jitter” in rate measurements.  To use a different decoding type, use the following constructor:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initializes an encoder on DIO pins 0 and 1</span><span class="w"></span>
+<span class="c1">// 2X encoding and non-inverted</span><span class="w"></span>
+<span class="n">Encoder</span><span class="w"> </span><span class="n">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Encoder</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="n">Encoder</span><span class="p">.</span><span class="na">EncodingType</span><span class="p">.</span><span class="na">k2X</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initializes an encoder on DIO pins 0 and 1</span>
+<span class="c1">// 2X encoding and non-inverted</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">encoder</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">Encoder</span><span class="o">::</span><span class="n">EncodingType</span><span class="o">::</span><span class="n">k2X</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="configuring-quadrature-encoder-parameters">
+<h3>Configuring Quadrature Encoder Parameters<a class="headerlink" href="#configuring-quadrature-encoder-parameters" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">Encoder</span></code> class does not make any assumptions about units of distance; it will return values in whatever units were used to calculate the distance-per-pulse value.  Users thus have complete control over the distance units used.  However, units of time are <em>always</em> in seconds.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The number of pulses used in the distance-per-pulse calculation does <em>not</em> depend on the <a class="reference internal" href="#decoding-type"><span class="std std-ref">decoding type</span></a> - each “pulse” should always be considered to be a full cycle (four edges).</p>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">Encoder</span></code> class offers a number of configuration methods:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configures the encoder to return a distance of 4 for every 256 pulses</span><span class="w"></span>
+<span class="c1">// Also changes the units of getRate</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">setDistancePerPulse</span><span class="p">(</span><span class="mf">4.0</span><span class="o">/</span><span class="mf">256.0</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Configures the encoder to consider itself stopped after .1 seconds</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">setMaxPeriod</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Configures the encoder to consider itself stopped when its rate is below 10</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">setMinRate</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Reverses the direction of the encoder</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">setReverseDirection</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Configures an encoder to average its period measurement over 5 samples</span><span class="w"></span>
+<span class="c1">// Can be between 1 and 127 samples</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">setSamplesToAverage</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configures the encoder to return a distance of 4 for every 256 pulses</span>
+<span class="c1">// Also changes the units of getRate</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">SetDistancePerPulse</span><span class="p">(</span><span class="mf">4.0</span><span class="o">/</span><span class="mf">256.0</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Configures the encoder to consider itself stopped after .1 seconds</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">SetMaxPeriod</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Configures the encoder to consider itself stopped when its rate is below 10</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">SetMinRate</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Reverses the direction of the encoder</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">SetReverseDirection</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Configures an encoder to average its period measurement over 5 samples</span>
+<span class="c1">// Can be between 1 and 127 samples</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">SetSamplesToAverage</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="reading-information-from-quadrature-encoders">
+<h3>Reading information from Quadrature Encoders<a class="headerlink" href="#reading-information-from-quadrature-encoders" title="Permalink to this heading"></a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">Encoder</span></code> class provides a wealth of information to the user about the motion of the encoder.</p>
+<section id="distance">
+<h4>Distance<a class="headerlink" href="#distance" title="Permalink to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Quadrature encoders measure <em>relative</em> distance, not absolute; the distance value returned will depend on the position of the encoder when the robot was turned on or the encoder value was last <a class="reference internal" href="#resetting-a-quadrature-encoder"><span class="std std-ref">reset</span></a>.</p>
+</div>
+<p>Users can obtain the total distance traveled by the encoder with the <code class="code docutils literal notranslate"><span class="pre">getDistance()</span></code> method:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the distance traveled</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">getDistance</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the distance traveled</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">GetDistance</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="rate">
+<h4>Rate<a class="headerlink" href="#rate" title="Permalink to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Units of time for the <code class="code docutils literal notranslate"><span class="pre">Encoder</span></code> class are <em>always</em> in seconds.</p>
+</div>
+<p>Users can obtain the current rate of change of the encoder with the <code class="code docutils literal notranslate"><span class="pre">getRate()</span></code> method:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the current rate of the encoder</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">getRate</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the current rate of the encoder</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">GetRate</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="stopped">
+<h4>Stopped<a class="headerlink" href="#stopped" title="Permalink to this heading"></a></h4>
+<p>Users can obtain whether the encoder is stationary with the <code class="code docutils literal notranslate"><span class="pre">getStopped()</span></code> method:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-5-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-5-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets whether the encoder is stopped</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">getStopped</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets whether the encoder is stopped</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">GetStopped</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="direction">
+<h4>Direction<a class="headerlink" href="#direction" title="Permalink to this heading"></a></h4>
+<p>Users can obtain the direction in which the encoder last moved with the <code class="code docutils literal notranslate"><span class="pre">getDirection()</span></code> method:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-6-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-6-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-6-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the last direction in which the encoder moved</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">getDirection</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the last direction in which the encoder moved</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">GetDirection</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="period">
+<h4>Period<a class="headerlink" href="#period" title="Permalink to this heading"></a></h4>
+<p>Users can obtain the period of the encoder pulses (in seconds) with the <code class="code docutils literal notranslate"><span class="pre">getPeriod()</span></code> method:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-7-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-7-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-7-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the current period of the encoder</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">getPeriod</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-7-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the current period of the encoder</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">GetPeriod</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="resetting-a-quadrature-encoder">
+<h3>Resetting a Quadrature Encoder<a class="headerlink" href="#resetting-a-quadrature-encoder" title="Permalink to this heading"></a></h3>
+<p>To reset a quadrature encoder to a distance reading of zero, call the <code class="code docutils literal notranslate"><span class="pre">reset()</span></code> method.  This is useful for ensuring that the measured distance corresponds to the actual desired physical measurement, and is often called during a <a class="reference internal" href="#homing-a-mechanism"><span class="std std-ref">homing</span></a> routine:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-8-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-8-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-8-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Resets the encoder to read a distance of zero</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">reset</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-8-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Resets the encoder to read a distance of zero</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="duty-cycle-encoders-the-dutycycleencoder-class">
+<h2>Duty Cycle Encoders - The <code class="code docutils literal notranslate"><span class="pre">DutyCycleEncoder</span></code> class<a class="headerlink" href="#duty-cycle-encoders-the-dutycycleencoder-class" title="Permalink to this heading"></a></h2>
+<p>WPILib provides support for duty cycle (also marketed as PWM) encoders through the <code class="code docutils literal notranslate"><span class="pre">DutyCycleEncoder</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/DutyCycleEncoder.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_duty_cycle_encoder.html">C++</a>).  This class provides a simple API for configuring and reading data from duty cycle encoders.</p>
+<p>The roboRIO’s FPGA handles duty cycle encoders automatically.</p>
+<p>Examples of duty cycle encoders:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.andymark.com/products/am-mag-encoder">AndyMark Mag Encoder</a></p></li>
+<li><p><a class="reference external" href="https://store.ctr-electronics.com/srx-mag-encoder/">CTRE Mag Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.revrobotics.com/rev-11-1271/">REV Through Bore Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.andymark.com/products/lamprey-absolute-encoder">Team 221 Lamprey2</a></p></li>
+<li><p><a class="reference external" href="https://www.usdigital.com/products/encoders/absolute/shaft/ma3/">US Digital MA3</a></p></li>
+</ul>
+<section id="initializing-a-duty-cycle-encoder">
+<h3>Initializing a Duty Cycle Encoder<a class="headerlink" href="#initializing-a-duty-cycle-encoder" title="Permalink to this heading"></a></h3>
+<p>A duty cycle encoder can be instantiated as follows:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-9-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-9-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-9-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initializes a duty cycle encoder on DIO pins 0</span><span class="w"></span>
+<span class="n">DutyCycleEncoder</span><span class="w"> </span><span class="n">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DutyCycleEncoder</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-9-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initializes a duty cycle encoder on DIO pins 0</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">DutyCycleEncoder</span><span class="w"> </span><span class="n">encoder</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="configuring-duty-cycle-encoder-parameters">
+<h3>Configuring Duty Cycle Encoder Parameters<a class="headerlink" href="#configuring-duty-cycle-encoder-parameters" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">DutyCycleEncoder</span></code> class does not make any assumptions about units of distance; it will return values in whatever units were used to calculate the distance-per-rotation value.  Users thus have complete control over the distance units used.</p>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">DutyCycleEncoder</span></code> class offers a number of configuration methods:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-10-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-10-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-10-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-10-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-10-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configures the encoder to return a distance of 4 for every rotation</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">setDistancePerRotation</span><span class="p">(</span><span class="mf">4.0</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-10-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configures the encoder to return a distance of 4 for every rotation</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">SetDistancePerRotation</span><span class="p">(</span><span class="mf">4.0</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="reading-distance-from-duty-cycle-encoders">
+<h3>Reading Distance from Duty Cycle Encoders<a class="headerlink" href="#reading-distance-from-duty-cycle-encoders" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Duty Cycle encoders measure absolute distance. It does not depend on the starting position of the encoder.</p>
+</div>
+<p>Users can obtain the distance measured by the encoder with the <code class="code docutils literal notranslate"><span class="pre">getDistance()</span></code> method:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-11-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-11-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-11-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-11-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-11-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the distance traveled</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">getDistance</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-11-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-11-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the distance traveled</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">GetDistance</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="detecting-a-duty-cycle-encoder-is-connected">
+<h3>Detecting a Duty Cycle Encoder is Connected<a class="headerlink" href="#detecting-a-duty-cycle-encoder-is-connected" title="Permalink to this heading"></a></h3>
+<p>As duty cycle encoders output a continuous set of pulses, it is possible to detect that the encoder has been unplugged.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-12-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-12-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-12-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-12-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-12-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-12-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets if the encoder is connected</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">isConnected</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-12-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-12-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets if the encoder is connected</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">IsConnected</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="resetting-a-duty-cycle-encoder">
+<h3>Resetting a Duty Cycle Encoder<a class="headerlink" href="#resetting-a-duty-cycle-encoder" title="Permalink to this heading"></a></h3>
+<p>To reset an encoder so the current distance is 0, call the <code class="code docutils literal notranslate"><span class="pre">reset()</span></code> method.  This is useful for ensuring that the measured distance corresponds to the actual desired physical measurement. Unlike quadrature encoders, duty cycle encoders don’t need to be homed. However, after reset, the position offset can be stored to be set when the program starts so that the reset doesn’t have to be performed again. The <a class="reference internal" href="../../basic-programming/robot-preferences.html"><span class="doc">Preferences class</span></a> provides a method to save and retrieve the values on the roboRIO.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-13-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-13-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-13-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-13-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-13-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-13-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Resets the encoder to read a distance of zero at the current position</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">reset</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// get the position offset from when the encoder was reset</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">getPositionOffset</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// set the position offset to half a rotation</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">setPositionOffset</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-13-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-13-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Resets the encoder to read a distance of zero at the current position</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// get the position offset from when the encoder was reset</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">GetPositionOffset</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// set the position offset to half a rotation</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">SetPositionOffset</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="analog-encoders-the-analogencoder-class">
+<h2>Analog Encoders - The <code class="code docutils literal notranslate"><span class="pre">AnalogEncoder</span></code> Class<a class="headerlink" href="#analog-encoders-the-analogencoder-class" title="Permalink to this heading"></a></h2>
+<p>WPILib provides support for analog absolute encoders through the <code class="code docutils literal notranslate"><span class="pre">AnalogEncoder</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/AnalogEncoder.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_analog_encoder.html">C++</a>).  This class provides a simple API for configuring and reading data from duty cycle encoders.</p>
+<p>Examples of analog encoders:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.andymark.com/products/lamprey-absolute-encoder">Team 221 Lamprey2</a></p></li>
+<li><p><a class="reference external" href="https://www.thethriftybot.com/bearings/Thrifty-Absolute-Magnetic-Encoder-p421607500">Thrifty Absolute Magnetic Encoder</a></p></li>
+<li><p><a class="reference external" href="https://www.usdigital.com/products/encoders/absolute/shaft/ma3/">US Digital MA3</a></p></li>
+</ul>
+<section id="initializing-an-analog-encoder">
+<h3>Initializing an Analog Encoder<a class="headerlink" href="#initializing-an-analog-encoder" title="Permalink to this heading"></a></h3>
+<p>An analog encoder can be instantiated as follows:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-14-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-14-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-14-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-14-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-14-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-14-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initializes a duty cycle encoder on Analog Input pins 0</span><span class="w"></span>
+<span class="n">AnalogEncoder</span><span class="w"> </span><span class="n">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AnalogEncoder</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-14-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-14-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initializes a duty cycle encoder on DIO pins 0</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">AnalogEncoder</span><span class="w"> </span><span class="n">encoder</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="configuring-analog-encoder-parameters">
+<h3>Configuring Analog Encoder Parameters<a class="headerlink" href="#configuring-analog-encoder-parameters" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">AnalogEncoder</span></code> class does not make any assumptions about units of distance; it will return values in whatever units were used to calculate the distance-per-rotation value.  Users thus have complete control over the distance units used.</p>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">AnalogEncoder</span></code> class offers a number of configuration methods:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-15-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-15-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-15-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-15-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-15-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-15-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configures the encoder to return a distance of 4 for every rotation</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">setDistancePerRotation</span><span class="p">(</span><span class="mf">4.0</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-15-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-15-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Configures the encoder to return a distance of 4 for every rotation</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">SetDistancePerRotation</span><span class="p">(</span><span class="mf">4.0</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="reading-distance-from-analog-encoders">
+<h3>Reading Distance from Analog Encoders<a class="headerlink" href="#reading-distance-from-analog-encoders" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Analog encoders measure absolute distance. It does not depend on the starting position of the encoder.</p>
+</div>
+<p>Users can obtain the distance measured by the encoder with the <code class="code docutils literal notranslate"><span class="pre">getDistance()</span></code> method:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-16-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-16-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-16-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-16-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-16-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-16-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the distance measured</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">getDistance</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-16-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-16-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Gets the distance measured</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">GetDistance</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="resetting-an-analog-encoder">
+<h3>Resetting an Analog Encoder<a class="headerlink" href="#resetting-an-analog-encoder" title="Permalink to this heading"></a></h3>
+<p>To reset an analog encoder so the current distance is 0, call the <code class="code docutils literal notranslate"><span class="pre">reset()</span></code> method.  This is useful for ensuring that the measured distance corresponds to the actual desired physical measurement. Unlike quadrature encoders, duty cycle encoders don’t need to be homed. However, after reset, the position offset can be stored to be set when the program starts so that the reset doesn’t have to be performed again. The <a class="reference internal" href="../../basic-programming/robot-preferences.html"><span class="doc">Preferences class</span></a> provides a method to save and retrieve the values on the roboRIO.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-17-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-17-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-17-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-17-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-17-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-17-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Resets the encoder to read a distance of zero at the current position</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">reset</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// get the position offset from when the encoder was reset</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">getPositionOffset</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// set the position offset to half a rotation</span><span class="w"></span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">setPositionOffset</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-17-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-17-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Resets the encoder to read a distance of zero at the current position</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// get the position offset from when the encoder was reset</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">GetPositionOffset</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// set the position offset to half a rotation</span>
+<span class="n">encoder</span><span class="p">.</span><span class="n">SetPositionOffset</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="using-encoders-in-code">
+<h2>Using Encoders in Code<a class="headerlink" href="#using-encoders-in-code" title="Permalink to this heading"></a></h2>
+<p>Encoders are some of the most useful sensors in FRC®; they are very nearly a requirement to make a robot capable of nontrivially-automated actuations and movement.  The potential applications of encoders in robot code are too numerous to summarize fully here, but an example is provided below:</p>
+<section id="driving-to-a-distance">
+<h3>Driving to a Distance<a class="headerlink" href="#driving-to-a-distance" title="Permalink to this heading"></a></h3>
+<p>Encoders can be used on a robot drive to create a simple “drive to distance” routine.  This is useful in autonomous mode, but has the disadvantage that the robot’s momentum will cause it to overshoot the intended distance. Better methods include using a <a class="reference internal" href="../../advanced-controls/introduction/introduction-to-pid.html"><span class="doc">PID Controller</span></a> or using <a class="reference internal" href="../../pathplanning/index.html"><span class="doc">Path Planning</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following example uses the <cite>Encoder</cite> class, but is similar if other <cite>DutyCycleEncoder</cite> or <cite>AnalogEncoder</cite> is used. However, quadrature encoders are typically better suited for drivetrains since they roll over many times and don’t have an absolute position.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-18-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-18-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-18-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-18-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-18-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-18-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an encoder on DIO ports 0 and 1</span><span class="w"></span>
+<span class="n">Encoder</span><span class="w"> </span><span class="n">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Encoder</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Initialize motor controllers and drive</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">left1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">left2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Spark</span><span class="w"> </span><span class="n">right1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">right2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">leftMotors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">left1</span><span class="p">,</span><span class="w"> </span><span class="n">left2</span><span class="p">);</span><span class="w"></span>
+<span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">rightMotors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">right1</span><span class="p">,</span><span class="w"> </span><span class="n">right2</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">drive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">leftMotors</span><span class="p">,</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">);</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Configures the encoder&#39;s distance-per-pulse</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// The robot moves forward 1 foot per encoder rotation</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// There are 256 pulses per encoder rotation</span><span class="w"></span>
+<span class="w">    </span><span class="n">encoder</span><span class="p">.</span><span class="na">setDistancePerPulse</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">256.</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">autonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Drives forward at half speed until the robot has moved 5 feet, then stops:</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">encoder</span><span class="p">.</span><span class="na">getDistance</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">drive</span><span class="p">.</span><span class="na">tankDrive</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">drive</span><span class="p">.</span><span class="na">tankDrive</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-18-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-18-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an encoder on DIO ports 0 and 1.</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">encoder</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Initialize motor controllers and drive</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">left1</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">left2</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">right1</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">right2</span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">leftMotors</span><span class="p">{</span><span class="n">left1</span><span class="p">,</span><span class="w"> </span><span class="n">left2</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">{</span><span class="n">right1</span><span class="p">,</span><span class="w"> </span><span class="n">right2</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">drive</span><span class="p">{</span><span class="n">leftMotors</span><span class="p">,</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">};</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::RobotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Configures the encoder&#39;s distance-per-pulse</span>
+<span class="w">    </span><span class="c1">// The robot moves forward 1 foot per encoder rotation</span>
+<span class="w">    </span><span class="c1">// There are 256 pulses per encoder rotation</span>
+<span class="w">    </span><span class="n">encoder</span><span class="p">.</span><span class="n">SetDistancePerPulse</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">256.0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">Robot</span><span class="o">:</span><span class="n">AutonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Drives forward at half speed until the robot has moved 5 feet, then stops:</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">encoder</span><span class="p">.</span><span class="n">GetDistance</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">drive</span><span class="p">.</span><span class="n">TankDrive</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">drive</span><span class="p">.</span><span class="n">TankDrive</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="homing-a-mechanism">
+<h3>Homing a Mechanism<a class="headerlink" href="#homing-a-mechanism" title="Permalink to this heading"></a></h3>
+<p>Since quadrature encoders measure <em>relative</em> distance, it is often important to ensure that their “zero-point” is in the right place.  A typical way to do this is a “homing routine,” in which a mechanism is moved until it hits a known position (usually accomplished with a limit switch), or “home,” and then the encoder is reset.  The following code provides a basic example:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Homing is not necessary for absolute encoders like duty cycle encoders and analog encoders.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-19-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-19-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-19-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-19-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-19-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-19-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Encoder</span><span class="w"> </span><span class="n">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Encoder</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Spark</span><span class="w"> </span><span class="n">spark</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Limit switch on DIO 2</span><span class="w"></span>
+<span class="n">DigitalInput</span><span class="w"> </span><span class="n">limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DigitalInput</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">autonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Runs the motor backwards at half speed until the limit switch is pressed</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// then turn off the motor and reset the encoder</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">limit</span><span class="p">.</span><span class="na">get</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">spark</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">spark</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">encoder</span><span class="p">.</span><span class="na">reset</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-19-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-19-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">frc</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">encoder</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">spark</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+
+<span class="c1">// Limit switch on DIO 2</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">DigitalInput</span><span class="w"> </span><span class="n">limit</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">AutonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Runs the motor backwards at half speed until the limit switch is pressed</span>
+<span class="w">    </span><span class="c1">// then turn off the motor and reset the encoder</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">limit</span><span class="p">.</span><span class="n">Get</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">spark</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mf">-0.5</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">spark</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">encoder</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="counters.html" class="btn btn-neutral float-left" title="Counters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="analog-inputs-software.html" class="btn btn-neutral float-right" title="Analog Inputs - Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

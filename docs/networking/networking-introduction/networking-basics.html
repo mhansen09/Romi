@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Networking Basics" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/networking/networking-introduction/networking-basics.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="What is an IP Address?: An IP address is a unique string of numbers, separated by periods that identifies each device on a network. Each IP address is divided up into 4 sections (octets) ranging fr..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/networking/networking-introduction/networking-basics.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/networking/networking-introduction/networking-basics.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/networking/networking-introduction/networking-basics.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/networking/networking-introduction/networking-basics.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/networking/networking-introduction/networking-basics.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/networking/networking-introduction/networking-basics.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/networking/networking-introduction/networking-basics.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/networking/networking-introduction/networking-basics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Networking Basics &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/networking/networking-introduction/networking-basics.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="IP Configurations" href="ip-configurations.html" />
+    <link rel="prev" title="Networking Introduction" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Networking Introduction</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Networking Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ip-configurations.html">IP Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roborio-network-troubleshooting.html">roboRIO Network Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows-firewall-configuration.html">Windows Firewall Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="measuring-bandwidth-usage.html">Measuring Bandwidth Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="om5p-ac-radio-modification.html">OM5P-AC Radio Modification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Networking Introduction</a></li>
+      <li class="breadcrumb-item active">Networking Basics</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/networking/networking-introduction/networking-basics.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="networking-basics">
+<h1>Networking Basics<a class="headerlink" href="#networking-basics" title="Permalink to this heading"></a></h1>
+<section id="what-is-an-ip-address">
+<h2>What is an IP Address?<a class="headerlink" href="#what-is-an-ip-address" title="Permalink to this heading"></a></h2>
+<p>An IP address is a unique string of numbers, separated by periods that identifies each device on a network. Each IP address is divided up into 4 sections (octets) ranging from 0-255.</p>
+<img alt="The octet breakdown of an IP address and how it totals 4 bytes." src="../../../_images/ip-address-parts.png" />
+<p>As shown above, this means that each IP address is a 32-bit address meaning there are 2<sup>32</sup> addresses, or nearly 4,300,000,000 addresses possible. However, most of these are used publicly for things like web servers.</p>
+<p>This brings up our <strong>first key point</strong> of IP Addressing: Each device on the network must have a unique IP address. No two devices can have the same IP address, otherwise collisions will occur.</p>
+<p>Since there are only 4 billion addresses, and there are more than 4 billion computers connected to the internet, we need to be as efficient as possible with giving out IP addresses. This brings us to public vs. private addresses.</p>
+</section>
+<section id="public-vs-private-ip-addresses">
+<h2>Public vs Private IP Addresses<a class="headerlink" href="#public-vs-private-ip-addresses" title="Permalink to this heading"></a></h2>
+<p>To be efficient with using IP Addresses, the idea of “Reserved IP Ranges” was implemented. In short, this means that there are ranges of IP Addresses that will never be assigned to web servers, and will only be used for local networks, such as those in your house.</p>
+<p><strong>Key point #2</strong>: Unless you are directly connecting to your internet provider’s basic modem (no router function), your device will have an IP Address in one of these ranges. This means that at any local network, such as: your school, work office, home, etc., your device will 99% of the time have an IP address in a range listed below:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Bits</p></th>
+<th class="head"><p>Start Address</p></th>
+<th class="head"><p>End Address</p></th>
+<th class="head"><p>Number of Addresses</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>24</p></td>
+<td><p>10.0.0.0</p></td>
+<td><p>10.255.255.255</p></td>
+<td><p>16,777,216</p></td>
+</tr>
+<tr class="row-odd"><td><p>B</p></td>
+<td><p>20</p></td>
+<td><p>172.16.0.0</p></td>
+<td><p>172.31.255.255</p></td>
+<td><p>1,048,576</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>16</p></td>
+<td><p>192.168.0.0</p></td>
+<td><p>192.168.255.255</p></td>
+<td><p>65,536</p></td>
+</tr>
+</tbody>
+</table>
+<p>These reserved ranges let us assign one “unreserved IP Address” to an entire house, and then use multiple addresses in a reserved range to connect more than one computer to the internet. A process on the home’s internet router known as <strong>NAT</strong> (Network Address Translation), handles the process of keeping track which private IP is requesting data, using the public IP to request that data from the internet, and
+then passing the returned data back to the private IP that requested it. This allows us to use the same reserved IP addresses for many local networks, without causing any conflicts. An image of this process is presented below.</p>
+<img alt="Devices on the private network send their traffic through the NAT device to communicate to the outside network and vice versa." src="../../../_images/nat.drawio.svg" /><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the FRC® networks, we will use the <code class="docutils literal notranslate"><span class="pre">10.0.0.0</span></code> range. This range allows us to use the <code class="docutils literal notranslate"><span class="pre">10.TE.AM.xx</span></code> format for IP addresses, whereas using the Class B or C networks would only allow a subset of teams to follow the format. An example of this formatting would be <code class="docutils literal notranslate"><span class="pre">10.17.50.1</span></code> for FRC Team 1750.</p>
+</div>
+</section>
+<section id="how-are-these-addresses-assigned">
+<h2>How are these addresses assigned?<a class="headerlink" href="#how-are-these-addresses-assigned" title="Permalink to this heading"></a></h2>
+<p>We’ve covered the basics of what IP addresses are, and which IP addresses we will use for the FRC competition, so now we need to discuss how these addresses will get assigned to the devices on our network. We already stated above that we can’t have two devices on the same network with the same IP Address, so we need a way to be sure that every device receives an address without overlapping. This can be done Dynamically (automatic), or Statically (manual).</p>
+<section id="dynamically">
+<h3>Dynamically<a class="headerlink" href="#dynamically" title="Permalink to this heading"></a></h3>
+<p>Dynamically assigning IP addresses means that we are letting a device on the network manage the IP address assignments. This is done through the Dynamic Host Configuration Protocol (DHCP). DHCP has many components to it, but for the scope of this document, we will think of it as a service that automatically manages the network. Whenever you plug in a new device to the network, the DHCP service sees the new device, then provides it with an available IP address and the other network settings required for the device to communicate. This can mean that there are times we do not know the exact IP address of each device.</p>
+<section id="what-is-a-dhcp-server">
+<h4>What is a DHCP server?<a class="headerlink" href="#what-is-a-dhcp-server" title="Permalink to this heading"></a></h4>
+<p>A DHCP server is a device that runs the DHCP service to monitor the network for new devices to configure. In larger businesses, this could be a dedicated computer running the DHCP service and that computer would be the DHCP server. For home networks, FRC networks, and other smaller networks, the DHCP service is usually running on the router; in this case, the router is the DHCP server.</p>
+<p>This means that if you ever run into a situation where you need to have a DHCP server assigning IP addresses to your network devices, it’s as simple as finding the closest home router, and plugging it in.</p>
+</section>
+</section>
+<section id="statically">
+<h3>Statically<a class="headerlink" href="#statically" title="Permalink to this heading"></a></h3>
+<p>Statically assigning IP addresses means that we are manually telling each device on the network which IP address we want it to have. This configuration happens through a setting on each device. By disabling DHCP on the network and assigning the addresses manually, we get the benefit of knowing the exact IP address of each device on the network, but because we set each one manually and there is no service keeping track of the used IP addresses, we have to keep track of this ourselves. While statically setting IP addresses, we must be careful not to assign duplicate addresses, and must be sure we are setting the other network settings (such as subnet mask and default gateway) correctly on each device.</p>
+</section>
+</section>
+<section id="what-is-link-local">
+<h2>What is link-local?<a class="headerlink" href="#what-is-link-local" title="Permalink to this heading"></a></h2>
+<p>If a device does not have an IP address, then it cannot communicate on a network. This can become an issue if we have a device that is set to dynamically acquire its address from a DHCP server, but there is no DHCP server on the network. An example of this would be when you have a laptop directly connected to a roboRIO and both are set to dynamically acquire an IP address. Neither device is a DHCP server, and since they are the only two devices on the network, they will not be assigned IP addresses automatically.</p>
+<p>Link-local addresses give us a standard set of addresses that we can “fall-back” to if a device set to acquire dynamically is not able to acquire an address. If this happens, the device will assign itself an IP address in the <code class="docutils literal notranslate"><span class="pre">169.254.xx.yy</span></code> address range; this is a link-local address. In our roboRIO and computer example above, both devices will realize they haven’t been assigned an IP address and assign themselves a link-local address. Once they are both assigned addresses in the <code class="docutils literal notranslate"><span class="pre">169.254.xx.yy</span></code> range, they will be in the same network and will be able to communicate, even though they were set to dynamic and a DHCP server did not assign addresses.</p>
+</section>
+<section id="ip-addressing-for-frc">
+<h2>IP Addressing for FRC<a class="headerlink" href="#ip-addressing-for-frc" title="Permalink to this heading"></a></h2>
+<p>See the <a class="reference internal" href="ip-configurations.html"><span class="doc">IP Networking Article</span></a> for more information.</p>
+<section id="mixing-dynamic-and-static-configurations">
+<h3>Mixing Dynamic and Static Configurations<a class="headerlink" href="#mixing-dynamic-and-static-configurations" title="Permalink to this heading"></a></h3>
+<p>While on the field, the team should not notice any issues with having devices set statically in the <code class="docutils literal notranslate"><span class="pre">10.TE.AM.xx</span></code> range, and having the field assign DHCP addresses as long as there are no IP address conflicts as referred to in the section above.</p>
+<p>In the pits, a team may encounter issues with mixing Static and DHCP devices for the following reason. As mentioned above, DHCP devices will fall back to a link-local address (<code class="docutils literal notranslate"><span class="pre">169.254.xx.yy</span></code>) if a server isn’t present. For static devices, the IP address will always be the same. If the DHCP server is not present and the roboRIO, driver station, and laptop fall back to link-local addresses, the statically set devices in the 10.TE.AM.xx range will be in a different network and not visible to those with link-local addresses. A visual description of this is provided below:</p>
+<img alt="How you can't mix link-local and static IP configurations." src="../../../_images/mixing-static-dynamic.drawio.svg" /><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When connected via USB to the roboRIO, a <a class="reference internal" href="../networking-utilities/portforwarding.html#port-forwarding"><span class="std std-ref">Port Forwarding</span></a> configuration is required to access devices connected to the OpenMesh radio (on the green network shown above).</p>
+</div>
+</section>
+<section id="available-network-ports">
+<h3>Available Network Ports<a class="headerlink" href="#available-network-ports" title="Permalink to this heading"></a></h3>
+<p>Please see R704 of the 2023 Game Manual for information regarding available network ports.</p>
+</section>
+</section>
+<section id="mdns">
+<h2>mDNS<a class="headerlink" href="#mdns" title="Permalink to this heading"></a></h2>
+<p>mDNS, or multicast Domain Name System is a protocol that allows us to benefit from the features of DNS, without having a DNS server on the network. To make this clearer, let’s take a step back and talk about what DNS is.</p>
+<section id="what-is-dns">
+<h3>What is DNS?<a class="headerlink" href="#what-is-dns" title="Permalink to this heading"></a></h3>
+<p>DNS (Domain Name System) can become a complex topic, but for the scope of this paper, we are going to just look at the high-level overview of DNS. In the most basic explanation, DNS is what allows us to relate human-friendly names for network devices to IP Addresses, and keep track of those IP addresses if they change.</p>
+<p>Example 1: Let’s look at the site <code class="docutils literal notranslate"><span class="pre">www.google.com</span></code>. The IP address for this site is <code class="docutils literal notranslate"><span class="pre">172.217.164.132</span></code>, however that is not very user-friendly to remember!</p>
+<p>Whenever a user types <code class="docutils literal notranslate"><span class="pre">www.google.com</span></code> into their computer, the computer contacts the DNS server (a setting provided by DHCP!) and asks what is the IP address on file for <code class="docutils literal notranslate"><span class="pre">www.google.com</span></code>. The DNS server returns the IP address and then the computer is able to use that to connect to the Google website.</p>
+<p>Example 2: On your home network, you have a server named <code class="docutils literal notranslate"><span class="pre">MYCOMPUTER</span></code> that you want to connect to from your laptop. Your network uses DHCP so you don’t know the IP Address of <code class="docutils literal notranslate"><span class="pre">MYCOMPUTER</span></code>, but DNS allows you to connect just by using the <code class="docutils literal notranslate"><span class="pre">MYCOMPUTER</span></code> name. Additionally, whenever the DHCP assignments refresh, <code class="docutils literal notranslate"><span class="pre">MYCOMPUTER</span></code> may end up with a different address, but because you’re connecting by using the <code class="docutils literal notranslate"><span class="pre">MYCOMPUTER</span></code> name instead of a specific IP address, the DNS record was updated and you’re still able to connect.</p>
+<p>This is the second benefit to DNS and the most relevant for FRC. With DNS, if we reference devices by their friendly name instead of IP Address, we don’t have to change anything in our program if the IP Address changes. DNS will keep track of the changes and return the new address if it ever changes.</p>
+</section>
+<section id="dns-for-frc">
+<h3>DNS for FRC<a class="headerlink" href="#dns-for-frc" title="Permalink to this heading"></a></h3>
+<p>On the field and in the pits, there is no DNS server that allows us to perform the lookups like we do for the Google website, but we’d still like to have the benefits of not remembering every IP Address, and not having to guess at every device’s address if DHCP assigns a different address than we expect. This is where mDNS comes into the picture.</p>
+<p>mDNS provides us the same benefits as traditional DNS, but is just implemented in a way that does not require a server. Whenever a user asks to connect to a device using a friendly name, mDNS sends out a message asking the device with that name to identify itself. The device with the name then sends a return message including its IP address so all devices on the network can update their information. mDNS is what allows us to refer to our roboRIO as <code class="docutils literal notranslate"><span class="pre">roboRIO-TEAM-FRC.local</span></code> and have it connect on a DHCP network.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a device used for FRC does not support mDNS, then it will be assigned an IP Address in the 10.TE.AM.20 - 10.TE.AM.255 range, but we won’t know the exact address to connect and we won’t be able to use the friendly name like before. In this case, the device would need to have a static IP Address.</p>
+</div>
+</section>
+<section id="mdns-principles">
+<h3>mDNS - Principles<a class="headerlink" href="#mdns-principles" title="Permalink to this heading"></a></h3>
+<p>Multicast Domain Name System (mDNS) is a system which allows for resolution of hostnames to IP addresses on small networks with no dedicated name server. To resolve a hostname a device sends out a multicast message to the network querying for the device. The device then responds with a multicast message containing its IP. Devices on the network can store this information in a cache so subsequent requests for this address can be resolved from the cache without repeating the network query.</p>
+</section>
+<section id="mdns-providers">
+<h3>mDNS - Providers<a class="headerlink" href="#mdns-providers" title="Permalink to this heading"></a></h3>
+<p>To use mDNS, an mDNS implementation is required to be installed on your PC. Here are some common mDNS implementations for each major platform:</p>
+<p>Windows:</p>
+<ul class="simple">
+<li><p><strong>NI mDNS Responder:</strong> Installed with the NI FRC Game Tools</p></li>
+<li><p><strong>Apple Bonjour:</strong> Installed with iTunes</p></li>
+</ul>
+<p>OSX:</p>
+<ul class="simple">
+<li><p><strong>Apple Bonjour:</strong> Installed by default</p></li>
+</ul>
+<p>Linux:</p>
+<ul class="simple">
+<li><p><strong>nss-mDNS/Avahi/Zeroconf:</strong> Installed and enabled by default on some Linux variants (such as Ubuntu or Mint). May need to be installed or enabled on others (such as Arch)</p></li>
+</ul>
+</section>
+<section id="mdns-firewalls">
+<h3>mDNS - Firewalls<a class="headerlink" href="#mdns-firewalls" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on your PC configuration, no changes may be required, this section is provided to assist with troubleshooting.</p>
+</div>
+<p>To work properly mDNS must be allowed to pass through your firewall. Because the network traffic comes from the mDNS implementation and not directly from the Driver Station or IDE, allowing those applications through may not be sufficient. There are two main ways to resolve mDNS firewall issues:</p>
+<ul class="simple">
+<li><p>Add an application/service exception for the mDNS implementation (NI mDNS Responder is <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\National</span> <span class="pre">Instruments\Shared\mDNS</span> <span class="pre">Responder\nimdnsResponder.exe</span></code>)</p></li>
+<li><p>Add a port exception for traffic to/from UDP 5353. IP Ranges:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">10.0.0.0</span> <span class="pre">-</span> <span class="pre">10.255.255.255</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">172.16.0.0</span> <span class="pre">-</span> <span class="pre">172.31.255.255</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">192.168.0.0</span> <span class="pre">-</span> <span class="pre">192.168.255.255</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">169.254.0.0</span> <span class="pre">-</span> <span class="pre">169.254.255.255</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">224.0.0.251</span></code></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="mdns-browser-support">
+<h3>mDNS - Browser support<a class="headerlink" href="#mdns-browser-support" title="Permalink to this heading"></a></h3>
+<p>Most web-browsers should be able to utilize the mDNS address to access the roboRIO web server as long as an mDNS provider is installed. These browsers include Microsoft Edge, Firefox, and Google Chrome.</p>
+</section>
+</section>
+<section id="usb">
+<h2>USB<a class="headerlink" href="#usb" title="Permalink to this heading"></a></h2>
+<p>If using the USB interface, no network setup is required (you do need the <a class="reference internal" href="../../zero-to-robot/step-2/frc-game-tools.html#installing-the-frc-game-tools"><span class="std std-ref">Installing the FRC Game Tools</span></a> installed to provide the roboRIO USB Driver). The roboRIO driver will automatically configure the IP address of the host (your computer) and roboRIO and the software listed above should be able to locate and utilize your roboRIO.</p>
+</section>
+<section id="ethernet-wireless">
+<h2>Ethernet/Wireless<a class="headerlink" href="#ethernet-wireless" title="Permalink to this heading"></a></h2>
+<p>The <a class="reference internal" href="../../zero-to-robot/step-3/radio-programming.html#programming-your-radio"><span class="std std-ref">Programming your Radio</span></a> will enable the DHCP server on the OpenMesh radio in the home use case (AP mode), if you are putting the OpenMesh in bridge mode and using a router, you can enable DHCP addressing on the router. The bridge is set to the same team-based IP address as before (<code class="docutils literal notranslate"><span class="pre">10.TE.AM.1</span></code>) and will hand out DHCP address from <code class="docutils literal notranslate"><span class="pre">10.TE.AM.20</span></code> to <code class="docutils literal notranslate"><span class="pre">10.TE.AM.199</span></code>. When connected to the field, FMS will also hand out addresses in the same IP range.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h2>
+<p>IP Addresses are what allow us to communicate with devices on a network. For FRC, these addresses are going to be in the 10.TE.AM.xx range if we are connected to a DHCP server or if they are assigned statically, or in the link-local <code class="docutils literal notranslate"><span class="pre">169.254.xx.yy</span></code> range if the devices are set to DHCP, but there is no server present. For more information on how IP Addresses work, see <a class="reference external" href="https://support.microsoft.com/en-us/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics">this</a> article by Microsoft.</p>
+<p>If all devices on the network support mDNS, then all devices can be set to DHCP and referred to using their friendly names (ex. <code class="docutils literal notranslate"><span class="pre">roboRIO-TEAM-FRC.local</span></code>). If some devices do not support mDNS, they will need to be set to use static addresses.</p>
+<p>If all devices are set to use DHCP or Static IP assignments (with correct static settings), the communication should work in both the pit and on the field without any changes needed. If there are a mix of some Static and some DHCP devices, then the Static devices will connect on the field, but will not connect in the pit. This can be resolved by either setting all devices to static settings, or leaving the current settings and providing a DHCP server in the pit.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Networking Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ip-configurations.html" class="btn btn-neutral float-right" title="IP Configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

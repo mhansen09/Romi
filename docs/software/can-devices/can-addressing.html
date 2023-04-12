@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="FRC CAN Device Specifications" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/can-devices/can-addressing.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="This document seeks to describe the basic functions of the current FRC ® CAN system and the requirements for any new CAN devices seeking to work with the system. Addressing: FRC CAN nodes assign ar..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/can-devices/can-addressing.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/can-devices/can-addressing.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/can-devices/can-addressing.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/can-devices/can-addressing.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/can-devices/can-addressing.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/can-devices/can-addressing.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/can-devices/can-addressing.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/can-devices/can-addressing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRC CAN Device Specifications &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/can-devices/can-addressing.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Basic Programming" href="../basic-programming/index.html" />
+    <link rel="prev" title="Third-Party CAN Devices" href="third-party-devices.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">CAN Devices</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="using-can-devices.html">Using CAN Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics-control-module.html">Pneumatics Control Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatic-hub.html">Pneumatic Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power-distribution-module.html">Power Distribution Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="third-party-devices.html">Third-Party CAN Devices</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FRC CAN Device Specifications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">CAN Devices</a></li>
+      <li class="breadcrumb-item active">FRC CAN Device Specifications</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/can-devices/can-addressing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="frc-can-device-specifications">
+<h1>FRC CAN Device Specifications<a class="headerlink" href="#frc-can-device-specifications" title="Permalink to this heading"></a></h1>
+<p>This document seeks to describe the basic functions of the current FRC®
+CAN system and the requirements for any new CAN devices seeking to work
+with the system.</p>
+<section id="addressing">
+<h2>Addressing<a class="headerlink" href="#addressing" title="Permalink to this heading"></a></h2>
+<p>FRC CAN nodes assign arbitration IDs based on a pre-defined scheme that
+breaks the ID into 5 components:</p>
+<section id="device-type">
+<h3>Device Type<a class="headerlink" href="#device-type" title="Permalink to this heading"></a></h3>
+<p>This is a 5-bit value describing the type of device being addressed. A
+table of currently assigned device types can be found below. If you wish
+to have a new device type assigned from the <code class="docutils literal notranslate"><span class="pre">Reserved</span></code> pool, please
+submit a request to FIRST.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Device Types</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Broadcast Messages</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Robot Controller</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Motor Controller</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Relay Controller</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>Gyro Sensor</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Accelerometer</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Ultrasonic Sensor</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gear Tooth Sensor</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>Power Distribution Module</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pneumatics Controller</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>Miscellaneous</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>IO Breakout</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p>Reserved</p></td>
+<td><p>12-30</p></td>
+</tr>
+<tr class="row-odd"><td><p>Firmware Update</p></td>
+<td><p>31</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="manufacturer">
+<h3>Manufacturer<a class="headerlink" href="#manufacturer" title="Permalink to this heading"></a></h3>
+<p>This is an 8-bit value indicating the manufacturer of the CAN device.
+Currently assigned values can be found in the table below. If you wish
+to have a manufacturer ID assigned from the <code class="docutils literal notranslate"><span class="pre">Reserved</span></code>pool, please
+submit a request to FIRST.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Manufacturer</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Broadcast</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>NI</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Luminary Micro</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>DEKA</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>CTR Electronics</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>REV Robotics</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Grapple</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>MindSensors</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>Team Use</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kauai Labs</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>Copperforge</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Playing With Fusion</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p>Studica</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-odd"><td><p>The Thrifty Bot</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-even"><td><p>Reserved</p></td>
+<td><p>14-255</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="api-message-identifier">
+<h3>API/Message Identifier<a class="headerlink" href="#api-message-identifier" title="Permalink to this heading"></a></h3>
+<p>The API or Message Identifier is a 10-bit value that identifies a
+particular command or message type. These identifiers are unique for
+each Manufacturer + Device Type combination (so an API identifier that
+may be a “Voltage Set” for a Luminary Micro Motor Controller may be a
+“Status Get” for a CTR Electronics Motor Controller or <code class="docutils literal notranslate"><span class="pre">Current</span> <span class="pre">Get</span></code>
+for a CTR Power Distribution Module).</p>
+<p>The Message identifier is further broken down into 2 sub-fields: the
+6-bit API Class and the 4-bit API Index.</p>
+</section>
+<section id="api-class">
+<h3>API Class<a class="headerlink" href="#api-class" title="Permalink to this heading"></a></h3>
+<p>The API Class is a 6-bit identifier for an API grouping. Similar
+messages are grouped into a single API Class. An example of the API
+Classes for the Jaguar Motor Controller is shown in the table below.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>API Class</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Voltage Control Mode</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Speed Control Mode</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Voltage Compensation Mode</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Position Control Mode</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>Current Control Mode</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Status</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Periodic Status</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Configuration</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>Ack</p></td>
+<td><p>8</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="api-index">
+<h3>API Index<a class="headerlink" href="#api-index" title="Permalink to this heading"></a></h3>
+<p>The API Index is a 4-bit identifier for a particular message within an
+API Class. An example of the API Index values for the Jaguar Motor
+Controller Speed Control API Class is shown in the table below.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>API Index</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Enable Control</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Disable Control</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Set Setpoint</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>P Constant</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>I Constant</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>D Constant</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Set Reference</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trusted Enable</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>Trusted Set No Ack</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>Trusted Set Setpoint No Ack</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>Set Setpoint No Ack</p></td>
+<td><p>11</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="device-number">
+<h3>Device Number<a class="headerlink" href="#device-number" title="Permalink to this heading"></a></h3>
+<p>Device Number is a 6-bit quantity indicating the number of the device of
+a particular type. Devices should default to device ID 0 to match other
+components of the FRC Control System. Device 0x3F may be reserved for
+device specific broadcast messages.</p>
+<img alt="CAN addressing bit mapping." src="../../../_images/can-id-example.png" />
+</section>
+</section>
+<section id="protected-frames">
+<h2>Protected Frames<a class="headerlink" href="#protected-frames" title="Permalink to this heading"></a></h2>
+<p>FRC CAN Nodes which implement actuator control capability (motor
+controllers, relays, pneumatics controllers, etc.) must implement a way
+to verify that the robot is enabled and that commands originate with the
+main robot controller (i.e. the roboRIO).</p>
+</section>
+<section id="broadcast-messages">
+<h2>Broadcast Messages<a class="headerlink" href="#broadcast-messages" title="Permalink to this heading"></a></h2>
+<p>Broadcast messages are messages sent to all nodes by setting the device
+type and manufacturer fields to 0. The API Class for broadcast messages
+is 0. The currently defined broadcast messages are shown in the table
+below:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Disable</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>System Halt</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>System Reset</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Device Assign</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>Device Query</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Heartbeat</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Sync</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Update</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>Firmware Version</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enumerate</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>System Resume</p></td>
+<td><p>10</p></td>
+</tr>
+</tbody>
+</table>
+<p>Devices should disable immediately when receiving the Disable message
+(arbID 0).  Implementation of other broadcast messages is optional.</p>
+</section>
+<section id="requirements-for-frc-can-nodes">
+<h2>Requirements for FRC CAN Nodes<a class="headerlink" href="#requirements-for-frc-can-nodes" title="Permalink to this heading"></a></h2>
+<p>For CAN Nodes to be accepted for use in the FRC System, they must:</p>
+<ul class="simple">
+<li><p>Communicate using Arbitration IDs which match the prescribed FRC
+format:</p>
+<ul>
+<li><p>A valid, issued CAN Device Type (per Table 1 - CAN Device Types)</p></li>
+<li><p>A valid, issued Manufacturer ID (per Table 2 - CAN Manufacturer Codes)</p></li>
+<li><p>API Class(es) and Index(s) assigned and documented by the device manufacturer</p></li>
+<li><p>A user selectable device number if multiple units of the device type are intended to co-exist on the same network.</p></li>
+</ul>
+</li>
+<li><p>Support the minimum Broadcast message requirements as detailed in the Broadcast Messages section.</p></li>
+<li><p>If controlling actuators, utilize a scheme to assure that the robot is issuing commands, is enabled, and is still present.</p></li>
+<li><p>Provide software library support for LabVIEW, C++, and Java or arrange with <em>FIRST</em>® or FIRST’s Control System Partners to provide such interfaces.</p></li>
+</ul>
+</section>
+<section id="universal-heartbeat">
+<h2>Universal Heartbeat<a class="headerlink" href="#universal-heartbeat" title="Permalink to this heading"></a></h2>
+<p>The roboRIO provides a universal CAN heartbeat that any device on the bus can listen and react to. This heartbeat is sent every 20ms. The heartbeat has a full CAN ID of <code class="docutils literal notranslate"><span class="pre">0x01011840</span></code> (which is the NI Manufacturer ID, RobotController type, Device ID 0 and API ID <code class="docutils literal notranslate"><span class="pre">0x062</span></code>). It is an 8 byte CAN packet. The important byte in here is byte 5 (index 4). The layout is the following bitfield.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Width</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RedAlliance</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enabled</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Autonomous</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Test</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>WatchdogEnabled</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reserved</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+<p>The flag to watch for is <code class="docutils literal notranslate"><span class="pre">WatchdogEnabled</span></code>. If that flag is set, that means motor controllers are enabled.</p>
+<p>If 100ms has passed since this packet was received, the robot program can be considered hung, and devices should act as if the robot has been disabled.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="third-party-devices.html" class="btn btn-neutral float-left" title="Third-Party CAN Devices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../basic-programming/index.html" class="btn btn-neutral float-right" title="Basic Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

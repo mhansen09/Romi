@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="FRC Glossary" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/frc-glossary.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="accelerometer, A common sensor used to measure acceleration in one or more axis.,, auto, The first phase of each match is called Autonomous (auto) and consists of the robot’s running pre-programmed..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/frc-glossary.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/frc-glossary.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/frc-glossary.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/frc-glossary.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/frc-glossary.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/frc-glossary.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/frc-glossary.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/frc-glossary.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRC Glossary &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/frc-glossary.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../_static/js/present.js"></script>
+        <script src="../../_static/js/hoverxref.js"></script>
+        <script src="../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../_static/js/micromodal.min.js"></script>
+        <script src="../../_static/js/versionwarning.js"></script>
+        <script src="../../_static/pid-tune.js"></script>
+        <script src="../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../_static/js/version-2014.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Driver Station" href="driverstation/index.html" />
+    <link rel="prev" title="Support Resources" href="support/support-resources.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../_static/wpilibDocsLogo_300.webp 300w, ../../_static/wpilibDocsLogo_500.webp 500w, ../../_static/wpilibDocsLogo_700.webp 700w, ../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../_static/wpilibDocsLogo_300.png 300w, ../../_static/wpilibDocsLogo_500.png 500w, ../../_static/wpilibDocsLogo_700.png 700w, ../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FRC Glossary</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/frc-glossary.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="frc-glossary">
+<h1>FRC Glossary<a class="headerlink" href="#frc-glossary" title="Permalink to this heading"></a></h1>
+<dl class="simple glossary">
+<dt id="term-accelerometer">accelerometer<a class="headerlink" href="#term-accelerometer" title="Permalink to this term"></a></dt><dd><p>A common sensor used to measure acceleration in one or more axis.</p>
+</dd>
+<dt id="term-auto">auto<a class="headerlink" href="#term-auto" title="Permalink to this term"></a></dt><dd><p>The first phase of each match is called Autonomous (auto) and consists of the robot’s running pre-programmed instructions.</p>
+</dd>
+<dt id="term-back-EMF">back-EMF<a class="headerlink" href="#term-back-EMF" title="Permalink to this term"></a></dt><dd><p>In electric motors, the force generated by the interaction of spinning magnets in a coil of wire which opposes spinning motion.</p>
+</dd>
+<dt id="term-boolean">boolean<a class="headerlink" href="#term-boolean" title="Permalink to this term"></a></dt><dd><p>A form of data with only two possible values (true or false), intended to represent the two truth values of logic and Boolean algebra.</p>
+</dd>
+<dt id="term-call-stack">call stack<a class="headerlink" href="#term-call-stack" title="Permalink to this term"></a></dt><dd><p>A specially-organized region of memory which helps the program keep track of what function it is in. As each function calls another, the call point is recorded and added to the top of the structure, forming a “stack” of references. Additionally, local variables will also be stored in this stack. See <a class="reference external" href="https://en.wikipedia.org/wiki/Call_stack">call stack</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-central-limit-theorem">central limit theorem<a class="headerlink" href="#term-central-limit-theorem" title="Permalink to this term"></a></dt><dd><p>A core concept in probability which states that when many independent variables are added up, the result tends to look like a “normal” (or Gaussian) distribution, regardless of whether the independent variables themselves are normally distributed. See <a class="reference external" href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central Limit Theorem</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-Classical-Mechanics">Classical Mechanics<a class="headerlink" href="#term-Classical-Mechanics" title="Permalink to this term"></a></dt><dd><p>The branch of physics which studies and describes the motion of relatively large, relatively slow objects. See <a class="reference external" href="https://en.wikipedia.org/wiki/Classical_mechanics">Classical Mechanics</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-COTS">COTS<a class="headerlink" href="#term-COTS" title="Permalink to this term"></a></dt><dd><p>Commercial off the shelf, a standard (i.e. not custom order) part commonly available from a vendor to all teams for purchase.</p>
+</dd>
+<dt id="term-composition">composition<a class="headerlink" href="#term-composition" title="Permalink to this term"></a></dt><dd><p>A formal software term for building (or “composing”) software entities out of smaller component entities. See <a class="reference external" href="https://en.wikipedia.org/wiki/Object_composition">object composition</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-CRTP">CRTP<a class="headerlink" href="#term-CRTP" title="Permalink to this term"></a></dt><dd><p>Continuously Recurring Template Pattern - A software idiom in which a class <cite>X`</cite> derives from a class template instantiation using <cite>X`</cite> itself as a template argument. See <a class="reference external" href="https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern">CRTP</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-C">C++<a class="headerlink" href="#term-C" title="Permalink to this term"></a></dt><dd><p>One of the three officially supported programming languages.</p>
+</dd>
+<dt id="term-declarative-programming">declarative programming<a class="headerlink" href="#term-declarative-programming" title="Permalink to this term"></a></dt><dd><p>A style of software which focuses on describing <em>what</em> a program should do, rather than <em>how</em> it gets done. See <a class="reference external" href="https://en.wikipedia.org/wiki/Declarative_programming">declarative programming</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-dependency-injection">dependency injection<a class="headerlink" href="#term-dependency-injection" title="Permalink to this term"></a></dt><dd><p>A software design pattern where each class receives all objects it depends upon. Sometimes these are passed through the constructor, but not always. See <a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">dependency injection</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-deprecated">deprecated<a class="headerlink" href="#term-deprecated" title="Permalink to this term"></a></dt><dd><p>Software that has been replaced and will no longer receive new features. Deprecated software will be maintained for at least 1 year, but may be removed after that. For example, if a method is deprecated prior to the 2022 season, it will be usable in the 2022 season, but may be removed prior to the 2023 season. Teams are encouraged to not use deprecated methods in new code. WPILib always deprecates features at least one year prior to removing them from the codebase.</p>
+</dd>
+<dt id="term-design-pattern">design pattern<a class="headerlink" href="#term-design-pattern" title="Permalink to this term"></a></dt><dd><p>A particular, intentionally-chosen style of organizing code. A design pattern intentionally excludes using certain features of a programming language to constrain developers into solutions that are well-suited to a particular problem-space. See <a class="reference external" href="https://en.wikipedia.org/wiki/Design_pattern">design pattern.</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-DHCP">DHCP<a class="headerlink" href="#term-DHCP" title="Permalink to this term"></a></dt><dd><p>Dynamic Host Configuration Protocol, the protocol that allows a central device to assign unique IP addresses to all other devices.</p>
+</dd>
+<dt id="term-encapsulation">encapsulation<a class="headerlink" href="#term-encapsulation" title="Permalink to this term"></a></dt><dd><p>A software design pattern which uses a class to hide the implementation details of other classes. See <a class="reference external" href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)">encapsulation</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-entry">entry<a class="headerlink" href="#term-entry" title="Permalink to this term"></a></dt><dd><p>In <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a>, a combined <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-publisher"><span class="xref std std-term">publisher</span></a> and <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-subscriber"><span class="xref std std-term">subscriber</span></a>. The subscriber is always active, but the publisher is not created until a publish operation is performed (e.g. a value is “set”, aka published, on the entry). This may be more convenient than maintaining a separate publisher and subscriber.</p>
+</dd>
+<dt id="term-enumeration">enumeration<a class="headerlink" href="#term-enumeration" title="Permalink to this term"></a></dt><dd><p>A list of all elements of a set, typically used to refer to a set of pre-defined values.</p>
+</dd>
+<dt id="term-event-driven-programming">event-driven programming<a class="headerlink" href="#term-event-driven-programming" title="Permalink to this term"></a></dt><dd><p>A style of programming where certain parts of code generate “events” as a result of some input (sensors, user interaction, etc). Then, other parts of code listen for and respond to “handle” these events. See <a class="reference external" href="https://en.wikipedia.org/wiki/Event-driven_programming">event-based</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-floating-point">floating point<a class="headerlink" href="#term-floating-point" title="Permalink to this term"></a></dt><dd><p>A method for approximating real numbers in computer-based arithmetic, using a fixed precision integer scaled by an integer exponent. Typically computer systems support both “single” precision (32-bit storage) and “double” precision (64-bit storage) floating point values, as defined by IEEE 754.</p>
+</dd>
+<dt id="term-FMS">FMS<a class="headerlink" href="#term-FMS" title="Permalink to this term"></a></dt><dd><p>Field Management System, the electronics core responsible for sensing and controlling the FIRST Robotics Competition field.</p>
+</dd>
+<dt id="term-FPGA">FPGA<a class="headerlink" href="#term-FPGA" title="Permalink to this term"></a></dt><dd><p>Field-programmable gate array - a specialized integrated circuit consisting of many digital logic elements, which can be configured to act in different patterns. This allows its behavior to be changed after manufacturing. In the context of FRC, National Instruments provides a specific configuration for the RIO’s FPGA which allows it to process the electrical inputs and outputs at a very high rate. See <a class="reference external" href="https://en.wikipedia.org/wiki/Field-programmable_gate_array">FPGA</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-GradleRIO">GradleRIO<a class="headerlink" href="#term-GradleRIO" title="Permalink to this term"></a></dt><dd><p>The mechanism that powers the deployment of robot code to the roboRIO.</p>
+</dd>
+<dt id="term-gyroscope">gyroscope<a class="headerlink" href="#term-gyroscope" title="Permalink to this term"></a></dt><dd><p>A device that measures rate of rotation.  It can add up the rotation measurements to determine <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-heading"><span class="xref std std-term">heading</span></a> of the robot. (“gyro”, for short)</p>
+</dd>
+<dt id="term-heading">heading<a class="headerlink" href="#term-heading" title="Permalink to this term"></a></dt><dd><p>The direction the robot is pointed, usually expressed as an angle in degrees.</p>
+</dd>
+<dt id="term-imperative-programming">imperative programming<a class="headerlink" href="#term-imperative-programming" title="Permalink to this term"></a></dt><dd><p>A style of programming that focuses on <em>what</em> the code should be doing, step by step, every loop. See <a class="reference external" href="https://en.wikipedia.org/wiki/Imperative_programming">imperative programming</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-IMU">IMU<a class="headerlink" href="#term-IMU" title="Permalink to this term"></a></dt><dd><p>Inertial Measurement Unit, a sensor that combines both an <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-accelerometer"><span class="xref std std-term">accelerometer</span></a> and a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-gyroscope"><span class="xref std std-term">gyroscope</span></a> into a single sensor.</p>
+</dd>
+<dt id="term-Java">Java<a class="headerlink" href="#term-Java" title="Permalink to this term"></a></dt><dd><p>One of the three officially supported programming languages.</p>
+</dd>
+<dt id="term-JSON">JSON<a class="headerlink" href="#term-JSON" title="Permalink to this term"></a></dt><dd><p>JavaScript Object Notation. A standardized way of organizing data into named values. The organized data can be easily <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-serialized"><span class="xref std std-term">serialized</span></a>. While the original usage was in Javascript, it can be used and interested by most modern programming languages. See <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-KOP">KOP<a class="headerlink" href="#term-KOP" title="Permalink to this term"></a></dt><dd><p>Kit of Parts, the collection of items listed on the Kickoff Kit checklists, distributed to the team via FIRST Choice, or paid for completely (except shipping) with a Product Donation Voucher (PDV).</p>
+</dd>
+<dt id="term-KOP-chassis">KOP chassis<a class="headerlink" href="#term-KOP-chassis" title="Permalink to this term"></a></dt><dd><p>The KOP contains a drive base (chassis) distributed to every team (that did not opt out) as part of the <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-KOP"><span class="xref std std-term">KOP</span></a>. For the 2023 season, the KOP chassis is the <a class="reference external" href="https://www.andymark.com/products/am14u5-6-wheel-drop-center-robot-drive-base-first-kit-of-parts-chassis">AM14U5</a>.</p>
+</dd>
+<dt id="term-LabVIEW">LabVIEW<a class="headerlink" href="#term-LabVIEW" title="Permalink to this term"></a></dt><dd><p>One of the three officially supported programming languages.</p>
+</dd>
+<dt id="term-NetworkTables">NetworkTables<a class="headerlink" href="#term-NetworkTables" title="Permalink to this term"></a></dt><dd><p>A publish-subscribe messaging system to communicate data between programs.</p>
+</dd>
+<dt id="term-mass">mass<a class="headerlink" href="#term-mass" title="Permalink to this term"></a></dt><dd><p>the amount of matter in a physical object. Objects with more mass will resist changes in motion more than objects with less mass. See <a class="reference external" href="https://en.wikipedia.org/wiki/Mass">mass</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-moment-of-inertia">moment of inertia<a class="headerlink" href="#term-moment-of-inertia" title="Permalink to this term"></a></dt><dd><p>The property of an object that describes both how much mass it has, and how that mass is distributed relative to a certain axis of rotation. Objects with higher moments of inertia resist changes in rotational motion more than objects with lower moments of inertia. Increasing the moment of inertia is accomplished by adding more mass, or moving the mass further away from the axis of rotation. See <a class="reference external" href="https://en.wikipedia.org/wiki/Moment_of_inertia">moment of inertia</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-mutable">mutable<a class="headerlink" href="#term-mutable" title="Permalink to this term"></a></dt><dd><p>An object that can be modified after it is created.</p>
+</dd>
+<dt id="term-permanent-magnet-DC-motor">permanent-magnet DC motor<a class="headerlink" href="#term-permanent-magnet-DC-motor" title="Permalink to this term"></a></dt><dd><p>The classification of all legal motors for the FIRST robotics competition. This type of motor takes direct current as input, and uses it to create a magnetic field. In turn, this magnetic field interacts with a physical magnet to create a force that turns the output shaft. Electrical (“brushless”) or mechanical (“brushed”) means are used to ensure the electrically-generated magnetic field always points in a direction that creates forces when it interacts with the physical magnet, even as the motor’s shaft rotates. See <a class="reference external" href="https://en.wikipedia.org/wiki/Brushed_DC_electric_motor#Permanent-magnet_motors">permanent-magnet motor</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-persistent">persistent<a class="headerlink" href="#term-persistent" title="Permalink to this term"></a></dt><dd><p>In <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a>, a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-topic"><span class="xref std std-term">topic</span></a> that is saved to a file by the server and restored at startup.</p>
+</dd>
+<dt id="term-property">property<a class="headerlink" href="#term-property" title="Permalink to this term"></a></dt><dd><p>In <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a>, named information (metadata) about a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-topic"><span class="xref std std-term">topic</span></a> stored and updated separately from the topic’s data. A topic may have any number of properties. A property’s value can be any data type that can be represented in JSON.</p>
+</dd>
+<dt id="term-publisher">publisher<a class="headerlink" href="#term-publisher" title="Permalink to this term"></a></dt><dd><p>In <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a>, an object that defines a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-topic"><span class="xref std std-term">topic</span></a> and creates and sends timestamped data values.</p>
+</dd>
+<dt id="term-pose">pose<a class="headerlink" href="#term-pose" title="Permalink to this term"></a></dt><dd><p>The collection of position and rotation information that describes how a rigid body is oriented in space, relative to some fixed reference point.</p>
+</dd>
+<dt id="term-RAII">RAII<a class="headerlink" href="#term-RAII" title="Permalink to this term"></a></dt><dd><p>Resource Acquisition Is Initialization; a language behavior (in C++, but not in Java) where holding a resource is tied to object lifetime.</p>
+</dd>
+<dt id="term-retro-reflection">retro-reflection<a class="headerlink" href="#term-retro-reflection" title="Permalink to this term"></a></dt><dd><p>The property of reflecting incoming light back at the same angle it came in at, rather than an incident angle (like a mirror), absorbing it, or scattering it. Most FRC vision processing targets are retro-reflective. See <a class="reference external" href="https://en.wikipedia.org/wiki/Retroreflector">retroreflector</a> on Wikipedia for more information.</p>
+</dd>
+<dt id="term-recursive-composition">recursive composition<a class="headerlink" href="#term-recursive-composition" title="Permalink to this term"></a></dt><dd><p>A type of <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-composition"><span class="xref std std-term">composition</span></a> in which the composite object may contain components of the same type as itself. For example, a command group may contain one or more command groups. See <a class="reference external" href="https://en.wikipedia.org/wiki/Object_composition#Recursive_composition">recursive composition</a> on Wikipedia for more info. See also <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-recursive-composition"><span class="xref std std-term">recursive composition</span></a>.</p>
+</dd>
+<dt id="term-retained">retained<a class="headerlink" href="#term-retained" title="Permalink to this term"></a></dt><dd><p>In <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a>, a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-topic"><span class="xref std std-term">topic</span></a> that is kept alive by the server even after all publishers stop publishing.</p>
+</dd>
+<dt id="term-serialized">serialized<a class="headerlink" href="#term-serialized" title="Permalink to this term"></a></dt><dd><p>The property of a data organization scheme that allows the description of the data to be sent in order, byte by byte, over some communication channel. Reading or writing a file on disk is done in this serial fashion (IE, the data is read or written byte by byte, not all at once). Sending data over a SPI or I2C bus is also done byte by byte, again requiring the data can be serialized.</p>
+</dd>
+<dt id="term-simulation">simulation<a class="headerlink" href="#term-simulation" title="Permalink to this term"></a></dt><dd><p>A way for teams to test their code without having an actual robot available.</p>
+</dd>
+<dt id="term-software-library">software library<a class="headerlink" href="#term-software-library" title="Permalink to this term"></a></dt><dd><p>A collection of code that can be imported into and used by other software. See <a class="reference external" href="https://en.wikipedia.org/wiki/Library_(computing)">software library</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-solenoid-valve">solenoid valve<a class="headerlink" href="#term-solenoid-valve" title="Permalink to this term"></a></dt><dd><p>A airflow-controlling valve which is actuated by a small electromagnet. Strictly speaking, the <em>solenoid</em> is the coil of wire which forms the electromagnet, and the <em>valve</em> is the mechanism which actually redirects airflow. However, the set of solenoid and valve together is often simply called “a solenoid”. See <a class="reference external" href="https://en.wikipedia.org/wiki/Solenoid_valve">solenoid valve</a>. on Wikipedia for more info.</p>
+</dd>
+<dt id="term-state-machine">state machine<a class="headerlink" href="#term-state-machine" title="Permalink to this term"></a></dt><dd><p>A programming construct that divides a problem into many discrete, well-defined, mutually-exclusive “states”, then defines how the problem is solved by moving between different states. See <a class="reference external" href="https://en.wikipedia.org/wiki/Finite-state_machine">state machine</a> on Wikipedia for more more info.</p>
+</dd>
+<dt id="term-subscriber">subscriber<a class="headerlink" href="#term-subscriber" title="Permalink to this term"></a></dt><dd><p>In <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a>, an object that receives timestamped data value updates to one or more <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-topic"><span class="xref std std-term">topic</span></a>s.</p>
+</dd>
+<dt id="term-telemetry">telemetry<a class="headerlink" href="#term-telemetry" title="Permalink to this term"></a></dt><dd><p>The process of recording and sending real-time data about the performance of your robot to a real-time readout or log file. For the linguists among us, the word’s roots are “tele” (remote) and “metry” (measurement). See <a class="reference external" href="https://en.wikipedia.org/wiki/Telemetry">telemetry</a> on Wikipedia for more info.</p>
+</dd>
+<dt id="term-teleop">teleop<a class="headerlink" href="#term-teleop" title="Permalink to this term"></a></dt><dd><p>The second phase of each match is called the Teleoperated Period (teleop) and consists of drivers controlling their robots.</p>
+</dd>
+<dt id="term-topic">topic<a class="headerlink" href="#term-topic" title="Permalink to this term"></a></dt><dd><p>In <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a>, a named data channel.</p>
+</dd>
+<dt id="term-torque">torque<a class="headerlink" href="#term-torque" title="Permalink to this term"></a></dt><dd><p>A force applied at a distance from some axis of rotation</p>
+</dd>
+<dt id="term-trajectory">trajectory<a class="headerlink" href="#term-trajectory" title="Permalink to this term"></a></dt><dd><p>A trajectory is a smooth curve, with velocities and accelerations at each point along the curve, connecting two endpoints on the field.</p>
+</dd>
+<dt id="term-transitory">transitory<a class="headerlink" href="#term-transitory" title="Permalink to this term"></a></dt><dd><p>In <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a>, a <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-topic"><span class="xref std std-term">topic</span></a> that will disappear after the last <a class="hxr-hoverxref hxr-tooltip reference internal" href="#term-publisher"><span class="xref std std-term">publisher</span></a> stops publishing.</p>
+</dd>
+</dl>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="support/support-resources.html" class="btn btn-neutral float-left" title="Support Resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="driverstation/index.html" class="btn btn-neutral float-right" title="Driver Station" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

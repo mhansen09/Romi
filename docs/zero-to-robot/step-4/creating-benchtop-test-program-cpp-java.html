@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Creating your Benchtop Test Program (C++/Java)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Once everything is installed, we’re ready to create a robot program. WPILib comes with several templates for robot programs. Use of these templates is highly recommended for new users; however, adv..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creating your Benchtop Test Program (C++/Java) &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Running your Benchtop Test Program" href="running-benchtop-test.html" />
+    <link rel="prev" title="Creating your Benchtop Test Program (LabVIEW)" href="creating-benchtop-test-program-labview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step 4: Programming your Robot</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="creating-benchtop-test-program-labview.html">Creating your Benchtop Test Program (LabVIEW)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creating your Benchtop Test Program (C++/Java)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running-benchtop-test.html">Running your Benchtop Test Program</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Step 4: Programming your Robot</a></li>
+      <li class="breadcrumb-item active">Creating your Benchtop Test Program (C++/Java)</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/zero-to-robot/step-4/creating-benchtop-test-program-cpp-java.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="creating-your-benchtop-test-program-c-java">
+<h1>Creating your Benchtop Test Program (C++/Java)<a class="headerlink" href="#creating-your-benchtop-test-program-c-java" title="Permalink to this heading"></a></h1>
+<p>Once everything is installed, we’re ready to create a robot program.  WPILib comes with several templates for robot programs.  Use of these templates is highly recommended for new users; however, advanced users are free to write their own robot code from scratch. This article walks through creating a project from one of the provided examples which has some code already written to drive a basic robot.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This guide includes code examples that involve vendor hardware for the convenience of the user. In this document, PWM refers to the motor controller included in the KOP. The CTRE tab references the Talon FX motor controller (Falcon 500 motor), but usage is similar for TalonSRX and VictorSPX. The REV tab references the CAN SPARK MAX controlling a brushless motor, but it’s similar for brushed motor. There is an assumption that the user has already installed the required <a class="reference internal" href="../../software/vscode-overview/3rd-party-libraries.html"><span class="doc">vendordeps</span></a>  and configured the device(s) (update firmware, assign CAN IDs, etc) according to the manufacturer documentation (<a class="reference external" href="https://docs.ctr-electronics.com/">CTRE</a> <a class="reference external" href="https://docs.revrobotics.com/sparkmax/gs-sm">REV</a>).</p>
+</div>
+<section id="creating-a-new-wpilib-project">
+<h2>Creating a New WPILib Project<a class="headerlink" href="#creating-a-new-wpilib-project" title="Permalink to this heading"></a></h2>
+<p>Bring up the Visual Studio Code command palette with <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd>. Then, type “WPILib” into the prompt.  Since all WPILib commands start with “WPILib”, this will bring up the list of WPILib-specific VS Code commands. Now, select the “Create a new project” command:</p>
+<img alt="Choose &quot;WPILib: Create a new project&quot;." src="../../../_images/create-new-project.png" />
+<p>This will bring up the “New Project Creator Window:”</p>
+<img alt="The different parts of the new project creation window." src="../../../_images/new-project-creator.png" />
+<p>The elements of the New Project Creator Window are explained below:</p>
+<ol class="arabic simple">
+<li><p><strong>Project Type</strong>: The kind of project we wish to create.  For this example, select <strong>Example</strong></p></li>
+<li><p><strong>Language</strong>: This is the language (C++ or Java) that will be used for this project.</p></li>
+<li><p><strong>Project Base</strong>: This box is used to select the base class or example to generate the project from. For this example, select <strong>Getting Started</strong></p></li>
+<li><p><strong>Base Folder</strong>: This determines the folder in which the robot project will be located.</p></li>
+<li><p><strong>Project Name</strong>: The name of the robot project.  This also specifies the name that the project folder will be given if the Create New Folder box is checked.</p></li>
+<li><p><strong>Create a New Folder</strong>: If this is checked, a new folder will be created to hold the project within the previously-specified folder.  If it is <em>not</em> checked, the project will be located directly in the previously-specified folder.  An error will be thrown if the folder is not empty and this is not checked. project folder will be given if the Create New Folder box is checked.</p></li>
+<li><p><strong>Team Number</strong>: The team number for the project, which will be used for package names within the project and to locate the robot when deploying code.</p></li>
+<li><p><strong>Enable Desktop Support</strong>: Enables unit test and simulation. While WPILib supports this, third party software libraries may not. If libraries do not support desktop, then your code may not compile or may crash. It should be left unchecked unless unit testing or simulation is needed and all libraries support it. For this example, do not check this box.</p></li>
+</ol>
+<p>Once all the above have been configured, click “Generate Project” and the robot project will be created.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any errors in project generation will appear in the bottom right-hand corner of the screen.</p>
+</div>
+</section>
+<section id="opening-the-new-project">
+<h2>Opening The New Project<a class="headerlink" href="#opening-the-new-project" title="Permalink to this heading"></a></h2>
+<img alt="Open Project Dialog in VS Code" src="../../../_images/opening-project.png" />
+<p>After successfully creating your project, VS Code will give the option of opening the project as shown above. We can choose to do that now or later by typing <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">K</kbd></kbd> then <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">O</kbd></kbd> (or just <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Command</kbd>+<kbd class="kbd docutils literal notranslate">O</kbd></kbd> on macOS) and select the folder where we saved our project.</p>
+<img alt="Trusted Workspace dialog in VS Code." src="../../../_images/trusted-workspace.png" />
+<p>Click <span class="guilabel">Yes I trust the authors</span>.</p>
+<p>Once opened we will see the project hierarchy on the left. Double clicking on the file will open that file in the editor.</p>
+<img alt="The robot.java code shown after opening a new project." src="../../../_images/opened-robot-project.png" />
+</section>
+<section id="c-configurations-c-only">
+<h2>C++ Configurations (C++ Only)<a class="headerlink" href="#c-configurations-c-only" title="Permalink to this heading"></a></h2>
+<p>For C++ projects, there is one more step to set up IntelliSense.  Whenever we open a project, we should get a pop-up in the bottom right corner asking to refresh C++ configurations.  Click “Yes” to set up IntelliSense.</p>
+<img alt="You must choose &quot;Yes&quot; to refresh the C++ configurations." src="../../../_images/cpp-configurations.png" />
+</section>
+<section id="imports-includes">
+<h2>Imports/Includes<a class="headerlink" href="#imports-includes" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UFdN" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UFdN" name="UFdN" role="tab" tabindex="0">PWM</button><button aria-controls="panel-0-Q1RSRQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q1RSRQ==" name="Q1RSRQ==" role="tab" tabindex="-1">CTRE</button><button aria-controls="panel-0-UkVW" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UkVW" name="UkVW" role="tab" tabindex="-1">REV</button></div><div aria-labelledby="tab-0-UFdN" class="sphinx-tabs-panel group-tab" id="panel-0-UFdN" name="UFdN" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 7</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.TimedRobot</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.Timer</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.XboxController</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">10</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.drive.DifferentialDrive</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">11</span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">5</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/TimedRobot.h&gt;</span><span class="cp"></span>
+<span class="linenos">6</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/Timer.h&gt;</span><span class="cp"></span>
+<span class="linenos">7</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/XboxController.h&gt;</span><span class="cp"></span>
+<span class="linenos">8</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/drive/DifferentialDrive.h&gt;</span><span class="cp"></span>
+<span class="linenos">9</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/motorcontrol/PWMSparkMax.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div></div>
+</div><div aria-labelledby="tab-0-Q1RSRQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Q1RSRQ==" name="Q1RSRQ==" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.Joystick</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.TimedRobot</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.Timer</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.drive.DifferentialDrive</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.ctre.phoenix.motorcontrol.can.WPI_TalonFX</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/Joystick.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/TimedRobot.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/Timer.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/drive/DifferentialDrive.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ctre/phoenix/motorcontrol/can/WPI_TalonFX.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div></div>
+</div><div aria-labelledby="tab-0-UkVW" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UkVW" name="UkVW" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.revrobotics.CANSparkMax</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">com.revrobotics.CANSparkMaxLowLevel.MotorType</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.TimedRobot</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.Timer</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.XboxController</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.wpilibj.drive.DifferentialDrive</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/TimedRobot.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/Timer.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/XboxController.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/drive/DifferentialDrive.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;frc/motorcontrol/PWMSparkMax.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rev/CANSparkMax.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div></div>
+</div></div>
+<p>Our code needs to reference the components of WPILib that are used. In C++ this is accomplished using <code class="docutils literal notranslate"><span class="pre">#include</span></code> statements; in Java it is done with <code class="docutils literal notranslate"><span class="pre">import</span></code> statements. The program references classes for <code class="docutils literal notranslate"><span class="pre">Joystick</span></code> (for driving), <code class="docutils literal notranslate"><span class="pre">PWMSparkMax</span></code> / <code class="docutils literal notranslate"><span class="pre">WPI_TalonFX</span></code> / <code class="docutils literal notranslate"><span class="pre">CANSparkMax</span> <span class="pre">(for</span> <span class="pre">controlling</span> <span class="pre">motors),</span> <span class="pre">``TimedRobot</span></code> (the base class used for the example), <code class="docutils literal notranslate"><span class="pre">Timer</span></code> (used for autonomous), and <code class="docutils literal notranslate"><span class="pre">DifferentialDrive</span></code> (for connecting the joystick control to the motors).</p>
+</section>
+<section id="defining-the-variables-for-our-sample-robot">
+<h2>Defining the variables for our sample robot<a class="headerlink" href="#defining-the-variables-for-our-sample-robot" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-UFdN" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-UFdN" name="UFdN" role="tab" tabindex="0">PWM</button><button aria-controls="panel-4-Q1RSRQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-Q1RSRQ==" name="Q1RSRQ==" role="tab" tabindex="-1">CTRE</button><button aria-controls="panel-4-UkVW" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-UkVW" name="UkVW" role="tab" tabindex="-1">REV</button></div><div aria-labelledby="tab-4-UFdN" class="sphinx-tabs-panel group-tab" id="panel-4-UFdN" name="UFdN" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-5-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-5-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">19</span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Robot</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">TimedRobot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">m_leftDrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">m_rightDrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PWMSparkMax</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_robotDrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">m_leftDrive</span><span class="p">,</span><span class="w"> </span><span class="n">m_rightDrive</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">XboxController</span><span class="w"> </span><span class="n">m_controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XboxController</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Timer</span><span class="w"> </span><span class="n">m_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Timer</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="w">  </span><span class="cm">/**</span>
+<span class="linenos">27</span><span class="cm">   * This function is run when the robot is first started up and should be used for any</span>
+<span class="linenos">28</span><span class="cm">   * initialization code.</span>
+<span class="linenos">29</span><span class="cm">   */</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">    </span><span class="c1">// We need to invert one side of the drivetrain so that positive voltages</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">    </span><span class="c1">// result in both sides moving forward. Depending on how your robot&#39;s</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">    </span><span class="c1">// gearbox is constructed, you might have to invert the left side instead.</span><span class="w"></span>
+<span class="linenos">35</span><span class="w">    </span><span class="n">m_rightDrive</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">36</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">12</span><span class="w"> </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">  </span><span class="n">Robot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">    </span><span class="c1">// We need to invert one side of the drivetrain so that positive voltages</span>
+<span class="linenos">15</span><span class="w">    </span><span class="c1">// result in both sides moving forward. Depending on how your robot&#39;s</span>
+<span class="linenos">16</span><span class="w">    </span><span class="c1">// gearbox is constructed, you might have to invert the left side instead.</span>
+<span class="linenos">17</span><span class="w">    </span><span class="n">m_right</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">    </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="n">SetExpiration</span><span class="p">(</span><span class="mi">100</span><span class="n">_ms</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">    </span><span class="n">m_timer</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">50</span><span class="w"> </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">  </span><span class="c1">// Robot drive system</span>
+<span class="linenos">52</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">m_left</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">PWMSparkMax</span><span class="w"> </span><span class="n">m_right</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">54</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_robotDrive</span><span class="p">{</span><span class="n">m_left</span><span class="p">,</span><span class="w"> </span><span class="n">m_right</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">55</span>
+<span class="linenos">56</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">XboxController</span><span class="w"> </span><span class="n">m_controller</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">  </span><span class="n">frc</span><span class="o">::</span><span class="n">Timer</span><span class="w"> </span><span class="n">m_timer</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">58</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</div><div aria-labelledby="tab-4-Q1RSRQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-Q1RSRQ==" name="Q1RSRQ==" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-6-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-6-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-6-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-6-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-6-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Robot</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">TimedRobot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">WPI_TalonFX</span><span class="w"> </span><span class="n">m_leftDrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WPI_TalonFX</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">WPI_TalonFX</span><span class="w"> </span><span class="n">m_rightDrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WPI_TalonFX</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_robotDrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">m_leftDrive</span><span class="p">,</span><span class="w"> </span><span class="n">m_rightDrive</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Joystick</span><span class="w"> </span><span class="n">m_stick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Joystick</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Timer</span><span class="w"> </span><span class="n">m_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Timer</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-6-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w"> </span><span class="n">Robot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_right</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="n">SetExpiration</span><span class="p">(</span><span class="mi">100</span><span class="n">_ms</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// We need to invert one side of the drivetrain so that positive voltages</span>
+<span class="w">    </span><span class="c1">// result in both sides moving forward. Depending on how your robot&#39;s</span>
+<span class="w">    </span><span class="c1">// gearbox is constructed, you might have to invert the left side instead.</span>
+<span class="w">    </span><span class="n">m_timer</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w"> </span><span class="c1">// Robot drive system</span>
+<span class="w"> </span><span class="n">ctre</span><span class="o">::</span><span class="n">phoenix</span><span class="o">::</span><span class="n">motorcontrol</span><span class="o">::</span><span class="n">can</span><span class="o">::</span><span class="n">WPI_TalonFX</span><span class="w"> </span><span class="n">m_left</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="w"> </span><span class="n">ctre</span><span class="o">::</span><span class="n">phoenix</span><span class="o">::</span><span class="n">motorcontrol</span><span class="o">::</span><span class="n">can</span><span class="o">::</span><span class="n">WPI_TalonFX</span><span class="w"> </span><span class="n">m_right</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
+<span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_robotDrive</span><span class="p">{</span><span class="n">m_left</span><span class="p">,</span><span class="w"> </span><span class="n">m_right</span><span class="p">};</span><span class="w"></span>
+
+<span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">Joystick</span><span class="w"> </span><span class="n">m_stick</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">Timer</span><span class="w"> </span><span class="n">m_timer</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</div><div aria-labelledby="tab-4-UkVW" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-UkVW" name="UkVW" role="tabpanel" tabindex="0"><div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-7-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-7-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-7-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-7-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-7-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Robot</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">TimedRobot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CANSparkMax</span><span class="w"> </span><span class="n">m_leftDrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CANSparkMax</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MotorType</span><span class="p">.</span><span class="na">kBrushless</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">CANSparkMax</span><span class="w"> </span><span class="n">m_rightDrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CANSparkMax</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">MotorType</span><span class="p">.</span><span class="na">kBrushless</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_robotDrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">m_leftDrive</span><span class="p">,</span><span class="w"> </span><span class="n">m_rightDrive</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">XboxController</span><span class="w"> </span><span class="n">m_controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XboxController</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Timer</span><span class="w"> </span><span class="n">m_timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Timer</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-7-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Robot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// We need to invert one side of the drivetrain so that positive voltages</span>
+<span class="w">  </span><span class="c1">// result in both sides moving forward. Depending on how your robot&#39;s</span>
+<span class="w">  </span><span class="c1">// gearbox is constructed, you might have to invert the left side instead.</span>
+<span class="w">  </span><span class="n">m_right</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="n">SetExpiration</span><span class="p">(</span><span class="mi">100</span><span class="n">_ms</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">m_timer</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w"> </span><span class="c1">// Robot drive system</span>
+<span class="w"> </span><span class="n">rev</span><span class="o">::</span><span class="n">CANSparkMax</span><span class="w"> </span><span class="n">m_left</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">rev</span><span class="o">::</span><span class="n">CANSparkMax</span><span class="o">::</span><span class="n">MotorType</span><span class="o">::</span><span class="n">kBrushless</span><span class="p">};</span><span class="w"></span>
+<span class="w"> </span><span class="n">rev</span><span class="o">::</span><span class="n">CANSparkMax</span><span class="w"> </span><span class="n">m_right</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">rev</span><span class="o">::</span><span class="n">CANSparkMax</span><span class="o">::</span><span class="n">MotorType</span><span class="o">::</span><span class="n">kBrushless</span><span class="p">};</span><span class="w"></span>
+<span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">m_robotDrive</span><span class="p">{</span><span class="n">m_left</span><span class="p">,</span><span class="w"> </span><span class="n">m_right</span><span class="p">};</span><span class="w"></span>
+
+<span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">XboxController</span><span class="w"> </span><span class="n">m_controller</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">Timer</span><span class="w"> </span><span class="n">m_timer</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</div></div>
+<p>The sample robot in our examples will have a joystick on USB port 0 for arcade drive and two motors on PWM ports 0 and 1 (Vendor examples use CAN with IDs 1 and 2). Here we create objects of type DifferentialDrive (m_robotDrive), Joystick (m_stick) and Timer (m_timer). This section of the code does three things:</p>
+<ol class="arabic simple">
+<li><p>Defines the variables as members of our Robot class.</p></li>
+<li><p>Initializes the variables.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The variable initializations for C++ are in the <code class="docutils literal notranslate"><span class="pre">private</span></code> section at the bottom of the program. This means they are private to the class (<code class="docutils literal notranslate"><span class="pre">Robot</span></code>). The C++ code also sets the Motor Safety expiration to 0.1 seconds (the drive will shut off if we don’t give it a command every .1 seconds) and starts the <code class="docutils literal notranslate"><span class="pre">Timer</span></code> used for autonomous.</p>
+</div>
+</section>
+<section id="robot-initialization">
+<h2>Robot Initialization<a class="headerlink" href="#robot-initialization" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-8-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-8-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-8-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-8-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">RobotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">RobotInit</span></code> method is run when the robot program is starting up, but after the constructor. The <code class="docutils literal notranslate"><span class="pre">RobotInit</span></code> for our sample program doesn’t do anything. If we wanted to run something here we could provide the code above to override the default).</p>
+</section>
+<section id="simple-autonomous-example">
+<h2>Simple Autonomous Example<a class="headerlink" href="#simple-autonomous-example" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-9-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-9-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-9-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-9-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-9-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">38</span><span class="w">  </span><span class="cm">/** This function is run once each time the robot enters autonomous mode. */</span><span class="w"></span>
+<span class="linenos">39</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">autonomousInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">    </span><span class="n">m_timer</span><span class="p">.</span><span class="na">restart</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">43</span>
+<span class="linenos">44</span><span class="w">  </span><span class="cm">/** This function is called periodically during autonomous. */</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">autonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">    </span><span class="c1">// Drive for 2 seconds</span><span class="w"></span>
+<span class="linenos">48</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_timer</span><span class="p">.</span><span class="na">get</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">2.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">49</span><span class="w">      </span><span class="c1">// Drive forwards half speed, make sure to turn input squaring off</span><span class="w"></span>
+<span class="linenos">50</span><span class="w">      </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="na">arcadeDrive</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">51</span><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">52</span><span class="w">      </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="na">stopMotor</span><span class="p">();</span><span class="w"> </span><span class="c1">// stop robot</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">54</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-9-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">22</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">AutonomousInit</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">m_timer</span><span class="p">.</span><span class="n">Restart</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">AutonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">    </span><span class="c1">// Drive for 2 seconds</span>
+<span class="linenos">26</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_timer</span><span class="p">.</span><span class="n">Get</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="n">_s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">      </span><span class="c1">// Drive forwards half speed, make sure to turn input squaring off</span>
+<span class="linenos">28</span><span class="w">      </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="n">ArcadeDrive</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">      </span><span class="c1">// Stop robot</span>
+<span class="linenos">31</span><span class="w">      </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="n">ArcadeDrive</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>The <code class="docutils literal notranslate"><span class="pre">AutonomousInit</span></code> method is run once each time the robot transitions to autonomous from another mode. In this program, we restart the <code class="docutils literal notranslate"><span class="pre">Timer</span></code> in this method.</p>
+<p><code class="docutils literal notranslate"><span class="pre">AutonomousPeriodic</span></code> is run once every period while the robot is in autonomous mode. In the <code class="docutils literal notranslate"><span class="pre">TimedRobot</span></code> class the period is a fixed time, which defaults to 20ms. In this example, the periodic code checks if the timer is less than 2 seconds and if so, drives forward at half speed using the <code class="docutils literal notranslate"><span class="pre">ArcadeDrive</span></code> method of the <code class="docutils literal notranslate"><span class="pre">DifferentialDrive</span></code> class. If more than 2 seconds has elapsed, the code stops the robot drive.</p>
+</section>
+<section id="joystick-control-for-teleoperation">
+<h2>Joystick Control for Teleoperation<a class="headerlink" href="#joystick-control-for-teleoperation" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-10-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-10-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-10-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-10-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-10-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">56</span><span class="w">  </span><span class="cm">/** This function is called once each time the robot enters teleoperated mode. */</span><span class="w"></span>
+<span class="linenos">57</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">58</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">teleopInit</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="linenos">59</span>
+<span class="linenos">60</span><span class="w">  </span><span class="cm">/** This function is called periodically during teleoperated mode. */</span><span class="w"></span>
+<span class="linenos">61</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">62</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">teleopPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">63</span><span class="w">    </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="na">arcadeDrive</span><span class="p">(</span><span class="o">-</span><span class="n">m_controller</span><span class="p">.</span><span class="na">getLeftY</span><span class="p">(),</span><span class="w"> </span><span class="o">-</span><span class="n">m_controller</span><span class="p">.</span><span class="na">getRightX</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">64</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-10-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-10-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">35</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">TeleopInit</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">TeleopPeriodic</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">38</span><span class="w">    </span><span class="c1">// Drive with arcade style (use right stick to steer)</span>
+<span class="linenos">39</span><span class="w">    </span><span class="n">m_robotDrive</span><span class="p">.</span><span class="n">ArcadeDrive</span><span class="p">(</span><span class="o">-</span><span class="n">m_controller</span><span class="p">.</span><span class="n">GetLeftY</span><span class="p">(),</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">                             </span><span class="n">m_controller</span><span class="p">.</span><span class="n">GetRightX</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Like in Autonomous, the Teleop mode has a <code class="docutils literal notranslate"><span class="pre">TeleopInit</span></code> and <code class="docutils literal notranslate"><span class="pre">TeleopPeriodic</span></code> function. In this example we don’t have anything to do in <code class="docutils literal notranslate"><span class="pre">TeleopInit</span></code>, it is provided for illustration purposes only. In <code class="docutils literal notranslate"><span class="pre">TeleopPeriodic</span></code>, the code uses the <code class="docutils literal notranslate"><span class="pre">ArcadeDrive</span></code> method to map the Y-axis of the <code class="docutils literal notranslate"><span class="pre">Joystick</span></code> to forward/back motion of the drive motors and the X-axis to turning motion.</p>
+</section>
+<section id="test-mode">
+<h2>Test Mode<a class="headerlink" href="#test-mode" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-11-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-11-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-11-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-11-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-11-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">66</span><span class="w">  </span><span class="cm">/** This function is called once each time the robot enters test mode. */</span><span class="w"></span>
+<span class="linenos">67</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">68</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testInit</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="linenos">69</span>
+<span class="linenos">70</span><span class="w">  </span><span class="cm">/** This function is called periodically during test mode. */</span><span class="w"></span>
+<span class="linenos">71</span><span class="w">  </span><span class="nd">@Override</span><span class="w"></span>
+<span class="linenos">72</span><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">testPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-11-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-11-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">43</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">TestInit</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="linenos">44</span>
+<span class="linenos">45</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">TestPeriodic</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>Test Mode is used for testing robot functionality. Similar to <code class="docutils literal notranslate"><span class="pre">TeleopInit</span></code>, the <code class="docutils literal notranslate"><span class="pre">TestInit</span></code> and <code class="docutils literal notranslate"><span class="pre">TestPeriodic</span></code> methods are provided here for illustrative purposes only.</p>
+</section>
+<section id="deploying-the-project-to-a-robot">
+<h2>Deploying the Project to a Robot<a class="headerlink" href="#deploying-the-project-to-a-robot" title="Permalink to this heading"></a></h2>
+<p>Please see the instructions <a class="reference internal" href="../../software/vscode-overview/deploying-robot-code.html#building-and-deploying-robot-code"><span class="std std-ref">here</span></a> for deploying the program onto a robot.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="creating-benchtop-test-program-labview.html" class="btn btn-neutral float-left" title="Creating your Benchtop Test Program (LabVIEW)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="running-benchtop-test.html" class="btn btn-neutral float-right" title="Running your Benchtop Test Program" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

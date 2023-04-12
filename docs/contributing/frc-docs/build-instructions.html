@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Build Instructions" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/contributing/frc-docs/build-instructions.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="This document contains information on how to build the HTML, PDF, and EPUB versions of the frc-docs site. frc-docs uses Sphinx as the documentation generator. This document also assumes you have ba..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/contributing/frc-docs/build-instructions.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/contributing/frc-docs/build-instructions.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/contributing/frc-docs/build-instructions.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/contributing/frc-docs/build-instructions.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/contributing/frc-docs/build-instructions.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/contributing/frc-docs/build-instructions.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/contributing/frc-docs/build-instructions.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/contributing/frc-docs/build-instructions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build Instructions &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/contributing/frc-docs/build-instructions.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Draw.io Saving Instructions" href="drawio-saving-instructions.html" />
+    <link rel="prev" title="Style Guide" href="style-guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contributing to frc-docs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="contribution-guidelines.html">Contribution Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style-guide.html">Style Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drawio-saving-instructions.html">Draw.io Saving Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translations.html">Translations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="top-translators.html">Top Translators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Contributing to frc-docs</a></li>
+      <li class="breadcrumb-item active">Build Instructions</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/contributing/frc-docs/build-instructions.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="build-instructions">
+<h1>Build Instructions<a class="headerlink" href="#build-instructions" title="Permalink to this heading"></a></h1>
+<p>This document contains information on how to build the HTML, PDF, and EPUB versions of the frc-docs site. frc-docs uses Sphinx as the documentation generator. This document also assumes you have basic knowledge of <a class="reference external" href="https://git-scm.com/">Git</a> and console commands.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
+<p>Ensure that <a class="reference external" href="https://git-scm.com/">Git</a> is installed and that the frc-docs repository is cloned by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/wpilibsuite/frc-docs.git</span></code>.</p>
+<section id="text-editors-ide">
+<h3>Text Editors / IDE<a class="headerlink" href="#text-editors-ide" title="Permalink to this heading"></a></h3>
+<p>For development, we recommend that you use VS Code along with the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=lextudio.restructuredtext">reStructuredText extension</a>. However, any text editor will work.</p>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MikTeX and <code class="docutils literal notranslate"><span class="pre">rsvg-convert</span></code> are not required for building HTML, they are only required for Windows PDF builds.</p>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org/downloads/">Python 3.9</a></p></li>
+<li><p><a class="reference external" href="https://miktex.org/download">MiKTeX</a> (Only needed for PDF builds)</p></li>
+<li><p><a class="reference external" href="https://strawberryperl.com/">Perl</a></p></li>
+<li><p><a class="reference external" href="https://community.chocolatey.org/packages/rsvg-convert">rsvg-convert</a></p></li>
+</ul>
+<p>Ensure that Python is in your Path by selecting the <strong>Add Python to PATH</strong> toggle when installing Python.</p>
+<img alt="Showing where to click the box to add Python to PATH." src="../../../_images/python-path.png" />
+<p>Once Python is installed, open up Powershell. Then navigate to the frc-docs directory. Run the following command: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">source/requirements.txt</span></code></p>
+<p>Install the missing MikTex packages by navigating to the frc-docs directory, then running the following command from Powershell: <code class="docutils literal notranslate"><span class="pre">mpm</span> <span class="pre">--verbose</span> <span class="pre">--require=&#64;miktex-packages.txt</span></code></p>
+</section>
+<section id="linux-ubuntu">
+<h3>Linux (Ubuntu)<a class="headerlink" href="#linux-ubuntu" title="Permalink to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo apt update
+<span class="gp">$ </span>sudo apt install python3 python3-pip
+<span class="gp">$ </span>python3 -m pip install -U pip setuptools wheel
+<span class="gp">$ </span>python3 -m pip install -r source/requirements.txt
+<span class="gp">$ </span>sudo apt install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra latexmk texlive-lang-greek texlive-luatex texlive-xetex texlive-fonts-extra dvipng librsvg2-bin
+</pre></div>
+</div>
+</section>
+</section>
+<section id="building">
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this heading"></a></h2>
+<p>Open up a Powershell Window or terminal and navigate to the frc-docs directory that was cloned.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">PS &gt; cd &quot;%USERPROFILE%\Documents&quot;</span>
+<span class="go">PS C:\Users\Example\Documents&gt; git clone https://github.com/wpilibsuite/frc-docs.git</span>
+<span class="go">Cloning into &#39;frc-docs&#39;...</span>
+<span class="go">remote: Enumerating objects: 217, done.</span>
+<span class="go">remote: Counting objects: 100% (217/217), done.</span>
+<span class="go">remote: Compressing objects: 100% (196/196), done.</span>
+<span class="go">remote: Total 2587 (delta 50), reused 68 (delta 21), pack-reused 2370</span>
+<span class="go">Receiving objects: 100% (2587/2587), 42.68MiB | 20.32 MiB/s, done.</span>
+<span class="go">Receiving deltas: 100% (1138/1138), done/</span>
+<span class="go">PS C:\Users\Example\Documents&gt; cd frc-docs</span>
+<span class="go">PS C:\Users\Example\Documents\frc-docs&gt;</span>
+</pre></div>
+</div>
+<section id="lint-check">
+<h3>Lint Check<a class="headerlink" href="#lint-check" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lint Check will not check line endings on Windows due to a bug with line endings. See <a class="reference external" href="https://bugs.launchpad.net/doc8/+bug/1756704">this issue</a> for more information.</p>
+</div>
+<p>It’s encouraged to check any changes you make with the linter. This <strong>will</strong> fail the buildbot if it does not pass. To check, run <code class="docutils literal notranslate"><span class="pre">.\make</span> <span class="pre">lint</span></code></p>
+</section>
+<section id="link-check">
+<h3>Link Check<a class="headerlink" href="#link-check" title="Permalink to this heading"></a></h3>
+<p>The link checker makes sure that all links in the documentation resolve. This <strong>will</strong> fail the buildbot if it does not pass. To check, run <code class="docutils literal notranslate"><span class="pre">.\make</span> <span class="pre">linkcheck</span></code></p>
+</section>
+<section id="image-size-check">
+<h3>Image Size Check<a class="headerlink" href="#image-size-check" title="Permalink to this heading"></a></h3>
+<p>Please run <code class="docutils literal notranslate"><span class="pre">.\make</span> <span class="pre">sizecheck</span></code> to verify that all images are below 500KB. This check <strong>will</strong> fail CI if it fails. Exclusions are allowed on a case by case basis and are added to the <code class="docutils literal notranslate"><span class="pre">IMAGE_SIZE_EXCLUSIONS</span></code> list in the configuration file.</p>
+</section>
+<section id="redirect-check">
+<h3>Redirect Check<a class="headerlink" href="#redirect-check" title="Permalink to this heading"></a></h3>
+<p>Files that have been moved or renamed must have their new location (or replaced with 404) in the <code class="docutils literal notranslate"><span class="pre">redirects.txt</span></code> file in <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p>
+<p>The redirect writer will automatically add renamed/moved files to the redirects file. Run <code class="docutils literal notranslate"><span class="pre">.\make</span> <span class="pre">rediraffewritediff</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if a file is both moved and substantially changed, the redirect writer will not add it to the <code class="docutils literal notranslate"><span class="pre">redirects.txt</span></code> file, and the <code class="docutils literal notranslate"><span class="pre">redirects.txt</span></code> file will need to be manually updated.</p>
+</div>
+<p>The redirect checker makes sure that there are valid redirects for all files. This <strong>will</strong> fail the buildbot if it does not pass. To check, run <code class="docutils literal notranslate"><span class="pre">.\make</span> <span class="pre">rediraffecheckdiff</span></code> to verify all files are redirected. Additionally, an HTML build may need to be ran to ensure that all files redirect properly.</p>
+</section>
+<section id="building-html">
+<h3>Building HTML<a class="headerlink" href="#building-html" title="Permalink to this heading"></a></h3>
+<p>Type the command <code class="docutils literal notranslate"><span class="pre">.\make</span> <span class="pre">html</span></code> to generate HTML content. The content is located in the <code class="docutils literal notranslate"><span class="pre">build/html</span></code> directory at the root of the repository.</p>
+</section>
+</section>
+<section id="building-pdf">
+<h2>Building PDF<a class="headerlink" href="#building-pdf" title="Permalink to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note that PDF build on Windows may result in distorted images for SVG content. This is due to a lack of librsvg2-bin support on Windows.</p>
+</div>
+<p>Type the command <code class="docutils literal notranslate"><span class="pre">.\make</span> <span class="pre">latexpdf</span></code> to generate PDF content. The PDF is located in the <code class="docutils literal notranslate"><span class="pre">build/latex</span></code> directory at the root of the repository.</p>
+</section>
+<section id="building-epub">
+<h2>Building EPUB<a class="headerlink" href="#building-epub" title="Permalink to this heading"></a></h2>
+<p>Type the command <code class="docutils literal notranslate"><span class="pre">.\make</span> <span class="pre">epub</span></code> to generate EPUB content. The EPUB is located in the <code class="docutils literal notranslate"><span class="pre">build/epub</span></code> directory at the root of the repository.</p>
+</section>
+<section id="adding-python-third-party-libraries">
+<h2>Adding Python Third-Party libraries<a class="headerlink" href="#adding-python-third-party-libraries" title="Permalink to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>After modifying frc-docs dependencies in any way, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> must be regenerated by running <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">export</span> <span class="pre">-f</span> <span class="pre">requirements.txt</span> <span class="pre">--output</span> <span class="pre">source/requirements.txt</span> <span class="pre">--without-hashes</span></code> from the root of the repo.</p>
+</div>
+<p>frc-docs uses <a class="reference external" href="https://python-poetry.org/">Poetry</a> to manage its dependencies to make sure builds are reproducible.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Poetry is <strong>not</strong> required to build and contribute to frc-docs content. It is <em>only</em> used for dependency management.</p>
+</div>
+<section id="installing-poetry">
+<h3>Installing Poetry<a class="headerlink" href="#installing-poetry" title="Permalink to this heading"></a></h3>
+<p>Ensure that Poetry is installed. Run the following command: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">poetry</span></code>.</p>
+</section>
+<section id="adding-a-dependency">
+<h3>Adding a Dependency<a class="headerlink" href="#adding-a-dependency" title="Permalink to this heading"></a></h3>
+<p>Add the dependency to the <code class="docutils literal notranslate"><span class="pre">[tool.poetry.dependencies]</span></code> section of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. Make sure to specify an exact version. Then, run the following command: <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">lock</span> <span class="pre">--no-update</span></code>.</p>
+</section>
+<section id="updating-a-top-level-dependency">
+<h3>Updating a Top-Level Dependency<a class="headerlink" href="#updating-a-top-level-dependency" title="Permalink to this heading"></a></h3>
+<p>Update the dependency’s version in the <code class="docutils literal notranslate"><span class="pre">[tool.poetry.dependencies]</span></code> section of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. Then, run the following command: <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">lock</span> <span class="pre">--no-update</span></code>.</p>
+</section>
+<section id="updating-hidden-dependencies">
+<h3>Updating Hidden Dependencies<a class="headerlink" href="#updating-hidden-dependencies" title="Permalink to this heading"></a></h3>
+<p>Run the following command: <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">lock</span></code>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="style-guide.html" class="btn btn-neutral float-left" title="Style Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="drawio-saving-instructions.html" class="btn btn-neutral float-right" title="Draw.io Saving Instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

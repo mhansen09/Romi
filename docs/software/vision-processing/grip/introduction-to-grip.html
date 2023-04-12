@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Introduction to GRIP" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/vision-processing/grip/introduction-to-grip.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="GRIP is a tool for developing computer vision algorithms interactively rather than through trial and error coding. After developing your algorithm you may run GRIP in headless mode on your roboRIO,..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/grip/introduction-to-grip.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/grip/introduction-to-grip.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/vision-processing/grip/introduction-to-grip.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/vision-processing/grip/introduction-to-grip.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/vision-processing/grip/introduction-to-grip.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/vision-processing/grip/introduction-to-grip.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/vision-processing/grip/introduction-to-grip.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/vision-processing/grip/introduction-to-grip.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to GRIP &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/vision-processing/grip/introduction-to-grip.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Generating Code from GRIP" href="generating-code-from-grip.html" />
+    <link rel="prev" title="Vision with GRIP" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Vision Processing</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">Vision Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wpilibpi/index.html">Vision with WPILibPi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apriltag/index.html">AprilTag Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Vision with GRIP</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Introduction to GRIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generating-code-from-grip.html">Generating Code from GRIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using-generated-code-in-a-robot-program.html">Using Generated Code in a Robot Program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using-grip-with-a-kangaroo-computer.html">Using GRIP with a Kangaroo Computer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../roborio/index.html">Vision on the RoboRIO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Vision Processing</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Vision with GRIP</a></li>
+      <li class="breadcrumb-item active">Introduction to GRIP</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/vision-processing/grip/introduction-to-grip.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction-to-grip">
+<h1>Introduction to GRIP<a class="headerlink" href="#introduction-to-grip" title="Permalink to this heading"></a></h1>
+<p>GRIP is a tool for developing computer vision algorithms interactively rather than through trial and error coding.
+After developing your algorithm you may run GRIP in headless mode on your roboRIO, on a Driver Station Laptop, or on
+a coprocessor connected to your robot network. With Grip you choose vision operations to create a graphical pipeline
+that represents the sequence of operations that are performed to complete the vision algorithm.</p>
+<p>GRIP is based on OpenCV, one of the most popular computer vision software libraries used for research, robotics, and
+vision algorithm implementations. The operations that are available in GRIP are almost a 1 to 1 match with the
+operations available if you were hand coding the same algorithm with some text-based programming language.</p>
+<section id="the-grip-user-interface">
+<h2>The GRIP user interface<a class="headerlink" href="#the-grip-user-interface" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="../../../../_images/the-grip-user-interface.png" src="../../../../_images/the-grip-user-interface.png" />
+</figure>
+<p>The GRIP user interface consists of 4 parts:</p>
+<ul class="simple">
+<li><p><strong>Image Sources</strong> are the ways of getting images into the GRIP pipeline. You can provide images through attached cameras
+or files. Sources are almost always the beginning of the image processing algorithm.</p></li>
+<li><p><strong>Operation Palette</strong> contains the image processing steps from the OpenCV library that you can chain together in the
+pipeline to form your algorithm. Clicking on an operation in the palette adds it to the end of the pipeline. You can
+then use the left and right arrows to move the operation within the pipeline.</p></li>
+<li><p><strong>Pipeline</strong> is the sequence of steps that make up the algorithm. Each step (operation) in the pipeline is connected to
+a previous step from the output of one step to an input to the next step. The data flows from generally from left to
+right through the connections that you create.</p></li>
+<li><p><strong>Image Preview</strong> are shows previews of the result of each step that has it’s preview button pressed. This makes it easy
+to debug algorithms by being able to preview the outputs of each intermediate step.</p></li>
+</ul>
+</section>
+<section id="finding-the-yellow-square">
+<h2>Finding the yellow square<a class="headerlink" href="#finding-the-yellow-square" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="../../../../_images/finding-the-yellow-square.png" src="../../../../_images/finding-the-yellow-square.png" />
+</figure>
+<p>In this application we will try to find the yellow square in the image and display it’s position. The setup is pretty
+simple, just a USB web camera connected to the computer looking down at some colorful objects. The yellow plastic square
+is the thing that we’re interested in locating in the image.</p>
+</section>
+<section id="enable-the-image-source">
+<h2>Enable the image source<a class="headerlink" href="#enable-the-image-source" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="../../../../_images/enable-the-image-source.png" src="../../../../_images/enable-the-image-source.png" />
+</figure>
+<p>The first step is to acquire an image. To use the source, click on the “Add Webcam” button and select the camera number.
+In this case the Logitech USB camera that appeared as Webcam 0 and the computer monitor camera was Webcam 1. The web camera
+is selected in this case to grab the image behind the computer as shown in the setup. Then select the image preview button
+and the real-time display of the camera stream will be shown in the preview area.</p>
+</section>
+<section id="resize-the-image">
+<h2>Resize the image<a class="headerlink" href="#resize-the-image" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="../../../../_images/resize-the-image.png" src="../../../../_images/resize-the-image.png" />
+</figure>
+<p>In this case the camera resolution is too high for our purposes, and in fact the entire image cannot even be viewed in the
+preview window. The “Resize” operation is clicked from the Operation Palette to add it to the end of the pipeline. To help
+locate the Resize operation, type “Resize” into the search box at the top of the palette. The steps are:</p>
+<ol class="arabic simple">
+<li><p>Type “Resize” into the search box on the palette</p></li>
+<li><p>Click the Resize operation from the palette. It will appear in the pipeline.</p></li>
+<li><p>Enter the x and y resize scale factor into the resize operation in the pipeline. In this case 0.25 was chosen for both.</p></li>
+<li><p>Drag from the Webcam image output mat socket to the Resize image source mat socket. A connection will be shown
+indicating that the camera output is being sent to the resize input.</p></li>
+<li><p>Click on the destination preview button on the “Resize” operation in the pipeline. The smaller image will be displayed
+alongside the larger original image. You might need to scroll horizontally to see both as shown.</p></li>
+<li><p>Lastly, click the Webcam source preview button since there is no reason to look at both the large image and the smaller
+image at the same time.</p></li>
+</ol>
+</section>
+<section id="find-only-the-yellow-parts-of-the-image">
+<h2>Find only the yellow parts of the image<a class="headerlink" href="#find-only-the-yellow-parts-of-the-image" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="../../../../_images/find-only-the-yellow-parts-of-the-image.png" src="../../../../_images/find-only-the-yellow-parts-of-the-image.png" />
+</figure>
+<p>The next step is to remove everything from the image that doesn’t match the yellow color of the piece of plastic that is the
+object being detected. To do that a HSV Threshold operation is chosen to set upper and lower limits of HSV values to indicate
+which pixels should be included in the resultant binary image. Notice that the target area is white while everything that
+wasn’t within the threshold values are shown in black. Again, as before:</p>
+<ol class="arabic simple">
+<li><p>Type HSV into the search box to find the HSV Threshold operation.</p></li>
+<li><p>Click on the operation in the palette and it will appear at the end of the pipeline.</p></li>
+<li><p>Connect the dst (output) socket on the resize operation to the input of the HSV Threshold.</p></li>
+<li><p>Enable the preview of the HSV Threshold operation so the result of the operation is displayed in the preview window.</p></li>
+<li><p>Adjust the Hue, Saturation, and Value parameters only the target object is shown in the preview window.</p></li>
+</ol>
+</section>
+<section id="get-rid-of-the-noise-and-extraneous-hits">
+<h2>Get rid of the noise and extraneous hits<a class="headerlink" href="#get-rid-of-the-noise-and-extraneous-hits" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="../../../../_images/get-rid-of-the-noise.png" src="../../../../_images/get-rid-of-the-noise.png" />
+</figure>
+<p>This looks pretty good so far, but sometimes there is noise from other things that couldn’t quite be filtered out. To
+illustrate one possible technique to reduce those occasional pixels that were detected, an Erosion operation is chosen.
+Erosion will remove small groups of pixels that are not part of the area of interest.</p>
+</section>
+<section id="mask-just-the-yellow-area-from-the-original-image">
+<h2>Mask just the yellow area from the original image<a class="headerlink" href="#mask-just-the-yellow-area-from-the-original-image" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="../../../../_images/mask-just-the-yellow-area.png" src="../../../../_images/mask-just-the-yellow-area.png" />
+</figure>
+<p>Here a new image is generated by taking the original image and masking (and operation) it with the results of the
+erosion. This leaves just the yellow card as seen in the original image with nothing else shown. And it makes it easy to
+visualize exactly what was being found through the series of filters.</p>
+</section>
+<section id="find-the-yellow-area-blob">
+<h2>Find the yellow area (blob)<a class="headerlink" href="#find-the-yellow-area-blob" title="Permalink to this heading"></a></h2>
+<figure class="align-default">
+<img alt="../../../../_images/find-the-yellow-area.png" src="../../../../_images/find-the-yellow-area.png" />
+</figure>
+<p>The last step is actually detecting the yellow card using a Blob Detector. This operation looks for a grouping of pixels that
+have some minimum area. In this case, the only non-black pixels are from the yellow card after the filtering is done. You can
+see that a circle is drawn around the detected portion of the image. In the release version of GRIP (watch for more updates
+between now and kickoff) you will be able to send parameters about the detected blob to your robot program using <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../frc-glossary.html#term-NetworkTables"><span class="xref std std-term">NetworkTables</span></a>.</p>
+</section>
+<section id="status-of-grip">
+<h2>Status of GRIP<a class="headerlink" href="#status-of-grip" title="Permalink to this heading"></a></h2>
+<p>As you can see from this example, it is very easy and fast to be able to do simple object recognition using GRIP. While this is
+a very simple example, it illustrates the basic principles of using GRIP and feature extraction in general. Over the coming
+weeks the project team will be posting updates to GRIP as more features are added. Currently it supports cameras (Axis ethernet
+camera and web cameras) and image inputs. There is no provision for output yet although NetworkTables and ROS (Robot Operating
+System) are planned.</p>
+<p>You can either download a pre-built release of the code from the GitHub page “Releases” section
+(<a class="reference external" href="https://github.com/WPIRoboticsProjects/GRIP">https://github.com/WPIRoboticsProjects/GRIP</a>) or you can clone the source repository and built it yourself. Directions on
+building GRIP are on the project page. There is also additional documentation on the project wiki.</p>
+<p>So, please play with GRiP and give us feedback here on the forum. If you find bugs, you can either post them here or as a
+GitHub project issue on the project page.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Vision with GRIP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="generating-code-from-grip.html" class="btn btn-neutral float-right" title="Generating Code from GRIP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

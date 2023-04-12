@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Gyroscopes - Software" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/gyros-software.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="A gyroscope, or “gyro,” is an angular rate sensor typically used in robotics to measure and/or stabilize robot headings. WPILib natively provides specific support for the ADXRS450 gyro available in..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/gyros-software.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/gyros-software.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/hardware-apis/sensors/gyros-software.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/hardware-apis/sensors/gyros-software.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/hardware-apis/sensors/gyros-software.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/hardware-apis/sensors/gyros-software.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/hardware-apis/sensors/gyros-software.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/hardware-apis/sensors/gyros-software.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gyroscopes - Software &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/hardware-apis/sensors/gyros-software.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Ultrasonics - Software" href="ultrasonics-software.html" />
+    <link rel="prev" title="Accelerometers - Software" href="accelerometers-software.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Hardware APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../motors/index.html">Motors APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pneumatics/index.html">Pneumatics APIs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Sensors</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sensor-overview-software.html">Sensor Overview - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accelerometers-software.html">Accelerometers - Software</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Gyroscopes - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ultrasonics-software.html">Ultrasonics - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="counters.html">Counters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="encoders-software.html">Encoders - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="analog-inputs-software.html">Analog Inputs - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="analog-potentiometers-software.html">Analog Potentiometers - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="digital-inputs-software.html">Digital Inputs - Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="limit-switch.html">Programming Limit Switches</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/index.html">Miscellaneous Hardware APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Hardware APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Sensors</a></li>
+      <li class="breadcrumb-item active">Gyroscopes - Software</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/hardware-apis/sensors/gyros-software.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gyroscopes-software">
+<h1>Gyroscopes - Software<a class="headerlink" href="#gyroscopes-software" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section covers gyros in software.  For a hardware guide to gyros, see <a class="reference internal" href="../../../hardware/sensors/gyros-hardware.html#gyroscopes-hardware"><span class="std std-ref">Gyroscopes - Hardware</span></a>.</p>
+</div>
+<p>A gyroscope, or “gyro,” is an angular rate sensor typically used in robotics to measure and/or stabilize robot headings.  WPILib natively provides specific support for the ADXRS450 gyro available in the kit of parts, as well as more general support for a wider variety of analog gyros through the <a class="reference internal" href="#analoggyro">AnalogGyro</a> class. Most common 3rd party gyros inherit from the <code class="code docutils literal notranslate"><span class="pre">Gyro</span></code> interface making them easily usable too!</p>
+<section id="the-gyro-interface">
+<h2>The Gyro interface<a class="headerlink" href="#the-gyro-interface" title="Permalink to this heading"></a></h2>
+<p>All natively-supported gyro objects in WPILib implement the <code class="code docutils literal notranslate"><span class="pre">Gyro</span></code> interface (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/interfaces/Gyro.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_gyro.html">C++</a>).  This interface provides methods for getting the current angular rate and heading, zeroing the current heading, and calibrating the gyro.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is crucial that the robot remain stationary while calibrating a gyro.</p>
+</div>
+<section id="adis16448">
+<h3>ADIS16448<a class="headerlink" href="#adis16448" title="Permalink to this heading"></a></h3>
+<p>The ADIS16448 uses the <code class="code docutils literal notranslate"><span class="pre">ADIS16448_IMU</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/ADIS16448_IMU.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_a_d_i_s16448___i_m_u.html">C++</a>).  See the <a class="reference external" href="https://wiki.analog.com/first/adis16448_imu_frc">Analog Devices ADIS16448 documentation</a> for additional information and examples.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Analog Devices documentation linked above contains outdated instructions for software installation as the ADIS16448 is now built into WPILib.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// ADIS16448 plugged into the MXP port</span><span class="w"></span>
+<span class="n">ADIS16448_IMU</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ADIS16448_IMU</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// ADIS16448 plugged into the MXP port</span>
+<span class="n">ADIS16448_IMU</span><span class="w"> </span><span class="n">gyro</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="adis16470">
+<h3>ADIS16470<a class="headerlink" href="#adis16470" title="Permalink to this heading"></a></h3>
+<p>The ADIS16470 uses the <code class="code docutils literal notranslate"><span class="pre">ADIS16470_IMU</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/ADIS16470_IMU.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_a_d_i_s16470___i_m_u.html">C++</a>).  See the <a class="reference external" href="https://wiki.analog.com/first/adis16470_imu_frc">Analog Devices ADIS16470 documentation</a> for additional information and examples.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Analog Devices documentation linked above contains outdated instructions for software installation as the ADIS16470 is now built into WPILib.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// ADIS16470 plugged into the MXP port</span><span class="w"></span>
+<span class="n">ADIS16470_IMU</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ADIS16470_IMU</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// ADIS16470 plugged into the MXP port</span>
+<span class="n">ADIS16470_IMU</span><span class="w"> </span><span class="n">gyro</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="adxrs450-gyro">
+<h3>ADXRS450_Gyro<a class="headerlink" href="#adxrs450-gyro" title="Permalink to this heading"></a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">ADXRS450_Gyro</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/ADXRS450_Gyro.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_a_d_x_r_s450___gyro.html">C++</a>) provides support for the Analog Devices ADXRS450 gyro available in the kit of parts, which connects over the SPI bus.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ADXRS450 Gyro accumulation is handled through special circuitry in the FPGA; accordingly only a single instance of <code class="code docutils literal notranslate"><span class="pre">ADXRS450_Gyro</span></code> may be used.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an ADXRS450_Gyro object on the onboard SPI port</span><span class="w"></span>
+<span class="n">ADXRS450_Gyro</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ADXRS450_Gyro</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an ADXRS450_Gyro object on the onboard SPI port</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">ADXRS450_Gyro</span><span class="w"> </span><span class="n">gyro</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="analoggyro">
+<h3>AnalogGyro<a class="headerlink" href="#analoggyro" title="Permalink to this heading"></a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">AnalogGyro</span></code> class (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj/AnalogGyro.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc_1_1_analog_gyro.html">C++</a>) provides support for any single-axis gyro with an analog output.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Gyro accumulation is handled through special circuitry in the FPGA; accordingly, <code class="code docutils literal notranslate"><span class="pre">AnalogGyro</span></code>`s may only be used on analog ports 0 and 1.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an AnalogGyro object on port 0</span><span class="w"></span>
+<span class="n">AnalogGyro</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AnalogGyro</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates an AnalogGyro object on port 0</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">AnalogGyro</span><span class="w"> </span><span class="n">gyro</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="navx">
+<h3>navX<a class="headerlink" href="#navx" title="Permalink to this heading"></a></h3>
+<p>The navX uses the <code class="code docutils literal notranslate"><span class="pre">AHRS</span></code> class and implements the <code class="code docutils literal notranslate"><span class="pre">Gyro</span></code> interface.  See the <a class="reference external" href="https://pdocs.kauailabs.com/navx-mxp/guidance/selecting-an-interface/">navX documentation</a> for additional connection types.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-4-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// navX MXP using SPI</span><span class="w"></span>
+<span class="n">AHRS</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AHRS</span><span class="p">(</span><span class="n">SPI</span><span class="p">.</span><span class="na">Port</span><span class="p">.</span><span class="na">kMXP</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-4-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// navX MXP using SPI</span>
+<span class="n">AHRS</span><span class="w"> </span><span class="n">gyro</span><span class="p">{</span><span class="n">SPI</span><span class="o">::</span><span class="n">Port</span><span class="o">::</span><span class="n">kMXP</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="pigeon">
+<h3>Pigeon<a class="headerlink" href="#pigeon" title="Permalink to this heading"></a></h3>
+<p>The Pigeon should use the <code class="code docutils literal notranslate"><span class="pre">WPI_PigeonIMU</span></code> class that implements <code class="code docutils literal notranslate"><span class="pre">Gyro</span></code>.  The Pigeon can either be connected with CAN or by data cable to a TalonSRX.  The <a class="reference external" href="https://store.ctr-electronics.com/content/user-manual/Pigeon%20IMU%20User's%20Guide.pdf">Pigeon IMU User’s Guide</a> contains full details on using the Pigeon.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-5-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-5-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-5-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">WPI_PigeonIMU</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WPI_PigeonIMU</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Pigeon is on CAN Bus with device ID 0</span><span class="w"></span>
+<span class="c1">// OR (choose one or the other based on your connection)</span><span class="w"></span>
+<span class="n">TalonSRX</span><span class="w"> </span><span class="n">talon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TalonSRX</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// TalonSRX is on CAN Bus with device ID 0</span><span class="w"></span>
+<span class="n">WPI_PigeonIMU</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WPI_PigeonIMU</span><span class="p">(</span><span class="n">talon</span><span class="p">);</span><span class="w"> </span><span class="c1">// Pigeon uses the talon created above</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-5-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">WPI_PigeonIMU</span><span class="w"> </span><span class="n">gyro</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c1">// Pigeon is on CAN Bus with device ID 0</span>
+<span class="c1">// OR (choose one or the other based on your connection)</span>
+<span class="n">TalonSRX</span><span class="w"> </span><span class="n">talon</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"> </span><span class="c1">// TalonSRX is on CAN Bus with device ID 0</span>
+<span class="n">WPI_PigeonIMU</span><span class="w"> </span><span class="n">gyro</span><span class="p">{</span><span class="n">talon</span><span class="p">};</span><span class="w"> </span><span class="c1">// Pigeon uses the talon created above</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="using-gyros-in-code">
+<h2>Using gyros in code<a class="headerlink" href="#using-gyros-in-code" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As gyros measure rate rather than position, position is inferred by integrating (adding up) the rate signal to get the total change in angle.  Thus, gyro angle measurements are always relative to some arbitrary zero angle (determined by the angle of the gyro when either the robot was turned on or a zeroing method was called), and are also subject to accumulated errors (called “drift”) that increase in magnitude the longer the gyro is used.  The amount of drift varies with the type of gyro.</p>
+</div>
+<p>Gyros are extremely useful in FRC for both measuring and controlling robot heading.  Since FRC matches are generally short, total gyro drift over the course of an FRC match tends to be manageably small (on the order of a couple of degrees for a good-quality gyro).  Moreover, not all useful gyro applications require the absolute heading measurement to remain accurate over the course of the entire match.</p>
+<section id="displaying-the-robot-heading-on-the-dashboard">
+<h3>Displaying the robot heading on the dashboard<a class="headerlink" href="#displaying-the-robot-heading-on-the-dashboard" title="Permalink to this heading"></a></h3>
+<p><a class="reference internal" href="../../dashboards/shuffleboard/getting-started/shuffleboard-tour.html#tour-of-shuffleboard"><span class="std std-ref">Shuffleboard</span></a> includes a widget for displaying heading data from a <code class="code docutils literal notranslate"><span class="pre">Gyro</span></code> in the form of a compass.  This can be helpful for viewing the robot heading when sight lines to the robot are obscured:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-6-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-6-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-6-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-6-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use gyro declaration from above here</span><span class="w"></span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Places a compass indicator for the gyro heading on the dashboard</span><span class="w"></span>
+<span class="w">    </span><span class="n">Shuffleboard</span><span class="p">.</span><span class="na">getTab</span><span class="p">(</span><span class="s">&quot;Example tab&quot;</span><span class="p">).</span><span class="na">add</span><span class="p">(</span><span class="n">gyro</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-6-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-6-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use gyro declaration from above here</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::RobotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Places a compass indicator for the gyro heading on the dashboard</span>
+<span class="w">    </span><span class="n">frc</span><span class="o">::</span><span class="n">Shuffleboard</span><span class="p">.</span><span class="n">GetTab</span><span class="p">(</span><span class="s">&quot;Example tab&quot;</span><span class="p">).</span><span class="n">Add</span><span class="p">(</span><span class="n">gyro</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="stabilizing-heading-while-driving">
+<h3>Stabilizing heading while driving<a class="headerlink" href="#stabilizing-heading-while-driving" title="Permalink to this heading"></a></h3>
+<p>A very common use for a gyro is to stabilize robot heading while driving, so that the robot drives straight.  This is especially important for holonomic drives such as mecanum and swerve, but is extremely useful for tank drives as well.</p>
+<p>This is typically achieved by closing a PID controller on either the turn rate or the heading, and piping the output of the loop to one’s turning control (for a tank drive, this would be a speed differential between the two sides of the drive).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Like with all control loops, users should be careful to ensure that the sensor direction and the turning direction are consistent.  If they are not, the loop will be unstable and the robot will turn wildly.</p>
+</div>
+<section id="example-tank-drive-stabilization-using-turn-rate">
+<h4>Example: Tank drive stabilization using turn rate<a class="headerlink" href="#example-tank-drive-stabilization-using-turn-rate" title="Permalink to this heading"></a></h4>
+<p>The following example shows how to stabilize heading using a simple P loop closed on the turn rate.  Since a robot that is not turning should have a turn rate of zero, the setpoint for the loop is implicitly zero, making this method very simple.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-7-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-7-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-7-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-7-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use gyro declaration from above here</span><span class="w"></span>
+
+<span class="c1">// The gain for a simple P loop</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Initialize motor controllers and drive</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">left1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">left2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Spark</span><span class="w"> </span><span class="n">right1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">right2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">leftMotors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">left1</span><span class="p">,</span><span class="w"> </span><span class="n">left2</span><span class="p">);</span><span class="w"></span>
+<span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">rightMotors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">right1</span><span class="p">,</span><span class="w"> </span><span class="n">right2</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">drive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">leftMotors</span><span class="p">,</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">);</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">rightMotors</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">autonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Setpoint is implicitly 0, since we don&#39;t want the heading to change</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">gyro</span><span class="p">.</span><span class="na">getRate</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Drives forward continuously at half speed, using the gyro to stabilize the heading</span><span class="w"></span>
+<span class="w">    </span><span class="n">drive</span><span class="p">.</span><span class="na">tankDrive</span><span class="p">(</span><span class="mf">.5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-7-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-7-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use gyro declaration from above here</span>
+
+<span class="c1">// The gain for a simple P loop</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Initialize motor controllers and drive</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">left1</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">left2</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">right1</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">right2</span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">leftMotors</span><span class="p">{</span><span class="n">left1</span><span class="p">,</span><span class="w"> </span><span class="n">left2</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">{</span><span class="n">right1</span><span class="p">,</span><span class="w"> </span><span class="n">right2</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">drive</span><span class="p">{</span><span class="n">leftMotors</span><span class="p">,</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">};</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::RobotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">rightMotors</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::AutonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Setpoint is implicitly 0, since we don&#39;t want the heading to change</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">gyro</span><span class="p">.</span><span class="n">GetRate</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Drives forward continuously at half speed, using the gyro to stabilize the heading</span>
+<span class="w">    </span><span class="n">drive</span><span class="p">.</span><span class="n">TankDrive</span><span class="p">(</span><span class="mf">.5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>More-advanced implementations can use a more-complicated control loop.  When closing the loop on the turn rate for heading stabilization, PI loops are particularly effective.</p>
+</section>
+<section id="example-tank-drive-stabilization-using-heading">
+<h4>Example: Tank drive stabilization using heading<a class="headerlink" href="#example-tank-drive-stabilization-using-heading" title="Permalink to this heading"></a></h4>
+<p>The following example shows how to stabilize heading using a simple P loop closed on the heading.  Unlike in the turn rate example, we will need to set the setpoint to the current heading before starting motion, making this method slightly more-complicated.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-8-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-8-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-8-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-8-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use gyro declaration from above here</span><span class="w"></span>
+
+<span class="c1">// The gain for a simple P loop</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// The heading of the robot when starting the motion</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">heading</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Initialize motor controllers and drive</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">left1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">left2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Spark</span><span class="w"> </span><span class="n">right1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">right2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">leftMotors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">left1</span><span class="p">,</span><span class="w"> </span><span class="n">left2</span><span class="p">);</span><span class="w"></span>
+<span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">rightMotors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">right1</span><span class="p">,</span><span class="w"> </span><span class="n">right2</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">drive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">leftMotors</span><span class="p">,</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">);</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">rightMotors</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">autonomousInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Set setpoint to current heading at start of auto</span><span class="w"></span>
+<span class="w">    </span><span class="n">heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="na">getAngle</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">autonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">heading</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="na">getAngle</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Drives forward continuously at half speed, using the gyro to stabilize the heading</span><span class="w"></span>
+<span class="w">    </span><span class="n">drive</span><span class="p">.</span><span class="na">tankDrive</span><span class="p">(</span><span class="mf">.5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-8-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-8-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use gyro declaration from above here</span>
+
+<span class="c1">// The gain for a simple P loop</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// The heading of the robot when starting the motion</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">heading</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Initialize motor controllers and drive</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">left1</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">left2</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">right1</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">right2</span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">leftMotors</span><span class="p">{</span><span class="n">left1</span><span class="p">,</span><span class="w"> </span><span class="n">left2</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">{</span><span class="n">right1</span><span class="p">,</span><span class="w"> </span><span class="n">right2</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">drive</span><span class="p">{</span><span class="n">leftMotors</span><span class="p">,</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">};</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::RobotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">rightMotors</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::AutonomousInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Set setpoint to current heading at start of auto</span>
+<span class="w">    </span><span class="n">heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::AutonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">heading</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Drives forward continuously at half speed, using the gyro to stabilize the heading</span>
+<span class="w">    </span><span class="n">drive</span><span class="p">.</span><span class="n">TankDrive</span><span class="p">(</span><span class="mf">.5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="mf">.5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>More-advanced implementations can use a more-complicated control loop.  When closing the loop on the heading for heading stabilization, PD loops are particularly effective.</p>
+</section>
+</section>
+<section id="turning-to-a-set-heading">
+<h3>Turning to a set heading<a class="headerlink" href="#turning-to-a-set-heading" title="Permalink to this heading"></a></h3>
+<p>Another common and highly-useful application for a gyro is turning a robot to face a specified direction.  This can be a component of an autonomous driving routine, or can be used during teleoperated control to help align a robot with field elements.</p>
+<p>Much like with heading stabilization, this is often accomplished with a PID loop - unlike with stabilization, however, the loop can only be closed on the heading.  The following example code will turn the robot to face 90 degrees with a simple P loop:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-9-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-9-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-9-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-9-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use gyro declaration from above here</span><span class="w"></span>
+
+<span class="c1">// The gain for a simple P loop</span><span class="w"></span>
+<span class="kt">double</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Initialize motor controllers and drive</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">left1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">left2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">Spark</span><span class="w"> </span><span class="n">right1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="n">Spark</span><span class="w"> </span><span class="n">right2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spark</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">leftMotors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">left1</span><span class="p">,</span><span class="w"> </span><span class="n">left2</span><span class="p">);</span><span class="w"></span>
+<span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">rightMotors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MotorControllerGroup</span><span class="p">(</span><span class="n">right1</span><span class="p">,</span><span class="w"> </span><span class="n">right2</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">drive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DifferentialDrive</span><span class="p">(</span><span class="n">leftMotors</span><span class="p">,</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">);</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">robotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">rightMotors</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">autonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Find the heading error; setpoint is 90</span><span class="w"></span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="na">getAngle</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Turns the robot to face the desired direction</span><span class="w"></span>
+<span class="w">    </span><span class="n">drive</span><span class="p">.</span><span class="na">tankDrive</span><span class="p">(</span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-9-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-9-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Use gyro declaration from above here</span>
+
+<span class="c1">// The gain for a simple P loop</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">kP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Initialize motor controllers and drive</span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">left1</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">left2</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">right1</span><span class="p">{</span><span class="mi">2</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">Spark</span><span class="w"> </span><span class="n">right2</span><span class="p">{</span><span class="mi">3</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">leftMotors</span><span class="p">{</span><span class="n">left1</span><span class="p">,</span><span class="w"> </span><span class="n">left2</span><span class="p">};</span><span class="w"></span>
+<span class="n">frc</span><span class="o">::</span><span class="n">MotorControllerGroup</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">{</span><span class="n">right1</span><span class="p">,</span><span class="w"> </span><span class="n">right2</span><span class="p">};</span><span class="w"></span>
+
+<span class="n">frc</span><span class="o">::</span><span class="n">DifferentialDrive</span><span class="w"> </span><span class="n">drive</span><span class="p">{</span><span class="n">leftMotors</span><span class="p">,</span><span class="w"> </span><span class="n">rightMotors</span><span class="p">};</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::RobotInit</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">rightMotors</span><span class="p">.</span><span class="n">SetInverted</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Robot::AutonomousPeriodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Find the heading error; setpoint is 90</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">GetAngle</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Turns the robot to face the desired direction</span>
+<span class="w">    </span><span class="n">drive</span><span class="p">.</span><span class="n">TankDrive</span><span class="p">(</span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">kP</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">error</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+<p>As before, more-advanced implementations can use more-complicated control loops.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Turn-to-angle loops can be tricky to tune correctly due to static friction in the drivetrain, especially if a simple P loop is used.  There are a number of ways to account for this; one of the most common/effective is to add a “minimum output” to the output of the control loop.  Another effective strategy is to cascade to well-tuned velocity controllers on each side of the drive.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="accelerometers-software.html" class="btn btn-neutral float-left" title="Accelerometers - Software" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ultrasonics-software.html" class="btn btn-neutral float-right" title="Ultrasonics - Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

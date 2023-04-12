@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Hardware Component Overview" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/controls-overviews/control-system-hardware.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="The goal of this document is to provide a brief overview of the hardware components that make up the FRC ® Control System. Each component will contain a brief description of the component function ..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/controls-overviews/control-system-hardware.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/controls-overviews/control-system-hardware.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/controls-overviews/control-system-hardware.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/controls-overviews/control-system-hardware.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/controls-overviews/control-system-hardware.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/controls-overviews/control-system-hardware.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/controls-overviews/control-system-hardware.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/controls-overviews/control-system-hardware.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardware Component Overview &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/controls-overviews/control-system-hardware.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../_static/js/present.js"></script>
+        <script src="../../_static/js/hoverxref.js"></script>
+        <script src="../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../_static/js/micromodal.min.js"></script>
+        <script src="../../_static/js/versionwarning.js"></script>
+        <script src="../../_static/pid-tune.js"></script>
+        <script src="../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../_static/js/version-2014.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Software Component Overview" href="control-system-software.html" />
+    <link rel="prev" title="Running your Benchtop Test Program" href="../zero-to-robot/step-4/running-benchtop-test.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../_static/wpilibDocsLogo_300.webp 300w, ../../_static/wpilibDocsLogo_500.webp 500w, ../../_static/wpilibDocsLogo_700.webp 700w, ../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../_static/wpilibDocsLogo_300.png 300w, ../../_static/wpilibDocsLogo_500.png 500w, ../../_static/wpilibDocsLogo_700.png 700w, ../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Hardware Component Overview</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/controls-overviews/control-system-hardware.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hardware-component-overview">
+<h1>Hardware Component Overview<a class="headerlink" href="#hardware-component-overview" title="Permalink to this heading"></a></h1>
+<p>The goal of this document is to provide a brief overview of the hardware components that make up the FRC® Control System. Each component will contain a brief description of the component function and a link to more documentation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For complete wiring instructions/diagrams, please see the <a class="reference internal" href="../zero-to-robot/step-1/how-to-wire-a-robot.html"><span class="doc">Wiring the FRC Control System</span></a> document.</p>
+</div>
+<section id="overview-of-control-system">
+<h2>Overview of Control System<a class="headerlink" href="#overview-of-control-system" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UkVW" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UkVW" name="UkVW" role="tab" tabindex="0">REV</button><button aria-controls="panel-0-Q1RSRQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q1RSRQ==" name="Q1RSRQ==" role="tab" tabindex="-1">CTRE</button></div><div aria-labelledby="tab-0-UkVW" class="sphinx-tabs-panel group-tab" id="panel-0-UkVW" name="UkVW" role="tabpanel" tabindex="0"><figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/frc-control-system-layout-rev.svg"><img alt="Layout of all popular components of the control system including REV Control System Components" src="../../_images/frc-control-system-layout-rev.svg" width="500" /></a>
+</figure>
+<p>Diagram courtesy of FRC® Team 3161 and Stefen Acepcion.</p>
+</div><div aria-labelledby="tab-0-Q1RSRQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Q1RSRQ==" name="Q1RSRQ==" role="tabpanel" tabindex="0"><figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/frc-control-system-layout.svg"><img alt="Layout of all of the core components of the control system and how they are connected." src="../../_images/frc-control-system-layout.svg" width="500" /></a>
+</figure>
+<p>Diagram courtesy of FRC® Team 3161 and Stefen Acepcion.</p>
+</div></div>
+</section>
+<section id="ni-roborio">
+<h2>NI roboRIO<a class="headerlink" href="#ni-roborio" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/roborio.png"><img alt="NI roboRIO" src="../../_images/roborio.png" style="width: 500px;" /></a>
+<p>The <a class="reference internal" href="../software/roborio-info/roborio-introduction.html#roborio-introduction"><span class="std std-ref">NI-roboRIO</span></a> is the main robot controller used for FRC. The roboRIO serves as the “brain” for the robot running team-generated code that commands all of the other hardware.</p>
+</section>
+<section id="ctre-power-distribution-panel">
+<h2>CTRE Power Distribution Panel<a class="headerlink" href="#ctre-power-distribution-panel" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/power-distribution-panel.png"><img alt="CTRE Power Distribution Panel" src="../../_images/power-distribution-panel.png" style="width: 500px;" /></a>
+<p>The <a class="reference internal" href="../software/can-devices/power-distribution-module.html#power-distribution-module"><span class="std std-ref">CTRE Power Distribution Panel</span></a> (PDP) is designed to distribute power from a 12VDC battery to various robot components through auto-resetting circuit breakers and a small number of special function fused connections. The PDP provides 8 output pairs rated for 40A continuous current and 8 pairs rated for 30A continuous current. The PDP provides dedicated 12V connectors for the roboRIO, as well as connectors for the Voltage Regulator Module and Pneumatics Control Module. It also includes a CAN interface for logging current, temperature, and battery voltage. For more detailed information, see the <a class="reference external" href="https://store.ctr-electronics.com/content/user-manual/PDP%20User%27s%20Guide.pdf">PDP User Manual</a>.</p>
+</section>
+<section id="rev-power-distribution-hub">
+<h2>REV Power Distribution Hub<a class="headerlink" href="#rev-power-distribution-hub" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/power-distribution-hub.png"><img alt="REV Power Distribution Hub" src="../../_images/power-distribution-hub.png" style="width: 500px;" /></a>
+<p>The <a class="reference external" href="https://docs.revrobotics.com/rev-11-1850/">REV Power Distribution Hub</a> (PDH) is designed to distribute power from a 12VDC battery to various robot components.  The PDH features 20 high-current (40A max) channels, 3 low-current (15A max), and 1 switchable low-current channel. The Power Distribution Hub features toolless latching WAGO terminals, an LED voltage display, and the ability to connect over CAN or USB-C to the REV Hardware Client for real-time telemetry.</p>
+</section>
+<section id="ctre-voltage-regulator-module">
+<h2>CTRE Voltage Regulator Module<a class="headerlink" href="#ctre-voltage-regulator-module" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/voltage-regulator-module.png"><img alt="CTRE Voltage Regulator Module" src="../../_images/voltage-regulator-module.png" style="width: 500px;" /></a>
+<p>The CTRE Voltage Regulator Module (VRM) is an independent module that is powered by 12 volts. The device is wired to a dedicated connector on the PDP. The module has multiple regulated 12V and 5V outputs. The purpose of the VRM is to provide regulated power for the robot radio, custom circuits, and IP vision cameras. For more information, see the <a class="reference external" href="https://store.ctr-electronics.com/content/user-manual/VRM%20User%27s%20Guide.pdf">VRM User Manual</a>.</p>
+</section>
+<section id="rev-radio-power-module">
+<h2>REV Radio Power Module<a class="headerlink" href="#rev-radio-power-module" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/radio-power-module.png"><img alt="REV Radio Power Module" src="../../_images/radio-power-module.png" style="width: 500px;" /></a>
+<p>The <a class="reference external" href="https://docs.revrobotics.com/rev-11-1856/">REV Radio Power Module</a> is designed to keep one of the most critical system components, the OpenMesh WiFi radio, powered in the toughest moments of the competition. The Radio Power Module eliminates the need for powering the radio through a traditional barrel power jack. Utilizing 18V Passive POE with two socketed RJ45 connectors, the Radio Power Module passes signal between the radio and roboRIO while providing power directly to the radio. After connecting the radio and roboRIO, easily add power to the Radio Power Module by wiring it to the low-current channels on the Power Distribution Hub utilizing the color coded push button WAGO terminals.</p>
+</section>
+<section id="openmesh-om5p-an-or-om5p-ac-radio">
+<h2>OpenMesh OM5P-AN or OM5P-AC Radio<a class="headerlink" href="#openmesh-om5p-an-or-om5p-ac-radio" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/openmesh-radio.png"><img alt="OpenMesh OM5P-AN or OM5P-AC Radio" src="../../_images/openmesh-radio.png" style="width: 500px;" /></a>
+<p>Either the OpenMesh OM5P-AN or <a class="reference external" href="https://www.andymark.com/products/open-mesh-om5p-ac-dual-band-1-17-gbps-access-point-radio">OpenMesh OM5P-AC</a> wireless radio is used as the robot radio to provide wireless communication functionality to the robot. The device can be configured as an Access Point for direct connection of a laptop for use at home. It can also be configured as a bridge for use on the field. The robot radio should be powered by one of the 12V/2A outputs on the VRM and connected to the roboRIO controller over Ethernet. For more information, see <a class="reference internal" href="../zero-to-robot/step-3/radio-programming.html#programming-your-radio"><span class="std std-ref">Programming your Radio</span></a>.</p>
+<p>The OM5P-AN <a class="reference external" href="https://www.firstinspires.org/robotics/frc/blog/radio-silence">is no longer available for purchase</a>. The OM5P-AC is slightly heavier, has more cooling grates, and has a rough surface texture compared to the OM5P-AN.</p>
+</section>
+<section id="a-circuit-breaker">
+<h2>120A Circuit Breaker<a class="headerlink" href="#a-circuit-breaker" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/circuit-breaker.png"><img alt="120A Circuit Breaker" src="../../_images/circuit-breaker.png" style="width: 500px;" /></a>
+<p>The 120A Main Circuit Breaker serves two roles on the robot: the main robot power switch and a protection device for downstream robot wiring and components. The 120A circuit breaker is wired to the positive terminals of the robot battery and Power Distribution boards. For more information, please see the <a class="reference external" href="https://www.mouser.com/datasheet/2/87/BUS_Tns_DS_18X_CIRCUITBREAKER-515519.pdf">Cooper Bussmann 18X Series Datasheet (PN: 185120F)</a></p>
+</section>
+<section id="snap-action-circuit-breakers">
+<h2>Snap Action Circuit Breakers<a class="headerlink" href="#snap-action-circuit-breakers" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/snap-action-circuit-breaker.png"><img alt="Snap Action Circuit Breakers to be inserted in the PDP." src="../../_images/snap-action-circuit-breaker.png" style="width: 500px;" /></a>
+<p>The Snap Action circuit breakers, <a class="reference external" href="http://www.snapaction.net/pdf/MX5%20Spec%20Sheet.pdf">MX5 series</a> and <a class="reference external" href="http://www.snapaction.net/pdf/vb3.pdf">VB3 Series</a>, are used with the Power Distribution Panel to limit current to branch circuits. The ratings on these circuit breakers are for continuous current, temporary peak values can be considerably higher.</p>
+</section>
+<section id="robot-battery">
+<h2>Robot Battery<a class="headerlink" href="#robot-battery" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/robot-battery.png"><img alt="Robot Battery" src="../../_images/robot-battery.png" style="width: 500px;" /></a>
+<p>The power supply for an FRC robot is a single 12V 18Ah Sealed Lead Acid (SLA) battery, capable of meeting the high current demands of an FRC robot. For more information, see the <a class="reference internal" href="../hardware/hardware-basics/robot-battery.html#robot-battery-basics"><span class="std std-ref">Robot Battery page.</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Multiple battery part numbers may be legal, consult the <a class="reference external" href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Manual</a> for a complete list.</p>
+</div>
+</section>
+<section id="robot-signal-light">
+<h2>Robot Signal Light<a class="headerlink" href="#robot-signal-light" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/robot-signal-light.png"><img alt="Orange Robot Signal Light" src="../../_images/robot-signal-light.png" style="width: 500px;" /></a>
+<p>The Robot Signal Light (RSL) is required to be the Allen-Bradley 855PB-B12ME522.  It is directly controlled by the roboRIO and will flash when enabled and stay solid while disabled.</p>
+</section>
+<section id="ctre-pneumatics-control-module">
+<h2>CTRE Pneumatics Control Module<a class="headerlink" href="#ctre-pneumatics-control-module" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/pneumatics-control-module.png"><img alt="CTRE Pneumatics Control Module" src="../../_images/pneumatics-control-module.png" style="width: 500px;" /></a>
+<p>The <a class="reference internal" href="../software/can-devices/pneumatics-control-module.html#pneumatics-control-module"><span class="std std-ref">CTRE Pneumatics Control Module</span></a> (PCM) contains all of the inputs and outputs required to operate 12V or 24V pneumatic solenoids and the on board compressor. The PCM contains an input for the pressure sensor and will control the compressor automatically when the robot is enabled and a solenoid has been created in the code. For more information see the <a class="reference external" href="https://store.ctr-electronics.com/content/user-manual/PCM%20User%27s%20Guide.pdf">PCM User Manual</a>.</p>
+</section>
+<section id="rev-pneumatic-hub">
+<h2>REV Pneumatic Hub<a class="headerlink" href="#rev-pneumatic-hub" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/pneumatic-hub.png"><img alt="REV Pneumatic Hub" src="../../_images/pneumatic-hub.png" style="width: 500px;" /></a>
+<p>The <a class="reference external" href="https://docs.revrobotics.com/rev-11-1852/">REV Pneumatic Hub</a> is a standalone module that is capable of switching both 12V and 24V pneumatic solenoid valves. The Pneumatic Hub features 16 solenoid channels which allow for up to 16 single-acting solenoids, 8 double-acting solenoids, or a combination of the two types. The user selectable output voltage is fully regulated, allowing even 12V solenoids to stay active when the robot battery drops as low as 4.75V.</p>
+<p>Digital and analog pressure sensor ports are built into the device, increasing the flexibility and feedback functionality of the pneumatic system. The USB-C connection on the Hub works with the REV Hardware Client, allowing users to test pneumatic systems without a need for an additional robot controller.</p>
+</section>
+<section id="motor-controllers">
+<h2>Motor Controllers<a class="headerlink" href="#motor-controllers" title="Permalink to this heading"></a></h2>
+<p>There are a variety of different <a class="reference internal" href="../software/hardware-apis/index.html#hardware-apis"><span class="std std-ref">motor controllers</span></a> which work with the FRC Control System and are approved for use. These devices are used to provide variable voltage control of the brushed and brushless DC motors used in FRC. They are listed here in order of <a class="reference external" href="https://www.firstinspires.org/robotics/frc/blog/2021-beta-testing-usage-report">usage</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>3rd Party CAN control is not supported from WPILib. See this section on <a class="reference internal" href="../software/can-devices/third-party-devices.html#third-party-can-devices"><span class="std std-ref">Third-Party CAN Devices</span></a> for more information.</p>
+</div>
+<section id="talon-srx">
+<h3>Talon SRX<a class="headerlink" href="#talon-srx" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/talonsrx-motor-controller.png"><img alt="Talon SRX" src="../../_images/talonsrx-motor-controller.png" style="width: 500px;" /></a>
+<p>The <a class="reference external" href="https://store.ctr-electronics.com/talon-srx/">Talon SRX Motor Controller</a> is a “smart motor controller” from Cross The Road Electronics/VEX Robotics. The Talon SRX can be controlled over the CAN bus or PWM interface. When using the CAN bus control, this device can take inputs from limit switches and potentiometers, encoders, or similar sensors in order to perform advanced control. For more information see the <a class="reference external" href="https://store.ctr-electronics.com/content/user-manual/Talon%20SRX%20User's%20Guide.pdf">Talon SRX User’s Guide</a>.</p>
+</section>
+<section id="victor-spx">
+<h3>Victor SPX<a class="headerlink" href="#victor-spx" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/victor-spx-motor-controller.png"><img alt="Victor SPX" src="../../_images/victor-spx-motor-controller.png" style="width: 500px;" /></a>
+<p>The <a class="reference external" href="https://store.ctr-electronics.com/victor-spx/">Victor SPX Motor Controller</a> is a CAN or PWM controlled motor controller from Cross The Road Electronics/VEX Robotics. The device is connectorized to allow easy connection to the roboRIO PWM connectors or a CAN bus. The case is sealed to prevent debris from entering the controller. For more information, see the <a class="reference external" href="https://store.ctr-electronics.com/content/user-manual/Victor%20SPX%20User's%20Guide.pdf">Victor SPX User Guide</a>.</p>
+</section>
+<section id="spark-max-motor-controller">
+<h3>SPARK MAX Motor Controller<a class="headerlink" href="#spark-max-motor-controller" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/spark-max-motor-controller.png"><img alt="SPARK MAX Motor Controller" src="../../_images/spark-max-motor-controller.png" style="width: 400px;" /></a>
+<p>The <a class="reference external" href="https://www.revrobotics.com/rev-11-2158/">SPARK MAX Motor Controller</a> is an advanced brushed and brushless DC motor controller from REV Robotics. When using CAN bus or USB control, the SPARK MAX uses input from limit switches, encoders, and other sensors, including the integrated encoder of the REV NEO Brushless Motor, to perform advanced control modes. The SPARK MAX can be controlled over PWM, CAN or USB (for configuration/testing only). For more information, see the <a class="reference external" href="https://docs.revrobotics.com/sparkmax/">SPARK MAX User’s Manual</a>.</p>
+</section>
+<section id="talonfx-motor-controller">
+<h3>TalonFX Motor Controller<a class="headerlink" href="#talonfx-motor-controller" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/talonfx.png"><img alt="TalonFX Motor Controller" src="../../_images/talonfx.png" style="width: 500px;" /></a>
+<p>The <a class="reference external" href="https://store.ctr-electronics.com/falcon-500-powered-by-talon-fx/">TalonFX Motor Controller</a>  is integrated into the Falcon 500 brushless motor.  It features an integrated encoder and all of the smart features of the Talon SRX and more!  For more information see the <a class="reference external" href="https://store.ctr-electronics.com/content/user-manual/Falcon%20500%20User%20Guide.pdf">Falcon 500 User Guide</a>.</p>
+</section>
+<section id="spark-motor-controller">
+<h3>SPARK Motor Controller<a class="headerlink" href="#spark-motor-controller" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/spark-motor-controller.png"><img alt="SPARK Motor Controller" src="../../_images/spark-motor-controller.png" style="width: 400px;" /></a>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While this motor controller is still legal for FRC use, the manufacturer has discontinued this product.</p>
+</div>
+<p>The <a class="reference external" href="https://www.revrobotics.com/rev-11-1200/">SPARK Motor Controller</a> from REV Robotics is an inexpensive brushed DC motor controller. The SPARK is controlled using the PWM interface. Limit switches may be wired directly to the SPARK to limit motor travel in one or both directions. For more information, see the <a class="reference external" href="https://www.revrobotics.com/content/docs/REV-11-1200-UM.pdf">SPARK User’s Manaul</a>.</p>
+</section>
+<section id="victor-sp">
+<h3>Victor SP<a class="headerlink" href="#victor-sp" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/victor-sp-motor-controller.png"><img alt="Victor SP" src="../../_images/victor-sp-motor-controller.png" style="width: 500px;" /></a>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While this motor controller is still legal for FRC use, the manufacturer has discontinued this product.</p>
+</div>
+<p>The <a class="reference external" href="https://store.ctr-electronics.com/content/user-manual/Victor-SP-Quick-Start-Guide.pdf">Victor SP Motor Controller</a> is a PWM motor controller from Cross The Road Electronics/VEX Robotics. The Victor SP has an electrically isolated metal housing for heat dissipation, making the use of the fan optional. The case is sealed to prevent debris from entering the controller. The controller is approximately half the size of previous models.</p>
+</section>
+<section id="talon-motor-controller">
+<h3>Talon Motor Controller<a class="headerlink" href="#talon-motor-controller" title="Permalink to this heading"></a></h3>
+<img alt="Talon Motor Controller" src="../../_images/talon-motor-controller.png" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While this motor controller is still legal for FRC use, the manufacturer has discontinued this product.</p>
+</div>
+<p>The <a class="reference external" href="https://files.andymark.com/Talon_User_Manual_1_3.pdf">Talon Motor Controller</a> from Cross the Road Electronics is a PWM controlled brushed DC motor controller with passive cooling.</p>
+</section>
+<section id="victor-888-motor-controller-victor-884-motor-controller">
+<h3>Victor 888 Motor Controller / Victor 884 Motor Controller<a class="headerlink" href="#victor-888-motor-controller-victor-884-motor-controller" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/victor-888-motor-controller.png"><img alt="Victor 888 Motor Controller" src="../../_images/victor-888-motor-controller.png" style="width: 400px;" /></a>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While this motor controller is still legal for FRC use, the manufacturer has discontinued this product.</p>
+</div>
+<p>The <a class="reference external" href="https://content.vexrobotics.com/docs/ifi-v884-users-manual-9-25-06.pdf">Victor 884</a> and <a class="reference external" href="https://content.vexrobotics.com/docs/217-2769-Victor888UserManual.pdf">Victor 888</a> motor controllers from VEX Robotics are variable speed PWM motor controllers for use in FRC. The Victor 888 replaces the Victor 884, which is also usable in FRC.</p>
+</section>
+<section id="jaguar-motor-controller">
+<h3>Jaguar Motor Controller<a class="headerlink" href="#jaguar-motor-controller" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/jaguar-motor-controller.png"><img alt="Jaguar Motor Controller" src="../../_images/jaguar-motor-controller.png" style="width: 500px;" /></a>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While this motor controller is still legal for FRC use, the manufacturer has discontinued this product.</p>
+</div>
+<p>The <a class="reference external" href="https://www.ti.com/lit/an/spma033a/spma033a.pdf?ts=1607574399581">Jaguar Motor Controller</a> from VEX Robotics (formerly made by Luminary Micro and Texas Instruments) is a variable speed motor controller for use in FRC. For FRC, the Jaguar may only be controlled using the PWM interface.</p>
+</section>
+<section id="dmc-60-and-dmc-60c-motor-controller">
+<h3>DMC-60 and DMC-60C Motor Controller<a class="headerlink" href="#dmc-60-and-dmc-60c-motor-controller" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/dmc-60c-motor-controller.png"><img alt="DMC-60C Motor Controller" src="../../_images/dmc-60c-motor-controller.png" style="width: 500px;" /></a>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While this motor controller is still legal for FRC use, the manufacturer has discontinued this product.</p>
+</div>
+<p>The DMC-60 is a PWM motor controller from Digilent. The DMC-60 features integrated thermal sensing and protection including current-foldback to prevent overheating and damage, and four multi-color LEDs to indicate speed, direction, and status for easier debugging. For more information, see the <a class="reference external" href="https://reference.digilentinc.com/_media/dmc-60/dmc60_rm.pdf">DMC-60 reference manual</a></p>
+<p>The DMC-60C adds CAN smart controller capabilities to the DMC-60 controller. Due to the manufacturer discontinuing this product, the DMC-60C is only usable with PWM. For more information see the <a class="reference external" href="https://reference.digilentinc.com/dmc-60c/start/">DMC-60C Product Page</a></p>
+</section>
+<section id="venom-motor-controller">
+<h3>Venom Motor Controller<a class="headerlink" href="#venom-motor-controller" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/venom.png"><img alt="Venom Motor Controller" src="../../_images/venom.png" style="width: 500px;" /></a>
+<p>The <a class="reference external" href="https://www.playingwithfusion.com/productview.php?pdid=99">Venom Motor Controller</a> from Playing With Fusion is integrated into a motor based on the original CIM.  Speed, current, temperature, and position are all measured onboard, enabling advanced control modes without complicated sensing and wiring schemes.</p>
+</section>
+<section id="nidec-dynamo-bldc-motor-with-controller">
+<h3>Nidec Dynamo BLDC Motor with Controller<a class="headerlink" href="#nidec-dynamo-bldc-motor-with-controller" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/nidec-dynamo.png"><img alt="Nidec Dynamo BLDC Motor with Controller" src="../../_images/nidec-dynamo.png" style="width: 500px;" /></a>
+<p>The <a class="reference external" href="https://www.andymark.com/products/dynamo-brushless-motor-controller">Nidec Dynamo BLDC Motor with Controller</a> is the first brushless motor and controller legal in FRC.  This motor’s controller is integrated into the back of the motor.  The <a class="reference external" href="https://cdn.andymark.com/media/W1siZiIsIjIwMTkvMDUvMDkvMDkvNTEvNDQvZjQwYjliZDctYzdkOC00MWFlLWIzZmYtZTQyNTJhYjRkNmIyL2FtLTM3NDAgTmlkZWMgRHluYW1vIERNMzAxMi0xMDYzLUIgU3BlYy5wZGYiXV0/am-3740%20Nidec%20Dynamo%20DM3012-1063-B%20Spec.pdf?sha=eb03d3f578fe782e">motor data sheet</a> provides more device specifics.</p>
+</section>
+<section id="sd540b-and-sd540c-motor-controllers">
+<h3>SD540B and SD540C Motor Controllers<a class="headerlink" href="#sd540b-and-sd540c-motor-controllers" title="Permalink to this heading"></a></h3>
+<a class="reference internal image-reference" href="../../_images/sd540b-pwm.png"><img alt="SD540B Motor Controller" src="../../_images/sd540b-pwm.png" style="width: 500px;" /></a>
+<p>The SD540B and SD540C Motor Controllers from Mindsensors are controlled using PWM. CAN control is no longer available for the SD540C due to lack of manufacturer support. Limit switches may be wired directly to the SD540 to limit motor travel in one or both directions.  For more information see the <a class="reference external" href="http://www.mindsensors.com/68-frc">Mindsensors FRC page</a></p>
+</section>
+</section>
+<section id="spike-h-bridge-relay">
+<h2>Spike H-Bridge Relay<a class="headerlink" href="#spike-h-bridge-relay" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/spike-relay.png"><img alt="Spike H-Bridge Relay" src="../../_images/spike-relay.png" style="width: 300px;" /></a>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While this relay is still legal for FRC use, the manufacturer has discontinued this product.</p>
+</div>
+<p>The Spike H-Bridge Relay from VEX Robotics is a device used for controlling power to motors or other custom robot electronics. When connected to a motor, the Spike provides On/Off control in both the forward and reverse directions. The Spike outputs are independently controlled so it can also be used to provide power to up to 2 custom electronic circuits. The Spike H-Bridge Relay should be connected to a relay output of the roboRIO and powered from the Power Distribution Panel. For more information, see the <a class="reference external" href="https://content.vexrobotics.com/docs/spike-blue-guide-sep05.pdf">Spike User’s Guide</a>.</p>
+</section>
+<section id="servo-power-module">
+<h2>Servo Power Module<a class="headerlink" href="#servo-power-module" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/servo-power-module.png"><img alt="Servo Power Module" src="../../_images/servo-power-module.png" style="width: 300px;" /></a>
+<p>The Servo Power Module from Rev Robotics is capable of expanding the power available to servos beyond what the roboRIO integrated power supply is capable of. The Servo Power Module provides up to 90W of 6V power across 6 channels. All control signals are passed through directly from the roboRIO. For more information, see the <a class="reference external" href="https://www.revrobotics.com/rev-11-1144/">Servo Power Module webpage</a>.</p>
+</section>
+<section id="microsoft-lifecam-hd3000">
+<h2>Microsoft Lifecam HD3000<a class="headerlink" href="#microsoft-lifecam-hd3000" title="Permalink to this heading"></a></h2>
+<a class="reference internal image-reference" href="../../_images/microsoft-lifecam.png"><img alt="Microsoft Lifecam HD3000" src="../../_images/microsoft-lifecam.png" style="width: 300px;" /></a>
+<p>The Microsoft Lifecam HD3000 is a USB webcam that can be plugged directly into the roboRIO. The camera is capable of capturing up to 1280x720 video at 30 FPS. For more information about the camera, see the <a class="reference external" href="https://www.microsoft.com/en/accessories/business/lifecam-hd-3000-for-business">Microsoft product page</a>. For more information about using the camera with the roboRIO, see the <a class="reference internal" href="../software/vision-processing/index.html#vision-processing"><span class="std std-ref">Vision Processing</span></a> section of this documentation.</p>
+</section>
+<section id="image-credits">
+<h2>Image Credits<a class="headerlink" href="#image-credits" title="Permalink to this heading"></a></h2>
+<p>Image of roboRIO courtesy of National Instruments. Image of DMC-60 courtesy of Digilent. Image of SD540 courtesy of Mindsensors. Images of Jaguar Motor Controller, Talon SRX, Talon FX, Victor 888, Victor SP, Victor SPX, and Spike H-Bridge Relay courtesy of VEX Robotics, Inc. Image of SPARK MAX, Power Distribution Hub, Radio Power Module, and Pneumatic Hub courtesy of REV Robotics. Lifecam, PDP, PCM, SPARK, and VRM photos courtesy of <em>FIRST</em>®. All other photos courtesy of AndyMark Inc.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../zero-to-robot/step-4/running-benchtop-test.html" class="btn btn-neutral float-left" title="Running your Benchtop Test Program" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="control-system-software.html" class="btn btn-neutral float-right" title="Software Component Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Creating A Widget" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Widgets allow us to view, change, and interact with data published through different data sources. The CameraServer, NetworkTables, and Base plugins provide the widgets to control basic data types ..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creating A Widget &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../../_static/js/present.js"></script>
+        <script src="../../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../../_static/pid-tune.js"></script>
+        <script src="../../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../../_static/tabs.js"></script>
+        <script src="../../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Custom Themes" href="custom-themes.html" />
+    <link rel="prev" title="Creating Custom Data Types" href="creating-custom-data-types.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Dashboards</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Shuffleboard</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../getting-started/index.html">Shuffleboard - Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layouts-with-code/index.html">Shuffleboard - Layouts with Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced-usage/index.html">Shuffleboard - Advanced Usage</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Shuffleboard - Custom Widgets</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="builtin-plugins.html">Built-in Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="creating-plugins.html">Creating a Plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="creating-custom-data-types.html">Creating Custom Data Types</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Creating A Widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="custom-themes.html">Custom Themes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="widget-types.html">Widget Types</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../smartdashboard/index.html">SmartDashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../glass/index.html">Glass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../labview-dashboard/index.html">LabVIEW Dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Dashboards</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Shuffleboard</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Shuffleboard - Custom Widgets</a></li>
+      <li class="breadcrumb-item active">Creating A Widget</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/dashboards/shuffleboard/custom-widgets/creating-a-new-widget.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="creating-a-widget">
+<h1>Creating A Widget<a class="headerlink" href="#creating-a-widget" title="Permalink to this heading"></a></h1>
+<p>Widgets allow us to view, change, and interact with data published through different data sources. The CameraServer, NetworkTables, and Base plugins provide the widgets to control basic data types (including FRC-specific data types). However, custom widgets allow us to control our custom data types we made in the previous sections or Java Objects.</p>
+<p>The basic <code class="docutils literal notranslate"><span class="pre">Widget</span></code> interface inherits from the <code class="docutils literal notranslate"><span class="pre">Component</span></code> and <code class="docutils literal notranslate"><span class="pre">Sourced</span></code> interfaces. <code class="docutils literal notranslate"><span class="pre">Component</span></code> is the most basic building block of components that be displayed in Shuffleboard. <code class="docutils literal notranslate"><span class="pre">Sourced</span></code> is an interface for things that can handle and interface with data sources to display or modify data. Widgets that don’t support data bindings but simply have child nodes would not use the <code class="docutils literal notranslate"><span class="pre">Sourced</span></code> interface but simply the <code class="docutils literal notranslate"><span class="pre">Component</span></code> interface. Both are basic building blocks towards making widgets and allows us to modify and display data.</p>
+<p>A good widget allows the end-user to customize the widget to suit their needs. An example could be to allow the user to control the range of the number slider, that is, its maximum and minimum or the orientation of the slider itself. The view of the widget or how it looks is defined using FXML. <code class="docutils literal notranslate"><span class="pre">FXML</span></code> is an XML based language that is useful for defining the static layout of the widget (Panes, Labels and Controls).</p>
+<p>More about FXML can be found <a class="reference external" href="https://openjfx.io/javadoc/11/javafx.fxml/javafx/fxml/doc-files/introduction_to_fxml.html">here</a>.</p>
+<section id="defining-a-widget-s-fxml">
+<h2>Defining a Widget’s FXML<a class="headerlink" href="#defining-a-widget-s-fxml" title="Permalink to this heading"></a></h2>
+<p>In this example, we will create two sliders to help us control the X and Y coordinates of our Point2D data type we created in previous sections. It is helpful to place the FXML file in the same package as the Java class.</p>
+<p>In order to create an empty, blank window for our widget, we need to create a <code class="docutils literal notranslate"><span class="pre">Pane</span></code>. A Pane is a parent node that contains other child nodes, in this case, 2 sliders.
+There are many different types of Pane, they are as noted:</p>
+<ul>
+<li><p>Stack Pane</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Stack Panes allow elements to be overlaid. Also, StackPanes by default center child nodes.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Grid Pane</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Grid Panes are extremely useful defining child elements using a coordinate system by creating a flexible grid of rows and columns on the pane.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Flow Pane</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Flow Panes wrap all child nodes at a boundary set. Child nodes can flow vertically (wrapped at the height boundary for the pane) or horizontally (wrapped at the width boundary of the pane).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Anchor Pane</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Anchor Panes allow child elements to be placed in the top, bottom, left side, right side, or center of the pane.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Layout panes are also extremely useful for placing child nodes in one horizontal row using a <a class="reference external" href="https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/layout/HBox.html">HBox</a> or one vertical column using a <a class="reference external" href="https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/layout/VBox.html">VBox</a>.</p>
+<p>The basic syntax for defining a Pane using FXML would be as the following:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?import javafx.scene.layout.*?&gt;</span>
+<span class="nt">&lt;StackPane</span> <span class="na">xmlns:fx=</span><span class="s">&quot;http://javafx.com/fxml/1&quot;</span> <span class="na">fx:controller=</span><span class="s">&quot;/path/to/widget/class&quot;</span> <span class="na">fx:id=</span><span class="s">&quot;root&quot;</span><span class="nt">&gt;</span>
+   ...
+<span class="nt">&lt;/StackPane&gt;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">fx:controller</span></code> attribute contains the name of the widget class. An instance of this class is created when the FXML file is loaded. For this to work, the controller class must have a no-argument constructor.</p>
+</section>
+<section id="creating-a-widget-class">
+<h2>Creating A Widget Class<a class="headerlink" href="#creating-a-widget-class" title="Permalink to this heading"></a></h2>
+<p>Now that we have a Pane, we can now add child elements to that pane. In this example, we can add two slider objects. Remember to add an <code class="docutils literal notranslate"><span class="pre">fx:id</span></code> to each element so they can be referenced in our Java class we will make later on. We will use a <code class="docutils literal notranslate"><span class="pre">VBox</span></code> to position our slider on top of each other.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?import javafx.scene.layout.*?&gt;</span>
+<span class="nt">&lt;StackPane</span> <span class="na">xmlns:fx=</span><span class="s">&quot;http://javafx.com/fxml/1&quot;</span> <span class="na">fx:controller=</span><span class="s">&quot;/path/to/widget/class&quot;</span> <span class="na">fx:id=</span><span class="s">&quot;root&quot;</span><span class="nt">&gt;</span>
+
+   <span class="nt">&lt;VBox&gt;</span>
+      <span class="nt">&lt;Slider</span> <span class="na">fx:id =</span> <span class="s">&quot;xSlider&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Slider</span> <span class="na">fx:id =</span> <span class="s">&quot;ySlider&quot;</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;/VBox&gt;</span>
+
+<span class="nt">&lt;/StackPane&gt;</span>
+</pre></div>
+</div>
+<p>Now that we have finished creating our FXML file, we can now create a widget class. The widget class should include a <code class="docutils literal notranslate"><span class="pre">&#64;Description</span></code> annotation that states the supported data types of the widget and the name of the widget. If a <code class="docutils literal notranslate"><span class="pre">&#64;Description</span></code> annotation is not present, the plugin class must implement the <code class="docutils literal notranslate"><span class="pre">get()</span></code> method to return its widgets.</p>
+<p>It also must include a <code class="docutils literal notranslate"><span class="pre">&#64;ParametrizedController</span></code> annotation that points to the FXML file containing the layout of the widget. If the class that only supports one data source it must extend the <code class="docutils literal notranslate"><span class="pre">SimpleAnnotatedWidget</span></code> class. If the class supports multiple data sources, it must extend the <code class="docutils literal notranslate"><span class="pre">ComplexAnnotatedWidget</span></code> class. For more information, see <a class="reference internal" href="widget-types.html"><span class="doc">Widget Types</span></a>.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.Description</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.ParametrizedController</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.SimpleAnnotatedWidget</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/*</span>
+<span class="cm"> * If the FXML file and Java file are in the same package, that is the Java file is in src/main/java and the</span>
+<span class="cm"> * FXML file is under src/main/resources or your code equivalent package, the relative path will work</span>
+<span class="cm"> * However, if they are in different packages, an absolute path will be required.</span>
+<span class="cm">*/</span><span class="w"></span>
+
+<span class="nd">@Description</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MyPoint2D&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dataTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyPoint2D</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"></span>
+<span class="nd">@ParametrizedController</span><span class="p">(</span><span class="s">&quot;Point2DWidget.fxml&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Point2DWidget</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SimpleAnnotatedWidget</span><span class="o">&lt;</span><span class="n">MyPoint2D</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If you are not using a custom data type, you can reference any Java data type (ie. <code class="docutils literal notranslate"><span class="pre">Double.class</span></code>), or if the widget does not need data binding you can pass <code class="docutils literal notranslate"><span class="pre">NoneType.class</span></code>.</p>
+<p>Now that we have created our class we can create fields for the widgets we declared in our FXML file using the <code class="docutils literal notranslate"><span class="pre">&#64;FXML</span></code> annotation. For our two sliders, an example would be:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.Description</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.ParametrizedController</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.SimpleAnnotatedWidget</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javafx.fxml.FXML</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Description</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MyPoint2D&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dataTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyPoint2D</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"></span>
+<span class="nd">@ParametrizedController</span><span class="p">(</span><span class="s">&quot;Point2DWidget.fxml&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Point2DWidget</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SimpleAnnotatedWidget</span><span class="o">&lt;</span><span class="n">MyPoint2D</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@FXML</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">Pane</span><span class="w"> </span><span class="n">root</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@FXML</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">Slider</span><span class="w"> </span><span class="n">xSlider</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@FXML</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">Slider</span><span class="w"> </span><span class="n">ySlider</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In order to display our pane on our custom widget we need to override the <code class="docutils literal notranslate"><span class="pre">getView()</span></code> method and return our <code class="docutils literal notranslate"><span class="pre">StackPane</span></code>.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.Description</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.ParametrizedController</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.SimpleAnnotatedWidget</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javafx.fxml.FXML</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Description</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MyPoint2D&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dataTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyPoint2D</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"></span>
+<span class="nd">@ParametrizedController</span><span class="p">(</span><span class="s">&quot;Point2DWidget.fxml&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Point2DWidget</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SimpleAnnotatedWidget</span><span class="o">&lt;</span><span class="n">MyPoint2D</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@FXML</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">StackPane</span><span class="w"> </span><span class="n">root</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@FXML</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">Slider</span><span class="w"> </span><span class="n">xSlider</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@FXML</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">Slider</span><span class="w"> </span><span class="n">ySlider</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">Pane</span><span class="w"> </span><span class="nf">getView</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">root</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="binding-elements-and-adding-listeners">
+<h2>Binding Elements and Adding Listeners<a class="headerlink" href="#binding-elements-and-adding-listeners" title="Permalink to this heading"></a></h2>
+<p>Binding is a mechanism that allows JavaFX widgets to express direct relationships with the data source. For example, changing a widget will change its related NetworkTableEntry and vise versa.</p>
+<p>An example, in this case, would be changing the X and Y coordinate of our 2D point by changing the values of xSlider and ySlider respectively.</p>
+<p>A good practice is to set bindings in the <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> method tagged with the <code class="docutils literal notranslate"><span class="pre">&#64;FXML</span></code> annotation which is required to call the method from FXML if the method is not <code class="docutils literal notranslate"><span class="pre">public</span></code>.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.Description</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.ParametrizedController</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">edu.wpi.first.shuffleboard.api.widget.SimpleAnnotatedWidget</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">javafx.fxml.FXML</span><span class="p">;</span><span class="w"></span>
+
+<span class="nd">@Description</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MyPoint2D&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dataTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyPoint2D</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"></span>
+<span class="nd">@ParametrizedController</span><span class="p">(</span><span class="s">&quot;Point2DWidget.fxml&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Point2DWidget</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SimpleAnnotatedWidget</span><span class="o">&lt;</span><span class="n">MyPoint2D</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@FXML</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">StackPane</span><span class="w"> </span><span class="n">root</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@FXML</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">Slider</span><span class="w"> </span><span class="n">xSlider</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@FXML</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="n">Slider</span><span class="w"> </span><span class="n">ySlider</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@FXML</span><span class="w"></span>
+<span class="w">   </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">xSlider</span><span class="p">.</span><span class="na">valueProperty</span><span class="p">().</span><span class="na">bind</span><span class="p">(</span><span class="n">dataOrDefault</span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">MyPoint2D</span><span class="p">::</span><span class="n">getX</span><span class="p">));</span><span class="w"></span>
+<span class="w">      </span><span class="n">ySlider</span><span class="p">.</span><span class="na">valueProperty</span><span class="p">().</span><span class="na">bind</span><span class="p">(</span><span class="n">dataOrDefault</span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">MyPoint2D</span><span class="p">::</span><span class="n">getY</span><span class="p">));</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">   </span><span class="kd">public</span><span class="w"> </span><span class="n">Pane</span><span class="w"> </span><span class="nf">getView</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">root</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The above <code class="docutils literal notranslate"><span class="pre">initialize</span></code> method binds the slider’s value property to the <code class="docutils literal notranslate"><span class="pre">MyPoint2D</span></code> data class’ corresponding X and Y value. Meaning, changing the slider will change the coordinate and vise versa.
+The <code class="docutils literal notranslate"><span class="pre">dataOrDefault.map()</span></code> method will get the data source’s value, or, if no source is present, will return the default value.</p>
+<p>Using a listener is another way to change values when the slider or data source has changed. For example a listener for our slider would be:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">xSlider</span><span class="p">.</span><span class="na">valueProperty</span><span class="p">().</span><span class="na">addListener</span><span class="p">((</span><span class="n">observable</span><span class="p">,</span><span class="w"> </span><span class="n">oldValue</span><span class="p">,</span><span class="w"> </span><span class="n">newValue</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">setData</span><span class="p">(</span><span class="n">getData</span><span class="p">().</span><span class="na">withX</span><span class="p">(</span><span class="n">newValue</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+<p>In this case, the <code class="docutils literal notranslate"><span class="pre">setData()</span></code> method sets the value in the data source of the widget to the <code class="docutils literal notranslate"><span class="pre">newValue</span></code>.</p>
+</section>
+<section id="exploring-custom-components">
+<h2>Exploring Custom Components<a class="headerlink" href="#exploring-custom-components" title="Permalink to this heading"></a></h2>
+<p>Widgets are not automatically discovered when loading plugins; the defining plugin must explicitly export it for it to be usable. This approach is taken to allow multiple plugins to be defined in the same JAR.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ComponentType</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getComponents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">WidgetType</span><span class="p">.</span><span class="na">forAnnotatedWidget</span><span class="p">(</span><span class="n">Point2DWidget</span><span class="p">.</span><span class="na">class</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="set-default-widget-for-data-type">
+<h2>Set Default Widget For Data type<a class="headerlink" href="#set-default-widget-for-data-type" title="Permalink to this heading"></a></h2>
+<p>In order to set your widget as default for your custom data type, you can override the <code class="docutils literal notranslate"><span class="pre">getDefaultComponents()</span></code> in your plugin class that stores a Map for all default widgets as noted below:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">DataType</span><span class="p">,</span><span class="w"> </span><span class="n">ComponentType</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getDefaultComponents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">Map</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">Point2DType</span><span class="p">.</span><span class="na">Instance</span><span class="p">,</span><span class="w"> </span><span class="n">WidgetType</span><span class="p">.</span><span class="na">forAnnotatedWidget</span><span class="p">(</span><span class="n">Point2DWidget</span><span class="p">.</span><span class="na">class</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="creating-custom-data-types.html" class="btn btn-neutral float-left" title="Creating Custom Data Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="custom-themes.html" class="btn btn-neutral float-right" title="Custom Themes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

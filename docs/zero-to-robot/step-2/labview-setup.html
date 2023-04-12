@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Installing LabVIEW for FRC (LabVIEW only)" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/labview-setup.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="Download and installation times will vary widely with computer and internet connection specifications, however note that this process involves a large file download and installation and will likely..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/labview-setup.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/labview-setup.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/zero-to-robot/step-2/labview-setup.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/zero-to-robot/step-2/labview-setup.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/zero-to-robot/step-2/labview-setup.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/zero-to-robot/step-2/labview-setup.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/zero-to-robot/step-2/labview-setup.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/zero-to-robot/step-2/labview-setup.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installing LabVIEW for FRC (LabVIEW only) &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-2/labview-setup.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Installing the FRC Game Tools" href="frc-game-tools.html" />
+    <link rel="prev" title="Offline Installation Preparation" href="offline-installation-preparations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step 2: Installing Software</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="offline-installation-preparations.html">Offline Installation Preparation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installing LabVIEW for FRC (LabVIEW only)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="frc-game-tools.html">Installing the FRC Game Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wpilib-setup.html">WPILib Installation Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="step-2-next-steps.html">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../software/examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Step 2: Installing Software</a></li>
+      <li class="breadcrumb-item active">Installing LabVIEW for FRC (LabVIEW only)</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/zero-to-robot/step-2/labview-setup.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installing-labview-for-frc-labview-only">
+<h1>Installing LabVIEW for FRC (LabVIEW only)<a class="headerlink" href="#installing-labview-for-frc-labview-only" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This installation is for teams programming in LabVIEW or using NI Vision Assistant only. C++ and Java teams not using these features do not need to install LabVIEW and should proceed to <a class="reference internal" href="frc-game-tools.html"><span class="doc">Installing the FRC Game Tools</span></a>.</p>
+</div>
+<p>Download and installation times will vary widely with computer and internet connection specifications, however note that this process involves a large file download and installation and will likely take at least an hour to complete.</p>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Windows 10 or higher (Windows 10, 11). Windows 11 is not officially supported by NI, but has been tested to work.</p></li>
+</ul>
+</section>
+<section id="uninstall-old-versions-recommended">
+<h2>Uninstall Old Versions (Recommended)<a class="headerlink" href="#uninstall-old-versions-recommended" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you wish to keep programming cRIOs you will need to maintain an install of LabVIEW for FRC® 2014. The LabVIEW for FRC 2014 license has been extended. While these versions should be able to co-exist on a single computer, this is not a configuration that has been extensively tested.</p>
+</div>
+<p>Before installing the new version of LabVIEW it is recommended to remove any old versions. The new version will likely co-exist with the old version, but all testing has been done with FRC 2023 only. Make sure to back up any team code located in the “User\LabVIEW Data” directory before un-installing. Then click Start &gt;&gt; Add or Remove Programs. Locate the entry labeled “NI Software”, and select Uninstall.</p>
+<img alt="Add or Remove -&gt; NI Software" src="../../../_images/uninstall_control_panel.png" />
+<section id="select-components-to-uninstall">
+<h3>Select Components to Uninstall<a class="headerlink" href="#select-components-to-uninstall" title="Permalink to this heading"></a></h3>
+<p>In the dialog box that appears, select all entries. The easiest way to do this is to de-select the “Products Only” check-box and select the check-box to the left of “Name”. Click Remove. Wait for the uninstaller to complete and reboot if prompted.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These instructions assume that no other NI software is installed. If you have other NI software installed, it is necessary to uncheck the software that should not be uninstalled.</p>
+</div>
+<img alt="Using the checkbox in the upper left to select all." src="../../../_images/uninstall_select_components.png" />
+</section>
+</section>
+<section id="getting-labview-installer">
+<h2>Getting LabVIEW installer<a class="headerlink" href="#getting-labview-installer" title="Permalink to this heading"></a></h2>
+<p>Either locate and insert the LabVIEW USB Drive or download the <a class="reference external" href="https://www.ni.com/en-us/support/downloads/software-products/download.labview-software-for-frc.html">LabVIEW for FRC 2023 installer</a> from NI. Be sure to select the correct version from the drop-down.</p>
+<img alt="The Download button for the NI installer with the offline installer link below it." src="../../../_images/offline-installer.png" />
+<p>If you wish to install on other machines offline, do not click the Download button, click <strong>Individual Offline Installers</strong> and then click Download, to download the full installer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a large download (~9GB). It is recommended to use a fast internet connection and to use the NI Downloader to allow the download to resume if interrupted.</p>
+</div>
+</section>
+<section id="installing-labview">
+<h2>Installing LabVIEW<a class="headerlink" href="#installing-labview" title="Permalink to this heading"></a></h2>
+<p>NI LabVIEW requires a license. Each season’s license is active until January 31st of the following year (e.g. the license for the 2020 season expires on January 31, 2021)</p>
+<p>Teams are permitted to install the software on as many team computers as needed, subject to the restrictions and license terms that accompany the applicable software, and provided that only team members or mentors use the software, and solely for FRC. Rights to use LabVIEW are governed solely by the terms of the license agreements that are shown during the installation of the applicable software.</p>
+<section id="starting-install">
+<h3>Starting Install<a class="headerlink" href="#starting-install" title="Permalink to this heading"></a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Online Installer</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Offline Installer (Windows 10+)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>Run the downloaded exe file to start the install process. Click <span class="guilabel">Yes</span> if a Windows Security prompt</p>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>Right click on the downloaded iso file and select mount. Run install.exe from the mounted iso. Click “Yes” if a Windows Security prompt</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>other installed programs may associate with iso files and the mount option may not appear. If that software does not give the option to mount or extract the iso file, then install 7-Zip and use that to extract the iso.</p>
+</div>
+<img alt="The menu after right clicking on an .iso file to choose &quot;Mount&quot;." src="../../../_images/mount-iso.png" />
+</div></div>
+</section>
+<section id="ni-package-manager-license">
+<h3>NI Package Manager License<a class="headerlink" href="#ni-package-manager-license" title="Permalink to this heading"></a></h3>
+<img alt="Accepting the License Agreement for NI Package Manager." src="../../../_images/ni-package-license1.png" />
+<p>If you see this screen, click <span class="guilabel">Next</span></p>
+</section>
+<section id="disable-windows-fast-startup">
+<h3>Disable Windows Fast Startup<a class="headerlink" href="#disable-windows-fast-startup" title="Permalink to this heading"></a></h3>
+<img alt="Screen for disabling Windows fast startup." src="../../../_images/labview_fast_startup1.png" />
+<p>If you see this screen, click <span class="guilabel">Next</span></p>
+</section>
+<section id="ni-package-manager-review">
+<h3>NI Package Manager Review<a class="headerlink" href="#ni-package-manager-review" title="Permalink to this heading"></a></h3>
+<img alt="Review screen that shows what is about to be installed." src="../../../_images/labview_package_manager_review1.png" />
+<p>If you see this screen, click <span class="guilabel">Next</span></p>
+</section>
+<section id="ni-package-manager-installation">
+<h3>NI Package Manager Installation<a class="headerlink" href="#ni-package-manager-installation" title="Permalink to this heading"></a></h3>
+<img alt="Screen with progress bars indicating the amount of completion." src="../../../_images/ni-package-install1.png" />
+<p>Installation progress of the NI Package Manager will be tracked in this window</p>
+</section>
+<section id="product-list">
+<h3>Product List<a class="headerlink" href="#product-list" title="Permalink to this heading"></a></h3>
+<img alt="Select all of the products from the list." src="../../../_images/labview_product_list.png" />
+<p>Click <span class="guilabel">Next</span></p>
+</section>
+<section id="additional-packages">
+<h3>Additional Packages<a class="headerlink" href="#additional-packages" title="Permalink to this heading"></a></h3>
+<img alt="Leave all of the additional packages selected." src="../../../_images/labview_additional_software.png" />
+<p>Click <span class="guilabel">Next</span></p>
+</section>
+<section id="license-agreements">
+<h3>License agreements<a class="headerlink" href="#license-agreements" title="Permalink to this heading"></a></h3>
+<img alt="Accept the NI software license agreement." src="../../../_images/labview_license_1.png" />
+<p>Check “I accept…” then Click <span class="guilabel">Next</span></p>
+<img alt="Accept the Silverlight license agreements." src="../../../_images/labview_license_2.png" />
+<p>Check “I accept…” then Click <span class="guilabel">Next</span></p>
+</section>
+<section id="product-information">
+<h3>Product Information<a class="headerlink" href="#product-information" title="Permalink to this heading"></a></h3>
+<img alt="Next through this page showing what will be installed." src="../../../_images/labview_product_info.png" />
+<p>Click <span class="guilabel">Next</span></p>
+</section>
+<section id="start-installation">
+<h3>Start Installation<a class="headerlink" href="#start-installation" title="Permalink to this heading"></a></h3>
+<img alt="Line item review of what will be installed." src="../../../_images/labview_start_install.png" />
+<p>Click <span class="guilabel">Next</span></p>
+</section>
+<section id="overall-progress">
+<h3>Overall Progress<a class="headerlink" href="#overall-progress" title="Permalink to this heading"></a></h3>
+<img alt="Screen with progress bars indicating the amount of completion." src="../../../_images/labview_install_progress.png" />
+<p>Overall installation progress will be tracked in this window</p>
+</section>
+</section>
+<section id="ni-update-service">
+<h2>NI Update Service<a class="headerlink" href="#ni-update-service" title="Permalink to this heading"></a></h2>
+<img alt="The update service is not needed." src="../../../_images/ni_update_enable.png" />
+<p>You will be prompted whether to enable the NI update service. You can choose to not enable the update service.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is not recommended to install these updates unless directed by FRC through our usual communication channels (FRC Blog, Team Updates or E-mail Blasts).</p>
+</div>
+<section id="ni-activation-wizard">
+<h3>NI Activation Wizard<a class="headerlink" href="#ni-activation-wizard" title="Permalink to this heading"></a></h3>
+<img alt="The NI Activation Wizard" src="../../../_images/ni_activation_wizard.png" />
+<p>Click the <span class="guilabel">Log in to Activate</span> button.</p>
+<img alt="The NI user login screen." src="../../../_images/ni_activation_login.png" />
+<p>Log into your ni.com account. If you don’t have an account, select <span class="guilabel">Create account</span> to create a free account.</p>
+<img alt="Screen so select how to activate LabVIEW." src="../../../_images/ni_activation_sn_selection.png" />
+<p>From the drop-down, select enter a serial number</p>
+<img alt="Screen for entering your product key." src="../../../_images/ni_activation_keys.png" />
+<p>Enter the serial number in all the boxes. Click <span class="guilabel">Activate</span>.</p>
+<img alt="Screen details the activation success of each package." src="../../../_images/ni_activation_success.png" />
+<p>If your products activate successfully, an “Activation Successful” message will appear. If the serial number was incorrect, it will give you a text box and you can re-enter the number and select <span class="guilabel">Try Again</span>. The items shown above are not expected to activate. If everything activated successfully, click <span class="guilabel">Finish</span>.</p>
+</section>
+<section id="restart">
+<h3>Restart<a class="headerlink" href="#restart" title="Permalink to this heading"></a></h3>
+<img alt="Choose reboot to complete the installation." src="../../../_images/labview_restart.png" />
+<p>Select <span class="guilabel">Reboot Now</span> after closing any open programs.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="offline-installation-preparations.html" class="btn btn-neutral float-left" title="Offline Installation Preparation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="frc-game-tools.html" class="btn btn-neutral float-right" title="Installing the FRC Game Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

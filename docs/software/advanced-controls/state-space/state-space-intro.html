@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="Introduction to State-Space Control" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/state-space/state-space-intro.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="From PID to Model-Based Control: When tuning PID controllers, we focus on fiddling with controller parameters relating to the current, past, and future error(P, I and D terms) rather than the under..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/state-space/state-space-intro.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/state-space/state-space-intro.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/advanced-controls/state-space/state-space-intro.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/advanced-controls/state-space/state-space-intro.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/advanced-controls/state-space/state-space-intro.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/advanced-controls/state-space/state-space-intro.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/advanced-controls/state-space/state-space-intro.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/advanced-controls/state-space/state-space-intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to State-Space Control &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/advanced-controls/state-space/state-space-intro.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../../_static/js/present.js"></script>
+        <script src="../../../../_static/js/hoverxref.js"></script>
+        <script src="../../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../../_static/js/versionwarning.js"></script>
+        <script src="../../../../_static/pid-tune.js"></script>
+        <script src="../../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../../_static/js/version-2014.js"></script>
+        <script src="../../../../_static/tabs.js"></script>
+        <script src="../../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="State-Space Controller Walkthrough" href="state-space-flywheel-walkthrough.html" />
+    <link rel="prev" title="State-Space and Model Based Control with WPILib" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.webp 300w, ../../../../_static/wpilibDocsLogo_500.webp 500w, ../../../../_static/wpilibDocsLogo_700.webp 700w, ../../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../../_static/wpilibDocsLogo_300.png 300w, ../../../../_static/wpilibDocsLogo_500.png 500w, ../../../../_static/wpilibDocsLogo_700.png 700w, ../../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commandbased/index.html">Command-Based Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Advanced Controls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../video-walkthrough.html">A Video Walkthrough of Model Based Validation of Autonomous in FRC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">Advanced Controls Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/index.html">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry/index.html">Geometry Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controllers/index.html">Controllers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trajectories/index.html">Trajectory Generation and Following with WPILib</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">State-Space and Model Based Control with WPILib</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Introduction to State-Space Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="state-space-flywheel-walkthrough.html">State-Space Controller Walkthrough</a></li>
+<li class="toctree-l3"><a class="reference internal" href="state-space-observers.html">State Observers and Kalman Filters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="state-space-pose-estimators.html">Pose Estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="state-space-debugging.html">Debugging State-Space Models and Controllers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../controls-glossary.html">Controls Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Advanced Controls</a></li>
+          <li class="breadcrumb-item"><a href="index.html">State-Space and Model Based Control with WPILib</a></li>
+      <li class="breadcrumb-item active">Introduction to State-Space Control</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/advanced-controls/state-space/state-space-intro.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction-to-state-space-control">
+<h1>Introduction to State-Space Control<a class="headerlink" href="#introduction-to-state-space-control" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This article is from <a class="reference external" href="https://file.tavsys.net/control/controls-engineering-in-frc.pdf">Controls Engineering in FRC</a> by Tyler Veness with permission.</p>
+</div>
+<section id="from-pid-to-model-based-control">
+<h2>From PID to Model-Based Control<a class="headerlink" href="#from-pid-to-model-based-control" title="Permalink to this heading"></a></h2>
+<p>When tuning PID controllers, we focus on fiddling with controller parameters relating to the current, past, and future <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-error"><span class="xref std std-term">error</span></a> (P, I and D terms) rather than the underlying system states. While this approach works in a lot of situations, it is an incomplete view of the world.</p>
+<p>Model-based control focuses on developing an accurate model of the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-system"><span class="xref std std-term">system</span></a> (mechanism) we are trying to control. These models help inform <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gains</span></a> picked for feedback controllers based on the physical responses of the system, rather than an arbitrary proportional <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a> derived through testing. This allows us not only to predict ahead of time how a system will react, but also test our controllers without a physical robot and save time debugging simple bugs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>State-space control makes extensive use of linear algebra. More on linear algebra in modern control theory, including an introduction to linear algebra and resources, can be found in Chapter 4 of <a class="reference external" href="https://file.tavsys.net/control/controls-engineering-in-frc.pdf">Controls Engineering in FRC</a>.</p>
+</div>
+<p>If you’ve used WPILib’s feedforward classes for <code class="docutils literal notranslate"><span class="pre">SimpleMotorFeedforward</span></code> or its sister classes, or used SysId to pick PID <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gains</span></a> for you, you’re already familiar with model-based control! The <code class="docutils literal notranslate"><span class="pre">kv</span></code> and <code class="docutils literal notranslate"><span class="pre">ka</span></code> <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gains</span></a> can be used to describe how a motor (or arm, or drivetrain) will react to voltage. We can put these constants into standard state-space notation using WPILib’s <code class="docutils literal notranslate"><span class="pre">LinearSystem</span></code>, something we will do in a later article.</p>
+</section>
+<section id="vocabulary">
+<h2>Vocabulary<a class="headerlink" href="#vocabulary" title="Permalink to this heading"></a></h2>
+<p>For the background vocabulary that will be used throughout this article, see the <a class="reference internal" href="../controls-glossary.html#controls-glossary"><span class="std std-ref">Glossary</span></a>.</p>
+</section>
+<section id="introduction-to-linear-algebra">
+<h2>Introduction to Linear Algebra<a class="headerlink" href="#introduction-to-linear-algebra" title="Permalink to this heading"></a></h2>
+<p>For a short and intuitive introduction to the core concepts of Linear Algebra, we recommend chapters 1 through 4 of <a class="reference external" href="https://www.youtube.com/watch?v=fNk_zzaMoSs&amp;list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">3Blue1Brown’s Essence of linear algebra series</a> (Vectors, what even are they?, Linear combinations, span, and basis vectors, Linear transformations and matrices, and Matrix multiplication as composition).</p>
+</section>
+<section id="what-is-state-space">
+<h2>What is State-Space?<a class="headerlink" href="#what-is-state-space" title="Permalink to this heading"></a></h2>
+<p>Recall that 2D space has two axes: x and y. We represent locations within this space as a pair of numbers packaged in a vector, and each coordinate is a measure of how far to move along the corresponding axis. State-space is a <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-Cartesian-coordinate-system"><span class="xref std std-term">Cartesian coordinate system</span></a> with an axis for each state variable, and we represent locations within it the same way we do for 2D space: with a list of numbers in a vector. Each element in the vector corresponds to a state of the system. This example shows two example state vectors in the state-space of an elevator model with the states <span class="math notranslate nohighlight">\([\text{position}, \text{velocity}]\)</span>:</p>
+<img alt="Two vectors in state space with their corresponding arrows." src="../../../../_images/state-space-graph.png" />
+<p>In this image, the vectors representing states in state-space are arrows. From now on these vectors will be represented simply by a point at the vector’s tip, but remember that the rest of the vector is still there.</p>
+<p>In addition to the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-state"><span class="xref std std-term">state</span></a>, <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-input"><span class="xref std std-term">inputs</span></a> and <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-output"><span class="xref std std-term">outputs</span></a> are represented as vectors. Since the mapping from the current states and inputs to the change in state is a system of equations, it’s natural to write it in matrix form. This matrix equation can be written in state-space notation.</p>
+</section>
+<section id="what-is-state-space-notation">
+<h2>What is State-Space Notation?<a class="headerlink" href="#what-is-state-space-notation" title="Permalink to this heading"></a></h2>
+<p>State-space notation is a set of matrix equations which describe how a system will evolve over time. These equations relate the change in state <span class="math notranslate nohighlight">\(\dot{\mathbf{x}}\)</span>, and the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-output"><span class="xref std std-term">output</span></a> <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, to linear combinations of the current state vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-input"><span class="xref std std-term">input</span></a> vector <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>.</p>
+<p>State-space control can deal with continuous-time and discrete-time systems. In the continuous-time case, the rate of change of the system’s state <span class="math notranslate nohighlight">\(\mathbf{\dot{x}}\)</span> is expressed as a linear combination of the current state <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and input <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>.</p>
+<p>In contrast, discrete-time systems expresses the state of the system at our next timestep <span class="math notranslate nohighlight">\(\mathbf{x}_{k+1}\)</span> based on the current state <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span> and input <span class="math notranslate nohighlight">\(\mathbf{u}_k\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the current timestep and <span class="math notranslate nohighlight">\(k+1\)</span> is the next timestep.</p>
+<p>In both the continuous- and discrete-time forms, the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-output"><span class="xref std std-term">output</span></a> vector <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> is expressed as a linear combination of the current <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-state"><span class="xref std std-term">state</span></a> and <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-input"><span class="xref std std-term">input</span></a>. In many cases, the output is a subset of the system’s state, and has no contribution from the current input.</p>
+<p>When modeling systems, we first derive the continuous-time representation because the equations of motion are naturally written as the rate of change of a system’s state as a linear combination of its current state and inputs. We convert this representation to discrete-time on the robot because we update the system in discrete timesteps there instead of continuously.</p>
+<p>The following two sets of equations are the standard form of continuous-time and discrete-time state-space notation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{Continuous: }
+\dot{\mathbf{x}} &amp;= \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u} \\
+\mathbf{y} &amp;= \mathbf{C}\mathbf{x} + \mathbf{D}\mathbf{u} \\
+\nonumber \\
+\text{Discrete: }
+\mathbf{x}_{k+1} &amp;= \mathbf{A}\mathbf{x}_k + \mathbf{B}\mathbf{u}_k \\
+\mathbf{y}_k &amp;= \mathbf{C}\mathbf{x}_k + \mathbf{D}\mathbf{u}_k\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{llll}
+  \mathbf{A} &amp; \text{system matrix}      &amp; \mathbf{x} &amp; \text{state vector} \\
+  \mathbf{B} &amp; \text{input matrix}       &amp; \mathbf{u} &amp; \text{input vector} \\
+  \mathbf{C} &amp; \text{output matrix}      &amp; \mathbf{y} &amp; \text{output vector} \\
+  \mathbf{D} &amp; \text{feedthrough matrix} &amp;  &amp;  \\
+\end{array}\end{split}\]</div>
+<p>A continuous-time state-space system can be converted into a discrete-time system through a process called discretization.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the discrete-time form, the system’s state is held constant between updates. This means that we can only react to disturbances as quickly as our state estimate is updated. Updating our estimate more quickly can help improve performance, up to a point. WPILib’s <code class="docutils literal notranslate"><span class="pre">Notifier</span></code> class can be used if updates faster than the main robot loop are desired.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While a system’s continuous-time and discrete-time matrices A, B, C, and D have the same names, they are not equivalent. The continuous-time matrices describes the rate of change of the state, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, while the discrete-time matrices describe the system’s state at the next timestep as a function of the current state and input.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>WPILib’s LinearSystem takes continuous-time system matrices, and converts them internally to the discrete-time form where necessary.</p>
+</div>
+<section id="state-space-notation-example-flywheel-from-kv-and-ka">
+<h3>State-space Notation Example: Flywheel from Kv and Ka<a class="headerlink" href="#state-space-notation-example-flywheel-from-kv-and-ka" title="Permalink to this heading"></a></h3>
+<p><a class="reference internal" href="../controllers/feedforward.html#simplemotorfeedforward"><span class="std std-ref">Recall</span></a> that we can model the motion of a flywheel connected to a brushed DC motor with the equation <span class="math notranslate nohighlight">\(V = K_v \cdot v + K_a \cdot a\)</span>, where V is voltage output, v is the flywheel’s angular velocity and a is its angular acceleration. This equation can be rewritten as <span class="math notranslate nohighlight">\(a = \frac{V - K_v \cdot v}{K_a}\)</span>, or <span class="math notranslate nohighlight">\(a = \frac{-K_v}{K_a} \cdot v + \frac{1}{K_a} \cdot V\)</span>. Notice anything familiar? This equation relates the angular acceleration of the flywheel to its angular velocity and the voltage applied.</p>
+<p>We can convert this equation to state-space notation. We can create a system with one state (velocity), one <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-input"><span class="xref std std-term">input</span></a> (voltage), and one <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-output"><span class="xref std std-term">output</span></a> (velocity). Recalling that the first derivative of velocity is acceleration, we can write our equation as follows, replacing velocity with <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, acceleration with <span class="math notranslate nohighlight">\(\mathbf{\dot{x}}\)</span>, and voltage <span class="math notranslate nohighlight">\(\mathbf{V}\)</span> with <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\dot{x}} = \begin{bmatrix}\frac{-K_v}{K_a}\end{bmatrix} \mathbf{x} + \begin{bmatrix}\frac{1}{K_a}\end{bmatrix} \mathbf{u}\]</div>
+<p>That’s it! That’s the state-space model of a system for which we have the <cite>K_v</cite> and <cite>K_a</cite> constants. This same math is used in system identification to model flywheels and drivetrain velocity systems.</p>
+</section>
+</section>
+<section id="visualizing-state-space-responses-phase-portrait">
+<h2>Visualizing State-Space Responses: Phase Portrait<a class="headerlink" href="#visualizing-state-space-responses-phase-portrait" title="Permalink to this heading"></a></h2>
+<p>A <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-phase-portrait"><span class="xref std std-term">phase portrait</span></a> can help give a visual intuition for the response of a system in state-space. The vectors on the graph have their roots at some point <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> in state-space, and point in the direction of <span class="math notranslate nohighlight">\(\mathbf{\dot{x}}\)</span>, the direction that the system will evolve over time. This example shows a model of a pendulum with the states of angle and angular velocity.</p>
+<p>To trace a potential trajectory that a system could take through state-space, choose a point to start at and follow the arrows around. In this example, we might start at <span class="math notranslate nohighlight">\([-2, 0]\)</span>. From there, the velocity increases as we swing through vertical and starts to decrease until we reach the opposite extreme of the swing. This cycle of spinning about the origin repeats indefinitely.</p>
+<img alt="Pendulum Phase Plot with arrows all around going roughly in a circle." src="../../../../_images/pendulum-markedup.jpg" />
+<p>Note that near the edges of the phase portrait, the X axis wraps around as a rotation of <span class="math notranslate nohighlight">\(\pi\)</span> radians counter clockwise and a rotation of <span class="math notranslate nohighlight">\(\pi\)</span> radians clockwise will end at the same point.</p>
+<p>For more on differential equations and phase portraits, see <a class="reference external" href="https://www.youtube.com/watch?v=p_di4Zn4wz4">3Blue1Brown’s Differential Equations video</a> – they do a great job of animating the pendulum phase space at around 15:30.</p>
+<section id="visualizing-feedforward">
+<h3>Visualizing Feedforward<a class="headerlink" href="#visualizing-feedforward" title="Permalink to this heading"></a></h3>
+<p>This phase portrait shows the “open loop” responses of the system – that is, how it will react if we were to let the state evolve naturally. If we want to, say, balance the pendulum horizontal (at <span class="math notranslate nohighlight">\((\frac{\pi}{2}, 0)\)</span> in state space), we would need to somehow apply a control <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-input"><span class="xref std std-term">input</span></a> to counteract the open loop tendency of the pendulum to swing downward. This is what feedforward is trying to do – make it so that our phase portrait will have an equilibrium at the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-reference"><span class="xref std std-term">reference</span></a> position (or setpoint) in state-space.</p>
+<p>Looking at our phase portrait from before, we can see that at <span class="math notranslate nohighlight">\((\frac{\pi}{2}, 0)\)</span> in state space, gravity is pulling the pendulum down with some <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../frc-glossary.html#term-torque"><span class="xref std std-term">torque</span></a> T, and producing some downward angular acceleration with magnitude <span class="math notranslate nohighlight">\(\frac{\tau}{I}\)</span>, where I is angular <a class="hxr-hoverxref hxr-tooltip reference internal" href="../../frc-glossary.html#term-moment-of-inertia"><span class="xref std std-term">moment of inertia</span></a> of the pendulum. If we want to create an equilibrium at our <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-reference"><span class="xref std std-term">reference</span></a> of <span class="math notranslate nohighlight">\((\frac{\pi}{2}, 0)\)</span>, we would need to apply an <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-input"><span class="xref std std-term">input</span></a> can counteract the system’s natural tendency to swing downward. The goal here is to solve the equation <span class="math notranslate nohighlight">\(\mathbf{0 = Ax + Bu}\)</span> for <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>. Below is shown a phase portrait where we apply a constant <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-input"><span class="xref std std-term">input</span></a> that opposes the force of gravity at <span class="math notranslate nohighlight">\((\frac{\pi}{2}, 0)\)</span>:</p>
+<img alt="Pendulum phase plot with equilibrium at (pi/2, 0)." src="../../../../_images/pendulum-balance.png" />
+<section id="feedback-control">
+<h4>Feedback Control<a class="headerlink" href="#feedback-control" title="Permalink to this heading"></a></h4>
+<p>In the case of a DC motor, with just a mathematical model and knowledge of all current states of the system (i.e., angular velocity), we can predict all future states given the future voltage inputs. But if the system is disturbed in any way that isn’t modeled by our equations, like a load or unexpected friction, the angular velocity of the motor will deviate from the model over time. To combat this, we can give the motor corrective commands using a feedback controller.</p>
+<p>A PID controller is a form of feedback control. State-space control often uses the following <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-law"><span class="xref std std-term">control law</span></a>, where <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> is some controller <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a> matrix, <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> is the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-reference"><span class="xref std std-term">reference</span></a> state, and <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the current state in state-space. The difference between these two vectors, <span class="math notranslate nohighlight">\(\mathbf{r-x}\)</span>, is the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-error"><span class="xref std std-term">error</span></a>.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{u} = \mathbf{K(r - x)}\]</div>
+<p>This <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-law"><span class="xref std std-term">control law</span></a> is a proportional controller for each state of our system. Proportional controllers create software-defined springs that pull our system’s state toward our reference state in state-space. In the case that the system being controlled has position and velocity states, the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-law"><span class="xref std std-term">control law</span></a> above will behave as a PD controller, which also tries to drive position and velocity error to zero.</p>
+<p>Let’s show an example of this control law in action. We’ll use the pendulum system from above, where the swinging pendulum circled the origin in state-space. The case where <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> is the zero matrix (a matrix with all zeros) would be like picking P and D gains of zero – no control <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-input"><span class="xref std std-term">input</span></a> would be applied, and the phase portrait would look identical to the one above.</p>
+<p>To add some feedback, we arbitrarily pick a <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> of [2, 2], where our <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-input"><span class="xref std std-term">input</span></a> to the pendulum is angular acceleration. This K would mean that for every radian of position <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-error"><span class="xref std std-term">error</span></a>, the angular acceleration would be 2 radians per second squared; similarly, we accelerate by 2 radians per second squared for every radian per second of <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-error"><span class="xref std std-term">error</span></a>. Try following an arrow from somewhere in state-space inwards – no matter the initial conditions, the state will settle at the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-reference"><span class="xref std std-term">reference</span></a> rather than circle endlessly with pure feedforward.</p>
+<img alt="Closed loop pendulum phase plot with reference at (pi/2, 0)." src="../../../../_images/pendulum-closed-loop.png" />
+<p>But how can we choose an optimal <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a> matrix K for our system? While we can manually choose <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gains</span></a> and simulate the system response or tune it on-robot like a PID controller, modern control theory has a better answer: the Linear-Quadratic Regulator (LQR).</p>
+</section>
+<section id="the-linear-quadratic-regulator">
+<h4>The Linear-Quadratic Regulator<a class="headerlink" href="#the-linear-quadratic-regulator" title="Permalink to this heading"></a></h4>
+<p>Because model-based control means that we can predict the future states of a system given an initial condition and future control inputs, we can pick a mathematically optimal <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a> matrix <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>. To do this, we first have to define what a “good” or “bad” <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> would look like. We do this by summing the square of error and control input over time, which gives us a number representing how “bad” our control law will be. If we minimize this sum, we will have arrived at the optimal control law.</p>
+</section>
+<section id="lqr-definition">
+<h4>LQR: Definition<a class="headerlink" href="#lqr-definition" title="Permalink to this heading"></a></h4>
+<p>Linear-Quadratic Regulators work by finding a <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-law"><span class="xref std std-term">control law</span></a> that minimizes the following cost function, which weights the sum of <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-error"><span class="xref std std-term">error</span></a> and <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-effort"><span class="xref std std-term">control effort</span></a> over time, subject to the linear <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-system"><span class="xref std std-term">system</span></a> dynamics <span class="math notranslate nohighlight">\(\mathbf{x_{k+1} = Ax_k + Bu_k}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[J = \sum\limits_{k=0}^\infty \left(\mathbf{x}_k^T\mathbf{Q}\mathbf{x}_k + \mathbf{u}_k^T\mathbf{R}\mathbf{u}_k\right)\]</div>
+<p>The <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-law"><span class="xref std std-term">control law</span></a> that minimizes <span class="math notranslate nohighlight">\(\mathbf{J}\)</span> can be written as <span class="math notranslate nohighlight">\(\mathbf{u = K(r_k - x_k)}\)</span>, where <span class="math notranslate nohighlight">\(r_k - x_k\)</span> is the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-error"><span class="xref std std-term">error</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>LQR design’s <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> matrices don’t need discretization, but the <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> calculated for continuous-time and discrete time <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-system"><span class="xref std std-term">systems</span></a> will be different.</p>
+</div>
+</section>
+<section id="lqr-tuning">
+<h4>LQR: tuning<a class="headerlink" href="#lqr-tuning" title="Permalink to this heading"></a></h4>
+<p>Like PID controllers can be tuned by adjusting their gains, we also want to change how our control law balances our error and input. For example, a spaceship might want to minimize the fuel it expends to reach a given reference, while a high-speed robotic arm might need to react quickly to disturbances.</p>
+<p>We can weight error and control effort in our LQR with <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> matrices. In our cost function (which describes how “bad” our control law will perform), <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> weight our error and control input relative to each other. In the spaceship example from above, we might use a <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> with relatively small numbers to show that we don’t want to highly penalize error, while our <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> might be large to show that expending fuel is undesirable.</p>
+<p>With WPILib, the LQR class takes a vector of desired maximum state excursions and control efforts and converts them internally to full Q and R matrices with Bryson’s rule. We often use lowercase <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> to refer to these vectors, and <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> to refer to the matrices.</p>
+<p>Increasing the <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> elements would make the LQR less heavily weight large errors, and the resulting <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-law"><span class="xref std std-term">control law</span></a> will behave more conservatively. This has a similar effect to penalizing <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-effort"><span class="xref std std-term">control effort</span></a> more heavily by decreasing <span class="math notranslate nohighlight">\(\mathbf{r}\)</span>'s elements.</p>
+<p>Similarly, decreasing the <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> elements would make the LQR penalize large errors more heavily, and the resulting <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-law"><span class="xref std std-term">control law</span></a> will behave more aggressively. This has a similar effect to penalizing <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-effort"><span class="xref std std-term">control effort</span></a> less heavily by increasing <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> elements.</p>
+<p>For example, we might use the following Q and R for an elevator system with position and velocity states.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-Qysr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Example system -- must be changed to match your robot.</span><span class="w"></span>
+<span class="n">LinearSystem</span><span class="o">&lt;</span><span class="n">N2</span><span class="p">,</span><span class="w"> </span><span class="n">N1</span><span class="p">,</span><span class="w"> </span><span class="n">N1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">elevatorSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LinearSystemId</span><span class="p">.</span><span class="na">identifyPositionSystem</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
+<span class="n">LinearQuadraticRegulator</span><span class="o">&lt;</span><span class="n">N2</span><span class="p">,</span><span class="w"> </span><span class="n">N1</span><span class="p">,</span><span class="w"> </span><span class="n">N1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinearQuadraticRegulator</span><span class="p">(</span><span class="n">elevatorSystem</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// q&#39;s elements</span><span class="w"></span>
+<span class="w">    </span><span class="n">VecBuilder</span><span class="p">.</span><span class="na">fill</span><span class="p">(</span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// r&#39;s elements</span><span class="w"></span>
+<span class="w">    </span><span class="n">VecBuilder</span><span class="p">.</span><span class="na">fill</span><span class="p">(</span><span class="mf">12.0</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// our dt</span><span class="w"></span>
+<span class="w">    </span><span class="mf">0.020</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Example system -- must be changed to match your robot.</span>
+<span class="w"> </span><span class="n">LinearSystem</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">elevatorSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">LinearSystemId</span><span class="o">::</span><span class="n">IdentifyVelocitySystem</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">);</span><span class="w"></span>
+<span class="w"> </span><span class="n">LinearQuadraticRegulator</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;</span><span class="w"> </span><span class="n">controller</span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="n">elevatorSystem</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="c1">// q&#39;s elements</span>
+<span class="w">     </span><span class="p">{</span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="mf">0.4</span><span class="p">},</span><span class="w"></span>
+<span class="w">     </span><span class="c1">// r&#39;s elements</span>
+<span class="w">     </span><span class="p">{</span><span class="mf">12.0</span><span class="p">},</span><span class="w"></span>
+<span class="w">     </span><span class="c1">// our dt</span>
+<span class="w">     </span><span class="mf">0.020</span><span class="n">_s</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="lqr-example-application">
+<h3>LQR: example application<a class="headerlink" href="#lqr-example-application" title="Permalink to this heading"></a></h3>
+<p>Let’s apply a Linear-Quadratic Regulator to a real-world example. Say we have a flywheel velocity system determined through system identification to have <span class="math notranslate nohighlight">\(K_v = 1 \frac{\text{volts}}{\text{radian per second}}\)</span> and <span class="math notranslate nohighlight">\(K_a = 1.5 \frac{\text{volts}}{\text{radian per second squared}}\)</span>. Using the flywheel example above, we have the following linear <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-system"><span class="xref std std-term">system</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\dot{x}} = \begin{bmatrix}\frac{-K_v}{K_a}\end{bmatrix} v + \begin{bmatrix}\frac{1}{K_a}\end{bmatrix} V\]</div>
+<p>We arbitrarily choose a desired state excursion (maximum error) of <span class="math notranslate nohighlight">\(q = [0.1\ \text{rad/sec}]\)</span>, and an <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> of <span class="math notranslate nohighlight">\([12\ \text{volts}]\)</span>. After discretization with a timestep of 20ms, we find a <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a> of <span class="math notranslate nohighlight">\(\mathbf{K} = ~81\)</span>. This K <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a> acts as the proportional component of a PID loop on flywheel’s velocity.</p>
+<p>Let’s adjust <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{r}\)</span>. We know that increasing the q elements or decreasing the <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> elements we use to create <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> would make our controller more heavily penalize <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-control-effort"><span class="xref std std-term">control effort</span></a>, analogous to trying to driving a car more conservatively to improve fuel economy. In fact, if we increase our <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-error"><span class="xref std std-term">error</span></a> tolerance q from 0.1 to 1.0, our <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a> matrix <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> drops from ~81 to ~11. Similarly, decreasing our maximum voltage <span class="math notranslate nohighlight">\(r\)</span> from 12.0 to 1.2 decreases <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>.</p>
+<p>The following graph shows the flywheel’s angular velocity and applied voltage over time with two different <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a>s. We can see how a higher <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a> will make the system reach the reference more quickly (at t = 0.8 seconds), while keeping our motor saturated at 12V for longer. This is exactly the same as increasing the P gain of a PID controller by a factor of ~8x.</p>
+<img alt="Flywheel velocity and voltage over time." src="../../../../_images/flywheel-lqr-ex.jpg" />
+</section>
+<section id="lqr-and-measurement-latency-compensation">
+<h3>LQR and Measurement Latency Compensation<a class="headerlink" href="#lqr-and-measurement-latency-compensation" title="Permalink to this heading"></a></h3>
+<p>Oftentimes, our sensors have a delay associated with their measurements. For example the SPARK MAX motor controller over CAN can have up to 30ms of delay associated with velocity measurements.</p>
+<p>This lag means that our feedback controller will be generating voltage commands based on state estimates from the past. This often has the effect of introducing instability and oscillations into our system, as shown in the graph below.</p>
+<p>However, we can model our controller to control where the system’s <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-state"><span class="xref std std-term">state</span></a> is delayed into the future. This will reduce the LQR’s <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a> matrix <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>, trading off controller performance for stability. The below formula, which adjusts the <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-gain"><span class="xref std std-term">gain</span></a> matrix to account for delay, is also used in system identification.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{K_{compensated}} = \mathbf{K} \cdot \left(\mathbf{A} - \mathbf{BK}\right)^{\text{delay} / dt}\]</div>
+<p>Multiplying <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> by <span class="math notranslate nohighlight">\(\mathbf{A} - \mathbf{BK}\)</span> essentially advances the gains by one timestep. In this case, we multiply by <span class="math notranslate nohighlight">\(\left(\mathbf{A} - \mathbf{BK}\right)^{\text{delay} / dt}\)</span> to advance the gains by measurement’s delay.</p>
+<img alt="Flywheel velocity and voltage with dt=5.0ms and a 10.0ms delay." src="../../../../_images/latency-comp-lqr.jpg" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This can have the effect of reducing <span class="math notranslate nohighlight">\(\mathbf{K}\)</span> to zero, effectively disabling feedback control.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The SPARK MAX motor controller uses a 40-tap FIR filter with a delay of 19.5ms, and status frames are by default sent every 20ms.</p>
+</div>
+<p>The code below shows how to adjust the LQR controller’s K gain for sensor input delays:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-Qysr" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="-1">C++</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Adjust our LQR&#39;s controller for 25 ms of sensor input delay. We</span><span class="w"></span>
+<span class="c1">// provide the linear system, discretization timestep, and the sensor</span><span class="w"></span>
+<span class="c1">// input delay as arguments.</span><span class="w"></span>
+<span class="n">controller</span><span class="p">.</span><span class="na">latencyCompensate</span><span class="p">(</span><span class="n">elevatorSystem</span><span class="p">,</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="mf">0.025</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Adjust our LQR&#39;s controller for 25 ms of sensor input delay. We</span>
+<span class="c1">// provide the linear system, discretization timestep, and the sensor</span>
+<span class="c1">// input delay as arguments.</span>
+<span class="n">controller</span><span class="p">.</span><span class="n">LatencyCompensate</span><span class="p">(</span><span class="n">elevatorSystem</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="n">_ms</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="n">_ms</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="linearization">
+<h2>Linearization<a class="headerlink" href="#linearization" title="Permalink to this heading"></a></h2>
+<p>Linearization is a tool used to approximate nonlinear functions and state-space systems using linear ones. In two-dimensional space, linear functions are straight lines while nonlinear functions curve. A common example of a nonlinear function and its corresponding linear approximation is <span class="math notranslate nohighlight">\(y=\sin{x}\)</span>. This function can be approximated by <span class="math notranslate nohighlight">\(y=x\)</span> near zero. This approximation is accurate while near <span class="math notranslate nohighlight">\(x=0\)</span>, but looses accuracy as we stray further from the linearization point. For example, the approximation <span class="math notranslate nohighlight">\(\sin{x} \approx x\)</span> is accurate to within 0.02 within 0.5 radians of <span class="math notranslate nohighlight">\(y = 0\)</span>, but quickly loses accuracy past that. In the following picture, we see <span class="math notranslate nohighlight">\(y =\sin{x}\)</span>, <span class="math notranslate nohighlight">\(y=x\)</span> and the difference between the approximation and the true value of <span class="math notranslate nohighlight">\(\sin{x}\)</span> at <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<img alt="Three plots showing sin(x), x, and sin(x) - x." src="../../../../_images/linear-sin-x.jpg" />
+<p>We can also linearize state-space systems with nonlinear <a class="hxr-hoverxref hxr-tooltip reference internal" href="../controls-glossary.html#term-dynamics"><span class="xref std std-term">dynamics</span></a>. We do this by picking a point <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> in state-space and using this as the input to our nonlinear functions. Like in the above example, this works well for states near the point about which the system was linearized, but can quickly diverge further from that state.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="State-Space and Model Based Control with WPILib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="state-space-flywheel-walkthrough.html" class="btn btn-neutral float-right" title="State-Space Controller Walkthrough" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>

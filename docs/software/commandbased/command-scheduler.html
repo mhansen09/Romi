@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18: http://docutils.sourceforge.net/" />
+
+  <meta property="og:title" content="The Command Scheduler" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://docs.wpilib.org/en/stable/docs/software/commandbased/command-scheduler.html" />
+  <meta property="og:site_name" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:description" content="The CommandScheduler( Java, C++) is the class responsible for actually running commands. Each iteration (ordinarily once per 20ms), the scheduler polls all registered buttons, schedules commands fo..." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/wpilibsuite/branding/main/png/wpilib-128.png" />
+  <meta property="og:image:alt" content="FIRST Robotics Competition Documentation" />
+  <meta property="og:ignore_canonical" content="true" />
+<meta name="theme-color" content="#003974" />
+<meta name="google-site-verification" content="xcmdxM0KzMYiAOeJzyF_l2Tn3AHGzPICs9_vX6q2nwM" />
+<link rel="alternate" hreflang="en" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/command-scheduler.html" />
+<link rel="alternate" hreflang="x-default" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/command-scheduler.html" />
+<link rel="alternate" hreflang="es" href="https://docs.wpilib.org/es/stable/docs/software/commandbased/command-scheduler.html" />
+<link rel="alternate" hreflang="fr" href="https://docs.wpilib.org/fr/stable/docs/software/commandbased/command-scheduler.html" />
+<link rel="alternate" hreflang="he" href="https://docs.wpilib.org/he/stable/docs/software/commandbased/command-scheduler.html" />
+<link rel="alternate" hreflang="pt" href="https://docs.wpilib.org/pt/stable/docs/software/commandbased/command-scheduler.html" />
+<link rel="alternate" hreflang="tr" href="https://docs.wpilib.org/tr/stable/docs/software/commandbased/command-scheduler.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://docs.wpilib.org/zh_CN/stable/docs/software/commandbased/command-scheduler.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Command Scheduler &mdash; FIRST Robotics Competition  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster.bundle.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-shadow.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-noir.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-light.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/tooltipster-sideTip-borderless.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/micromodal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/pid-tune.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/frc-rtd.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/sphinx_rtd_theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/FIRSTicon_RGB_withTM.ico"/>
+    <link rel="canonical" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/command-scheduler.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_static/js/present.js"></script>
+        <script src="../../../_static/js/hoverxref.js"></script>
+        <script src="../../../_static/js/tooltipster.bundle.min.js"></script>
+        <script src="../../../_static/js/micromodal.min.js"></script>
+        <script src="../../../_static/js/versionwarning.js"></script>
+        <script src="../../../_static/pid-tune.js"></script>
+        <script src="../../../_static/js/api-docs-redirect.js"></script>
+        <script src="../../../_static/js/fix-rtd-menu-ios.js"></script>
+        <script src="../../../_static/js/external-links-new-tab.js"></script>
+        <script src="../../../_static/js/version-2014.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="A Technical Discussion on C++ Commands" href="cpp-command-discussion.html" />
+    <link rel="prev" title="Organizing Command-Based Robot Projects" href="organizing-command-based.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+
+
+<div class="header-bar">
+        <!-- Color Strip -->
+        <div class="color-strip">
+            <div class="fred"></div>
+            <div class="forange"></div>
+            <div class="fblue"></div>
+        </div>
+        <div class="link-bar-container">
+            <div id="link-bar" class="collapse">
+                <ul>          
+                  <li id="manual-link"><a href="https://www.firstinspires.org/resource-library/frc/competition-manual-qa-system">FRC Game Manual</a></li>
+                  <li id="qa-link"><a href="https://frc-qa.firstinspires.org/">FRC Game Q&A</a></li>
+                  <script id="headerscript">
+                    if( new Date().getMonth() == 3 && new Date().getDate() == 1) {
+                      document.getElementById("headerscript").insertAdjacentHTML("afterend", '<li id="water-link"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Water Game</a></li>');
+                    }
+                  </script>
+                </ul>
+            </div>
+        </div>
+</div>
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+  <a href="../../../index.html" style="display: block; margin-bottom: 0;">
+      FIRST Robotics Competition
+    <picture>
+      <source
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.webp 300w, ../../../_static/wpilibDocsLogo_500.webp 500w, ../../../_static/wpilibDocsLogo_700.webp 700w, ../../../_static/wpilibDocsLogo_1050.webp 1050w"
+        type="image/webp"
+      />
+      <img
+        src="../../../_static/wpilibDocsLogo.png"
+        sizes="300px"
+        srcset="../../../_static/wpilibDocsLogo_300.png 300w, ../../../_static/wpilibDocsLogo_500.png 500w, ../../../_static/wpilibDocsLogo_700.png 700w, ../../../_static/wpilibDocsLogo_1050.png 1050w"
+        height="468"
+        width="1050"
+        alt="Logo"
+        decoding="async"
+        class="logo"
+        style="height: auto; width: 100%; border-radius: 0%;"
+      />
+    </picture>
+  </a>
+      <div class="version">
+        latest
+      </div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Zero to Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-1/index.html">Step 1: Building your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-2/index.html">Step 2: Installing Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-3/index.html">Step 3: Preparing Your Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zero-to-robot/step-4/index.html">Step 4: Programming your Robot</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Control System Overviews</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-hardware.html">Hardware Component Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controls-overviews/control-system-software.html">Software Component Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programming Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what-is-wpilib.html">What is WPILib?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../yearly-overview/index.html">2023 Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vscode-overview/index.html">VS Code Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dashboards/index.html">Dashboards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../telemetry/index.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labview/index.html">FRC LabVIEW Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware-apis/index.html">Hardware APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../can-devices/index.html">CAN Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic-programming/index.html">Basic Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/support-resources.html">Support Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frc-glossary.html">FRC Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/index.html">WPILib Java API Docs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/index.html">WPILib C++ API Docs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software Tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../driverstation/index.html">Driver Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robotbuilder/index.html">RobotBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/robot-simulation/index.html">Robot Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wpilib-tools/outlineviewer/index.html">OutlineViewer</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Programming</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../vision-processing/index.html">Vision Processing</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Command-Based Programming</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="what-is-command-based.html">What Is “Command-Based” Programming?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-compositions.html">Command Compositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subsystems.html">Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binding-commands-to-triggers.html">Binding Commands to Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structuring-command-based-project.html">Structuring a Command-Based Robot Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing-command-based.html">Organizing Command-Based Robot Projects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The Command Scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cpp-command-discussion.html">A Technical Discussion on C++ Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid-subsystems-commands.html">PID Control through PIDSubsystems and PIDCommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile-subsystems-commands.html">Motion Profiling through TrapezoidProfileSubsystems and TrapezoidProfileCommands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profilepid-subsystems-commands.html">Combining Motion Profiling and PID in Command-Based</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command-based-changes.html">2020 Command-Based Rewrite: What Changed?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../kinematics-and-odometry/index.html">Kinematics and Odometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../networktables/index.html">NetworkTables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pathplanning/index.html">Path Planning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roborio-info/index.html">roboRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-gradlerio/index.html">Advanced GradleRIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-controls/index.html">Advanced Controls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../convenience-features/index.html">Convenience Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples and Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/wpilib-examples.html">WPILib Example Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples-tutorials/third-party-examples.html">Third Party Example Projects</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-basics/index.html">Hardware - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/hardware-tutorials/index.html">Hardware Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/sensors/index.html">Sensors</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Romi Robot</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../romi-robot/index.html">Getting Started with Romi</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Networking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-introduction/index.html">Networking Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../networking/networking-utilities/index.html">Networking Utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/frc-docs/index.html">Contributing to frc-docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/wpilib/index.html">Developing with allwpilib</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/wpilibsuite/frc-docs/issues">Report an Issue</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">FIRST Robotics Competition</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Command-Based Programming</a></li>
+      <li class="breadcrumb-item active">The Command Scheduler</li>
+<li class="wy-breadcrumbs-aside" style="padding-inline-start: 6px;">
+    <a href="?present" class="btn" style="background-color: #2980b9; color: white; padding: 5px">
+        Present
+        <span class="fa fa-expand"></span>
+    </a>
+</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/wpilibsuite/frc-docs/blob/main/source/docs/software/commandbased/command-scheduler.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-command-scheduler">
+<h1>The Command Scheduler<a class="headerlink" href="#the-command-scheduler" title="Permalink to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">CommandScheduler</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/CommandScheduler.html">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_scheduler.html">C++</a>) is the class responsible for actually running commands.  Each iteration (ordinarily once per 20ms), the scheduler polls all registered buttons, schedules commands for execution accordingly, runs the command bodies of all scheduled commands, and ends those commands that have finished or are interrupted.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CommandScheduler</span></code> also runs the <code class="docutils literal notranslate"><span class="pre">periodic()</span></code> method of each registered <code class="docutils literal notranslate"><span class="pre">Subsystem</span></code>.</p>
+<section id="using-the-command-scheduler">
+<h2>Using the Command Scheduler<a class="headerlink" href="#using-the-command-scheduler" title="Permalink to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">CommandScheduler</span></code> is a <em>singleton</em>, meaning that it is a globally-accessible class with only one instance.  Accordingly, in order to access the scheduler, users must call the <code class="docutils literal notranslate"><span class="pre">CommandScheduler.getInstance()</span></code> command.</p>
+<p>For the most part, users do not have to call scheduler methods directly - almost all important scheduler methods have convenience wrappers elsewhere (e.g. in the <code class="docutils literal notranslate"><span class="pre">Command</span></code> and <code class="docutils literal notranslate"><span class="pre">Subsystem</span></code> interfaces).</p>
+<p>However, there is one exception: users <em>must</em> call <code class="docutils literal notranslate"><span class="pre">CommandScheduler.getInstance().run()</span></code> from the <code class="docutils literal notranslate"><span class="pre">robotPeriodic()</span></code> method of their <code class="docutils literal notranslate"><span class="pre">Robot</span></code> class.  If this is not done, the scheduler will never run, and the command framework will not work.  The provided command-based project template has this call already included.</p>
+</section>
+<section id="the-schedule-method">
+<h2>The <code class="docutils literal notranslate"><span class="pre">schedule()</span></code> Method<a class="headerlink" href="#the-schedule-method" title="Permalink to this heading"></a></h2>
+<p>To schedule a command, users call the <code class="docutils literal notranslate"><span class="pre">schedule()</span></code> method (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/CommandScheduler.html#schedule(boolean,edu.wpi.first.wpilibj2.command.Command...)">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_scheduler.html#a26c120054ec626806d740f2c42d9dc4f">C++</a>).  This method takes a command, and attempts to add it to list of currently-running commands, pending whether it is already running or whether its requirements are available.  If it is added, its <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> method is called.</p>
+<p>This method walks through the following steps:</p>
+<ol class="arabic simple">
+<li><p>Verifies that the command isn’t in a composition.</p></li>
+<li><p>No-op if scheduler is disabled, command is already scheduled, or robot is disabled and command doesn’t &lt;commands:runsWhenDisabled&gt;.</p></li>
+<li><p>If requirements are in use:
+* If all conflicting commands are interruptible, cancel them.
+* If not, don’t schedule the new command.</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">initialize()</span></code>.</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-0-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-0-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-0-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">202</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">schedule</span><span class="p">(</span><span class="n">Command</span><span class="w"> </span><span class="n">command</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">203</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">command</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">204</span><span class="w">      </span><span class="n">DriverStation</span><span class="p">.</span><span class="na">reportWarning</span><span class="p">(</span><span class="s">&quot;Tried to schedule a null command&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">205</span><span class="w">      </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">206</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">207</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_inRunLoop</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">208</span><span class="w">      </span><span class="n">m_toSchedule</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">209</span><span class="w">      </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">210</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">211</span>
+<span class="linenos">212</span><span class="w">    </span><span class="n">requireNotComposed</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">213</span>
+<span class="linenos">214</span><span class="w">    </span><span class="c1">// Do nothing if the scheduler is disabled, the robot is disabled and the command doesn&#39;t</span><span class="w"></span>
+<span class="linenos">215</span><span class="w">    </span><span class="c1">// run when disabled, or the command is already scheduled.</span><span class="w"></span>
+<span class="linenos">216</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_disabled</span><span class="w"></span>
+<span class="linenos">217</span><span class="w">        </span><span class="o">||</span><span class="w"> </span><span class="n">isScheduled</span><span class="p">(</span><span class="n">command</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">218</span><span class="w">        </span><span class="o">||</span><span class="w"> </span><span class="n">RobotState</span><span class="p">.</span><span class="na">isDisabled</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">command</span><span class="p">.</span><span class="na">runsWhenDisabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">219</span><span class="w">      </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">220</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">221</span>
+<span class="linenos">222</span><span class="w">    </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Subsystem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="na">getRequirements</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">223</span>
+<span class="linenos">224</span><span class="w">    </span><span class="c1">// Schedule the command if the requirements are not currently in-use.</span><span class="w"></span>
+<span class="linenos">225</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Collections</span><span class="p">.</span><span class="na">disjoint</span><span class="p">(</span><span class="n">m_requirements</span><span class="p">.</span><span class="na">keySet</span><span class="p">(),</span><span class="w"> </span><span class="n">requirements</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">226</span><span class="w">      </span><span class="n">initCommand</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="n">requirements</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">227</span><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">228</span><span class="w">      </span><span class="c1">// Else check if the requirements that are in use have all have interruptible commands,</span><span class="w"></span>
+<span class="linenos">229</span><span class="w">      </span><span class="c1">// and if so, interrupt those commands and schedule the new command.</span><span class="w"></span>
+<span class="linenos">230</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Subsystem</span><span class="w"> </span><span class="n">requirement</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">requirements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">231</span><span class="w">        </span><span class="n">Command</span><span class="w"> </span><span class="n">requiring</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requiring</span><span class="p">(</span><span class="n">requirement</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">232</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">requiring</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="linenos">233</span><span class="w">            </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">requiring</span><span class="p">.</span><span class="na">getInterruptionBehavior</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">InterruptionBehavior</span><span class="p">.</span><span class="na">kCancelIncoming</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">234</span><span class="w">          </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">235</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">236</span><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">237</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Subsystem</span><span class="w"> </span><span class="n">requirement</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">requirements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">238</span><span class="w">        </span><span class="n">Command</span><span class="w"> </span><span class="n">requiring</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requiring</span><span class="p">(</span><span class="n">requirement</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">239</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">requiring</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">240</span><span class="w">          </span><span class="n">cancel</span><span class="p">(</span><span class="n">requiring</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">241</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">242</span><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">243</span><span class="w">      </span><span class="n">initCommand</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="n">requirements</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">244</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">245</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">181</span><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">initCommand</span><span class="p">(</span><span class="n">Command</span><span class="w"> </span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">Subsystem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">requirements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">182</span><span class="w">    </span><span class="n">m_scheduledCommands</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">183</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Subsystem</span><span class="w"> </span><span class="n">requirement</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">requirements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">184</span><span class="w">      </span><span class="n">m_requirements</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">requirement</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">185</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">186</span><span class="w">    </span><span class="n">command</span><span class="p">.</span><span class="na">initialize</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">187</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">m_initActions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">188</span><span class="w">      </span><span class="n">action</span><span class="p">.</span><span class="na">accept</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">189</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">190</span>
+<span class="linenos">191</span><span class="w">    </span><span class="n">m_watchdog</span><span class="p">.</span><span class="na">addEpoch</span><span class="p">(</span><span class="n">command</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.initialize()&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">114</span><span class="kt">void</span><span class="w"> </span><span class="nf">CommandScheduler::Schedule</span><span class="p">(</span><span class="n">Command</span><span class="o">*</span><span class="w"> </span><span class="n">command</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">115</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">inRunLoop</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">116</span><span class="w">    </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">toSchedule</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">117</span><span class="w">    </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">118</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">119</span>
+<span class="linenos">120</span><span class="w">  </span><span class="n">RequireUngrouped</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">121</span>
+<span class="linenos">122</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">disabled</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">scheduledCommands</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">command</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
+<span class="linenos">123</span><span class="w">      </span><span class="p">(</span><span class="n">frc</span><span class="o">::</span><span class="n">RobotState</span><span class="o">::</span><span class="n">IsDisabled</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">command</span><span class="o">-&gt;</span><span class="n">RunsWhenDisabled</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">124</span><span class="w">    </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">125</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">126</span>
+<span class="linenos">127</span><span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="o">-&gt;</span><span class="n">GetRequirements</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">128</span>
+<span class="linenos">129</span><span class="w">  </span><span class="n">wpi</span><span class="o">::</span><span class="n">SmallVector</span><span class="o">&lt;</span><span class="n">Command</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="o">&gt;</span><span class="w"> </span><span class="n">intersection</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">130</span>
+<span class="linenos">131</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">isDisjoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">132</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">allInterruptible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">133</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">i1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">requirements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">134</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">requirements</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">i1</span><span class="p">.</span><span class="n">first</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">requirements</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">135</span><span class="w">      </span><span class="n">isDisjoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">136</span><span class="w">      </span><span class="n">allInterruptible</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="p">(</span><span class="n">i1</span><span class="p">.</span><span class="n">second</span><span class="o">-&gt;</span><span class="n">GetInterruptionBehavior</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"></span>
+<span class="linenos">137</span><span class="w">                           </span><span class="n">Command</span><span class="o">::</span><span class="n">InterruptionBehavior</span><span class="o">::</span><span class="n">kCancelSelf</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">138</span><span class="w">      </span><span class="n">intersection</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">i1</span><span class="p">.</span><span class="n">second</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">139</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">140</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">141</span>
+<span class="linenos">142</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isDisjoint</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">allInterruptible</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">143</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">allInterruptible</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">144</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cmdToCancel</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">intersection</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">145</span><span class="w">        </span><span class="n">Cancel</span><span class="p">(</span><span class="n">cmdToCancel</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">146</span><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">147</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">148</span><span class="w">    </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">scheduledCommands</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">149</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">requirement</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">requirements</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">150</span><span class="w">      </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">requirements</span><span class="p">[</span><span class="n">requirement</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">command</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">151</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">152</span><span class="w">    </span><span class="n">command</span><span class="o">-&gt;</span><span class="n">Initialize</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">153</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">initActions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">154</span><span class="w">      </span><span class="n">action</span><span class="p">(</span><span class="o">*</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">155</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">156</span><span class="w">    </span><span class="n">m_watchdog</span><span class="p">.</span><span class="n">AddEpoch</span><span class="p">(</span><span class="n">command</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.Initialize()&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">157</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">158</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="the-scheduler-run-sequence">
+<h2>The Scheduler Run Sequence<a class="headerlink" href="#the-scheduler-run-sequence" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> method of each <code class="docutils literal notranslate"><span class="pre">Command</span></code> is called when the command is scheduled, which is not necessarily when the scheduler runs (unless that command is bound to a button).</p>
+</div>
+<p>What does a single iteration of the scheduler’s <code class="docutils literal notranslate"><span class="pre">run()</span></code> method (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/CommandScheduler.html#run()">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_scheduler.html#aa5000fa52e320da7ba72c196f34aa0f5">C++</a>) actually do?  The following section walks through the logic of a scheduler iteration. For the full implementation, see the source code (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibNewCommands/src/main/java/edu/wpi/first/wpilibj2/command/CommandScheduler.java#L275-L356">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/blob/main/wpilibNewCommands/src/main/native/cpp/frc2/command/CommandScheduler.cpp#L177-L253">C++</a>).</p>
+<section id="step-1-run-subsystem-periodic-methods">
+<h3>Step 1: Run Subsystem Periodic Methods<a class="headerlink" href="#step-1-run-subsystem-periodic-methods" title="Permalink to this heading"></a></h3>
+<p>First, the scheduler runs the <code class="docutils literal notranslate"><span class="pre">periodic()</span></code> method of each registered <code class="docutils literal notranslate"><span class="pre">Subsystem</span></code>. In simulation, each subsystem’s <code class="docutils literal notranslate"><span class="pre">simulationPeriodic()</span></code> method is called as well.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-1-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-1-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-1-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">278</span><span class="w">    </span><span class="c1">// Run the periodic method of all registered subsystems.</span><span class="w"></span>
+<span class="linenos">279</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Subsystem</span><span class="w"> </span><span class="n">subsystem</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">m_subsystems</span><span class="p">.</span><span class="na">keySet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">280</span><span class="w">      </span><span class="n">subsystem</span><span class="p">.</span><span class="na">periodic</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">281</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">RobotBase</span><span class="p">.</span><span class="na">isSimulation</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">282</span><span class="w">        </span><span class="n">subsystem</span><span class="p">.</span><span class="na">simulationPeriodic</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">283</span><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">284</span><span class="w">      </span><span class="n">m_watchdog</span><span class="p">.</span><span class="na">addEpoch</span><span class="p">(</span><span class="n">subsystem</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getSimpleName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.periodic()&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">285</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">183</span><span class="w">  </span><span class="c1">// Run the periodic method of all registered subsystems.</span>
+<span class="linenos">184</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">subsystem</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">subsystems</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">185</span><span class="w">    </span><span class="n">subsystem</span><span class="p">.</span><span class="n">getFirst</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">Periodic</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">186</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="p">(</span><span class="n">frc</span><span class="o">::</span><span class="n">RobotBase</span><span class="o">::</span><span class="n">IsSimulation</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">187</span><span class="w">      </span><span class="n">subsystem</span><span class="p">.</span><span class="n">getFirst</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">SimulationPeriodic</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">188</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">189</span><span class="w">    </span><span class="n">m_watchdog</span><span class="p">.</span><span class="n">AddEpoch</span><span class="p">(</span><span class="s">&quot;Subsystem Periodic()&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">190</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="step-2-poll-command-scheduling-triggers">
+<h3>Step 2: Poll Command Scheduling Triggers<a class="headerlink" href="#step-2-poll-command-scheduling-triggers" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on how trigger bindings work, see <a class="reference internal" href="binding-commands-to-triggers.html"><span class="doc">Binding Commands to Triggers</span></a></p>
+</div>
+<p>Secondly, the scheduler polls the state of all registered triggers to see if any new commands that have been bound to those triggers should be scheduled.  If the conditions for scheduling a bound command are met, the command is scheduled and its <code class="docutils literal notranslate"><span class="pre">Initialize()</span></code> method is run.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-2-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-2-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-2-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">290</span><span class="w">    </span><span class="c1">// Poll buttons for new commands to add.</span><span class="w"></span>
+<span class="linenos">291</span><span class="w">    </span><span class="n">loopCache</span><span class="p">.</span><span class="na">poll</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">292</span><span class="w">    </span><span class="n">m_watchdog</span><span class="p">.</span><span class="na">addEpoch</span><span class="p">(</span><span class="s">&quot;buttons.run()&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">195</span><span class="w">  </span><span class="c1">// Poll buttons for new commands to add.</span>
+<span class="linenos">196</span><span class="w">  </span><span class="n">loopCache</span><span class="o">-&gt;</span><span class="n">Poll</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">197</span><span class="w">  </span><span class="n">m_watchdog</span><span class="p">.</span><span class="n">AddEpoch</span><span class="p">(</span><span class="s">&quot;buttons.Run()&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="step-3-run-finish-scheduled-commands">
+<h3>Step 3: Run/Finish Scheduled Commands<a class="headerlink" href="#step-3-run-finish-scheduled-commands" title="Permalink to this heading"></a></h3>
+<p>Thirdly, the scheduler calls the <code class="docutils literal notranslate"><span class="pre">execute()</span></code> method of each currently-scheduled command, and then checks whether the command has finished by calling the <code class="docutils literal notranslate"><span class="pre">isFinished()</span></code> method.  If the command has finished, the <code class="docutils literal notranslate"><span class="pre">end()</span></code> method is also called, and the command is de-scheduled and its required subsystems are freed.</p>
+<p>Note that this sequence of calls is done in order for each command - thus, one command may have its <code class="docutils literal notranslate"><span class="pre">end()</span></code> method called before another has its <code class="docutils literal notranslate"><span class="pre">execute()</span></code> method called.  Commands are handled in the order they were scheduled.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-3-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-3-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-3-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">295</span><span class="w">    </span><span class="c1">// Run scheduled commands, remove finished commands.</span><span class="w"></span>
+<span class="linenos">296</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span><span class="w"> </span><span class="n">iterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_scheduledCommands</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span><span class="w"> </span><span class="n">iterator</span><span class="p">.</span><span class="na">hasNext</span><span class="p">();</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">297</span><span class="w">      </span><span class="n">Command</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iterator</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">298</span>
+<span class="linenos">299</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">command</span><span class="p">.</span><span class="na">runsWhenDisabled</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">RobotState</span><span class="p">.</span><span class="na">isDisabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">300</span><span class="w">        </span><span class="n">command</span><span class="p">.</span><span class="na">end</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">301</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">m_interruptActions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">302</span><span class="w">          </span><span class="n">action</span><span class="p">.</span><span class="na">accept</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">303</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">304</span><span class="w">        </span><span class="n">m_requirements</span><span class="p">.</span><span class="na">keySet</span><span class="p">().</span><span class="na">removeAll</span><span class="p">(</span><span class="n">command</span><span class="p">.</span><span class="na">getRequirements</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">305</span><span class="w">        </span><span class="n">iterator</span><span class="p">.</span><span class="na">remove</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">306</span><span class="w">        </span><span class="n">m_watchdog</span><span class="p">.</span><span class="na">addEpoch</span><span class="p">(</span><span class="n">command</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.end(true)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">307</span><span class="w">        </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">308</span><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="hll"><span class="linenos">309</span>
+</span><span class="linenos">310</span><span class="w">      </span><span class="n">command</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">311</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">m_executeActions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">312</span><span class="w">        </span><span class="n">action</span><span class="p">.</span><span class="na">accept</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">313</span><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="hll"><span class="linenos">314</span><span class="w">      </span><span class="n">m_watchdog</span><span class="p">.</span><span class="na">addEpoch</span><span class="p">(</span><span class="n">command</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.execute()&quot;</span><span class="p">);</span><span class="w"></span>
+</span><span class="hll"><span class="linenos">315</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">command</span><span class="p">.</span><span class="na">isFinished</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="linenos">316</span><span class="w">        </span><span class="n">command</span><span class="p">.</span><span class="na">end</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">317</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Command</span><span class="o">&gt;</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">m_finishActions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">318</span><span class="w">          </span><span class="n">action</span><span class="p">.</span><span class="na">accept</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">319</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">320</span><span class="w">        </span><span class="n">iterator</span><span class="p">.</span><span class="na">remove</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">321</span>
+<span class="linenos">322</span><span class="w">        </span><span class="n">m_requirements</span><span class="p">.</span><span class="na">keySet</span><span class="p">().</span><span class="na">removeAll</span><span class="p">(</span><span class="n">command</span><span class="p">.</span><span class="na">getRequirements</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">323</span><span class="w">        </span><span class="n">m_watchdog</span><span class="p">.</span><span class="na">addEpoch</span><span class="p">(</span><span class="n">command</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.end(false)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">324</span><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">325</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">201</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Command</span><span class="o">*</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">scheduledCommands</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">202</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">command</span><span class="o">-&gt;</span><span class="n">RunsWhenDisabled</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">frc</span><span class="o">::</span><span class="n">RobotState</span><span class="o">::</span><span class="n">IsDisabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">203</span><span class="w">      </span><span class="n">Cancel</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">204</span><span class="w">      </span><span class="k">continue</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">205</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="hll"><span class="linenos">206</span>
+</span><span class="linenos">207</span><span class="w">    </span><span class="n">command</span><span class="o">-&gt;</span><span class="n">Execute</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">208</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">executeActions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">209</span><span class="w">      </span><span class="n">action</span><span class="p">(</span><span class="o">*</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">210</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">211</span><span class="w">    </span><span class="n">m_watchdog</span><span class="p">.</span><span class="n">AddEpoch</span><span class="p">(</span><span class="n">command</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.Execute()&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="hll"><span class="linenos">212</span>
+</span><span class="hll"><span class="linenos">213</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">command</span><span class="o">-&gt;</span><span class="n">IsFinished</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="linenos">214</span><span class="w">      </span><span class="n">command</span><span class="o">-&gt;</span><span class="n">End</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">215</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">finishActions</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">216</span><span class="w">        </span><span class="n">action</span><span class="p">(</span><span class="o">*</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">217</span><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">218</span>
+<span class="linenos">219</span><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">requirement</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">command</span><span class="o">-&gt;</span><span class="n">GetRequirements</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">220</span><span class="w">        </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">requirements</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">requirement</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">221</span><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">222</span>
+<span class="linenos">223</span><span class="w">      </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">scheduledCommands</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">command</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">224</span><span class="w">      </span><span class="n">m_watchdog</span><span class="p">.</span><span class="n">AddEpoch</span><span class="p">(</span><span class="n">command</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;.End(false)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">225</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">226</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="step-4-schedule-default-commands">
+<h3>Step 4: Schedule Default Commands<a class="headerlink" href="#step-4-schedule-default-commands" title="Permalink to this heading"></a></h3>
+<p>Finally, any registered <code class="docutils literal notranslate"><span class="pre">Subsystem</span></code> has its default command scheduled (if it has one).  Note that the <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> method of the default command will be called at this time.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-4-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-4-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-4-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">340</span><span class="w">    </span><span class="c1">// Add default commands for un-required registered subsystems.</span><span class="w"></span>
+<span class="linenos">341</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Subsystem</span><span class="p">,</span><span class="w"> </span><span class="n">Command</span><span class="o">&gt;</span><span class="w"> </span><span class="n">subsystemCommand</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">m_subsystems</span><span class="p">.</span><span class="na">entrySet</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">342</span><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">m_requirements</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">subsystemCommand</span><span class="p">.</span><span class="na">getKey</span><span class="p">())</span><span class="w"></span>
+<span class="linenos">343</span><span class="w">          </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">subsystemCommand</span><span class="p">.</span><span class="na">getValue</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">344</span><span class="w">        </span><span class="n">schedule</span><span class="p">(</span><span class="n">subsystemCommand</span><span class="p">.</span><span class="na">getValue</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">345</span><span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">346</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">240</span><span class="w">  </span><span class="c1">// Add default commands for un-required registered subsystems.</span>
+<span class="linenos">241</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">subsystem</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">subsystems</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">242</span><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">requirements</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">subsystem</span><span class="p">.</span><span class="n">getFirst</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">243</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">m_impl</span><span class="o">-&gt;</span><span class="n">requirements</span><span class="p">.</span><span class="n">end</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">subsystem</span><span class="p">.</span><span class="n">getSecond</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">244</span><span class="w">      </span><span class="n">Schedule</span><span class="p">({</span><span class="n">subsystem</span><span class="p">.</span><span class="n">getSecond</span><span class="p">().</span><span class="n">get</span><span class="p">()});</span><span class="w"></span>
+<span class="linenos">245</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">246</span><span class="w">  </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="disabling-the-scheduler">
+<h2>Disabling the Scheduler<a class="headerlink" href="#disabling-the-scheduler" title="Permalink to this heading"></a></h2>
+<p>The scheduler can be disabled by calling <code class="docutils literal notranslate"><span class="pre">CommandScheduler.getInstance().disable()</span></code>.  When disabled, the scheduler’s <code class="docutils literal notranslate"><span class="pre">schedule()</span></code> and <code class="docutils literal notranslate"><span class="pre">run()</span></code> commands will not do anything.</p>
+<p>The scheduler may be re-enabled by calling <code class="docutils literal notranslate"><span class="pre">CommandScheduler.getInstance().enable()</span></code>.</p>
+</section>
+<section id="command-event-methods">
+<h2>Command Event Methods<a class="headerlink" href="#command-event-methods" title="Permalink to this heading"></a></h2>
+<p>Occasionally, it is desirable to have the scheduler execute a custom action whenever a certain command event (initialization, execution, or ending) occurs.  This can be done with the following methods:</p>
+<section id="oncommandinitialize">
+<h3>onCommandInitialize<a class="headerlink" href="#oncommandinitialize" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">onCommandInitialize</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/CommandScheduler.html#onCommandInitialize(java.util.function.Consumer)">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_scheduler.html#a5f983f0e45b0500c96eebe52780324d4">C++</a>) runs a specified action whenever a command is initialized.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">onCommandExecute</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/CommandScheduler.html#onCommandExecute(java.util.function.Consumer)">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_scheduler.html#a58c538f4b8dd95e266e4a99167aa7f99">C++</a>) runs a specified action whenever a command is executed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">onCommandFinish</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/CommandScheduler.html#onCommandFinish(java.util.function.Consumer)">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_scheduler.html#a068e61446afe2341cc0651f0dfd2a55f">C++</a>) runs a specified action whenever a command finishes normally (i.e. the <code class="docutils literal notranslate"><span class="pre">isFinished()</span></code> method returned true).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">onCommandInterrupt</span></code> (<a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/java/edu/wpi/first/wpilibj2/command/CommandScheduler.html#onCommandInterrupt(java.util.function.Consumer)">Java</a>, <a class="reference external" href="https://github.wpilib.org/allwpilib/docs/release/cpp/classfrc2_1_1_command_scheduler.html#ab5ba99a542aa778a76726d7c68461bf0">C++</a>) runs a specified action whenever a command is interrupted (i.e. by being explicitly canceled or by another command that shares one of its requirements).</p></li>
+</ul>
+<p>A typical use-case for these methods is adding markers in an event log whenever a command scheduling event takes place, as demonstrated in the following code from the HatchbotInlined example project (<a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibjExamples/src/main/java/edu/wpi/first/wpilibj/examples/hatchbotinlined">Java</a>, <a class="reference external" href="https://github.com/wpilibsuite/allwpilib/tree/main/wpilibcExamples/src/main/cpp/examples/HatchbotInlined">C++</a>):</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-SmF2YQ==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-5-SmF2YQ==" name="SmF2YQ==" role="tab" tabindex="0">Java</button><button aria-controls="panel-5-QysrIChTb3VyY2Up" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-5-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tab" tabindex="-1">C++ (Source)</button></div><div aria-labelledby="tab-5-SmF2YQ==" class="sphinx-tabs-panel group-tab" id="panel-5-SmF2YQ==" name="SmF2YQ==" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">73</span><span class="w">    </span><span class="c1">// Set the scheduler to log Shuffleboard events for command initialize, interrupt, finish</span><span class="w"></span>
+<span class="linenos">74</span><span class="w">    </span><span class="n">CommandScheduler</span><span class="p">.</span><span class="na">getInstance</span><span class="p">()</span><span class="w"></span>
+<span class="linenos">75</span><span class="w">        </span><span class="p">.</span><span class="na">onCommandInitialize</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">76</span><span class="w">            </span><span class="n">command</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"></span>
+<span class="linenos">77</span><span class="w">                </span><span class="n">Shuffleboard</span><span class="p">.</span><span class="na">addEventMarker</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">78</span><span class="w">                    </span><span class="s">&quot;Command initialized&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="na">getName</span><span class="p">(),</span><span class="w"> </span><span class="n">EventImportance</span><span class="p">.</span><span class="na">kNormal</span><span class="p">));</span><span class="w"></span>
+<span class="linenos">79</span><span class="w">    </span><span class="n">CommandScheduler</span><span class="p">.</span><span class="na">getInstance</span><span class="p">()</span><span class="w"></span>
+<span class="linenos">80</span><span class="w">        </span><span class="p">.</span><span class="na">onCommandInterrupt</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">81</span><span class="w">            </span><span class="n">command</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"></span>
+<span class="linenos">82</span><span class="w">                </span><span class="n">Shuffleboard</span><span class="p">.</span><span class="na">addEventMarker</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">83</span><span class="w">                    </span><span class="s">&quot;Command interrupted&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="na">getName</span><span class="p">(),</span><span class="w"> </span><span class="n">EventImportance</span><span class="p">.</span><span class="na">kNormal</span><span class="p">));</span><span class="w"></span>
+<span class="linenos">84</span><span class="w">    </span><span class="n">CommandScheduler</span><span class="p">.</span><span class="na">getInstance</span><span class="p">()</span><span class="w"></span>
+<span class="linenos">85</span><span class="w">        </span><span class="p">.</span><span class="na">onCommandFinish</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">86</span><span class="w">            </span><span class="n">command</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"></span>
+<span class="linenos">87</span><span class="w">                </span><span class="n">Shuffleboard</span><span class="p">.</span><span class="na">addEventMarker</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">88</span><span class="w">                    </span><span class="s">&quot;Command finished&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="na">getName</span><span class="p">(),</span><span class="w"> </span><span class="n">EventImportance</span><span class="p">.</span><span class="na">kNormal</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-5-QysrIChTb3VyY2Up" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-QysrIChTb3VyY2Up" name="QysrIChTb3VyY2Up" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="linenos">23</span><span class="w">  </span><span class="c1">// Log Shuffleboard events for command initialize, execute, finish, interrupt</span>
+<span class="linenos">24</span><span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandScheduler</span><span class="o">::</span><span class="n">GetInstance</span><span class="p">().</span><span class="n">OnCommandInitialize</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">      </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">frc2</span><span class="o">::</span><span class="n">Command</span><span class="o">&amp;</span><span class="w"> </span><span class="n">command</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">Shuffleboard</span><span class="o">::</span><span class="n">AddEventMarker</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">            </span><span class="s">&quot;Command initialized&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">GetName</span><span class="p">(),</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">            </span><span class="n">frc</span><span class="o">::</span><span class="n">ShuffleboardEventImportance</span><span class="o">::</span><span class="n">kNormal</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">      </span><span class="p">});</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandScheduler</span><span class="o">::</span><span class="n">GetInstance</span><span class="p">().</span><span class="n">OnCommandExecute</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">      </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">frc2</span><span class="o">::</span><span class="n">Command</span><span class="o">&amp;</span><span class="w"> </span><span class="n">command</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">Shuffleboard</span><span class="o">::</span><span class="n">AddEventMarker</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">            </span><span class="s">&quot;Command executed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">GetName</span><span class="p">(),</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">            </span><span class="n">frc</span><span class="o">::</span><span class="n">ShuffleboardEventImportance</span><span class="o">::</span><span class="n">kNormal</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">35</span><span class="w">      </span><span class="p">});</span><span class="w"></span>
+<span class="linenos">36</span><span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandScheduler</span><span class="o">::</span><span class="n">GetInstance</span><span class="p">().</span><span class="n">OnCommandFinish</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">37</span><span class="w">      </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">frc2</span><span class="o">::</span><span class="n">Command</span><span class="o">&amp;</span><span class="w"> </span><span class="n">command</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">38</span><span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">Shuffleboard</span><span class="o">::</span><span class="n">AddEventMarker</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">39</span><span class="w">            </span><span class="s">&quot;Command finished&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">GetName</span><span class="p">(),</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">            </span><span class="n">frc</span><span class="o">::</span><span class="n">ShuffleboardEventImportance</span><span class="o">::</span><span class="n">kNormal</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">      </span><span class="p">});</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">  </span><span class="n">frc2</span><span class="o">::</span><span class="n">CommandScheduler</span><span class="o">::</span><span class="n">GetInstance</span><span class="p">().</span><span class="n">OnCommandInterrupt</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">43</span><span class="w">      </span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">frc2</span><span class="o">::</span><span class="n">Command</span><span class="o">&amp;</span><span class="w"> </span><span class="n">command</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">44</span><span class="w">        </span><span class="n">frc</span><span class="o">::</span><span class="n">Shuffleboard</span><span class="o">::</span><span class="n">AddEventMarker</span><span class="p">(</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">            </span><span class="s">&quot;Command interrupted&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="n">GetName</span><span class="p">(),</span><span class="w"></span>
+<span class="linenos">46</span><span class="w">            </span><span class="n">frc</span><span class="o">::</span><span class="n">ShuffleboardEventImportance</span><span class="o">::</span><span class="n">kNormal</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">47</span><span class="w">      </span><span class="p">});</span><span class="w"></span>
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="organizing-command-based.html" class="btn btn-neutral float-left" title="Organizing Command-Based Robot Projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cpp-command-discussion.html" class="btn btn-neutral float-right" title="A Technical Discussion on C++ Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FIRST and other WPILib Contributors. This work is licensed under a Creative Commons Attribution 4.0 International License.
+      <span class="commit">Revision <code>c3ff9f30</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="/en/latest/">latest</a></dd>
+        
+          <dd><a href="/en/stable/">stable</a></dd>
+        
+          <dd><a href="/en/2022/">2022</a></dd>
+        
+          <dd><a href="/en/2021/">2021</a></dd>
+        
+          <dd><a href="/en/2020/">2020</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="//docs.wpilib.org/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="//readthedocs.org/projects/frc-docs/?fromdocs=frc-docs">Project Home</a>
+          </dd>
+          <dd>
+            <a href="//readthedocs.org/builds/frc-docs/?fromdocs=frc-docs">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script>
+  <script>
+    if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = false;
+      }
+    </script>
+
+</body>
+</html>
